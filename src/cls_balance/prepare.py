@@ -110,7 +110,8 @@ def prepare(config_path: Path, *, download_override: bool | None = None) -> Path
         "visual_check_train_ids": checks,
         "visual_review": "pending human/agent inspection of local spot_checks.jpg",
         "bypass_note": "True-route taxonomy potential only; predicted-route execution rates require trained models.",
-        "protocol_deviations": [],
+        "protocol_deviations": ([archive_integrity["source_discrepancy"]]
+                                if archive_integrity.get("authors_md5_matches") is False else []),
     }
     write_json(output / "summary.json", summary)
     print(json.dumps({"run_id": run_id, "output": str(output), "counts": summary["counts"]}, indent=2), flush=True)

@@ -22,7 +22,10 @@ CATALOGS = ("variants.txt", "families.txt", "manufacturers.txt")
 EXPECTED_CLASSES = (100, 70, 30)
 EXPECTED_SPLITS = {"train": 3334, "val": 3333, "test": 3333}
 ARCHIVE_NAME = "fgvc-aircraft-2013b.tar.gz"
-ARCHIVE_MD5 = "32eca553f897e747706144f3bb444df0"
+# Independent archived reference matches the file served by the official URL.
+# The authors' HTML checksum page differs; preserve that discrepancy explicitly.
+ARCHIVE_MD5 = "d4acdd33327262359767eeaa97a4f732"
+AUTHORS_PAGE_MD5 = "32eca553f897e747706144f3bb444df0"
 
 
 def read_annotations(path: Path) -> dict[str, str]:
@@ -105,7 +108,7 @@ class AircraftData:
     source_hashes: dict[str, str]
 
     def archive_integrity(self) -> dict:
-        """Check the authors' published archive checksum when the archive is local."""
+        """Check an independently archived reference; report the authors' discrepancy."""
         archive = self.root / ARCHIVE_NAME
         if not archive.exists():
             return {"available": False, "note": "Existing extracted dataset; no archive supplied"}
@@ -114,7 +117,10 @@ class AircraftData:
             raise ValueError(f"Official archive checksum mismatch: {actual}; expected {ARCHIVE_MD5}")
         return {"available": True, "filename": ARCHIVE_NAME, "bytes": archive.stat().st_size,
                 "md5": actual, "expected_md5": ARCHIVE_MD5,
-                "checksum_source": "https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/archives/fgvc-aircraft-2013b.html"}
+                "checksum_source": "https://github.com/datasets-mila/datasets--fgvcaircraft/blob/master/md5sums",
+                "authors_checksum_source": "https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/archives/fgvc-aircraft-2013b.html",
+                "authors_published_md5": AUTHORS_PAGE_MD5, "authors_md5_matches": actual == AUTHORS_PAGE_MD5,
+                "source_discrepancy": "Official download matches independently archived MILA checksum; authors' HTML checksum differs. Cause unknown."}
 
     @classmethod
     def load(cls, root: Path, *, download: bool = False) -> AircraftData:

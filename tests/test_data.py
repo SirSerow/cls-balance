@@ -155,6 +155,18 @@ def test_archive_integrity(tiny_data):
         tiny_data.archive_integrity()
 
 
+def test_archive_reference_discrepancy_is_explicit(tiny_data, monkeypatch):
+    from cls_balance import data as module
+
+    (tiny_data.root / module.ARCHIVE_NAME).write_bytes(b"fixture archive")
+    monkeypatch.setattr(module, "file_hash", lambda path, algorithm: module.ARCHIVE_MD5)
+    result = tiny_data.archive_integrity()
+    assert result["md5"] == result["expected_md5"]
+    assert result["authors_md5_matches"] is False
+    assert result["authors_published_md5"] == module.AUTHORS_PAGE_MD5
+    assert "Cause unknown" in result["source_discrepancy"]
+
+
 @pytest.mark.parametrize("failure", ["missing", "corrupt", "short"])
 def test_invalid_image(tiny_data, failure):
     path = tiny_data.image_path("0000000")
