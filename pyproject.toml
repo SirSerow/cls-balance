@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools==80.9.0", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cls-balance"
+version = "0.1.0"
+description = "Reproducible FGVC-Aircraft hierarchy experiments"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "torch==2.9.1", "torchvision==0.24.1", "numpy==2.3.5",
+    "Pillow==12.0.0", "scikit-learn==1.7.2", "PyYAML==6.0.3", "pandas==2.3.3",
+]
+
+[project.optional-dependencies]
+test = ["pytest==8.4.2"]
+
+[project.scripts]
+cls-balance-prepare = "cls_balance.prepare:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

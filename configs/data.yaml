@@ -1,0 +1,16 @@
+# Operational stage-one configuration. Paths are relative to this file.
+dataset:
+  root: ../data
+  edition: torchvision_100_variants
+  download: true
+output_root: ../runs/data
+seed: 42
+preprocessing:
+  image_size: 224
+  remove_bottom_banner_px: 20
+  pad_rgb: [0, 0, 0]
+  interpolation: bicubic
+  normalization: EfficientNet_B0_Weights.IMAGENET1K_V1
+  horizontal_flip_probability: 0.5
+  brightness_jitter: 0.1
+  contrast_jitter: 0.1

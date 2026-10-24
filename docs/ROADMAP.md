@@ -1,6 +1,6 @@
 # Implementation roadmap and acceptance checklist
 
-**Status:** Planned. Paths and commands in this document are a **proposed interface**; they are not implemented yet. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the experiment's scientific contract.
+**Status:** Phase 0 prerequisites and Phase 1 data tooling implemented. See README for operational data commands and `results/` for validation evidence. Model, evaluation and benchmarking interfaces below remain **proposed**. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the experiment's scientific contract.
 
 ## Proposed repository structure
 
@@ -50,24 +50,24 @@ Do not create fake datasets or check in training results just to populate this s
 
 ## Phase 0 — Environment and reproducibility
 
-- [ ] Add `pyproject.toml` with pinned compatible `torch`, `torchvision`, `numpy`, `Pillow`, `scikit-learn`, `PyYAML`, `pandas`, and optional profiling/plotting dependencies.
-- [ ] Add installation instructions and a version lockfile or reproducible environment export.
-- [ ] Add `.gitignore` for `data/`, `runs/`, `checkpoints/`, `*.pt`, `*.pth`, `*.onnx`, cached embeddings, and generated media.
-- [ ] Log Python/Torch/CUDA/driver/GPU details, config hash, git SHA, random seed, input preprocessing hash.
-- [ ] Implement deterministic seeding; note operations where deterministic GPU kernels are unavailable.
-- [ ] Add CPU-only CI smoke tests with synthetic metadata and tiny tensors (no dataset download in CI).
+- [x] Add `pyproject.toml` with pinned compatible `torch`, `torchvision`, `numpy`, `Pillow`, `scikit-learn`, `PyYAML`, `pandas`. Optional profiling/plotting dependencies deferred until needed.
+- [x] Add installation instructions and a reproducible CPU environment export.
+- [x] Add `.gitignore` for data, runs, checkpoints, embeddings and generated media.
+- [x] Log Python/Torch/CUDA/driver/GPU details, config hash, git SHA, random seed, input preprocessing hash for data runs.
+- [x] Implement deterministic seeding; unsupported deterministic Torch kernels raise errors.
+- [x] Add CPU-only CI smoke tests with synthetic metadata and tiny tensors (no dataset download in CI).
 
 **Exit criterion:** A clean environment can import the package and execute deterministic unit tests without requiring a GPU or licensed dataset download.
 
 ## Phase 1 — Dataset, labels, and hierarchy
 
-- [ ] Implement official `train`, `val`, `test` dataset loading via `FGVCAircraft`.
-- [ ] Build split manifests joined by **image ID** across manufacturer/family/variant annotations.
-- [ ] Verify expected **Torchvision-edition** class cardinality and disjoint split IDs.
-- [ ] Generate canonical `variant_to_family`, `family_to_manufacturer` and class name/ID maps.
-- [ ] Implement banner removal, aspect-preserving resize/pad to 224, ImageNet normalization and reproducible train augmentation.
-- [ ] Count and record multi-child/single-child/empty branches; assert no branch is mislabeled.
-- [ ] Write a dataset summary with counts and SHA256 of manifest/taxonomy.
+- [x] Implement official `train`, `val`, `test` dataset loading via `FGVCAircraft`.
+- [x] Build split manifests joined by **image ID** across manufacturer/family/variant annotations.
+- [x] Verify expected **Torchvision-edition** class cardinality and disjoint split IDs.
+- [x] Generate canonical `variant_to_family`, `family_to_manufacturer` and class name/ID maps from training only.
+- [x] Implement banner removal, aspect-preserving resize/pad to 224, ImageNet normalization and reproducible train augmentation.
+- [x] Count and record multi-child/single-child/empty branches; assert no branch is mislabeled. Bypass values are true-route potential until models exist.
+- [x] Write a dataset summary with counts and SHA256 of manifest/taxonomy.
 
 **Exit criterion:** Every test image has exactly one valid variant → family → manufacturer path; sample-visualization spot checks retain entire aircraft geometry.
 
@@ -161,6 +161,8 @@ oracle_metrics = evaluator.evaluate(model, dataset, routing="oracle")
 **Exit criterion:** A collaborator can follow a single README sequence to reproduce the table/plots (subject to owning the dataset and compatible hardware), and can trace each value back to versioned artifacts.
 
 ## Proposed commands (interface to implement, not operational today)
+
+Data preparation is now operational as `python -m cls_balance.prepare --config configs/data.yaml` (see README). The commands below remain planned:
 
 ```bash
 python -m scripts.prepare_data --config configs/benchmark.yaml
