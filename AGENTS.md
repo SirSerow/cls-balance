@@ -8,7 +8,7 @@ Build a rigorous, reproducible comparison of **independently trained hierarchica
 
 ## Mandatory documents
 
-Read [docs/EXPERIMENT_PLAN.md](docs/EXPERIMENT_PLAN.md) before architecture, training, metrics, or data decisions. Follow [docs/ROADMAP.md](docs/ROADMAP.md) phase gates, and publish genuine measurements using [docs/RESULTS_TEMPLATE.md](docs/RESULTS_TEMPLATE.md). \`configs/benchmark.example.yaml\` is a proposed configuration schema, not an implemented program.
+Read [docs/EXPERIMENT_PLAN.md](docs/EXPERIMENT_PLAN.md) before architecture, training, metrics, or data decisions. Follow [docs/ROADMAP.md](docs/ROADMAP.md) phase gates, and publish genuine measurements using [docs/RESULTS_TEMPLATE.md](docs/RESULTS_TEMPLATE.md). `configs/benchmark.example.yaml` is a proposed configuration schema, not an implemented program.
 
 ## Scientific invariants
 
@@ -34,7 +34,7 @@ Read [docs/EXPERIMENT_PLAN.md](docs/EXPERIMENT_PLAN.md) before architecture, tra
 - Cache frozen embeddings only with explicit backbone and preprocessing hash; deterministic caches do not replace augmented training.
 - Use a standard inference adapter for every architecture; output final global variant ID and path diagnostics.
 - In PyTorch CUDA timing, synchronize before/after wall-clock measurements; do not benchmark asynchronous launch overhead accidentally.
-- Measure sustained FPS from elapsed processing time; do not equate \`1/median_latency\` with observed throughput.
+- Measure sustained FPS from elapsed processing time; do not equate `1/median_latency` with observed throughput.
 - Distinguish total stored-model footprint from per-image executed computation.
 - Add tests for label mapping, singleton shortcuts, hard vs oracle routing, dataset split disjointness, save/load predictions and unchanged frozen weights.
 
@@ -49,5 +49,5 @@ Implement dataset and tests first; then FLAT baseline; then IND-2 and FT-FROZEN-
 - Never alter test data or silently substitute a subset for the official benchmark.
 - Do not overwrite published results when rerunning; use immutable run IDs.
 - If a design or result conflicts with the protocol, document the deviation rather than hiding it.
-- Keep \`README.md\` commands accurate; mark planned commands explicitly until implemented.
+- Keep `README.md` commands accurate; mark planned commands explicitly until implemented.
 - Prefer focused PRs after the initial documentation, with unit-test output and exact reproducibility steps.
