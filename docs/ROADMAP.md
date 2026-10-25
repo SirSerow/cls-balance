@@ -4,7 +4,7 @@
 
 ## Proposed repository structure
 
-\`\`\`text
+```text
 cls-balance/
 ├── README.md
 ├── AGENTS.md
@@ -44,15 +44,15 @@ cls-balance/
 │   └── test_benchmark_smoke.py
 ├── pyproject.toml                     # To implement; pin/lock final versions
 └── .gitignore                         # To implement; exclude image/model/output files
-\`\`\`
+```
 
 Do not create fake datasets or check in training results just to populate this structure. Create folders when their implementation starts.
 
 ## Phase 0 — Environment and reproducibility
 
-- [ ] Add \`pyproject.toml\` with pinned compatible \`torch\`, \`torchvision\`, \`numpy\`, \`Pillow\`, \`scikit-learn\`, \`PyYAML\`, \`pandas\`, and optional profiling/plotting dependencies.
+- [ ] Add `pyproject.toml` with pinned compatible `torch`, `torchvision`, `numpy`, `Pillow`, `scikit-learn`, `PyYAML`, `pandas`, and optional profiling/plotting dependencies.
 - [ ] Add installation instructions and a version lockfile or reproducible environment export.
-- [ ] Add \`.gitignore\` for \`data/\`, \`runs/\`, \`checkpoints/\`, \`*.pt\`, \`*.pth\`, \`*.onnx\`, cached embeddings, and generated media.
+- [ ] Add `.gitignore` for `data/`, `runs/`, `checkpoints/`, `*.pt`, `*.pth`, `*.onnx`, cached embeddings, and generated media.
 - [ ] Log Python/Torch/CUDA/driver/GPU details, config hash, git SHA, random seed, input preprocessing hash.
 - [ ] Implement deterministic seeding; note operations where deterministic GPU kernels are unavailable.
 - [ ] Add CPU-only CI smoke tests with synthetic metadata and tiny tensors (no dataset download in CI).
@@ -61,10 +61,10 @@ Do not create fake datasets or check in training results just to populate this s
 
 ## Phase 1 — Dataset, labels, and hierarchy
 
-- [ ] Implement official \`train\`, \`val\`, \`test\` dataset loading via \`FGVCAircraft\`.
+- [ ] Implement official `train`, `val`, `test` dataset loading via `FGVCAircraft`.
 - [ ] Build split manifests joined by **image ID** across manufacturer/family/variant annotations.
 - [ ] Verify expected **Torchvision-edition** class cardinality and disjoint split IDs.
-- [ ] Generate canonical \`variant_to_family\`, \`family_to_manufacturer\` and class name/ID maps.
+- [ ] Generate canonical `variant_to_family`, `family_to_manufacturer` and class name/ID maps.
 - [ ] Implement banner removal, aspect-preserving resize/pad to 224, ImageNet normalization and reproducible train augmentation.
 - [ ] Count and record multi-child/single-child/empty branches; assert no branch is mislabeled.
 - [ ] Write a dataset summary with counts and SHA256 of manifest/taxonomy.
@@ -75,12 +75,12 @@ Do not create fake datasets or check in training results just to populate this s
 
 Proposed stable interface:
 
-\`\`\`python
+```python
 prediction = model.predict(image_tensor)
 # prediction: global_variant_id, route_labels, optional conditional scores
 metrics = evaluator.evaluate(model, dataset, routing="predicted")
 oracle_metrics = evaluator.evaluate(model, dataset, routing="oracle")
-\`\`\`
+```
 
 - [ ] Common single-image inference adapter for FLAT, IND-2, IND-3, and shared models.
 - [ ] Hard-route selectors use global label maps, not arbitrary local classifier output indices.
@@ -98,15 +98,15 @@ oracle_metrics = evaluator.evaluate(model, dataset, routing="oracle")
 - [ ] Train on official train split; choose checkpoint using validation variant macro recall.
 - [ ] Save complete model config, seed, optimizer settings, preprocessing and taxonomy versions.
 - [ ] Evaluate train/validation generalization; delay final test set report until models are frozen.
-- [ ] Extract the final trained backbone as a separate, immutable \`FT-FROZEN\` encoder artifact.
+- [ ] Extract the final trained backbone as a separate, immutable `FT-FROZEN` encoder artifact.
 
 **Exit criterion:** All seeds produce loadable full and encoder-only checkpoints. A reloaded checkpoint exactly reproduces inference on a fixed input.
 
 ## Phase 4 — Independent hierarchical baselines
 
 - [ ] Train manufacturer classifier with full EfficientNet.
-- [ ] For \`IND-2\`, train a full EfficientNet variant specialist for each manufacturer with >1 variants.
-- [ ] For \`IND-3\`, train per-manufacturer family routing and per-family variant specialists where the branch has >1 child.
+- [ ] For `IND-2`, train a full EfficientNet variant specialist for each manufacturer with >1 variants.
+- [ ] For `IND-3`, train per-manufacturer family routing and per-family variant specialists where the branch has >1 child.
 - [ ] Initialize all independent CNNs from the same published ImageNet weights; no shared trainable weights.
 - [ ] Implement cold vs preloaded model states; measure and declare model residency.
 - [ ] Report each specialist's validation score, training exposure, seed, and artifact checksum.
@@ -115,13 +115,13 @@ oracle_metrics = evaluator.evaluate(model, dataset, routing="oracle")
 
 ## Phase 5 — Shared frozen backbone with independent heads
 
-- [ ] Build frozen ImageNet backbone \`FROZEN\`; train standalone manufacturer, family and variant heads using the correct local training samples.
-- [ ] Build fine-tuned-then-frozen \`FT-FROZEN\` from the corresponding seed's Phase 3 backbone.
+- [ ] Build frozen ImageNet backbone `FROZEN`; train standalone manufacturer, family and variant heads using the correct local training samples.
+- [ ] Build fine-tuned-then-frozen `FT-FROZEN` from the corresponding seed's Phase 3 backbone.
 - [ ] Use a fixed, configurable MLP structure (default 1280 → 256 → n) and independent optimizers/checkpoints.
 - [ ] Implement optional cached pooled embeddings using training-only images; version by backbone+transform hash.
 - [ ] Assert backbone gradients and weights never change during head training.
 - [ ] Support replacing a specific specialist checkpoint without retraining other heads.
-- [ ] Compare \`FROZEN-2\`, \`FROZEN-3\`, \`FT-FROZEN-2\`, \`FT-FROZEN-3\`.
+- [ ] Compare `FROZEN-2`, `FROZEN-3`, `FT-FROZEN-2`, `FT-FROZEN-3`.
 
 **Exit criterion:** Each inference calls the shared EfficientNet exactly once; swapping a single head preserves weights and logits of all untouched heads.
 
@@ -154,7 +154,7 @@ oracle_metrics = evaluator.evaluate(model, dataset, routing="oracle")
 - [ ] Execute seeds 42, 43, 44 with frozen experiment settings.
 - [ ] Compute per-seed aggregate metrics and **paired stratified bootstrap** intervals for macro-recall differences.
 - [ ] Plot confusion matrices, first-wrong-stage distribution, routing penalty, per-branch latency and accuracy–latency Pareto frontier.
-- [ ] Write \`docs/RESULTS.md\` using \`docs/RESULTS_TEMPLATE.md\`, linking run IDs and per-image predictions.
+- [ ] Write `docs/RESULTS.md` using `docs/RESULTS_TEMPLATE.md`, linking run IDs and per-image predictions.
 - [ ] Report exclusions, failed runs, resource constraints and training budgets.
 - [ ] Publish exact commands for downloading dataset, training, evaluating and regenerating all report figures.
 
@@ -162,16 +162,16 @@ oracle_metrics = evaluator.evaluate(model, dataset, routing="oracle")
 
 ## Proposed commands (interface to implement, not operational today)
 
-\`\`\`bash
+```bash
 python -m scripts.prepare_data --config configs/benchmark.yaml
 python -m scripts.train_all --config configs/benchmark.yaml --seeds 42 43 44
 python -m scripts.evaluate_all --config configs/benchmark.yaml --split test
 python -m scripts.benchmark_all --config configs/benchmark.yaml --dtype fp32
 python -m scripts.report --runs-dir runs/
 pytest -q
-\`\`\`
+```
 
-The implementation may replace these with a \`cls-balance\` CLI; update this document when that decision is made.
+The implementation may replace these with a `cls-balance` CLI; update this document when that decision is made.
 
 ## Work sequencing and priorities
 
@@ -185,7 +185,7 @@ The implementation may replace these with a \`cls-balance\` CLI; update this doc
 
 Each run should have a unique ID (architecture, seed, backbone hash, config hash, hardware+dtype) and preserve:
 
-\`\`\`text
+```text
 runs/<run_id>/
 ├── config.resolved.yaml
 ├── environment.json
@@ -198,6 +198,6 @@ runs/<run_id>/
 ├── latency_test.csv
 ├── resources.json
 └── plots/
-\`\`\`
+```
 
 Do not create empty result files that appear to contain completed measurements.
