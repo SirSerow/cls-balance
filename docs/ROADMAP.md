@@ -1,6 +1,6 @@
 # Implementation roadmap and acceptance checklist
 
-**Status:** Phases 0–2 implemented. See README for operational data commands, [PHASE2.md](PHASE2.md) for inference/evaluation contracts, and `results/` for validation evidence. Model construction/training and benchmarking remain **proposed**. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the experiment's scientific contract.
+**Status:** Phases 0–3 implemented. See README for operational data commands, [PHASE2.md](PHASE2.md) for inference/evaluation contracts, [PHASE3.md](PHASE3.md) for FLAT training/export/reporting, and `results/` for measured evidence. Hierarchical training and benchmarking remain **proposed**. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the experiment's scientific contract.
 
 ## Proposed repository structure
 
@@ -105,13 +105,20 @@ preflight. See the [phase-two report](../results/stage2/validation-20261025T0242
 
 ## Phase 3 — Baseline FLAT
 
-- [ ] Implement ImageNet-pretrained EfficientNet-B0 with 100-variant head.
-- [ ] Train on official train split; choose checkpoint using validation variant macro recall.
-- [ ] Save complete model config, seed, optimizer settings, preprocessing and taxonomy versions.
-- [ ] Evaluate train/validation generalization; delay final test set report until models are frozen.
-- [ ] Extract the final trained backbone as a separate, immutable `FT-FROZEN` encoder artifact.
+- [x] Implement ImageNet-pretrained EfficientNet-B0 with 100-variant head.
+- [x] Train on official train split; choose checkpoint using validation variant macro recall.
+- [x] Save complete model config, seed, optimizer settings, preprocessing and taxonomy versions.
+- [x] Evaluate train/validation generalization; delay final test set report until models are frozen.
+- [x] Extract the final trained backbone as a separate, immutable `FT-FROZEN` encoder artifact.
 
 **Exit criterion:** All seeds produce loadable full and encoder-only checkpoints. A reloaded checkpoint exactly reproduces inference on a fixed input.
+
+**Validation:** Passed for seeds 42/43/44 on the complete official train/validation
+splits. Selected epochs: 17/23/26; completed epochs: 24/30/30. Validation macro recall:
+65.58% ± 0.10 pp (sample standard deviation). Exact training-device reloads and
+independent CPU encoder/source audits passed for all seeds. See the
+[measured report](../results/stage3/flat-20261025T045223Z-788dc5f4/REPORT.md) and
+[203-test validation report](../results/stage3/validation-20261025T042101Z-bcc17404/REPORT.md).
 
 ## Phase 4 — Independent hierarchical baselines
 
@@ -173,7 +180,7 @@ preflight. See the [phase-two report](../results/stage2/validation-20261025T0242
 
 ## Proposed commands (interface to implement, not operational today)
 
-Data preparation is operational as `python -m cls_balance.prepare --config configs/data.yaml` (see README). Phase-two evaluation is an operational Python API; a saved run can be audited with `python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`. Training and benchmark commands below remain planned:
+Data preparation is operational as `python -m cls_balance.prepare --config configs/data.yaml` (see README). Phase-two evaluation is an operational Python API; a saved run can be audited with `python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`. FLAT training is operational as `python -m cls_balance.train --config configs/flat.yaml`; reporting is `python -m cls_balance.report_flat --runs <completed-run-directories>`. Hierarchical training and benchmark commands below remain planned:
 
 ```bash
 python -m scripts.prepare_data --config configs/benchmark.yaml

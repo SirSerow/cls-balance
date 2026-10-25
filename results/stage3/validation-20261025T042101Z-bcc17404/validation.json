@@ -1,0 +1,72 @@
+{
+  "counts": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 203
+  },
+  "export_audits": [
+    {
+      "encoder_frozen_and_unchanged": true,
+      "encoder_parent_matches": true,
+      "fixed_reload_validation_image_id": "0034309",
+      "independent_cpu_encoder_matches_flat_features": true,
+      "run_id": "flat-s42-20261025T031340Z-5385e556",
+      "seed": 42,
+      "selected_epoch": 17,
+      "test_evaluated": false,
+      "train_evaluation_images": 3334,
+      "training_device_exact_reload_embeddings": true,
+      "training_device_exact_reload_logits": true,
+      "training_git_sha": "aa18ef15283ba9a7abcec22ac213c1f842717966",
+      "training_sources_match_commit": 15,
+      "validation_evaluation_images": 3333
+    },
+    {
+      "encoder_frozen_and_unchanged": true,
+      "encoder_parent_matches": true,
+      "fixed_reload_validation_image_id": "0034309",
+      "independent_cpu_encoder_matches_flat_features": true,
+      "run_id": "flat-s43-20261025T034152Z-d43e9130",
+      "seed": 43,
+      "selected_epoch": 23,
+      "test_evaluated": false,
+      "train_evaluation_images": 3334,
+      "training_device_exact_reload_embeddings": true,
+      "training_device_exact_reload_logits": true,
+      "training_git_sha": "aa18ef15283ba9a7abcec22ac213c1f842717966",
+      "training_sources_match_commit": 15,
+      "validation_evaluation_images": 3333
+    },
+    {
+      "encoder_frozen_and_unchanged": true,
+      "encoder_parent_matches": true,
+      "fixed_reload_validation_image_id": "0034309",
+      "independent_cpu_encoder_matches_flat_features": true,
+      "run_id": "flat-s44-20261025T041556Z-40c093b2",
+      "seed": 44,
+      "selected_epoch": 26,
+      "test_evaluated": false,
+      "train_evaluation_images": 3334,
+      "training_device_exact_reload_embeddings": true,
+      "training_device_exact_reload_logits": true,
+      "training_git_sha": "aa18ef15283ba9a7abcec22ac213c1f842717966",
+      "training_sources_match_commit": 15,
+      "validation_evaluation_images": 3333
+    }
+  ],
+  "figure_hashes_and_lf_check": "passed",
+  "figure_visual_review": "passed",
+  "frozen_phase2_tests": 172,
+  "phase3_extension_tests": 31,
+  "published_validation_images_per_seed": 3333,
+  "results_report": "results/stage3/flat-20261025T045223Z-788dc5f4/REPORT.md",
+  "status": "passed",
+  "test_evaluated": false,
+  "train_images_per_seed": 3334,
+  "training_seeds": [
+    42,
+    43,
+    44
+  ]
+}

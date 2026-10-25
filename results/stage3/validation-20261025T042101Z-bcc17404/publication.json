@@ -1,0 +1,17 @@
+{
+  "artifacts_sha256": {
+    "REPORT.md": "ad0b5ea056fe2e399020333ceee019a3d889d1aa529d878d9eb48e13b76c7516",
+    "environment.json": "787cb64ae28ffbbaa4ca18e55c0d3dbda6083f33031aa37fbba0d9b02797a3a1",
+    "export-verification.json": "7232db43dfdfaea6a7bc1dcddbbb0f6cadf0f8f44f54dcfd8e56634ad5fcfd9f",
+    "freeze-check.txt": "5dc6551eee1d926252ce59ccc1c0975304c6721162bf15dd71769754b7c0330f",
+    "junit.xml": "305bbe5e236f5daf236ec2be51ac159bc28191af0e4ef96331aaf802456e0ce2",
+    "pip-check-cpu.txt": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "pip-check-cuda.txt": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "pytest.txt": "d7564401b7c1f488d0ab80c7ae61b229ce22c4f4257a893351380c6cdd8e3014",
+    "source_hashes.json": "d6bc9add6610c836a20b0892ad673f5f983599fa6435acf1ffa614b3430c7955",
+    "training-console.txt": "b9f1ac285c9e136c8633fd7f5d3f78dbb1d97e87323daadfed86455e1d729336",
+    "validation.json": "33ad5ff29127b7927110e2565e5f782d804a6b1250df5883a6ff9a1418f04920",
+    "verify_exports.py": "ccfa610ee086a985cfa75130813b2c470a2df4a47685d1d9b47b100110ccabdb"
+  },
+  "status": "complete"
+}

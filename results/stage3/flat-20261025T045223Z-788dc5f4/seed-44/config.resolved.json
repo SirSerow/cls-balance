@@ -1,0 +1,32 @@
+{
+  "architecture": "FLAT",
+  "batch_size": 16,
+  "betas": [
+    0.9,
+    0.999
+  ],
+  "cpu_threads": 6,
+  "data_root": "S:\\Projects\\cls-balance\\data",
+  "device": "cuda:0",
+  "early_stopping": "consecutive epochs without strict macro-recall improvement",
+  "epochs": 30,
+  "eps": 1e-08,
+  "initialization": "EfficientNet_B0_Weights.IMAGENET1K_V1",
+  "learning_rate": 0.0001,
+  "optimizer": "AdamW",
+  "output_root": "S:\\Projects\\cls-balance\\runs\\flat",
+  "patience": 7,
+  "precision": "fp32",
+  "prepared_run": "S:\\Projects\\cls-balance\\runs\\data\\data-20261024T212625Z-4cf9b394",
+  "sampling": "shuffle train once per epoch; no replacement; drop_last=False",
+  "scheduler": null,
+  "seed": 44,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "selection": "validation variant macro recall; strict improvement; earliest tie",
+  "weight_decay": 0.01,
+  "workers": 2
+}

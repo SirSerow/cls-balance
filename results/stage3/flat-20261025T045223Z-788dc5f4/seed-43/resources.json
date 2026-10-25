@@ -1,0 +1,10 @@
+{
+  "deployment_bytes": 16939695,
+  "encoder_bytes": 16426803,
+  "optimizer_steps": 6270,
+  "timing_scope": "epoch training+validation+selection; excludes initialization and final evaluation",
+  "trainable_parameters": 4135648,
+  "training_gpu_hours": 0.5126431478333335,
+  "training_image_exposures": 100020,
+  "training_wall_seconds": 1845.5153322000006
+}

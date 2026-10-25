@@ -2,11 +2,14 @@
 
 A reproducible research project comparing **independent EfficientNet cascades** against a **single frozen EfficientNet with independently trainable specialist heads** on [FGVC-Aircraft](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/).
 
-> **Status:** Phases 0–2 are implemented: reproducible data preparation, common inference adapters, and complete-split classification evaluation. Stage one was validated on the complete official dataset; see its [validation report](results/stage1/data-20261024T212625Z-4cf9b394/REPORT.md). Phase-two correctness tests use deterministic test models. No models have been trained and no experimental classification or latency results are claimed.
+> **Status:** Phases 0–3 are implemented. FLAT EfficientNet-B0 was trained on the complete official training split for seeds 42/43/44, with validation macro recall **65.58% ± 0.10 pp** (sample standard deviation). See the [measured report and graphs](results/stage3/flat-20261025T045223Z-788dc5f4/REPORT.md). Test inference and architectural/latency comparisons remain deferred. All three selected checkpoints achieved 100% deterministic training recall, so the report explicitly shows the generalization gap.
 
 Phase two has **172 passing CPU tests**, with the suite frozen after validation.
 See the [phase-two validation report](results/stage2/validation-20261025T024200Z-cc4d2a5a/REPORT.md)
 for test output, official-data preflight and reproducibility evidence.
+
+Phase three adds **31 checks**, for **203 passing tests** in total. The original
+frozen suite is unchanged. See the [phase-three validation and export audit](results/stage3/validation-20261025T042101Z-bcc17404/REPORT.md).
 
 ## Research question
 
@@ -60,6 +63,7 @@ Supporting outcomes: variant top-1 accuracy and macro-F1; manufacturer/family ac
 - [Implementation roadmap](docs/ROADMAP.md) — proposed modules, phases, work packages, acceptance tests.
 - [Results template](docs/RESULTS_TEMPLATE.md) — reporting layout for reproducible results.
 - [Phase-two API and test freeze](docs/PHASE2.md) — operational adapters, evaluation, saved-run audit and frozen test policy.
+- [Phase-three training and review](docs/PHASE3.md) — operational CUDA setup, FLAT training, encoder export, diagrams and report generation.
 - [Example experiment configuration](configs/benchmark.example.yaml) — proposed settings; not an executable pipeline.
 - [AGENTS.md](AGENTS.md) — implementation guidance for coding agents.
 
@@ -83,7 +87,7 @@ python -m venv .venv
 .venv/Scripts/python.exe -m cls_balance.prepare --config configs/data.yaml
 ```
 
-The [CPU environment export](requirements/cpu-py312.lock) pins the complete validated dependency set. It is a Windows x64/Python 3.12 export; CPU CI on Ubuntu tests the pinned direct dependencies in `pyproject.toml`. GPU environments belong to a later training phase and must record their own CUDA build and environment export.
+The [CPU environment export](requirements/cpu-py312.lock) pins the complete validated dependency set. It is a Windows x64/Python 3.12 export; CPU CI on Ubuntu tests the pinned direct dependencies in `pyproject.toml`. Phase 3 has a separate [CUDA 12.8 training environment export](requirements/cuda-py312.lock), validated on an RTX 3060 Laptop GPU.
 
 The last command downloads the official archive (about 2.75 GB) under ignored `data/`, validates all 10,000 images, and creates a unique ignored `runs/data/data-<UTC>-<random>/` directory. Allow disk space for both archive and extracted images. With an existing dataset, add `--no-download`. The installed `cls-balance-prepare` entry point accepts the same arguments. Paths in [configs/data.yaml](configs/data.yaml) resolve relative to that file; the broader `benchmark.example.yaml` remains a proposed schema.
 
@@ -91,7 +95,7 @@ Preparation joins all annotation levels by image ID, verifies the 3334/3333/3333
 
 Archive provenance: the official 2,753,340,328-byte archive has MD5 `d4acdd33327262359767eeaa97a4f732`, matching the [independently archived MILA checksum](https://github.com/datasets-mila/datasets--fgvcaircraft/blob/master/md5sums). The [authors' checksum page](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/archives/fgvc-aircraft-2013b.html) instead lists `32eca553f897e747706144f3bb444df0`; the cause is unknown. Preparation enforces the independently recorded checksum when an archive is present and preserves this discrepancy in run metadata. An existing extracted dataset without an archive is identified explicitly and still undergoes all image/annotation checks.
 
-Each completed data run contains split CSV manifests, a taxonomy with global/local maps, source annotation checksums, per-image checksums, preprocessing and environment JSON, resolved configuration, and `summary.json`. A failed run has no summary and must not be treated as validated. `spot_checks.jpg` contains six training-image pairs for local geometry review. Images, manifests, archives and run directories remain local. Publish only aggregate validation reports under `results/`; no samples, labels-by-image, embeddings or weights go into Git.
+Each completed data run contains split CSV manifests, a taxonomy with global/local maps, source annotation checksums, per-image checksums, preprocessing and environment JSON, resolved configuration, and `summary.json`. A failed run has no summary and must not be treated as validated. `spot_checks.jpg` contains six training-image pairs for local geometry review. Images, manifests, archives and run directories remain local. Data-preparation publications contain aggregate audits. Phase-three publications additionally contain validation predictions and aggregate training metrics; no aircraft images, training-image ID lists, embeddings or weights go into Git.
 
 The primary transform removes the bottom 20 pixels, resizes all remaining content with bicubic interpolation and centered black padding to 224×224, then applies the `EfficientNet_B0_Weights.IMAGENET1K_V1` mean/std. No weights download is needed. Validation/test transforms have no augmentation. Training uses a flip and brightness/contrast jitter, seeded by `(seed, epoch, image_id)`. Call `AircraftDataset.set_epoch(epoch)` before creating each DataLoader iterator and use `persistent_workers=False` to propagate epoch changes to workers. Tests exercise two worker processes and shuffled order.
 
@@ -100,12 +104,47 @@ independent cascades and shared frozen models. It implements global-ID hard/orac
 routing, singleton bypasses, full-split metrics, per-image CSVs and immutable run
 metadata. Audit a saved evaluation with
 `python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`.
-Model construction/training begins in Phase 3; training and benchmarking commands
-in the [roadmap](docs/ROADMAP.md) remain planned.
+FLAT construction/training is operational in Phase 3. Hierarchical training and
+benchmarking commands in the [roadmap](docs/ROADMAP.md) remain planned.
+
+## Train and review FLAT
+
+Keep the validated CPU environment and create a separate GPU environment:
+
+```powershell
+.venv/Scripts/python.exe -m venv .venv-cuda
+.venv-cuda/Scripts/python.exe -m pip install -r requirements/cuda-py312.lock
+.venv-cuda/Scripts/python.exe -m pip install -e '.[test]'
+.venv-cuda/Scripts/python.exe -m pip check
+.venv-cuda/Scripts/python.exe -m cls_balance.train --config configs/flat.yaml
+.venv/Scripts/python.exe -m pytest -q tests checks
+```
+
+Set `prepared_run` in [configs/flat.yaml](configs/flat.yaml) to your completed
+Phase 1 preparation run; all paths resolve relative to the YAML. The command
+verifies every image against that preparation, then trains all three seeds in
+FP32 with AdamW, a 30-epoch cap and validation-only early stopping (patience 7).
+There is no test inference. Selected epochs were 17/23/26; completed epochs were
+24/30/30. Each run contains full and frozen encoder-only checkpoints, exact reload
+checks, configurations, environment/source hashes, histories, resource accounting,
+and audited complete train/validation predictions. Interrupted runs must restart;
+resume is not implemented.
+
+Generate a new immutable review bundle from completed local run directories:
+
+```powershell
+.venv-cuda/Scripts/python.exe -m cls_balance.report_flat --runs runs/flat/flat-s42-20261025T031340Z-5385e556 runs/flat/flat-s43-20261025T034152Z-d43e9130 runs/flat/flat-s44-20261025T041556Z-40c093b2 --output-root results/stage3
+```
+
+Those are the measured runs in this workspace; substitute the new IDs printed by
+your training command. The [report](results/stage3/flat-20261025T045223Z-788dc5f4/REPORT.md)
+includes learning/loss curves, validation confusion matrices, per-class recall and
+generalization figures. SVGs use LF line endings so their hashes survive Git
+checkouts. [PHASE3.md](docs/PHASE3.md) explains the artifact flow and audit contracts.
 
 ## Scope
 
-The current implementation covers Phases 0–2. The validated test suite is frozen
-with SHA256 checks enforced in CI; it continues to run normally. Checkpoints and
-raw datasets stay outside Git; future model results must follow
+The current implementation covers Phases 0–3. The original validated test suite is
+frozen with SHA256 checks enforced in CI; phase-three checks run in a separate CI
+workflow. Checkpoints and raw datasets stay outside Git; model results follow
 [RESULTS_TEMPLATE.md](docs/RESULTS_TEMPLATE.md).

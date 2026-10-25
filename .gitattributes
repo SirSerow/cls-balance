@@ -1,2 +1,4 @@
 # Artifact SHA256 values must survive checkouts on Windows and Unix.
 * text=auto eol=lf
+# Matplotlib's generated SVG path coordinates contain trailing spaces.
+results/stage3/**/*.svg -whitespace

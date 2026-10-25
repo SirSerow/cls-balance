@@ -1,0 +1,11 @@
+{
+  "scope": "Phase 3 FLAT train/validation only; no architecture or latency comparison",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "test_evaluated": false,
+  "validation_macro_recall_percent_mean": 65.58169934640523,
+  "validation_macro_recall_percent_sample_std": 0.09603498819953685
+}

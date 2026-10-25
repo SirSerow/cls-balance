@@ -1,7 +1,7 @@
 # Experiment specification — FGVC-Aircraft
 
 **Project:** cls-balance  
-**Status:** Phases 0–2 data/inference/evaluation tooling implemented; model experiments not executed
+**Status:** Phases 0–3 implemented; FLAT trained and evaluated on complete train/validation splits for seeds 42/43/44. Test inference, hierarchical comparisons and latency experiments remain deferred.
 **Main hypothesis:** A single frozen, task-adapted EfficientNet backbone plus independently trained specialist heads can approach the accuracy of independently trained EfficientNet cascades with substantially lower end-to-end latency and storage cost.  
 **Primary task:** Predict the **aircraft variant** from a single RGB image. Manufacturer and family are intermediate or derived outputs, not substitutes for correct variant prediction.
 

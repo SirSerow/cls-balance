@@ -1,0 +1,17 @@
+{
+  "checkpoints": {
+    "encoder": {
+      "file_sha256": "42705c04223e489e2c888f07604ee8775b9738de777e30e1b6dbbf67cacb155e",
+      "state_sha256": "5f196675bfe167e7394af3abb5972e5a6bbde2914f8926abe03bb44d0d67947e"
+    },
+    "flat": {
+      "file_sha256": "ce0c538c20a55b7cdce712882b83467f24c70f2544f96d61ba33f07581c4f257",
+      "state_sha256": "0eba032ebebd922e388247c2901a56d6839cf8327d8b9794e7e6b0f567de027f"
+    }
+  },
+  "exact_reload_embeddings": true,
+  "exact_reload_logits": true,
+  "run_id": "flat-s42-20261025T031340Z-5385e556",
+  "summary_sha256": "2cd89bc59874d69e44cde9f29e12b9025ae4c465448abe4f8de33d1ae5025b64",
+  "weights_location": "ignored local training run; not redistributed"
+}

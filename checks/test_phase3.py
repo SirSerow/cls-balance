@@ -1,7 +1,5 @@
 """Phase-three extension suite; the validated Phase 2 suite stays byte-for-byte frozen."""
 
-import json
-
 import pytest
 import torch
 from torch import nn
@@ -42,6 +40,21 @@ def test_selection_uses_strict_improvement_and_keeps_earliest_tie():
 def test_selection_rejects_invalid_validation_scores(value):
     with pytest.raises(ValueError, match="selection"):
         CheckpointSelection().observe(1, value)
+
+
+def test_figure_artifacts_use_lf_and_refuse_overwrite(tmp_path):
+    from cls_balance.report_flat import save_svg
+
+    class TextFigure:
+        def savefig(self, stream, *, format):
+            assert format == "svg"
+            stream.write("<svg>\n</svg>\n")
+
+    path = tmp_path / "figure.svg"
+    save_svg(TextFigure(), path)
+    assert path.read_bytes() == b"<svg>\n</svg>\n"
+    with pytest.raises(FileExistsError):
+        save_svg(TextFigure(), path)
 
 
 @pytest.mark.parametrize("kind", ["FLAT", "FT-FROZEN-encoder"])
@@ -180,3 +193,61 @@ def test_preparation_rejects_changed_inputs(tiny_data, tmp_path, tamper):
     else:
         with pytest.raises(ValueError, match="mismatch"):
             validate_preparation(tiny_data, preprocessing, prepared)
+
+
+def test_training_to_audited_evaluation_integration(tmp_path, full_metadata, monkeypatch):
+    """Exercise orchestration on generated metadata, never claim aircraft accuracy."""
+    import cls_balance.checkpoints as checkpoints
+    import cls_balance.evaluate as evaluation
+    import cls_balance.train as training
+    from cls_balance.data import AircraftData
+    from cls_balance.report_flat import audit_training_run
+
+    splits, taxonomy, _ = full_metadata
+    data = AircraftData(tmp_path, splits, taxonomy, {})
+
+    class GeneratedDataset:
+        def __init__(self, data, split, preprocessing, **kwargs):
+            self.rows = data.splits[split]
+            self.image = torch.zeros(3, 224, 224)
+
+        def set_epoch(self, epoch):
+            self.epoch = epoch
+
+        def __len__(self):
+            return len(self.rows)
+
+        def __getitem__(self, index):
+            row = self.rows[index]
+            variant, family, manufacturer = taxonomy.ids(row)
+            return {"image": self.image, "image_id": row.image_id,
+                    "variant_id": variant, "family_id": family, "manufacturer_id": manufacturer}
+
+    class TinyFlat(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.features = nn.Sequential(nn.AdaptiveAvgPool2d(1), nn.Conv2d(3, 1280, 1))
+            self.avgpool = nn.AdaptiveAvgPool2d(1)
+            self.classifier = nn.Linear(1280, 100)
+
+        def forward(self, value):
+            return self.classifier(self.avgpool(self.features(value)).flatten(1))
+
+    monkeypatch.setattr(training, "AircraftDataset", GeneratedDataset)
+    monkeypatch.setattr(evaluation, "AircraftDataset", GeneratedDataset)
+    monkeypatch.setattr(training, "build_flat", lambda **kwargs: TinyFlat())
+    monkeypatch.setattr(checkpoints, "build_flat", lambda **kwargs: TinyFlat())
+    config = TrainingConfig(str(tmp_path), str(tmp_path), str(tmp_path / "runs"),
+                            seeds=(42,), epochs=2, workers=0, batch_size=64, cpu_threads=2)
+    output = training.train_seed(config, data, Preprocessing(), {"run_id": "generated-unit-test"}, 42)
+    summary = audit_training_run(output)
+    assert summary["test_evaluated"] is False and summary["epochs_completed"] == 2
+    assert summary["resources"]["training_image_exposures"] == 2 * 3334
+    assert set(summary["evaluations"]) == {"train", "val"}
+    with (output / "history.csv").open() as stream:
+        import csv
+        history = list(csv.DictReader(stream))
+    assert all(int(row["train_images"]) == 3334 and int(row["val_images"]) == 3333 for row in history)
+    (output / "history.csv").write_text("tampered")
+    with pytest.raises(ValueError, match="checksum"):
+        audit_training_run(output)

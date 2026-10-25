@@ -13,14 +13,24 @@ import json
 from pathlib import Path
 import shutil
 import statistics
+from typing import TYPE_CHECKING
 import uuid
 
 from .artifacts import file_hash, object_hash, write_json
 from .evaluate import audit_run
 
+if TYPE_CHECKING:
+    from matplotlib.figure import Figure
+
 
 def read_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def save_svg(figure: Figure, path: Path) -> None:
+    """Write immutable LF text so artifact hashes survive Git checkouts on Windows."""
+    with path.open("x", encoding="utf-8", newline="\n") as stream:
+        figure.savefig(stream, format="svg")
 
 
 def audit_training_run(path: Path) -> dict:
@@ -70,12 +80,12 @@ def draw_figures(output: Path, seeds: list[dict]) -> None:
             axes[row, column].axvline(seed["best_epoch"], color="#525252", linestyle="--", label="Selected epoch")
             axes[row, column].set_xlabel("Epoch")
             axes[row, column].grid(alpha=0.18)
-            axes[row, column].legend(loc="best", fontsize=8)
+            axes[row, column].legend(loc="lower right" if column == 0 else "upper right", fontsize=8)
         axes[row, 0].set(ylabel="Variant macro recall (%)", ylim=(0, 100), title=f"Seed {seed['seed']} · learning")
         axes[row, 1].set(ylabel="Cross-entropy", title=f"Seed {seed['seed']} · loss")
     figure.suptitle("FLAT EfficientNet-B0 · official train / validation · FP32\nSelection uses validation macro recall only", fontsize=14)
     figure.tight_layout(rect=(0, 0, 1, 0.94))
-    figure.savefig(output / "learning-curves.svg")
+    save_svg(figure, output / "learning-curves.svg")
     plt.close(figure)
 
     for seed in seeds:
@@ -87,7 +97,7 @@ def draw_figures(output: Path, seeds: list[dict]) -> None:
                title=f"Seed {seed['seed']} · validation confusion\nRow normalized; all 3,333 validation images")
         fig.colorbar(im, ax=ax, label="Recall fraction")
         fig.tight_layout()
-        fig.savefig(output / f"confusion-seed-{seed['seed']}.svg")
+        save_svg(fig, output / f"confusion-seed-{seed['seed']}.svg")
         plt.close(fig)
 
     classwise = seeds[0]["validation"]["classwise"]
@@ -102,7 +112,7 @@ def draw_figures(output: Path, seeds: list[dict]) -> None:
     ax.grid(axis="y", alpha=0.2)
     ax.legend()
     fig.tight_layout()
-    fig.savefig(output / "classwise-validation.svg")
+    save_svg(fig, output / "classwise-validation.svg")
     plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(8, 4))
@@ -112,9 +122,9 @@ def draw_figures(output: Path, seeds: list[dict]) -> None:
                width=0.36, color=color, label="Deterministic train" if split == "train" else "Validation")
     ax.set_xticks(positions, [f"Seed {s['seed']}\nselected epoch {s['best_epoch']}" for s in seeds])
     ax.set(ylabel="Variant macro recall (%)", ylim=(0, 100), title="Selected checkpoints · generalization")
-    ax.legend()
+    ax.legend(loc="center left", bbox_to_anchor=(1.02, 0.5))
     fig.tight_layout()
-    fig.savefig(output / "generalization.svg")
+    save_svg(fig, output / "generalization.svg")
     plt.close(fig)
 
 
@@ -183,7 +193,7 @@ FLAT EfficientNet-B0 was trained on all 3,334 official training images and selec
 ## Experimental context
 
 - Dataset: Torchvision FGVC-Aircraft, 100 variants / 70 families / 30 manufacturers; 3,334 / 3,333 / 3,333 official splits.
-- Git SHA: `{envs[0]['git_sha']}`; dirty at run start: `{envs[0]['git_dirty']}`. Implementation source hashes are in publication metadata.
+- Training Git SHA: `{envs[0]['git_sha']}`; dirty flags by seed: `{dict(zip(seeds, [e['git_dirty'] for e in envs], strict=True))}`. Per-seed source hashes record the training snapshot; publication metadata fingerprints the report-generation sources.
 - Device: `{envs[0]['device']}`; GPU: `{envs[0]['gpus']}`; Torch: `{envs[0]['torch']}`; CUDA: `{envs[0]['cuda_runtime']}`.
 - Dataset manifest (canonical JSON records): `{context['dataset_manifest_sha256']}`.
 - Taxonomy: `{context['taxonomy_sha256']}`; preprocessing: `{context['preprocessing_sha256']}`.
@@ -228,6 +238,8 @@ From the repository root:
 ```
 
 Replace report placeholders with the local run directories recorded below. Full environment/configuration, histories, resource accounting, audited per-image validation predictions, classwise metrics and row-normalized confusion matrices accompany this report. Reproduction creates new immutable run IDs.
+
+Implementation test output and additional export-audit commands are linked from the [repository README](../../../README.md).
 
 """
     for r in records:

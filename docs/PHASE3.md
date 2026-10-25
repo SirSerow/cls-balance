@@ -14,8 +14,8 @@ environment with the official matching CUDA builds, as documented by
 
 ```powershell
 .venv/Scripts/python.exe -m venv .venv-cuda
-.venv-cuda/Scripts/python.exe -m pip install torch==2.9.1 torchvision==0.24.1 --index-url https://download.pytorch.org/whl/cu128
-.venv-cuda/Scripts/python.exe -m pip install -e '.[test]' -r requirements/phase3-plots.txt
+.venv-cuda/Scripts/python.exe -m pip install -r requirements/cuda-py312.lock
+.venv-cuda/Scripts/python.exe -m pip install -e '.[test]'
 .venv-cuda/Scripts/python.exe -m pip check
 .venv-cuda/Scripts/python.exe -c "import torch; print(torch.cuda.is_available())"
 .venv-cuda/Scripts/python.exe -m cls_balance.train --config configs/flat.yaml
@@ -68,6 +68,25 @@ tensor state, and version contracts before returning a model. Use
 `kind="FT-FROZEN-encoder"` for the encoder. `FrozenEncoder.train(True)` keeps every
 submodule in eval mode; encoder parameters have no gradients and own separate
 storage from the FLAT model. There is no optimizer state/resume claim.
+
+## Training and artifact flow
+
+```mermaid
+flowchart LR
+    T[Official train: 3,334 images] --> M[Fine-tune EfficientNet-B0]
+    M --> V[Official validation: 3,333 images]
+    V --> S[Select highest variant macro recall]
+    S --> F[Restore selected FLAT checkpoint]
+    F --> A[Full CNN plus 100-way classifier]
+    F --> E[Copy features and pooling; remove classifier]
+    E --> Z[Freeze weights and eval mode: 1,280 features]
+    Z --> H[Future independently trained heads: Phase 5]
+    X[Official test: held for the final comparison]
+```
+
+Train/validation evaluation uses the selected full model. Encoder export retains
+the same selected features for future specialist training. Phase 3 does not train
+specialist heads or evaluate the test split.
 
 ## Review package and figures
 
