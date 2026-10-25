@@ -17,6 +17,7 @@ test = ["pytest==8.4.2"]
 
 [project.scripts]
 cls-balance-prepare = "cls_balance.prepare:main"
+cls-balance-evaluate = "cls_balance.evaluate:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -1,0 +1,44 @@
+{
+  "ci_status": "CPU workflow verifies frozen inputs before running tests; remote CI outcome not yet observed.",
+  "commands": [
+    ".venv/Scripts/python.exe -m pip install --no-deps --no-build-isolation -e .",
+    ".venv/Scripts/python.exe -m pip check",
+    ".venv/Scripts/cls-balance-evaluate.exe --help",
+    ".venv/Scripts/python.exe -m pytest -q --tb=short --junitxml=results/stage2/validation-20261025T024200Z-cc4d2a5a/junit.xml",
+    ".venv/Scripts/python.exe scripts/freeze_tests.py --write --junit results/stage2/validation-20261025T024200Z-cc4d2a5a/junit.xml",
+    ".venv/Scripts/python.exe scripts/freeze_tests.py --check"
+  ],
+  "created_utc": "2026-10-25T02:45:02.226802+00:00",
+  "editable_install": "passed",
+  "frozen_tests": {
+    "files": 12,
+    "manifest": "tests/FROZEN.json",
+    "manifest_sha256": "9a019433a84e4996c8edb77224aaf9cc13bb5e9e278b935d569cb67c320ce650",
+    "status": "verified after successful suite"
+  },
+  "git_base_sha": "6724461b87f382ab2c650e9a739f26399ccb2c6d",
+  "git_dirty_during_validation": true,
+  "installed_evaluation_entry_point_help": "passed",
+  "limitations": [
+    "CPU validation only; CUDA paths not exercised.",
+    "Adapters tested with injected known-output modules; EfficientNet factories/training begin in Phase 3.",
+    "No trained-model experiment or test-set classification performance is claimed.",
+    "Training provenance is declared and validated against split IDs; tensor hashes cannot prove training history."
+  ],
+  "official_data_preflight": "passed; all 10000 annotation IDs; 100/70/30 classes; zero split overlap",
+  "pip_check": "No broken requirements found.",
+  "run_id": "validation-20261025T024200Z-cc4d2a5a",
+  "schema_version": 1,
+  "scope": "Phase-two software correctness and official-metadata preflight only; no trained-model accuracy, latency, or throughput results.",
+  "source_hashes_sha256": "194842c8a3ec8831312fb5a421cc316ed4d7e1431ed360bc3f7ee16a41db0939",
+  "source_tree_sha256": "194842c8a3ec8831312fb5a421cc316ed4d7e1431ed360bc3f7ee16a41db0939",
+  "status": "passed",
+  "unit_tests": {
+    "errors": 0,
+    "failures": 0,
+    "junit_sha256": "0d5677ccb9e96deecbe74e36ab9eb353ebe705e66f615576b546f7eb78226338",
+    "seconds": 9.409,
+    "skipped": 0,
+    "tests": 172
+  }
+}

@@ -2,7 +2,11 @@
 
 A reproducible research project comparing **independent EfficientNet cascades** against a **single frozen EfficientNet with independently trainable specialist heads** on [FGVC-Aircraft](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/).
 
-> **Status:** Stage-one data preparation is implemented and validated on the complete official dataset, with 56 passing CPU tests. See the [stage-one validation report](results/stage1/data-20261024T212625Z-4cf9b394/REPORT.md). Later model/training/benchmark phases remain planned. No models have been trained and no classification or latency results are claimed.
+> **Status:** Phases 0–2 are implemented: reproducible data preparation, common inference adapters, and complete-split classification evaluation. Stage one was validated on the complete official dataset; see its [validation report](results/stage1/data-20261024T212625Z-4cf9b394/REPORT.md). Phase-two correctness tests use deterministic test models. No models have been trained and no experimental classification or latency results are claimed.
+
+Phase two has **172 passing CPU tests**, with the suite frozen after validation.
+See the [phase-two validation report](results/stage2/validation-20261025T024200Z-cc4d2a5a/REPORT.md)
+for test output, official-data preflight and reproducibility evidence.
 
 ## Research question
 
@@ -55,6 +59,7 @@ Supporting outcomes: variant top-1 accuracy and macro-F1; manufacturer/family ac
 - [Full experiment specification](docs/EXPERIMENT_PLAN.md) — dataset, hypotheses, methods, metrics, controls, statistics and risks.
 - [Implementation roadmap](docs/ROADMAP.md) — proposed modules, phases, work packages, acceptance tests.
 - [Results template](docs/RESULTS_TEMPLATE.md) — reporting layout for reproducible results.
+- [Phase-two API and test freeze](docs/PHASE2.md) — operational adapters, evaluation, saved-run audit and frozen test policy.
 - [Example experiment configuration](configs/benchmark.example.yaml) — proposed settings; not an executable pipeline.
 - [AGENTS.md](AGENTS.md) — implementation guidance for coding agents.
 
@@ -73,6 +78,7 @@ python -m venv .venv
 .venv/Scripts/python.exe -m pip install -r requirements/cpu-py312.lock
 .venv/Scripts/python.exe -m pip install -e ".[test]"
 .venv/Scripts/python.exe -m pip check
+.venv/Scripts/python.exe scripts/freeze_tests.py --check
 .venv/Scripts/python.exe -m pytest -q
 .venv/Scripts/python.exe -m cls_balance.prepare --config configs/data.yaml
 ```
@@ -89,8 +95,17 @@ Each completed data run contains split CSV manifests, a taxonomy with global/loc
 
 The primary transform removes the bottom 20 pixels, resizes all remaining content with bicubic interpolation and centered black padding to 224×224, then applies the `EfficientNet_B0_Weights.IMAGENET1K_V1` mean/std. No weights download is needed. Validation/test transforms have no augmentation. Training uses a flip and brightness/contrast jitter, seeded by `(seed, epoch, image_id)`. Call `AircraftDataset.set_epoch(epoch)` before creating each DataLoader iterator and use `persistent_workers=False` to propagate epoch changes to workers. Tests exercise two worker processes and shuffled order.
 
-Follow the [roadmap](docs/ROADMAP.md) for the next phase. Training, evaluation and benchmarking commands in that document are still **planned**, and are not operational yet.
+The [phase-two API](docs/PHASE2.md) wraps supplied classifier modules for FLAT,
+independent cascades and shared frozen models. It implements global-ID hard/oracle
+routing, singleton bypasses, full-split metrics, per-image CSVs and immutable run
+metadata. Audit a saved evaluation with
+`python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`.
+Model construction/training begins in Phase 3; training and benchmarking commands
+in the [roadmap](docs/ROADMAP.md) remain planned.
 
 ## Scope
 
-The current implementation covers data preparation and its reproducibility prerequisites. Checkpoints and raw datasets stay outside Git; future model results must follow [RESULTS_TEMPLATE.md](docs/RESULTS_TEMPLATE.md).
+The current implementation covers Phases 0–2. The validated test suite is frozen
+with SHA256 checks enforced in CI; it continues to run normally. Checkpoints and
+raw datasets stay outside Git; future model results must follow
+[RESULTS_TEMPLATE.md](docs/RESULTS_TEMPLATE.md).

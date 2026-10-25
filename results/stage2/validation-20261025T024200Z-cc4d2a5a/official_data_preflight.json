@@ -1,0 +1,24 @@
+{
+  "counts": {
+    "families": 70,
+    "manufacturers": 30,
+    "splits": {
+      "test": 3333,
+      "train": 3334,
+      "val": 3333
+    },
+    "variants": 100
+  },
+  "dataset_manifest_records_sha256": "27a7dd09275ac80cee1769b5fd7d5f28fe29feaeb54d955b16cb3ce227500253",
+  "edition": "torchvision_100_variants",
+  "manifest_records_sha256": {
+    "test": "90a7031e2d5f55e13329088e9d72179235058bf68aaa3427fa894de1ac8be32e",
+    "train": "5c09dfa132122f49b9795c442366f503173113cc71dca38f46f35db82847aa0a",
+    "val": "9799cbc8a8398f6fa50a1502ee0f9cca976855b908368d90e58b4349c56fedf4"
+  },
+  "preprocessing_sha256": "173fd93e7491bb9048ffe5257c364450fa69b3f0e1ac4b1a4cf965eddea78adc",
+  "scope": "Complete official metadata and evaluator-provenance preflight only. No images inferred, no training performed, no classification metrics.",
+  "split_id_overlap": 0,
+  "status": "passed",
+  "taxonomy_sha256": "a79cf6f7fe8a7a028c1f2b51619b307750a241c26d863c0fc983423a6dd48177"
+}

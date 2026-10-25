@@ -1,0 +1,26 @@
+{
+  "files": {
+    ".github/workflows/tests.yml": "4f458caa6f3005843c799dbb55e55c81522956bef25ab83ad51519c9780bd8bd",
+    "pyproject.toml": "65351455623ed7484764f82672ac72e1bed6b3b85fd17ec7b0f527e5f8c51e8a",
+    "scripts/freeze_tests.py": "cae6f06d5fe8004e0fae1e3b8f742be28e45ad9ce10e1b5bac246aa64ec5e385",
+    "tests/conftest.py": "38fbc1179ffef964c1c26f9e81303f0558f48a7034fe087e7e4c93d469637e6e",
+    "tests/test_data.py": "ad5bed4ac528aa00f5f15adffe24606e0ce5f2c28482d6f61b2736196325d013",
+    "tests/test_evaluate.py": "ff8fb518f4eb63a848a5aa37225eb69a55c13dc011709ac6053781eeb32524de",
+    "tests/test_freeze.py": "3bfd0cdf441a58193e236fef38ecfc6c7cb7bd7118a9be44efa91fd17e4a67eb",
+    "tests/test_metrics.py": "a9b30ebfe27265c20558fc707b153dc7b9a806190cea4ba721b92d886b0536f2",
+    "tests/test_prepare.py": "d1f6d600ffa19ac8df0064800ebda35850769962b41ad5903839c6956237f339",
+    "tests/test_routing.py": "fd5daa766c08bb01729b2d04815ede88a5ffa5a5d0617c32a2dffc6802c78987",
+    "tests/test_taxonomy.py": "950ebda4660b397ca262f3f69a1395685944ce13da89a091dd7aad4bc0cd8dbf",
+    "tests/test_transforms.py": "c130e7795621ac75299f5264e691cf6b4ef622f7ffd4594a72f8357fab7026b2"
+  },
+  "policy": "Frozen after validation. Changes require explicit review and a new validated baseline.",
+  "schema_version": 1,
+  "validation": {
+    "errors": 0,
+    "failures": 0,
+    "junit_path": "results/stage2/validation-20261025T024200Z-cc4d2a5a/junit.xml",
+    "junit_sha256": "0d5677ccb9e96deecbe74e36ab9eb353ebe705e66f615576b546f7eb78226338",
+    "skipped": 0,
+    "tests": 172
+  }
+}

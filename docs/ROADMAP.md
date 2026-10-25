@@ -1,6 +1,6 @@
 # Implementation roadmap and acceptance checklist
 
-**Status:** Phase 0 prerequisites and Phase 1 data tooling implemented. See README for operational data commands and `results/` for validation evidence. Model, evaluation and benchmarking interfaces below remain **proposed**. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the experiment's scientific contract.
+**Status:** Phases 0–2 implemented. See README for operational data commands, [PHASE2.md](PHASE2.md) for inference/evaluation contracts, and `results/` for validation evidence. Model construction/training and benchmarking remain **proposed**. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the experiment's scientific contract.
 
 ## Proposed repository structure
 
@@ -75,24 +75,33 @@ Do not create fake datasets or check in training results just to populate this s
 
 ## Phase 2 — Unified model and evaluation interfaces
 
-Proposed stable interface:
+Implemented interface (see [PHASE2.md](PHASE2.md) for construction and provenance):
 
 ```python
 prediction = model.predict(image_tensor)
-# prediction: global_variant_id, route_labels, optional conditional scores
-metrics = evaluator.evaluate(model, dataset, routing="predicted")
-oracle_metrics = evaluator.evaluate(model, dataset, routing="oracle")
+# prediction: global variant ID, selected ancestors, decisions, executed counts
+result = evaluator.evaluate(model, split="val", routing="predicted")
+oracle_result = evaluator.evaluate(model, split="val", routing="oracle")
 ```
 
-- [ ] Common single-image inference adapter for FLAT, IND-2, IND-3, and shared models.
-- [ ] Hard-route selectors use global label maps, not arbitrary local classifier output indices.
-- [ ] Single-class branch bypasses redundant head inference.
-- [ ] Oracle mode injects ground-truth ancestor labels **only** for diagnostic evaluation.
-- [ ] End-to-end metric module computes variant macro recall, top-1, macro-F1, family/manufacturer accuracy, and router diagnostics.
-- [ ] Save per-image predictions (including selected branch and ground-truth route).
-- [ ] Add tests verifying global label correctness, oracle behavior, wrong-route handling, and zero test/train overlap.
+- [x] Common single-image inference adapter for FLAT, IND-2, IND-3, and shared models.
+- [x] Hard-route selectors use global label maps, not arbitrary local classifier output indices.
+- [x] Single-class branch bypasses redundant head inference.
+- [x] Oracle mode injects ground-truth ancestor labels **only** for diagnostic evaluation.
+- [x] End-to-end metric module computes variant macro recall, top-1, macro-F1, family/manufacturer accuracy, and router diagnostics.
+- [x] Save per-image predictions (including selected branch and ground-truth route).
+- [x] Add tests verifying global label correctness, oracle behavior, wrong-route handling, and zero test/train overlap.
 
 **Exit criterion:** A dummy model with known labels yields exact expected metrics; errors caused by upstream routing are attributed to the correct stage.
+
+Adapters accept injected modules; EfficientNet factories and training remain in
+Phases 3–5. Phase-two validation uses deterministic test models, not experimental
+measurements. The checked-in `tests/FROZEN.json` freezes the validated suite and
+runner inputs; CI verifies it before executing the tests.
+
+**Validation:** 172 passing CPU tests, including exact dummy-model metrics and
+routing error attribution. The complete official metadata also passes evaluator
+preflight. See the [phase-two report](../results/stage2/validation-20261025T024200Z-cc4d2a5a/REPORT.md).
 
 ## Phase 3 — Baseline FLAT
 
@@ -164,7 +173,7 @@ oracle_metrics = evaluator.evaluate(model, dataset, routing="oracle")
 
 ## Proposed commands (interface to implement, not operational today)
 
-Data preparation is now operational as `python -m cls_balance.prepare --config configs/data.yaml` (see README). The commands below remain planned:
+Data preparation is operational as `python -m cls_balance.prepare --config configs/data.yaml` (see README). Phase-two evaluation is an operational Python API; a saved run can be audited with `python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`. Training and benchmark commands below remain planned:
 
 ```bash
 python -m scripts.prepare_data --config configs/benchmark.yaml

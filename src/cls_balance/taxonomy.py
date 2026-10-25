@@ -24,6 +24,19 @@ class Taxonomy:
     variant_to_family: tuple[int, ...]
     family_to_manufacturer: tuple[int, ...]
 
+    def __post_init__(self) -> None:
+        """Reject invalid manually constructed or deserialized taxonomies too."""
+        for names in (self.variants, self.families, self.manufacturers):
+            if not names or any(not isinstance(n, str) or not n for n in names) or tuple(sorted(set(names))) != names:
+                raise ValueError("Taxonomy names must be nonempty, unique and sorted")
+        for mapping, children, parents in (
+            (self.variant_to_family, self.variants, self.families),
+            (self.family_to_manufacturer, self.families, self.manufacturers),
+        ):
+            if (len(mapping) != len(children) or any(type(i) is not int or not 0 <= i < len(parents) for i in mapping)
+                    or set(mapping) != set(range(len(parents)))):
+                raise ValueError("Invalid taxonomy mapping or empty branch")
+
     @classmethod
     def from_training(cls, labels: Iterable[Labels]) -> Taxonomy:
         records = list(labels)
@@ -54,6 +67,21 @@ class Taxonomy:
         if self.variant_to_family[v] != f or self.family_to_manufacturer[f] != m:
             raise ValueError(f"Hierarchy mismatch for image {row.image_id}")
         return v, f, m
+
+    @classmethod
+    def from_dict(cls, value: dict) -> Taxonomy:
+        """Load the versioned artifact and verify all redundant maps agree."""
+        from .artifacts import object_hash
+
+        try:
+            names = value["classes"]
+            taxonomy = cls(*(tuple(names[level]["id_to_name"]) for level in ("variant", "family", "manufacturer")),
+                           tuple(value["variant_to_family"]), tuple(value["family_to_manufacturer"]))
+            if object_hash(taxonomy.to_dict()) != object_hash(value):
+                raise ValueError("Taxonomy artifact has inconsistent maps or schema")
+        except (KeyError, TypeError) as exc:
+            raise ValueError("Invalid taxonomy artifact") from exc
+        return taxonomy
 
     def branches(self) -> dict[str, tuple[tuple[int, ...], ...]]:
         """Return child global IDs in deterministic specialist-logit order."""

@@ -1,0 +1,15 @@
+{
+  "artifacts_sha256": {
+    "REPORT.md": "a8a9a3821b4af3e6e7f85b8c8ac7c31168f7aaf897e7f4d4b82db5f735d07984",
+    "environment.json": "2092c000135c77abc68b2546026e91b2c72a878bd1f6cc8c39df00ea3bb9e674",
+    "freeze-check.txt": "5dc6551eee1d926252ce59ccc1c0975304c6721162bf15dd71769754b7c0330f",
+    "junit.xml": "0d5677ccb9e96deecbe74e36ab9eb353ebe705e66f615576b546f7eb78226338",
+    "official_data_preflight.json": "1190bdef31c970bc42151090e0767821e34fc64fd1557d395d232c985b1afd01",
+    "pip-check.txt": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "pytest.txt": "427a86a725f31c69a31bbb98eb8726e1d4d2b4e05f856b27713eb6c9995c45ff",
+    "source_hashes.json": "194842c8a3ec8831312fb5a421cc316ed4d7e1431ed360bc3f7ee16a41db0939",
+    "validation.json": "fe361a08f62a6e9330906c885f03d6caa016755a238a7798451bd44a817f1945"
+  },
+  "run_id": "validation-20261025T024200Z-cc4d2a5a",
+  "scope": "Phase-two software correctness and official-metadata preflight only; no trained-model accuracy, latency, or throughput results."
+}
