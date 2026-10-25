@@ -46,7 +46,7 @@ The primary comparison is **IND-2 versus FT-FROZEN-2** on identical test images.
 | Mean executed MACs / image (G) | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | Cumulative training time / GPU-hours | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 
-Use \`mean ± standard deviation\` across seeds for accuracy; explicitly state how aggregate latency was combined across repeated passes and seeds. Distinguish MiB from decimal MB and MACs from FLOPs. For FLAT, oracle routing is not applicable.
+Use `mean ± standard deviation` across seeds for accuracy; explicitly state how aggregate latency was combined across repeated passes and seeds. Distinguish MiB from decimal MB and MACs from FLOPs. For FLAT, oracle routing is not applicable.
 
 ## 3. Paired differences, uncertainty and engineering objective
 
