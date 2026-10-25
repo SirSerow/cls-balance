@@ -71,6 +71,8 @@ Do not create fake datasets or check in training results just to populate this s
 
 **Exit criterion:** Every test image has exactly one valid variant → family → manufacturer path; sample-visualization spot checks retain entire aircraft geometry.
 
+**Validation:** Passed on all 10,000 official images, with 56 CPU tests and local geometry inspection. See the [stage-one report](../results/stage1/data-20261024T212625Z-4cf9b394/REPORT.md), including the documented archive-checksum source discrepancy.
+
 ## Phase 2 — Unified model and evaluation interfaces
 
 Proposed stable interface:

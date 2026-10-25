@@ -1,0 +1,23 @@
+{
+  "dataset": {
+    "download": false,
+    "edition": "torchvision_100_variants",
+    "root": "S:\\Projects\\cls-balance\\data"
+  },
+  "output_root": "S:\\Projects\\cls-balance\\runs\\data",
+  "preprocessing": {
+    "brightness_jitter": 0.1,
+    "contrast_jitter": 0.1,
+    "horizontal_flip_probability": 0.5,
+    "image_size": 224,
+    "interpolation": "bicubic",
+    "normalization": "EfficientNet_B0_Weights.IMAGENET1K_V1",
+    "pad_rgb": [
+      0,
+      0,
+      0
+    ],
+    "remove_bottom_banner_px": 20
+  },
+  "seed": 42
+}

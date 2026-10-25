@@ -1,0 +1,2 @@
+# Artifact SHA256 values must survive checkouts on Windows and Unix.
+* text=auto eol=lf

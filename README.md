@@ -2,7 +2,7 @@
 
 A reproducible research project comparing **independent EfficientNet cascades** against a **single frozen EfficientNet with independently trainable specialist heads** on [FGVC-Aircraft](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/).
 
-> **Status:** Stage-one data preparation is implemented, with CPU tests and an operational CLI. Later model/training/benchmark phases remain planned. No models have been trained and no classification or latency results are claimed.
+> **Status:** Stage-one data preparation is implemented and validated on the complete official dataset, with 56 passing CPU tests. See the [stage-one validation report](results/stage1/data-20261024T212625Z-4cf9b394/REPORT.md). Later model/training/benchmark phases remain planned. No models have been trained and no classification or latency results are claimed.
 
 ## Research question
 

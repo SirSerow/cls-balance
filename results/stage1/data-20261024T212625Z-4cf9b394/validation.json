@@ -1,0 +1,26 @@
+{
+  "ci_status": "CPU workflow added; remote CI outcome not observed at publication",
+  "failed_run": {
+    "id": "data-20261024T212341Z-b424c9c3",
+    "reason": "Authors' published HTML MD5 differed from the official archive. Independently archived MILA reference subsequently confirmed the downloaded file; discrepancy remains explicit."
+  },
+  "implementation_git_sha": "453a4fe8b9ec00e1b953e5accf6549bcbd1786fb",
+  "pip_check": "No broken requirements found.",
+  "run_id": "data-20261024T212625Z-4cf9b394",
+  "scope": "CPU unit/integration tests, complete official data inventory/decode, hierarchy validation and local geometry inspection; no trained-model measurements",
+  "stable_artifacts_compared": [
+    "manifest_sha256",
+    "taxonomy_sha256",
+    "preprocessing_sha256",
+    "image_checksums_sha256"
+  ],
+  "two_full_audits_agree": true,
+  "unit_tests": {
+    "errors": 0,
+    "failures": 0,
+    "junit_sha256": "fa897902687c00945acfc50c7498aad830c062326cc2508abbc0b1bef0e214cf",
+    "seconds": 8.455,
+    "skipped": 0,
+    "tests": 56
+  }
+}

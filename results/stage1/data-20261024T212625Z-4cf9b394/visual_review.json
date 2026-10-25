@@ -1,0 +1,17 @@
+{
+  "finding": "Six training-only original/letterboxed pairs retain visible image geometry with no added clipping. The first source image is itself a tail close-up. Padding preserves all remaining source content after copyright banner removal.",
+  "image_ids": [
+    "0038598",
+    "0610659",
+    "1042824",
+    "1388982",
+    "1806232",
+    "2266584"
+  ],
+  "image_publication": "None; spot_checks.jpg remains in the ignored local run.",
+  "reviewed_at_utc": "2026-10-24T21:34:11.358565+00:00",
+  "reviewer": "Codex visual inspection",
+  "run_id": "data-20261024T212625Z-4cf9b394",
+  "spot_checks_sha256": "96f6dc46d5286617c10cbf44381252c89fc977bef86c3e395d9fd381353fb6d7",
+  "status": "passed"
+}
