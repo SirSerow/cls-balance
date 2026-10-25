@@ -1,0 +1,2 @@
+# Optional review-figure dependency; no change to the frozen CPU test environment.
+matplotlib==3.10.7
