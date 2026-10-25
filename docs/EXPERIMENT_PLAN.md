@@ -32,9 +32,9 @@ An *exploratory* practical decision rule: consider a shared model compelling if 
 
 The current Torchvision implementation documents **10,000 images / 100 variants / 70 families / 30 manufacturers**. The source website also describes **10,200 images / 102 variants / 41 manufacturers** in a broader release. Do not combine labels, mappings, or published class counts from different releases.
 
-- Use the *official* \`train\`, \`val\`, and \`test\` splits, with **variant** as ground-truth target.
+- Use the *official* `train`, `val`, and `test` splits, with **variant** as ground-truth target.
 - Load the three annotation levels and **join by image ID**, not by independent class indices or assumed array order.
-- Generate a manifest for each split: \`image_id, relative_path, split, variant_id/name, family_id/name, manufacturer_id/name\`.
+- Generate a manifest for each split: `image_id, relative_path, split, variant_id/name, family_id/name, manufacturer_id/name`.
 - Generate a deterministic taxonomy map: variant → family → manufacturer; validate every variant maps to precisely one family and manufacturer. Save all class-index/name lookups.
 - Verify that IDs do not overlap across the official splits and that every classifier uses exactly the same evaluation image IDs.
 - Confirm exact image/class counts from the downloaded dataset in the run metadata; fail loudly if they differ from the expected loader edition.
@@ -71,7 +71,7 @@ Train a **single FLAT checkpoint per seed** and reuse its frozen feature extract
 
 ### Independent cascade (hard routing)
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
     X[224×224 RGB] --> M[EfficientNet: manufacturer]
     M -->|selected manufacturer| F[EfficientNet: family, 3-stage only]
@@ -79,7 +79,7 @@ flowchart LR
     F -->|selected family| V3[EfficientNet: variants in family]
     V2 --> Y[Final variant]
     V3 --> Y
-\`\`\`
+```
 
 - Train each model using only samples appropriate to its supervised task. Route the **inference** image with *predicted* upstream labels (never ground truth in normal evaluation).
 - When an intermediate branch has one valid child, bypass the corresponding classifier and return the known child. Report the executed path length per sample.
@@ -88,7 +88,7 @@ flowchart LR
 
 ### Shared frozen backbone (hard routing)
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
     X[224×224 RGB] --> E[EfficientNet features — once, frozen]
     E --> Z[1280-d pooled embedding]
@@ -101,15 +101,15 @@ flowchart LR
     Z --> J
     H --> O[Final variant]
     J --> O
-\`\`\`
+```
 
 - A shared backbone processes each image **exactly once**.
-- Each small MLP head (for example, \`Linear(1280,256) → ReLU → Linear(256,n_classes)\`) operates on **the same frozen features**, with independent weights and optimizer state.
+- Each small MLP head (for example, `Linear(1280,256) → ReLU → Linear(256,n_classes)`) operates on **the same frozen features**, with independent weights and optimizer state.
 - The manufacturer router and specialist heads are distinct independently trained modules. Family routing is **conditional on the predicted manufacturer** for the 3-stage configuration.
 - The final output must be a globally valid variant identifier, never a specialist's local index.
 - For hard routing, softmax scores from a local head are not directly calibrated global probabilities. If confidence scores are compared, explicitly define conditional joint path probabilities and a calibration protocol using validation data.
 - **Do not run every specialist** during deployment inference; execute only the predicted branch, unless explicitly running a separately reported top-k/soft-routing ablation.
-- Store \`backbone_version\`, \`preprocessing_version\`, \`taxonomy_version\` with every head artifact. Changing backbone weights invalidates compatibility unless heads are revalidated or retrained.
+- Store `backbone_version`, `preprocessing_version`, `taxonomy_version` with every head artifact. Changing backbone weights invalidates compatibility unless heads are revalidated or retrained.
 
 **Optional follow-up:** On challenging families, compare pooled embeddings against a small spatial CNN head attached to an intermediate EfficientNet feature map. Keep this separate from the main test, because it changes the computational cost and specialist capacity.
 
@@ -119,7 +119,7 @@ Initial recommended recipe (adjust on **validation only**, and retain the same s
 
 | Setting | Starting value / policy |
 | --- | --- |
-| Backbone | \`efficientnet_b0\`, same ImageNet weights |
+| Backbone | `efficientnet_b0`, same ImageNet weights |
 | Resolution | 224 × 224 |
 | Train seeds | 42, 43, 44 (minimum) |
 | Training optimizer | AdamW |
@@ -134,25 +134,25 @@ Initial recommended recipe (adjust on **validation only**, and retain the same s
 
 **Training order:**
 
-1. Train \`FLAT\` using all 100 variant training classes; select by variant validation macro recall.
-2. Independently train \`IND-2\` and \`IND-3\` routing nodes and specialists from the same specified ImageNet initialization.
-3. Freeze the original ImageNet backbone and train the \`FROZEN-*\` routing/specialist heads.
-4. Remove \`FLAT\`'s final classification layer, freeze its trained backbone, and separately train \`FT-FROZEN-*\` heads.
+1. Train `FLAT` using all 100 variant training classes; select by variant validation macro recall.
+2. Independently train `IND-2` and `IND-3` routing nodes and specialists from the same specified ImageNet initialization.
+3. Freeze the original ImageNet backbone and train the `FROZEN-*` routing/specialist heads.
+4. Remove `FLAT`'s final classification layer, freeze its trained backbone, and separately train `FT-FROZEN-*` heads.
 5. Evaluate all selected checkpoints under the **same** harness. No architecture gets access to test labels during training or model selection.
 
 **Important fairness caveat:** Independent node networks see different numbers of examples and potentially have vastly more trainable parameters and cumulative training compute. Report wall-clock training time, GPU-hours (where available), total optimizer steps, number of trained parameters, and training data exposures. Do not pretend the experiment controls for equal total training compute when it does not. For a compute-matched ablation, define an explicit GPU-hour cap as a secondary study.
 
-**Feature caching:** Frozen-backbone heads can train from cached \`float32\` pooled embeddings computed from the deterministic preprocessing. Log whether caching is used. If applying stochastic augmentation, either recompute image features per epoch or cache explicitly versioned augmented views. Cached inference features are **not** used to make deployed latency look smaller.
+**Feature caching:** Frozen-backbone heads can train from cached `float32` pooled embeddings computed from the deterministic preprocessing. Log whether caching is used. If applying stochastic augmentation, either recompute image features per epoch or cache explicitly versioned augmented views. Cached inference features are **not** used to make deployed latency look smaller.
 
 ## 5. Classification evaluation
 
 ### Primary metric: variant macro recall
 
-For \`C\` final variants, with \`TP_c\` and \`FN_c\` measured on the same test IDs:
+For `C` final variants, with `TP_c` and `FN_c` measured on the same test IDs:
 
-\`\`\`text
+```text
 macro_recall = (1/C) * sum_c TP_c / (TP_c + FN_c)
-\`\`\`
+```
 
 Use explicit globally aligned variant IDs and a fixed class list. This is the dataset benchmark's mean per-class accuracy, computed as the mean diagonal of the row-normalized confusion matrix.
 
@@ -182,7 +182,7 @@ Calculate the 3-stage conditional metrics using the right denominators and label
 
 ## 6. Performance and deployment measurements
 
-**Primary speed benchmark:** GPU (or chosen inference device), **batch size 1**, models in inference/eval mode, \`torch.inference_mode()\`, same dtype and hardware, identical input tensors and pre/postprocessing.
+**Primary speed benchmark:** GPU (or chosen inference device), **batch size 1**, models in inference/eval mode, `torch.inference_mode()`, same dtype and hardware, identical input tensors and pre/postprocessing.
 
 Record two latency definitions separately:
 
@@ -191,12 +191,12 @@ Record two latency definitions separately:
 
 Include **p50**, **mean**, **p95**, and **p99** latency in milliseconds; report CPU/GPU execution separately where useful.
 
-**CUDA:** warm up model(s) and representative branch paths, synchronize the GPU before and after CPU wall-clock timing with \`time.perf_counter()\`, or use CUDA events for isolated GPU kernels. GPU operations are asynchronous; timings without synchronization are invalid. Warm up enough representative branches to avoid conflating first-use initialization with steady-state latency; report cold-start separately if relevant.
+**CUDA:** warm up model(s) and representative branch paths, synchronize the GPU before and after CPU wall-clock timing with `time.perf_counter()`, or use CUDA events for isolated GPU kernels. GPU operations are asynchronous; timings without synchronization are invalid. Warm up enough representative branches to avoid conflating first-use initialization with steady-state latency; report cold-start separately if relevant.
 
 - Measure over the **whole official test split**, with per-sample paths and times retained; repeat benchmark passes (e.g. 5) and report distribution across passes.
 - Fix GPU, driver, PyTorch, Torchvision, CUDA/cuDNN, clocks/power mode if controllable, tensor dtype, model residence policy, and worker count. Report ambient/system load, particularly on laptops.
 - If the independent cascade cannot fit all models in GPU memory simultaneously, use a **clearly labeled on-demand residency policy** and count model-loading/transfer in corresponding realistic full-pipeline latency. Do not compare an all-resident shared system against an independently cached-to-disk cascade without stating the tradeoff.
-- Report **sustained FPS** from elapsed time for a continuous processing run, independently of per-image p50 (do **not** call \`1000/p50_ms\` measured throughput).
+- Report **sustained FPS** from elapsed time for a continuous processing run, independently of per-image p50 (do **not** call `1000/p50_ms` measured throughput).
 - Count per-image executed-backbone passes, per-branch MACs/FLOPs (using a single convention and profiler), total parameters across stored models, trained parameters, checkpoint storage in MB, peak allocated GPU memory and peak resident memory when available.
 - Do not sum MACs for branches not invoked for the image. Do not omit stored-but-inactive specialist weights from total deployment size.
 - Run FP32 primary; compare FP16 as a separate inference-only deployment ablation with exactly the same trained checkpoints and inputs, noting any accuracy change.
@@ -206,11 +206,11 @@ Include **p50**, **mean**, **p95**, and **p99** latency in milliseconds; report 
 This is the key extensibility demonstration, with **no contamination of the initial backbone**:
 
 1. Pick a manufacturer with multiple variants using a predeclared, deterministic rule based on the *training taxonomy* (for instance, alphabetically first manufacturer with at least three variants). If a target variant is to be introduced, preselect that variant deterministically from this family.
-2. Remove **all training/validation samples of the target new variant** from the initial \`FLAT\` backbone fine-tuning and *all* initial heads/specialists. Do not use the target class in any initial checkpoint selection.
+2. Remove **all training/validation samples of the target new variant** from the initial `FLAT` backbone fine-tuning and *all* initial heads/specialists. Do not use the target class in any initial checkpoint selection.
 3. Train initial models with the remaining known classes and a reduced taxonomy. Record initial accuracy only on previously known variants.
 4. Introduce the target variant's **training samples only**, and expand/retrain the relevant specialist using training examples of both new and existing classes; tune on the corresponding validation portion.
 5. Leave every **other** specialist and both shared backbone and unaffected router frozen. For an existing manufacturer this typically requires no router change.
-6. Compare update cost against the independent cascade's affected full EfficientNet specialist, and optionally the flat model's more global fine-tuning or retraining. Do **not** treat \`FLAT\` as independently modular.
+6. Compare update cost against the independent cascade's affected full EfficientNet specialist, and optionally the flat model's more global fine-tuning or retraining. Do **not** treat `FLAT` as independently modular.
 7. Evaluate the before/after models on a fixed set of known-class test images and, **after** introduction, the new-variant test images (not used for training or early stopping).
 8. Report new-variant recall, updated specialist old-class recall, unchanged-family accuracy, overall accuracy, trainable parameter count, elapsed update time, and saved replacement artifact size.
 
@@ -220,7 +220,7 @@ If the new variant belongs to an initially empty family, this is a *new-family r
 
 Run at least **three training seeds** (42/43/44). For each seed, compare architectures using the *same* test image IDs. Record each architecture's mean and standard deviation across seeds.
 
-For paired accuracy comparisons, compute **95% paired bootstrap intervals**, sampling test images stratified by true variant so classes stay represented; for the primary macro-recall difference, report \`shared - independent\` in **percentage points**. Distinguish variability across samples from variability across training seeds; bootstrap one fixed model pair per seed and summarize separately rather than treating seeds as independent images.
+For paired accuracy comparisons, compute **95% paired bootstrap intervals**, sampling test images stratified by true variant so classes stay represented; for the primary macro-recall difference, report `shared - independent` in **percentage points**. Distinguish variability across samples from variability across training seeds; bootstrap one fixed model pair per seed and summarize separately rather than treating seeds as independent images.
 
 Latency: retain **per-image** observations and summarize p50/p95 and their uncertainty from repeated passes. Report the full per-image latency distribution grouped by observed path depth (to explain singleton/branch effects).
 
@@ -228,12 +228,12 @@ Publish:
 
 - Architecture/seed/hyperparameters and chosen checkpoint IDs.
 - Dataset edition and taxonomy checksum; complete preprocessing transforms.
-- **Per-test-image predictions and timing** (\`image_id, true_variant, predicted_variant, predicted_manufacturer, predicted_family, route, latency_ms\`) for error auditing, without copying copyrighted images.
-- Aggregate \`metrics.json\`, classwise CSV, confusion matrices, throughput/resource tables.
+- **Per-test-image predictions and timing** (`image_id, true_variant, predicted_variant, predicted_manufacturer, predicted_family, route, latency_ms`) for error auditing, without copying copyrighted images.
+- Aggregate `metrics.json`, classwise CSV, confusion matrices, throughput/resource tables.
 - Accuracy-versus-p95-latency plot with Pareto frontier.
 - Routing penalty, oracle/actual accuracy gap, and specialist update comparison.
 
-Use \`docs/RESULTS_TEMPLATE.md\` as the published report format. Never insert synthetic measurements as though they are experiment results.
+Use `docs/RESULTS_TEMPLATE.md` as the published report format. Never insert synthetic measurements as though they are experiment results.
 
 ## 9. Required implementation checks
 
@@ -244,7 +244,7 @@ Use \`docs/RESULTS_TEMPLATE.md\` as the published report format. Never insert sy
 - All architectures' evaluations use identical image IDs and exact image preprocessing.
 - A mocked perfect manufacturer/family router yields oracle and hard-route results that agree.
 - An intentionally wrong manufacturer route cannot accidentally receive the correct global variant prediction.
-- \`torch.inference_mode()\` and GPU synchronization are active in the benchmark path.
+- `torch.inference_mode()` and GPU synchronization are active in the benchmark path.
 - Save/load round-trip preserves predictions; specialist artifact carries correct backbone/preprocessing/taxonomy version.
 - Resource accounting covers all stored independent models, and per-image compute counts only the executed path.
 - Incremental experiment explicitly asserts the target variant was absent from initial training and validation.
