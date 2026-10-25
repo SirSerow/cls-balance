@@ -1,0 +1,149 @@
+# Example only. The training/benchmark CLI has not been implemented.
+# Clone as configs/benchmark.yaml and resolve/pin exact dependency versions before use.
+project:
+  name: cls-balance
+  protocol_version: 1
+  task: variant_classification
+  output_dir: runs
+  seeds: [42, 43, 44]
+
+dataset:
+  name: fgvc_aircraft
+  loader: torchvision.datasets.FGVCAircraft
+  root: data
+  edition: torchvision_100_variants
+  download: true
+  expected_counts:
+    variants: 100
+    families: 70
+    manufacturers: 30
+    total_images: 10000
+  splits:
+    train: train
+    validation: val
+    test: test
+  join_labels_by: image_id
+  enforce_disjoint_splits: true
+  write_manifest: true
+
+preprocessing:
+  image_size: [224, 224]
+  remove_bottom_banner_px: 20
+  resize: preserve_aspect_ratio_and_pad
+  pad_rgb: [0, 0, 0]
+  normalization: efficientnet_b0_imagenet1k_weights
+  train_augmentation:
+    horizontal_flip_probability: 0.5
+    brightness_jitter: 0.1
+    contrast_jitter: 0.1
+  validation_and_test_augmentation: none
+
+backbone:
+  architecture: efficientnet_b0
+  pretrained: torchvision_imagenet_default
+  output: global_avg_pooled
+  expected_feature_dim: 1280
+  checkpoint_compatibility:
+    require_backbone_hash_match: true
+    require_preprocessing_hash_match: true
+    require_taxonomy_version_match: true
+
+training:
+  optimizer: adamw
+  full_network_learning_rate: 0.0001
+  head_learning_rate: 0.001
+  weight_decay: 0.01
+  batch_size: 32
+  max_epochs: 30
+  early_stopping_patience: 7
+  early_stopping_metric: validation_macro_recall
+  restore_best_checkpoint: true
+  loss: cross_entropy
+  sample_weights: none
+  precision: fp32
+  frozen_feature_cache:
+    enabled: false
+    # Enable only for deterministic, versioned embeddings.
+
+specialists:
+  head_type: mlp
+  hidden_dim: 256
+  activation: relu
+  train_independently: true
+  skip_single_child_branches: true
+  inference_routing: hard_top1
+
+experiments:
+  - id: FLAT
+    topology: flat
+    backbone: finetune_all
+  - id: IND-2
+    topology: manufacturer_to_variant
+    backbone: independent_full_cnn
+  - id: IND-3
+    topology: manufacturer_to_family_to_variant
+    backbone: independent_full_cnn
+  - id: FROZEN-2
+    topology: manufacturer_to_variant
+    backbone: imagenet_frozen_shared
+  - id: FROZEN-3
+    topology: manufacturer_to_family_to_variant
+    backbone: imagenet_frozen_shared
+  - id: FT-FROZEN-2
+    topology: manufacturer_to_variant
+    backbone: flat_finetuned_then_frozen_shared
+  - id: FT-FROZEN-3
+    topology: manufacturer_to_family_to_variant
+    backbone: flat_finetuned_then_frozen_shared
+
+evaluation:
+  primary_classification: variant_macro_recall
+  secondary_classification: [variant_top1, variant_macro_f1, family_accuracy, manufacturer_accuracy]
+  primary_latency: full_pipeline_p95_ms
+  diagnostic_routing: [manufacturer_router_accuracy, family_router_conditional_accuracy, oracle_variant_accuracy, first_wrong_stage]
+  report_per_class: true
+  save_per_sample_predictions: true
+  statistics:
+    accuracy_bootstrap: paired_stratified_by_true_variant
+    confidence_level: 0.95
+    resamples: 2000
+    compare_seeds_separately: true
+  exploratory_decision_rule:
+    max_macro_recall_loss_percentage_points: 2.0
+    min_p95_latency_reduction_fraction: 0.30
+
+benchmark:
+  inference_batch_size: 1
+  primary_precision: fp32
+  optional_precisions: [fp16]
+  timed_passes: 5
+  warmup_each_representative_branch: true
+  warmup_iterations: 20
+  cuda_synchronize_for_wallclock: true
+  full_pipeline_includes: [preprocess, host_device_copy, backbone, routing, specialist, final_label_copy]
+  storage_cost: all_deployed_model_checkpoints
+  gpu_residency: document_and_hold_constant_where_feasible
+  report_percentiles: [50, 95, 99]
+  report_mean_latency: true
+  measure_sustained_throughput: true
+  report_executed_macs: true
+  report_peak_gpu_memory: true
+  stratify_by_executed_path: true
+
+incremental_update:
+  enabled: true
+  variant_selector: lexicographically_first_variant_from_first_manufacturer_with_at_least_three_variants
+  exclude_introduced_variant_from_initial_backbone_training: true
+  exclude_introduced_variant_from_initial_validation: true
+  only_update_target_specialist: true
+  save_unaffected_model_hashes: true
+  measure_new_class_and_old_class_performance: true
+  compare_update_wallclock_and_trainable_parameters: true
+
+artifacts:
+  save_metrics_json: true
+  save_predictions_csv: true
+  save_latency_csv: true
+  save_classwise_csv: true
+  save_environment_json: true
+  save_model_and_taxonomy_hashes: true
