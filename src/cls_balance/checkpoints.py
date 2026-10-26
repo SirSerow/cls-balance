@@ -23,7 +23,7 @@ def state_hash(module: nn.Module) -> str:
 
 def save_checkpoint(path: Path, model: nn.Module, metadata: dict, *, kind: str) -> dict:
     """Write once; an adjacent manifest binds file bytes and semantic metadata."""
-    if kind not in {"FLAT", "FT-FROZEN-encoder"}:
+    if kind not in {"FLAT", "FT-FROZEN-encoder", "IND-node"}:
         raise ValueError("Unknown checkpoint kind")
     payload = {"schema_version": 1, "kind": kind, "metadata": metadata,
                "metadata_sha256": object_hash(metadata), "state_sha256": state_hash(model),
@@ -46,7 +46,7 @@ def load_checkpoint(path: Path, *, taxonomy_sha256: str, preprocessing_sha256: s
         raise ValueError("Checkpoint file checksum mismatch")
     payload = torch.load(path, map_location="cpu", weights_only=True)
     if (payload.get("schema_version") != 1 or payload.get("kind") != kind
-            or kind not in {"FLAT", "FT-FROZEN-encoder"}
+            or kind not in {"FLAT", "FT-FROZEN-encoder", "IND-node"}
             or payload["metadata_sha256"] != object_hash(payload["metadata"])
             or any(manifest.get(k) != v for k, v in payload.items() if k != "state_dict")):
         raise ValueError("Checkpoint metadata/kind mismatch")
@@ -56,8 +56,14 @@ def load_checkpoint(path: Path, *, taxonomy_sha256: str, preprocessing_sha256: s
                           ("dataset_manifest_sha256", dataset_manifest_sha256)):
         if metadata.get(key) != expected:
             raise ValueError(f"Checkpoint {key} mismatch")
-    flat = build_flat(pretrained=False)
-    model = flat if kind == "FLAT" else FrozenEncoder(flat)
+    if kind == "IND-node":
+        from .models.cascade import NodeSpec
+
+        spec = NodeSpec.from_dict(metadata["node"])
+        flat = build_flat(pretrained=False, classes=len(spec.global_ids))
+    else:
+        flat = build_flat(pretrained=False)
+    model = FrozenEncoder(flat) if kind == "FT-FROZEN-encoder" else flat
     model.load_state_dict(payload["state_dict"], strict=True)
     model.eval()
     if state_hash(model) != payload["state_sha256"]:

@@ -64,6 +64,7 @@ Supporting outcomes: variant top-1 accuracy and macro-F1; manufacturer/family ac
 - [Results template](docs/RESULTS_TEMPLATE.md) — reporting layout for reproducible results.
 - [Phase-two API and test freeze](docs/PHASE2.md) — operational adapters, evaluation, saved-run audit and frozen test policy.
 - [Phase-three training and review](docs/PHASE3.md) — operational CUDA setup, FLAT training, encoder export, diagrams and report generation.
+- [Phase-four independent cascades](docs/PHASE4.md) — full CNN node training, predicted/oracle validation, residency policies and review plots.
 - [Example experiment configuration](configs/benchmark.example.yaml) — proposed settings; not an executable pipeline.
 - [AGENTS.md](AGENTS.md) — implementation guidance for coding agents.
 
@@ -104,8 +105,8 @@ independent cascades and shared frozen models. It implements global-ID hard/orac
 routing, singleton bypasses, full-split metrics, per-image CSVs and immutable run
 metadata. Audit a saved evaluation with
 `python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`.
-FLAT construction/training is operational in Phase 3. Hierarchical training and
-benchmarking commands in the [roadmap](docs/ROADMAP.md) remain planned.
+FLAT training and independent hierarchical training are operational. Shared-head
+training and the full test benchmark remain planned.
 
 ## Train and review FLAT
 
@@ -142,9 +143,43 @@ includes learning/loss curves, validation confusion matrices, per-class recall a
 generalization figures. SVGs use LF line endings so their hashes survive Git
 checkouts. [PHASE3.md](docs/PHASE3.md) explains the artifact flow and audit contracts.
 
+## Train and review independent cascades
+
+```powershell
+& .\.venv-cuda\Scripts\python.exe -m cls_balance.train_independent --config configs/independent.yaml
+& .\.venv\Scripts\python.exe scripts/freeze_tests.py --check
+& .\.venv\Scripts\python.exe -m pytest -q tests checks
+```
+
+Set `prepared_run` to the completed preparation directory. The default trains
+IND-2 for seeds 42/43/44: a full manufacturer CNN and 17 full variant-specialist
+CNNs, each with independent weights and validation selection. Singleton branches
+are deterministic. Complete predicted-route and oracle diagnostics use all 3,333
+validation images; test inference is deferred. Checkpoints, images and node
+contracts containing training IDs stay in ignored local runs.
+
+IND-3 is also runnable with `depths: [3]` (or `[2, 3]` for both), using 33 full
+CNNs. Its measurement remains an opt-in ablation after the two-stage shared
+comparison and common benchmark, following the execution order. See
+[PHASE4.md](docs/PHASE4.md) for exact retry/audit contracts and policy definitions.
+
+```powershell
+& .\.venv-cuda\Scripts\python.exe -m cls_balance.report_independent --runs runs/independent/<seed42-run> runs/independent/<seed43-run> runs/independent/<seed44-run> --output-root results/stage4
+& .\.venv-cuda\Scripts\python.exe -m cls_balance.residency --run runs/independent/<seed42-run> --depth 2 --device cuda:0
+```
+
+Replace placeholders with the immutable IDs printed by training. Reports include
+audited validation predictions, local specialist scores/exposures/hashes,
+learning/loss curves, routing penalties, singleton execution paths and confusion
+matrices. Residency supports all models on device, CPU-preloaded transfer on
+demand, and disk loading on demand. The residency command measures synchronized,
+un-warmed validation probes from ready tensors; it is separate from the planned
+Phase 6 full-pipeline test benchmark and does not establish p95/FPS claims.
+
 ## Scope
 
-The current implementation covers Phases 0–3. The original validated test suite is
+The current implementation covers Phases 0–4, with three-stage experimental
+measurements gated behind the primary two-stage comparison. The original validated test suite is
 frozen with SHA256 checks enforced in CI; phase-three checks run in a separate CI
 workflow. Checkpoints and raw datasets stay outside Git; model results follow
 [RESULTS_TEMPLATE.md](docs/RESULTS_TEMPLATE.md).
