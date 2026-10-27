@@ -3,3 +3,4 @@
 # Matplotlib's generated SVG path coordinates contain trailing spaces.
 results/stage3/**/*.svg -whitespace
 results/stage4/**/*.svg -whitespace
+results/stage5/**/*.svg -whitespace

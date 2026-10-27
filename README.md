@@ -2,7 +2,7 @@
 
 A reproducible research project comparing **independent EfficientNet cascades** against a **single frozen EfficientNet with independently trainable specialist heads** on [FGVC-Aircraft](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/).
 
-> **Status:** Phases 0–3 are implemented. FLAT EfficientNet-B0 was trained on the complete official training split for seeds 42/43/44, with validation macro recall **65.58% ± 0.10 pp** (sample standard deviation). See the [measured report and graphs](results/stage3/flat-20261025T045223Z-788dc5f4/REPORT.md). Test inference and architectural/latency comparisons remain deferred. All three selected checkpoints achieved 100% deterministic training recall, so the report explicitly shows the generalization gap.
+> **Status:** Phases 0–5 are implemented. FLAT and IND-2 have complete three-seed validation results; frozen shared-head training, compatible specialist replacement and review plots are operational. The primary Phase 5 configuration trains FT-FROZEN-2 from the seed-matched FLAT encoders. Test inference and full-pipeline latency/FPS remain Phase 6; generic ImageNet-frozen and three-stage measurements remain gated. FLAT validation macro recall is **65.58% ± 0.10 pp**, IND-2 **56.13% ± 1.17 pp** (sample standard deviations).
 
 Phase two has **172 passing CPU tests**, with the suite frozen after validation.
 See the [phase-two validation report](results/stage2/validation-20261025T024200Z-cc4d2a5a/REPORT.md)
@@ -65,6 +65,7 @@ Supporting outcomes: variant top-1 accuracy and macro-F1; manufacturer/family ac
 - [Phase-two API and test freeze](docs/PHASE2.md) — operational adapters, evaluation, saved-run audit and frozen test policy.
 - [Phase-three training and review](docs/PHASE3.md) — operational CUDA setup, FLAT training, encoder export, diagrams and report generation.
 - [Phase-four independent cascades](docs/PHASE4.md) — full CNN node training, predicted/oracle validation, residency policies and review plots.
+- [Phase-five shared frozen heads](docs/PHASE5.md) — independent MLP fitting, encoder/cache checks, specialist replacement and validation review.
 - [Example experiment configuration](configs/benchmark.example.yaml) — proposed settings; not an executable pipeline.
 - [AGENTS.md](AGENTS.md) — implementation guidance for coding agents.
 
@@ -105,8 +106,8 @@ independent cascades and shared frozen models. It implements global-ID hard/orac
 routing, singleton bypasses, full-split metrics, per-image CSVs and immutable run
 metadata. Audit a saved evaluation with
 `python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`.
-FLAT training and independent hierarchical training are operational. Shared-head
-training and the full test benchmark remain planned.
+FLAT training, independent hierarchical training and shared frozen-head training
+are operational. The full test benchmark remains planned.
 
 ## Train and review FLAT
 
@@ -188,10 +189,45 @@ records, including a user pause and a system sleep that required node retries.
 Training data and weights remain local. Test inference and full-pipeline
 latency/FPS measurements remain deferred.
 
+## Train and review shared frozen heads
+
+```powershell
+& .\.venv-cuda\Scripts\python.exe -m cls_balance.train_shared --config configs/shared.yaml
+& .\.venv\Scripts\python.exe scripts/freeze_tests.py --check
+& .\.venv\Scripts\python.exe -m pytest -q tests checks
+& .\.venv-cuda\Scripts\python.exe -m cls_balance.report_shared --runs <seed42-run> <seed43-run> <seed44-run> --output-root results/stage5
+```
+
+Set preparation and matching FLAT paths in [shared.yaml](configs/shared.yaml).
+Replace report placeholders with the immutable run directories printed by training.
+The default fits 18 separate MLPs per seed on one frozen task-adapted EfficientNet:
+manufacturer router plus 17 multi-variant manufacturer heads. Fresh augmented
+features are computed once per training image per epoch, then used read-only by
+each independent head optimizer. Each head selects its own checkpoint with local
+validation macro recall; singleton branches have no classifier. Complete final
+predicted/oracle evaluations use the real image path on all validation images.
+
+Both encoder weights and BatchNorm buffers remain fixed. Exports must reproduce
+embeddings/logits exactly. `cache_root` optionally persists separately versioned
+training-only augmented views; the default uses memory. Compatible head overrides
+can replace one specialist without changing unrelated head weights/logits.
+[PHASE5.md](docs/PHASE5.md) documents exact contracts and the Python replacement API.
+
+The same commands support `backbone: FROZEN` and `depths: [2, 3]` in a separate
+configuration. These generic/depth measurements remain opt-in after the primary
+two-stage benchmark. Reports accept both backbone types with matching seed sets
+and depths. Optional `--flat-runs` and `--independent-runs` add audited paired
+validation comparisons. Checkpoints, caches, images and training-ID lists stay
+local; validation predictions, aggregate histories and SVG figures can be committed.
+
+On Windows, `python scripts/train_shared_awake.py --config configs/shared.yaml`
+invokes the same training with a temporary process-lifetime idle-sleep request.
+The request releases on exit and does not alter the power plan or GPU clocks.
+
 ## Scope
 
-The current implementation covers Phases 0–4, with three-stage experimental
+The current implementation covers Phases 0–5, with generic frozen and three-stage experimental
 measurements gated behind the primary two-stage comparison. The original validated
-test suite is frozen with SHA256 checks enforced in CI; Phase 3/4 checks run in
+test suite is frozen with SHA256 checks enforced in CI; Phase 3/4/5 checks run in
 their CI workflows. Checkpoints and raw datasets stay outside Git; model results follow
 [RESULTS_TEMPLATE.md](docs/RESULTS_TEMPLATE.md).

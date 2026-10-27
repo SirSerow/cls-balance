@@ -1,6 +1,6 @@
 # Implementation roadmap and acceptance checklist
 
-**Status:** Phases 0–4 implemented, with IND-3 measurement deferred by the execution-order gate. See README for operational commands, [PHASE2.md](PHASE2.md) for inference/evaluation contracts, [PHASE3.md](PHASE3.md) for FLAT training/export/reporting, [PHASE4.md](PHASE4.md) for independent cascades, and `results/` for measured evidence. Shared-head training and the full test benchmark remain **proposed**. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the experiment's scientific contract.
+**Status:** Phases 0–5 implemented, with generic ImageNet-frozen and three-stage measurements deferred by the execution-order gate. See README for operational commands, [PHASE2.md](PHASE2.md) for inference/evaluation contracts, [PHASE3.md](PHASE3.md) for FLAT training/export/reporting, [PHASE4.md](PHASE4.md) for independent cascades, [PHASE5.md](PHASE5.md) for shared heads, and `results/` for measured evidence. The full test benchmark remains **proposed**. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the experiment's scientific contract.
 
 ## Proposed repository structure
 
@@ -146,15 +146,21 @@ system-sleep elapsed time in successful GPU training costs.
 
 ## Phase 5 — Shared frozen backbone with independent heads
 
-- [ ] Build frozen ImageNet backbone `FROZEN`; train standalone manufacturer, family and variant heads using the correct local training samples.
-- [ ] Build fine-tuned-then-frozen `FT-FROZEN` from the corresponding seed's Phase 3 backbone.
-- [ ] Use a fixed, configurable MLP structure (default 1280 → 256 → n) and independent optimizers/checkpoints.
-- [ ] Implement optional cached pooled embeddings using training-only images; version by backbone+transform hash.
-- [ ] Assert backbone gradients and weights never change during head training.
-- [ ] Support replacing a specific specialist checkpoint without retraining other heads.
-- [ ] Compare `FROZEN-2`, `FROZEN-3`, `FT-FROZEN-2`, `FT-FROZEN-3`.
+- [x] Build frozen ImageNet backbone `FROZEN`; train standalone manufacturer, family and variant heads using the correct local training samples.
+- [x] Build fine-tuned-then-frozen `FT-FROZEN` from the corresponding seed's Phase 3 backbone.
+- [x] Use a fixed, configurable MLP structure (default 1280 → 256 → n) and independent optimizers/checkpoints.
+- [x] Implement optional cached pooled embeddings using training-only images; version by backbone+transform hash, exact IDs, augmentation seed and epoch.
+- [x] Assert backbone gradients, weights and buffers never change during head training.
+- [x] Support replacing a specific specialist checkpoint without retraining other heads.
+- [x] Implement common evaluation/report comparisons for `FROZEN-2`, `FROZEN-3`, `FT-FROZEN-2`, `FT-FROZEN-3`; integration-check both backbone types and depths.
+- [ ] Measure generic ImageNet-frozen and three-stage ablations after the primary two-stage comparison and Phase 6 benchmark (execution-order gate).
 
 **Exit criterion:** Each inference calls the shared EfficientNet exactly once; swapping a single head preserves weights and logits of all untouched heads.
+
+Operational commands, source-encoder checks, augmented cache contracts, replacement
+API and publication rules are in [PHASE5.md](PHASE5.md). The primary configuration
+measures FT-FROZEN-2 for seeds 42/43/44; broader ablation measurements remain gated.
+The original frozen suite is unchanged; Phase 5 checks extend `checks/`.
 
 ## Phase 6 — Benchmark harness
 
@@ -193,7 +199,7 @@ system-sleep elapsed time in successful GPU training costs.
 
 ## Proposed commands (interface to implement, not operational today)
 
-Data preparation is operational as `python -m cls_balance.prepare --config configs/data.yaml` (see README). Phase-two evaluation is an operational Python API; a saved run can be audited with `python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`. FLAT training is operational as `python -m cls_balance.train --config configs/flat.yaml`; reporting is `python -m cls_balance.report_flat --runs <completed-run-directories>`. Independent training is `python -m cls_balance.train_independent --config configs/independent.yaml`, reporting/auditing is `python -m cls_balance.report_independent --runs <completed-run-directories>`, and residency probes are `python -m cls_balance.residency --run <completed-run-directory>`. The all-architecture and benchmark commands below remain planned:
+Data preparation is operational as `python -m cls_balance.prepare --config configs/data.yaml` (see README). Phase-two evaluation is an operational Python API; a saved run can be audited with `python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`. FLAT training is operational as `python -m cls_balance.train --config configs/flat.yaml`; reporting is `python -m cls_balance.report_flat --runs <completed-run-directories>`. Independent training is `python -m cls_balance.train_independent --config configs/independent.yaml`, reporting/auditing is `python -m cls_balance.report_independent --runs <completed-run-directories>`, and residency probes are `python -m cls_balance.residency --run <completed-run-directory>`. Shared training is `python -m cls_balance.train_shared --config configs/shared.yaml`; reporting/auditing is `python -m cls_balance.report_shared --runs <completed-run-directories>`. The all-architecture and benchmark commands below remain planned:
 
 ```bash
 python -m scripts.prepare_data --config configs/benchmark.yaml

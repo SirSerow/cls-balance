@@ -1,7 +1,7 @@
 # Experiment specification — FGVC-Aircraft
 
 **Project:** cls-balance  
-**Status:** Phases 0–4 implemented; FLAT and IND-2 trained for seeds 42/43/44, with complete validation evaluations and immutable review bundles. Independent full-CNN fitting, hard/oracle routing and residency diagnostics are operational; IND-3 measurement remains gated behind the main two-stage comparison. Test inference, shared-backbone comparisons and full-pipeline latency experiments remain deferred.
+**Status:** Phases 0–5 implemented; FLAT and IND-2 trained for seeds 42/43/44, with complete validation evaluations and immutable review bundles. Shared frozen-head fitting, seed-matched FLAT encoder loading, augmented training-only caches, compatible head replacement and validation comparisons are operational. Generic ImageNet-frozen and three-stage measurements remain gated behind the primary two-stage comparison and common benchmark. Test inference and full-pipeline latency experiments remain deferred. See README and Phase 5 evidence for shared-head measurements.
 **Main hypothesis:** A single frozen, task-adapted EfficientNet backbone plus independently trained specialist heads can approach the accuracy of independently trained EfficientNet cascades with substantially lower end-to-end latency and storage cost.  
 **Primary task:** Predict the **aircraft variant** from a single RGB image. Manufacturer and family are intermediate or derived outputs, not substitutes for correct variant prediction.
 
