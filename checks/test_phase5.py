@@ -195,6 +195,10 @@ def test_train_reload_route_replace_and_publish(tmp_path, full_metadata, monkeyp
         save_checkpoint(tmp_path / f"bad{depth}.pt", replacement, bad, kind="shared-head")
         with pytest.raises(ValueError, match="compatibility"):
             load_shared(run, depth, replacements={spec.key: tmp_path / f"bad{depth}.pt"})
+        leaked = metadata | {"training_image_ids": [data.splits["test"][0].image_id]}
+        save_checkpoint(tmp_path / f"leaked{depth}.pt", replacement, leaked, kind="shared-head")
+        with pytest.raises(ValueError, match="provenance"):
+            load_shared(run, depth, replacements={spec.key: tmp_path / f"leaked{depth}.pt"})
     from cls_balance.report_shared import audit_training_run, publish
     assert audit_training_run(run) == summary
     monkeypatch.setattr("cls_balance.report_shared.draw_figures", lambda *args: None)

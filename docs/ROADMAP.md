@@ -162,6 +162,16 @@ API and publication rules are in [PHASE5.md](PHASE5.md). The primary configurati
 measures FT-FROZEN-2 for seeds 42/43/44; broader ablation measurements remain gated.
 The original frozen suite is unchanged; Phase 5 checks extend `checks/`.
 
+**Validation:** FT-FROZEN-2 trained for seeds 42/43/44 using their corresponding
+Phase 3 encoders: 54 independently fitted heads with exact reload checks and
+unchanged frozen weights/buffers. Full predicted-route validation macro recall:
+**63.43% ± 0.25 pp** (sample SD); final head-fitting epochs: 27/19/18. See the
+[measured comparison and figures](../results/stage5/shared-20261027T145809Z-ee48fbad/REPORT.md).
+The complete CPU suite passes 235 tests, including 22 Phase 5 checks. Generic
+ImageNet-frozen and three-stage measurements remain gated as listed above.
+See the [validation and reproduction evidence](../results/stage5/validation-20261027T150049Z-777f9bfa/REPORT.md)
+for CPU/CUDA checks, source hashes, training log and nested publication audits.
+
 ## Phase 6 — Benchmark harness
 
 - [ ] Measure model-path and full-pipeline latency (p50/mean/p95/p99), plus sustained FPS.

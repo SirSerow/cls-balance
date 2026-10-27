@@ -1,0 +1,15 @@
+{
+  "cache_enabled": false,
+  "encoder_bytes": 16308659,
+  "feature_extraction_seconds": 630.8961720999505,
+  "head_bytes": 23997258,
+  "head_epoch_seconds": 19.5735754998459,
+  "optimizer_steps": 6056,
+  "shared_training_wall_seconds": 652.5678019000043,
+  "timing_scope": "shared train/val extraction + head epochs + selection/export; excludes source FLAT and final evaluation",
+  "trainable_parameters": 5932917,
+  "training_gpu_hours": 0.1812688338611123,
+  "training_image_exposures": 94807,
+  "unique_train_feature_images": 60012,
+  "validation_feature_images": 3333
+}

@@ -1,0 +1,72 @@
+Holding temporary Windows idle-sleep request; power plan unchanged.
+Verifying complete prepared dataset and image checksums
+Training run S:\Projects\cls-balance\runs\shared\shared-ft-frozen-s42-20261027T140957Z-b392fc3a
+Seed 42 epoch 1: 0/18 heads selected
+Seed 42 epoch 2: 0/18 heads selected
+Seed 42 epoch 3: 0/18 heads selected
+Seed 42 epoch 4: 0/18 heads selected
+Seed 42 epoch 5: 0/18 heads selected
+Seed 42 epoch 6: 0/18 heads selected
+Seed 42 epoch 7: 0/18 heads selected
+Seed 42 epoch 8: 8/18 heads selected
+Seed 42 epoch 9: 13/18 heads selected
+Seed 42 epoch 10: 15/18 heads selected
+Seed 42 epoch 11: 16/18 heads selected
+Seed 42 epoch 12: 16/18 heads selected
+Seed 42 epoch 13: 16/18 heads selected
+Seed 42 epoch 14: 16/18 heads selected
+Seed 42 epoch 15: 16/18 heads selected
+Seed 42 epoch 16: 16/18 heads selected
+Seed 42 epoch 17: 17/18 heads selected
+Seed 42 epoch 18: 17/18 heads selected
+Seed 42 epoch 19: 17/18 heads selected
+Seed 42 epoch 20: 17/18 heads selected
+Seed 42 epoch 21: 17/18 heads selected
+Seed 42 epoch 22: 17/18 heads selected
+Seed 42 epoch 23: 17/18 heads selected
+Seed 42 epoch 24: 17/18 heads selected
+Seed 42 epoch 25: 17/18 heads selected
+Seed 42 epoch 26: 17/18 heads selected
+Seed 42 epoch 27: 18/18 heads selected
+Completed S:\Projects\cls-balance\runs\shared\shared-ft-frozen-s42-20261027T140957Z-b392fc3a
+Training run S:\Projects\cls-balance\runs\shared\shared-ft-frozen-s43-20261027T142909Z-e9730962
+Seed 43 epoch 1: 0/18 heads selected
+Seed 43 epoch 2: 0/18 heads selected
+Seed 43 epoch 3: 0/18 heads selected
+Seed 43 epoch 4: 0/18 heads selected
+Seed 43 epoch 5: 0/18 heads selected
+Seed 43 epoch 6: 0/18 heads selected
+Seed 43 epoch 7: 0/18 heads selected
+Seed 43 epoch 8: 8/18 heads selected
+Seed 43 epoch 9: 12/18 heads selected
+Seed 43 epoch 10: 14/18 heads selected
+Seed 43 epoch 11: 15/18 heads selected
+Seed 43 epoch 12: 16/18 heads selected
+Seed 43 epoch 13: 17/18 heads selected
+Seed 43 epoch 14: 17/18 heads selected
+Seed 43 epoch 15: 17/18 heads selected
+Seed 43 epoch 16: 17/18 heads selected
+Seed 43 epoch 17: 17/18 heads selected
+Seed 43 epoch 18: 17/18 heads selected
+Seed 43 epoch 19: 18/18 heads selected
+Completed S:\Projects\cls-balance\runs\shared\shared-ft-frozen-s43-20261027T142909Z-e9730962
+Training run S:\Projects\cls-balance\runs\shared\shared-ft-frozen-s44-20261027T144302Z-c8142ff8
+Seed 44 epoch 1: 0/18 heads selected
+Seed 44 epoch 2: 0/18 heads selected
+Seed 44 epoch 3: 0/18 heads selected
+Seed 44 epoch 4: 0/18 heads selected
+Seed 44 epoch 5: 0/18 heads selected
+Seed 44 epoch 6: 0/18 heads selected
+Seed 44 epoch 7: 0/18 heads selected
+Seed 44 epoch 8: 6/18 heads selected
+Seed 44 epoch 9: 9/18 heads selected
+Seed 44 epoch 10: 11/18 heads selected
+Seed 44 epoch 11: 13/18 heads selected
+Seed 44 epoch 12: 14/18 heads selected
+Seed 44 epoch 13: 14/18 heads selected
+Seed 44 epoch 14: 14/18 heads selected
+Seed 44 epoch 15: 16/18 heads selected
+Seed 44 epoch 16: 17/18 heads selected
+Seed 44 epoch 17: 17/18 heads selected
+Seed 44 epoch 18: 18/18 heads selected
+Completed S:\Projects\cls-balance\runs\shared\shared-ft-frozen-s44-20261027T144302Z-c8142ff8

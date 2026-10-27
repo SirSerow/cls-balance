@@ -1,0 +1,36 @@
+{
+  "augmentation": "fresh seeded view per image per epoch; shared read-only across heads",
+  "backbone": "FT-FROZEN",
+  "batch_size": 16,
+  "cache_root": null,
+  "cpu_threads": 6,
+  "data_root": "S:\\Projects\\cls-balance\\data",
+  "depths": [
+    2
+  ],
+  "device": "cuda:0",
+  "epochs": 30,
+  "flat_runs": {
+    "42": "S:\\Projects\\cls-balance\\runs\\flat\\flat-s42-20261025T031340Z-5385e556",
+    "43": "S:\\Projects\\cls-balance\\runs\\flat\\flat-s43-20261025T034152Z-d43e9130",
+    "44": "S:\\Projects\\cls-balance\\runs\\flat\\flat-s44-20261025T041556Z-40c093b2"
+  },
+  "hidden_dimension": 256,
+  "learning_rate": 0.001,
+  "optimizer": "AdamW",
+  "output_root": "S:\\Projects\\cls-balance\\runs\\shared",
+  "patience": 7,
+  "precision": "fp32",
+  "prepared_run": "S:\\Projects\\cls-balance\\runs\\data\\data-20261024T212625Z-4cf9b394",
+  "runtime_policy": "all-resident; one frozen encoder; independent heads; TF32 disabled",
+  "sampling": "all branch images; independent shuffle generators; no replacement",
+  "seed": 43,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "selection": "local validation macro recall; strict improvement; earliest tie",
+  "weight_decay": 0.01,
+  "workers": 2
+}

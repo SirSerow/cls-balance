@@ -32,6 +32,7 @@ def main() -> None:
     output = args.output_root / unique_id("validation")
     output.mkdir(parents=True, exist_ok=False)
     logs = {"cpu-tests.txt": ".tmp/phase5-cpu-tests.log", "phase5-regression.txt": ".tmp/phase5-regression.log",
+            "publication-checks.txt": ".tmp/phase5-publication-tests.log",
             "cuda-checks.txt": ".tmp/phase5-cuda-checks.log", "training-log.txt": ".tmp/phase5-training.log"}
     counts = {}
     for name, source in logs.items():
@@ -59,6 +60,7 @@ def main() -> None:
 The original frozen suite is unchanged. CPU regression output: **{counts['cpu-tests.txt']} passing tests**.
 After publication/config-audit refinements, the current Phase 5 suite passed **{counts['phase5-regression.txt']} checks**.
 The CUDA environment also passed **{counts['cuda-checks.txt']} focused checks**. These synthetic checks are implementation evidence, not aircraft accuracy measurements.
+The final report refinements passed **{counts['publication-checks.txt']} end-to-end publication checks**, covering both backbone types and depths.
 
 All three real FT-FROZEN-2 runs passed nested checkpoint, local selection/exposure,
 model-fingerprint and complete predicted/oracle validation audits. Their publication
@@ -78,6 +80,7 @@ Commands executed from the repository root:
 .venv/Scripts/python.exe scripts/freeze_tests.py --check
 .venv/Scripts/python.exe -m pytest -q tests checks
 .venv/Scripts/python.exe -m pytest -q checks/test_phase5.py
+.venv/Scripts/python.exe -m pytest -q checks/test_phase5.py -k train_reload_route_replace_and_publish
 .venv-cuda/Scripts/python.exe -m pytest -q checks/test_phase5.py -k 'head_checkpoint or training_cache or frozen_guard or source_encoder or head_dimensions'
 .venv-cuda/Scripts/python.exe scripts/train_shared_awake.py --smoke-test
 .venv-cuda/Scripts/python.exe -m pip check

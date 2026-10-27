@@ -2,7 +2,7 @@
 
 A reproducible research project comparing **independent EfficientNet cascades** against a **single frozen EfficientNet with independently trainable specialist heads** on [FGVC-Aircraft](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/).
 
-> **Status:** Phases 0–5 are implemented. FLAT and IND-2 have complete three-seed validation results; frozen shared-head training, compatible specialist replacement and review plots are operational. The primary Phase 5 configuration trains FT-FROZEN-2 from the seed-matched FLAT encoders. Test inference and full-pipeline latency/FPS remain Phase 6; generic ImageNet-frozen and three-stage measurements remain gated. FLAT validation macro recall is **65.58% ± 0.10 pp**, IND-2 **56.13% ± 1.17 pp** (sample standard deviations).
+> **Status:** Phases 0–5 are implemented, with complete three-seed validation results for FLAT, IND-2 and FT-FROZEN-2. Validation macro recall: **FLAT 65.58% ± 0.10 pp**, **IND-2 56.13% ± 1.17 pp**, **FT-FROZEN-2 63.43% ± 0.25 pp** (sample standard deviations). See the [Phase 5 comparison, learning curves and explanatory diagram](results/stage5/shared-20261027T145809Z-ee48fbad/REPORT.md). Test inference and full-pipeline latency/FPS remain Phase 6; generic ImageNet-frozen and three-stage measurements remain gated.
 
 Phase two has **172 passing CPU tests**, with the suite frozen after validation.
 See the [phase-two validation report](results/stage2/validation-20261025T024200Z-cc4d2a5a/REPORT.md)
@@ -223,6 +223,20 @@ local; validation predictions, aggregate histories and SVG figures can be commit
 On Windows, `python scripts/train_shared_awake.py --config configs/shared.yaml`
 invokes the same training with a temporary process-lifetime idle-sleep request.
 The request releases on exit and does not alter the power plan or GPU clocks.
+
+The [measured Phase 5 report](results/stage5/shared-20261027T145809Z-ee48fbad/REPORT.md)
+contains all three seeds, complete predicted/oracle validation predictions,
+every head's learning/loss curves, confusion matrices, per-class recall, error
+attribution, source FLAT training cost and stored artifact footprint. FT-FROZEN-2
+achieved **63.43% ± 0.25 pp** validation macro recall; the complete predicted
+pipeline remains below its oracle diagnostic, and the report exposes the
+training/validation generalization gap. All 54 selected heads reloaded exactly;
+all three encoder parameter/buffer hashes remained unchanged. Phase 5 adds 22
+checks, bringing the complete CPU suite to **235 passing tests**.
+The [Phase 5 validation evidence](results/stage5/validation-20261027T150049Z-777f9bfa/REPORT.md)
+contains full/subset test logs, focused CUDA checks, the actual training log,
+source hashes and independent publication audits. No training images, image-ID
+lists, embeddings or weights are included in these publications.
 
 ## Scope
 

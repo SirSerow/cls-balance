@@ -1,5 +1,11 @@
 # Phase 5 — frozen shared backbone and independent heads
 
+Measured FT-FROZEN-2 validation macro recall for seeds 42/43/44 is **63.43% ±
+0.25 pp** (sample SD). See the [report and figures](../results/stage5/shared-20261027T145809Z-ee48fbad/REPORT.md)
+and [validation/reproduction evidence](../results/stage5/validation-20261027T150049Z-777f9bfa/REPORT.md).
+These publications include validation predictions and aggregate training histories;
+dataset images, training-ID lists, embeddings and checkpoint tensors stay local.
+
 The operational primary configuration is [shared.yaml](../configs/shared.yaml).
 It fits FT-FROZEN-2 for seeds 42/43/44 using the corresponding selected Phase 3
 encoder. Each seed trains 18 heads: a manufacturer router and 17 manufacturer
@@ -91,7 +97,9 @@ Replacement keys are canonical taxonomy node keys. The loader rejects wrong
 taxonomy, dataset, preprocessing, encoder hash, seed, dimensions, global-ID map,
 checkpoint hashes and unknown node keys. Loading an override constructs a new
 adapter; it neither changes the original bundle nor retrains any modules. The
-caller records replacement file hashes and the new `evaluate.model_hash` when
+replacement must retain the original head's exact training and selection ID
+lists; a shape-compatible head trained or selected on test images is rejected.
+The caller records replacement file hashes and the new `evaluate.model_hash` when
 creating new evaluation provenance. Tests change a specialist and compare the
 exact weights **and logits** of every untouched head on fixed features.
 

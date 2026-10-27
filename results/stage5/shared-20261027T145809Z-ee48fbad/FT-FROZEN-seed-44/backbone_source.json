@@ -1,0 +1,16 @@
+{
+  "backbone_training_cost": "one Phase 3 FLAT run per seed; reused across shared depths",
+  "flat_resources": {
+    "deployment_bytes": 16939695,
+    "encoder_bytes": 16426803,
+    "optimizer_steps": 6270,
+    "timing_scope": "epoch training+validation+selection; excludes initialization and final evaluation",
+    "trainable_parameters": 4135648,
+    "training_gpu_hours": 0.5161796575000002,
+    "training_image_exposures": 100020,
+    "training_wall_seconds": 1858.2467670000005
+  },
+  "parent_flat_sha256": "96bd395d3100124323cb9642413c64934da03fd76509bb378b47ab6930dc8ab1",
+  "source_encoder_sha256": "cf95a280b53980f4699fc2c34886b4cc7426e94ee9cfbe4c28661764cd9f5438",
+  "source_run_id": "flat-s44-20261025T041556Z-40c093b2"
+}

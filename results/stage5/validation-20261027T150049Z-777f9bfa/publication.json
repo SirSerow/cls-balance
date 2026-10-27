@@ -1,0 +1,13 @@
+{
+  "artifacts_sha256": {
+    "REPORT.md": "58a9130be1b80488d65a39ab727531a5effd4c5bfccff3dde7fcbeff8b04ba89",
+    "audit.json": "effbf1dcc5bd67c25221578d236a8ffb10187b54fa31822e03a7924b7d939ade",
+    "cpu-tests.txt": "c3021cb10b014a755e288d23c8dbc012de61185a58c5708c251195c7bd03c117",
+    "cuda-checks.txt": "33a3edcb940ccbe2bf35b97460445b26008fde40ac72633813023c35601e7d45",
+    "environment.json": "635b97b27ce3ceb472b5c83e1c6e0451ef6a2a20a25adb1ed0a22ada51113cf0",
+    "frozen-suite.txt": "5dc6551eee1d926252ce59ccc1c0975304c6721162bf15dd71769754b7c0330f",
+    "phase5-regression.txt": "67ea9ea0fdbbbe8b1c9352d0411022f6bdc704f8836d64d8ed681bab6854351b",
+    "publication-checks.txt": "b9ec0495c57cbab2a839de82f278758a3d0ee0dbbf1cee83b001d9d7f597988e",
+    "training-log.txt": "740b1bbe7ad2d854e471eedea2d79b0950105a4f0794152b2019c15d7126eccb"
+  }
+}

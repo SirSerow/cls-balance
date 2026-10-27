@@ -1,0 +1,27 @@
+{
+  "artifacts_sha256": {
+    "head.json": "aab1ab7b7dc5a8010334f50b857dca1afea420e6e3e62ddbf22a216fd0fa98f0",
+    "head.pt": "1d754949378d71a059666b4ff680991c4355cd1ecd801fc5bac3ed0eca176d56",
+    "history.csv": "fe33d9fc3387c7d05ff8a1697224e417bf05ceb52c59e5069994e97dd50f0c02"
+  },
+  "best_epoch": 4,
+  "epochs_completed": 11,
+  "exact_reload_logits": true,
+  "head_epoch_seconds": 0.26000479998765513,
+  "node": {
+    "global_ids": [
+      47,
+      48,
+      49,
+      50
+    ],
+    "key": "variant-manufacturer-8",
+    "parent_id": 8,
+    "parent_stage": "manufacturer",
+    "stage": "variant"
+  },
+  "optimizer_steps": 99,
+  "trainable_parameters": 328964,
+  "training_image_exposures": 1463,
+  "validation_macro_recall": 0.8872549019607843
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "architecture": "FLAT",
+    "evaluation_ids_sha256": "0e53352b315334c67c227911ae7f3faa6caf506601c3c21a63cb1baaf331c164",
+    "macro_recall": 0.6547504456327985,
+    "run_id": "flat-s42-20261025T031340Z-5385e556",
+    "seed": 42
+  },
+  {
+    "architecture": "FLAT",
+    "evaluation_ids_sha256": "0e53352b315334c67c227911ae7f3faa6caf506601c3c21a63cb1baaf331c164",
+    "macro_recall": 0.6566131907308378,
+    "run_id": "flat-s43-20261025T034152Z-d43e9130",
+    "seed": 43
+  },
+  {
+    "architecture": "FLAT",
+    "evaluation_ids_sha256": "0e53352b315334c67c227911ae7f3faa6caf506601c3c21a63cb1baaf331c164",
+    "macro_recall": 0.6560873440285205,
+    "run_id": "flat-s44-20261025T041556Z-40c093b2",
+    "seed": 44
+  },
+  {
+    "architecture": "IND-2",
+    "evaluation_ids_sha256": "0e53352b315334c67c227911ae7f3faa6caf506601c3c21a63cb1baaf331c164",
+    "macro_recall": 0.5639928698752228,
+    "run_id": "ind-s42-20261026T125759Z-6d87251e",
+    "seed": 42
+  },
+  {
+    "architecture": "IND-2",
+    "evaluation_ids_sha256": "0e53352b315334c67c227911ae7f3faa6caf506601c3c21a63cb1baaf331c164",
+    "macro_recall": 0.5484848484848485,
+    "run_id": "ind-s43-20261026T141824Z-b8c12b2c",
+    "seed": 43
+  },
+  {
+    "architecture": "IND-2",
+    "evaluation_ids_sha256": "0e53352b315334c67c227911ae7f3faa6caf506601c3c21a63cb1baaf331c164",
+    "macro_recall": 0.571301247771836,
+    "run_id": "ind-s44-20261026T153237Z-2b462c75",
+    "seed": 44
+  }
+]

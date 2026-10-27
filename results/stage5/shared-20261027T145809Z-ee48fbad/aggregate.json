@@ -1,0 +1,14 @@
+{
+  "architectures": {
+    "FT-FROZEN-2": {
+      "mean_percent": 63.43018419489008,
+      "sample_sd_pp": 0.24976648314894342
+    }
+  },
+  "source_run_ids": [
+    "shared-ft-frozen-s42-20261027T140957Z-b392fc3a",
+    "shared-ft-frozen-s43-20261027T142909Z-e9730962",
+    "shared-ft-frozen-s44-20261027T144302Z-c8142ff8"
+  ],
+  "test_evaluated": false
+}

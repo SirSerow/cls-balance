@@ -128,9 +128,21 @@ def load_shared(path: Path, depth: int, *, replacements: dict[str, Path] | None 
         target = local(entry["path"])
         if file_hash(target) != entry["checkpoint_sha256"]:
             raise ValueError("Head checkpoint mismatch")
-        target = (replacements or {}).get(spec.key, target)
         head = checked_head(target, spec, bundle["compatibility"], bundle["backbone_sha256"],
                             bundle["seed"], bundle["hidden_dimension"], bundle["input_dimension"])
+        if spec.key in (replacements or {}):
+            replacement = replacements[spec.key]
+            updated = checked_head(replacement, spec, bundle["compatibility"], bundle["backbone_sha256"],
+                                   bundle["seed"], bundle["hidden_dimension"], bundle["input_dimension"])
+            # Both manifests have just been verified against their payloads.
+            # Compatibility also includes the original supervised branch IDs:
+            # a same-shape head trained/selected on test images is invalid.
+            original_meta = read_json(target.with_suffix(".json"))["metadata"]
+            replacement_meta = read_json(replacement.with_suffix(".json"))["metadata"]
+            if any(original_meta[key] != replacement_meta[key] for key in
+                   ("training_image_ids", "selection_image_ids")):
+                raise ValueError("Replacement head training/selection provenance mismatch")
+            head = updated
         nodes[spec.adapter_key] = LogitNode(head, spec.global_ids)
     return HierarchicalAdapter(taxonomy, nodes, depth=depth, backbone=encoder,
                                fine_tuned=bundle["backbone"] == "FT-FROZEN")

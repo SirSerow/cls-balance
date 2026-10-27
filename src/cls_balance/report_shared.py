@@ -148,6 +148,21 @@ def draw_figures(output: Path, records: list[dict], nodes: list[dict], baselines
     for ax in axes:
         ax.set_xticks(x, [f"{r['architecture']}\ns{r['seed']}" for r in records])
     fig.tight_layout(); save_svg(fig, output / "routing-paths.svg"); plt.close(fig)
+    fig, ax = plt.subplots(figsize=(10, 5))
+    bottom = np.zeros(len(records))
+    categories = (
+        ("Correct variant", "#377f6e", lambda m: m["variant_top1"]),
+        ("Wrong variant, correct family", "#6c71a1", lambda m: m["family_from_variant"]["accuracy"] - m["variant_top1"]),
+        ("Wrong family, correct manufacturer", "#e6a03b", lambda m: m["manufacturer_from_variant"]["accuracy"] - m["family_from_variant"]["accuracy"]),
+        ("Wrong manufacturer", "#bd403b", lambda m: 1 - m["manufacturer_from_variant"]["accuracy"]),
+    )
+    for label, color, fraction in categories:
+        values = [100 * fraction(r["hard"]) for r in records]
+        ax.bar(x, values, bottom=bottom, label=label, color=color); bottom += values
+    ax.set_xticks(x, [f"{r['architecture']}\ns{r['seed']}" for r in records])
+    ax.set(ylabel="Validation images (%)", ylim=(0, 100), title="Final variant errors projected through the taxonomy")
+    ax.legend(loc="upper left", bbox_to_anchor=(1.01, 1), fontsize=9)
+    fig.tight_layout(); save_svg(fig, output / "hierarchy-errors.svg"); plt.close(fig)
     for record in records:
         matrix = np.asarray(record["hard"]["confusion_matrix"])
         fig, ax = plt.subplots(figsize=(8, 7))
@@ -294,10 +309,31 @@ def publish(runs: list[Path], output_root: Path, *, flat_runs: list[Path] = (), 
         aggregates[architecture] = {"mean_percent": statistics.mean(values), "sample_sd_pp": statistics.stdev(values) if len(values) > 1 else None}
     write_json(output / "aggregate.json", {"test_evaluated": False, "architectures": aggregates, "source_run_ids": [s["run_id"] for s in summaries]})
     draw_figures(output, records, nodes, baselines, preview_root)
+    aggregate_rows = ["| Architecture | Mean validation macro recall (%) | Sample SD (pp) |",
+                      "| --- | ---: | ---: |"]
+    for architecture, values in aggregates.items():
+        spread = f"{values['sample_sd_pp']:.2f}" if values["sample_sd_pp"] is not None else "N/A (one seed)"
+        aggregate_rows.append(f"| {architecture} | {values['mean_percent']:.2f} | {spread} |")
     rows = ["| Architecture | Seed | Hard macro recall (%) | Oracle (%) | Penalty (pp) | Top-1 (%) |", "| --- | ---: | ---: | ---: | ---: | ---: |"]
+    secondary = ["| Architecture / seed | Macro-F1 (%) | Family from final variant (%) | Manufacturer from final variant (%) | Manufacturer router (%) |",
+                 "| --- | ---: | ---: | ---: | ---: |"]
+    costs = ["| Backbone / seed | Head fitting incl. extraction (min) | Source FLAT (min) | Combined training (min) | Stored encoder + all heads (MB) |",
+             "| --- | ---: | ---: | ---: | ---: |"]
     for r in records:
         hard, oracle = (100 * r[k]["variant_macro_recall"] for k in ("hard", "oracle"))
         rows.append(f"| {r['architecture']} | {r['seed']} | {hard:.2f} | {oracle:.2f} | {oracle-hard:.2f} | {100*r['hard']['variant_top1']:.2f} |")
+        m = r["hard"]
+        secondary.append(f"| {r['architecture']} / {r['seed']} | {100*m['variant_macro_f1']:.2f} | "
+                         f"{100*m['family_from_variant']['accuracy']:.2f} | {100*m['manufacturer_from_variant']['accuracy']:.2f} | "
+                         f"{100*m['routing_diagnostics']['manufacturer_router']['accuracy']:.2f} |")
+    for run, summary in zip(runs, summaries, strict=True):
+        source = read_json(run / "backbone_source.json")
+        source_time = source.get("flat_resources", {}).get("training_wall_seconds")
+        shared_time = summary["resources"]["shared_training_wall_seconds"]
+        source_label = f"{source_time/60:.2f}" if source_time is not None else "External ImageNet pretraining (unmeasured)"
+        combined_label = f"{(shared_time+source_time)/60:.2f}" if source_time is not None else "Not measurable here"
+        stored = (summary["resources"]["encoder_bytes"] + summary["resources"]["head_bytes"]) / 1e6
+        costs.append(f"| {summary['backbone']} / {summary['seed']} | {shared_time/60:.2f} | {source_label} | {combined_label} | {stored:.2f} |")
     text = f"""# Phase 5 — measured frozen shared-backbone heads
 
 Complete official FGVC-Aircraft train/validation splits: 3,334 / 3,333 images, 100 variants / 70 families / 30 manufacturers. These are validation measurements; test inference and the Phase 6 latency/FPS benchmark remain deferred. No test labels entered training or selection.
@@ -316,7 +352,11 @@ Fresh seeded flip/photometric augmentation is extracted once per training image 
 
 {chr(10).join(rows)}
 
-Across-seed aggregate (sample SD, not a confidence interval): `{aggregates}`.
+Across-seed aggregate (sample standard deviation, not a confidence interval):
+
+{chr(10).join(aggregate_rows)}
+
+{chr(10).join(secondary)}
 
 ![Comparison](comparison.svg)
 
@@ -325,6 +365,8 @@ Optional FLAT/IND-2 comparison bars are audited paired validation results. Basel
 ![Routing penalty](routing-penalty.svg)
 
 ![Error attribution and singleton paths](routing-paths.svg)
+
+![Within-family and cross-family errors](hierarchy-errors.svg)
 
 ## Learning, local support and per-class performance
 
@@ -342,11 +384,15 @@ All selected heads reproduce logits exactly after reload. Encoder parameters, Ba
 
 `resources.json` distinguishes head fitting and shared extraction time, unique feature-image exposures, GPU-hours, encoder bytes and all stored head bytes. `backbone_source.json` separately reports the source FLAT training cost; it must be included when comparing total training compute. Head training is not compute matched against independent CNN fitting. OS/driver clocks are unlocked and desktop load can affect wall time. Training duration and stored bytes do not substitute for measured inference latency or memory.
 
+{chr(10).join(costs)}
+
+Costs count the source FLAT once per seed and shared fitting once across all trained depths. Stored bytes include the encoder and every trained head; this is an artifact-footprint measurement, not executed computation or peak GPU memory. Generic ImageNet pretraining cost is external and unavailable.
+
 ![Measured training components and storage](resources.svg)
 
 ## Limitations and deferred measurements
 
-Primary FT-FROZEN-2 is measured first. Generic ImageNet-frozen and three-stage measurements remain opt-in after the primary two-stage comparison/benchmark execution gate, although both paths are implemented and integration checked. Test accuracy, confidence intervals, full-pipeline p95/FPS, memory/MAC measurements and introduced-class updates remain unmeasured here. No images, training-ID lists, embeddings or checkpoint tensors are published. The Phase 1 archive-checksum discrepancy remains documented.
+This bundle measures **{', '.join(aggregates)}**. Configurations absent from this bundle remain unmeasured here. Generic ImageNet-frozen and three-stage runs follow the primary two-stage comparison/benchmark execution gate; both paths are implemented and integration checked. Test accuracy, confidence intervals, full-pipeline p95/FPS, memory/MAC measurements and introduced-class updates remain unmeasured here. No images, training-ID lists, embeddings or checkpoint tensors are published. The Phase 1 archive-checksum discrepancy remains documented.
 
 ## Reproduction and audit links
 
