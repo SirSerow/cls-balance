@@ -1,105 +1,67 @@
-# Phase 4 paused progress — 2026-10-27 JST
+# Phase 4 execution record — 2026-10-27
 
-Paused at the user's request. Training and its worker processes are stopped.
-Implementation is saved locally on `codex/phase4-independent-baselines`; the
-final publication and Git push are pending the next user command.
+The independent cascade implementation and three-seed IND-2 validation are
+complete on branch codex/phase4-independent-baselines. All 54 full CNNs passed
+exact selected-checkpoint reload checks. Every seed was evaluated on the same
+3,333 official validation images with both predicted and oracle routing.
 
-## Completed work
+| Seed | Run ID | Hard-route variant macro recall | Oracle diagnostic |
+| --- | --- | --- | --- |
+| 42 | ind-s42-20261026T125759Z-6d87251e | 56.40% | 66.73% |
+| 43 | ind-s43-20261026T141824Z-b8c12b2c | 54.85% | 65.19% |
+| 44 | ind-s44-20261026T153237Z-2b462c75 | 57.13% | 67.74% |
 
-Independent full EfficientNet node training, IND-2/IND-3 node plans, checkpoint
-contracts/reloads, predicted/oracle validation, all-resident / CPU-preloaded /
-cold-disk adapters, residency probes, audited report generation, review plots,
-documentation and Phase 4 CI are implemented. IND-3 real-data measurements remain
-gated behind the main two-stage shared comparison, as required by AGENTS.md.
+IND-2 validation macro recall is 56.13% ± 1.17 percentage points (sample SD).
+See the [measured report](../results/stage4/independent-20261027T071605Z-64675e2e/REPORT.md)
+for histories, per-image predictions, confusion matrices, per-class recalls,
+routing penalties, bypass rates, executed CNN counts and artifact references.
+Each standalone deployment stores 18 CNNs, 72,285,741 parameters and 294.43 MB.
 
-The full CPU suite passed **213 tests**; the separate Phase 4 run passed **10
-tests**. Frozen baseline checks (172 tests) and CPU/CUDA `pip check` passed.
-Rerun the full suite after resuming before final publication. The latest report
-changes also passed a genuine two-seed combined audit/publication smoke check.
+The [validation publication](../results/stage4/validation-20261027T071705Z-2b712381/REPORT.md)
+contains the final 213-test regression result (155.38 seconds, no failures or
+skips), frozen-baseline audit, environment checks, raw console evidence and
+CUDA residency diagnostics. The 30 identical validation inputs per policy
+produced identical predictions and paths under all-resident, preloaded-CPU and
+cold-disk policies. These are synchronized, un-warmed ready-tensor probes;
+CUDA runtime startup is excluded. They are not test p95/FPS measurements.
 
-Both completed seeds have 18 full CNNs, exact checkpoint reload checks, and
-complete predicted/oracle evaluations on all 3,333 official validation images.
-The two-seed publication audit verifies matching training/evaluation source,
-configuration, hardware/runtime, data/preprocessing/taxonomy and ImageNet feature
-initialization. Test inference has not been performed.
+## Interruptions and reproducibility
 
-| Seed | Local run directory under `runs/independent/` | State | Hard-route variant macro recall | Oracle diagnostic |
-| --- | --- | --- | --- | --- |
-| 42 | `ind-s42-20261026T125759Z-6d87251e` | Complete | 56.40% | 66.73% |
-| 43 | `ind-s43-20261026T141824Z-b8c12b2c` | Complete | 54.85% | 65.19% |
-| 44 | `ind-s44-20261026T153237Z-2b462c75` | Incomplete; 0/18 nodes complete | Unmeasured | Unmeasured |
+- An initial serial-decoding attempt completed one router epoch before restart.
+  Epoch-one loss, accuracy, support and optimizer-step observations exactly
+  reproduced after parallel decoding. Unmeasured partial work is disclosed.
+- The user requested a pause after seven seed-44 router epochs. Those metrics
+  remained local; its incomplete node restarted on explicit continuation. All
+  seven scientific epoch observations reproduced exactly, excluding timings.
+- Windows slept for 22,371.2739459 seconds during seed-44 Airbus validation.
+  Its incomplete 20-epoch attempt was retained and discarded from successful-run
+  costs. Only that node restarted; all 38 completed CNNs were preserved.
+- The first auxiliary sleep guard lacked the Windows multiprocessing import
+  guard. Two zero-epoch attempts were retained. A corrected main guard passed a
+  separate spawn smoke check, followed by successful real DataLoader training.
+  Its temporary idle-sleep request ended with the training process and changed
+  no persistent power plan, display setting or clock policy.
+- The first CUDA residency probe failed before recording measurements because
+  allocator initialization had not preceded peak-stat reset. A released sentinel
+  allocation now initializes the allocator before policy timers. The corrected
+  probe and final regression suite passed; the failed-start log is retained.
 
-Seed 44's manufacturer router completed seven epochs before the pause. Per-epoch
-metrics remain on disk, but its in-memory selected weights/optimizer were not
-exported. Partial-node optimizer resume is not implemented: this node must
-restart in a new immutable attempt. Completed seeds 42/43 do not need retraining.
-Any partially processed epoch after epoch seven is unmeasured.
+Successful-run resources exclude all discarded attempts. Sleep-contaminated
+wall time is preserved as raw wall time, not described as active GPU time.
+No partial-node optimizer resume is claimed. Initial run metadata records Git
+base 1af6c0f with dirty source snapshots; resumption followed local commit
+46a5b00. All fitting/evaluation module hashes, dataset/taxonomy/preprocessing
+contracts, ImageNet initialization and hardware/runtime contracts matched.
+The resumed evaluation Git SHA is recorded separately in the validation evidence.
 
-## Resume precisely
+## Scope and local artifacts
 
-Do not alter `src/` before resuming: source/configuration/environment/data hashes
-are checked strictly. The command below retries only the incomplete seed 44 run,
-preserves previous attempts, and appends to the existing console capture:
+Training images, archives, embeddings, weights and contracts with training-image
+ID lists remain in ignored local storage. Published validation CSVs and aggregate
+histories contain genuine measurements. The full recipe is in
+[PHASE4.md](PHASE4.md) and the measured report.
 
-```powershell
-& .\.venv-cuda\Scripts\python.exe -u -m cls_balance.train_independent --config configs/independent.yaml --resume runs/independent/ind-s44-20261026T153237Z-2b462c75 *>> .tmp-phase4-training-v2.log
-```
-
-The configuration still contains all three seeds, but `--resume` selects seed 44
-from the saved run. Running without `--resume` would unnecessarily retrain all
-three seeds. All dataset bytes are rechecked before fitting.
-
-## Remaining steps
-
-1. Finish seed 44, including its complete hard/oracle validation and saved-run audit.
-2. Run the final CPU suite and retain the exact artifacts used by the validation publisher:
-
-   ```powershell
-   & .\.venv\Scripts\python.exe -m pytest -q tests checks --junitxml=.tmp-phase4-final-junit.xml *> .tmp-phase4-final-pytest.log
-   ```
-
-3. After GPU training stops, measure the three residency policies on seed 42:
-
-   ```powershell
-   & .\.venv-cuda\Scripts\python.exe -m cls_balance.residency --run runs/independent/ind-s42-20261026T125759Z-6d87251e --depth 2 --device cuda:0 --output-root runs/residency
-   ```
-
-4. Publish all three genuine runs:
-
-   ```powershell
-   & .\.venv-cuda\Scripts\python.exe -m cls_balance.report_independent --runs runs/independent/ind-s42-20261026T125759Z-6d87251e runs/independent/ind-s43-20261026T141824Z-b8c12b2c runs/independent/ind-s44-20261026T153237Z-2b462c75 --output-root results/stage4
-   ```
-
-5. Update README/roadmap/experiment status with genuine evidence and links.
-   Run `.tmp/publish_validation.py --report <report-dir> --residency <probe-dir>`
-   using the CUDA Python environment to package checks, normalized LF console
-   captures, residency plots and source hashes. **Extend that helper first to
-   document this user-requested seed-44 interruption**, including seven completed
-   epochs, no complete node, unmeasured partial epoch and excluded failed-attempt
-   costs. It currently documents only the earlier serial-decoding interruption.
-6. Render/review actual final figures, verify publication hashes and staged Git
-   blob hashes, complete documentation checkboxes accurately, commit, and push.
-   Keep all images, archives, checkpoints, embeddings and training-ID contracts
-   outside Git. Mark IND-3 measurement and test/latency endpoints as deferred.
-
-## Local evidence and helpers
-
-- Training console: `.tmp-phase4-training-v2.log` (preserved; append on resume).
-- Passing full-suite evidence: `.tmp-phase4-pytest-v2.log`, `.tmp-phase4-junit-v2.xml`.
-- Passing Phase 4 checks: `.tmp-phase4-checks.log`, `.tmp-phase4-checks.xml`.
-- Audited two-seed review: `runs/review-phase4/independent-20261026T153404Z-3f05e081/REPORT.md`.
-- Actual seed-42 visual review: `.tmp/review-s42/`.
-- `.tmp/plot_smoke.py --source <actual-report-dir> --output <new-preview-dir>`
-  regenerates SVG/PNG previews from a review bundle. **Always supply the actual
-  report with `--source`**; its default uses generated unit-test fixtures, which
-  must never enter a measured publication.
-- `.tmp/status.py` reads the console and on-disk completion markers. On resume,
-  the repeated run-start line may cause duplicate seed-44 status lines; deduping
-  that helper is optional and does not affect training.
-- Earlier interrupted run: `runs/independent/ind-s42-20261026T125510Z-3fa0423c`.
-  One serial-decoding epoch completed before restart. Its scientific epoch-one
-  observations exactly match the parallel-decoding restart; wall times differ.
-  Preserve and disclose the attempt rather than reporting it as a finished model.
-
-All local runs, checkpoints, images and temporary helpers remain ignored by Git.
-No background automation or scheduled restart was created.
+IND-3 is implemented and integration-tested; its real-data ablation follows the
+main two-stage shared comparison and common benchmark. Test inference, shared
+architectures, full-pipeline latency/FPS and incremental updates remain deferred.
+No automatic restart, background monitor or scheduled follow-up was created.

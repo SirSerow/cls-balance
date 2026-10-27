@@ -1,0 +1,27 @@
+{
+  "attempts": [
+    {
+      "active_gpu_time": null,
+      "attempt": "nodes/variant-manufacturer-1/node-20261026T235241Z-da3585b9",
+      "completed_epoch_training_exposures": 8680,
+      "completed_epochs": 20,
+      "maximum_validation_epoch_wall_seconds": 22379.224869000027,
+      "observed_epoch_wall_seconds_including_sleep": 22789.838862200006,
+      "partial_epoch_measurements": "unmeasured",
+      "status": "discarded before checkpoint export; timing contaminated by system sleep"
+    }
+  ],
+  "mitigation": "Temporary process-lifetime ES_SYSTEM_REQUIRED request; no power-plan or clock changes",
+  "power_event": {
+    "event_id": 1,
+    "provider": "Microsoft-Windows-Power-Troubleshooter",
+    "record_id": 26587,
+    "sleep_utc": "2026-10-26T23:56:52.3913067Z",
+    "suspended_seconds": 22371.2739459,
+    "wake_utc": "2026-10-27T06:09:43.6652526Z"
+  },
+  "reason": "Windows sleep/resume stalled Airbus validation; only the affected incomplete node was restarted",
+  "run_id": "ind-s44-20261026T153237Z-2b462c75",
+  "sleep_guard_sha256": "40c83fb33092b9c121d12ee13dfc66d445ae8de28d2f6099c933f39f3f92840e",
+  "successful_run_resources_exclude_these_attempts": true
+}

@@ -164,11 +164,12 @@ comparison and common benchmark, following the execution order. See
 [PHASE4.md](docs/PHASE4.md) for exact retry/audit contracts and policy definitions.
 
 ```powershell
-& .\.venv-cuda\Scripts\python.exe -m cls_balance.report_independent --runs runs/independent/<seed42-run> runs/independent/<seed43-run> runs/independent/<seed44-run> --output-root results/stage4
-& .\.venv-cuda\Scripts\python.exe -m cls_balance.residency --run runs/independent/<seed42-run> --depth 2 --device cuda:0
+& .\.venv-cuda\Scripts\python.exe -m cls_balance.report_independent --runs runs/independent/ind-s42-20261026T125759Z-6d87251e runs/independent/ind-s43-20261026T141824Z-b8c12b2c runs/independent/ind-s44-20261026T153237Z-2b462c75 --output-root results/stage4
+& .\.venv-cuda\Scripts\python.exe -m cls_balance.residency --run runs/independent/ind-s42-20261026T125759Z-6d87251e --depth 2 --device cuda:0
 ```
 
-Replace placeholders with the immutable IDs printed by training. Reports include
+Those are the measured local runs; substitute IDs printed by a new training run.
+Reports include
 audited validation predictions, local specialist scores/exposures/hashes,
 learning/loss curves, routing penalties, singleton execution paths and confusion
 matrices. Residency supports all models on device, CPU-preloaded transfer on
@@ -176,10 +177,21 @@ demand, and disk loading on demand. The residency command measures synchronized,
 un-warmed validation probes from ready tensors; it is separate from the planned
 Phase 6 full-pipeline test benchmark and does not establish p95/FPS claims.
 
+The [three-seed report](results/stage4/independent-20261027T071605Z-64675e2e/REPORT.md)
+records **56.13% ± 1.17 pp** validation variant macro recall (sample SD), from
+54 independently fitted CNNs with exact reload checks. It includes the complete
+validation predictions, learning/loss and specialist curves, routing penalties,
+confusion matrices, class recalls and an explanatory architecture diagram.
+The [validation evidence](results/stage4/validation-20261027T071705Z-2b712381/REPORT.md)
+contains the regression checks, measured residency probes and discarded-attempt
+records, including a user pause and a system sleep that required node retries.
+Training data and weights remain local. Test inference and full-pipeline
+latency/FPS measurements remain deferred.
+
 ## Scope
 
 The current implementation covers Phases 0–4, with three-stage experimental
-measurements gated behind the primary two-stage comparison. The original validated test suite is
-frozen with SHA256 checks enforced in CI; phase-three checks run in a separate CI
-workflow. Checkpoints and raw datasets stay outside Git; model results follow
+measurements gated behind the primary two-stage comparison. The original validated
+test suite is frozen with SHA256 checks enforced in CI; Phase 3/4 checks run in
+their CI workflows. Checkpoints and raw datasets stay outside Git; model results follow
 [RESULTS_TEMPLATE.md](docs/RESULTS_TEMPLATE.md).

@@ -1,0 +1,40 @@
+{
+  "artifacts_sha256": {
+    "contract.json": "e566c0ba99c3c60c596a426a6043a8077d299d2cc5ae110d939275161849ba65",
+    "history.csv": "9440d1efd44442dca45024583182c2d9dd830d9de82d685e6f2edd0ed54a30cf",
+    "node.json": "45af365af3483df2ea0a543d5a0a6eafc76d12ca128dccfc0c98b42829d072f7",
+    "node.pt": "35fb572d978996e3de4d64c2a7737ed8fa2daeebc7dda3411d49d8998bfb172c",
+    "resources.json": "89eb1821bc4bf2db68349820bd6df83b0ce5647eda2912c4d914c3859ea23a2d"
+  },
+  "best_epoch": 5,
+  "checkpoint_sha256": "35fb572d978996e3de4d64c2a7737ed8fa2daeebc7dda3411d49d8998bfb172c",
+  "contract_sha256": "e566c0ba99c3c60c596a426a6043a8077d299d2cc5ae110d939275161849ba65",
+  "epochs_completed": 12,
+  "exact_reload_logits": true,
+  "initialization_features_sha256": "be3f7fd29f5c6d160c83de4a2a983f7978668ad0517df81fd44c4640b64f6131",
+  "node": {
+    "global_ids": [
+      80,
+      81
+    ],
+    "key": "variant-manufacturer-17",
+    "parent_id": 17,
+    "parent_stage": "manufacturer",
+    "stage": "variant"
+  },
+  "resources": {
+    "data_loader_workers": 0,
+    "deployment_bytes": 16321391,
+    "optimizer_steps": 60,
+    "timing_scope": "epoch train+validation+selection; excludes initialization, export and reload",
+    "train_images": 67,
+    "trainable_parameters": 4010110,
+    "training_gpu_hours": 0.007684751555554815,
+    "training_image_exposures": 804,
+    "training_wall_seconds": 27.665105599997332,
+    "validation_images": 66
+  },
+  "seed": 43,
+  "status": "complete",
+  "validation_macro_recall": 0.6060606060606061
+}

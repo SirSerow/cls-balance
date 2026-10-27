@@ -111,6 +111,10 @@ def probe(run: Path, data: AircraftData, depth: int, device: str, output_root: P
     output = output_root / unique_id(f"residency-ind{depth}")
     output.mkdir(parents=True, exist_ok=False)
     dev = torch.device(device)
+    if dev.type == "cuda":
+        # Peak-stat reset requires a live allocator. Bootstrap the CUDA context
+        # before any policy timer, then release this sentinel before measurement.
+        torch.empty(1, device=dev)
     results, references = [], {}
     for policy in POLICIES:
         if dev.type == "cuda":
@@ -151,6 +155,8 @@ def probe(run: Path, data: AircraftData, depth: int, device: str, output_root: P
         "bundle_sha256": file_hash(run / f"bundle-ind{depth}.json"),
         "compatibility": bundle["compatibility"], "prediction_and_path_equality": True,
         "scope": "validation residency diagnostic; fixed tensor; no warmup; no test latency or FPS",
+        "cuda_context_startup": ("one released sentinel allocation before policy timers; CUDA runtime startup excluded"
+                                 if dev.type == "cuda" else None),
         "cold_disk_definition": "no model cache; OS filesystem cache and CUDA allocator cache retained",
         "images_per_policy": len(chosen), "policies": POLICIES,
         "artifacts_sha256": {name: file_hash(output / name) for name in ("probes.csv", "environment.json")}})

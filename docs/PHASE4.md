@@ -127,8 +127,10 @@ This is a separate synchronized **validation residency diagnostic**: the first
 validation image by manifest order for each true manufacturer is supplied to all
 three policies as an identical ready tensor. It measures setup, un-warmed model
 path time and peak allocated GPU memory, and asserts identical predictions and
-execution paths. It excludes decoding, preprocessing and input transfer, does
-not guarantee predicted-route coverage and is **not** the Phase 6 full-pipeline
+execution paths. On CUDA, one released sentinel allocation initializes the
+allocator before policy timers. CUDA runtime startup, decoding, preprocessing
+and input transfer are excluded. The probes do not guarantee predicted-route
+coverage and are **not** the Phase 6 full-pipeline
 p95/FPS benchmark. The latter still requires the whole official test split,
 representative warmup, repeated passes and a fixed measurement boundary.
 

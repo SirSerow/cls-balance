@@ -122,19 +122,27 @@ independent CPU encoder/source audits passed for all seeds. See the
 
 ## Phase 4 — Independent hierarchical baselines
 
-- [ ] Train manufacturer classifier with full EfficientNet.
-- [ ] For `IND-2`, train a full EfficientNet variant specialist for each manufacturer with >1 variants.
+- [x] Train manufacturer classifier with full EfficientNet for seeds 42/43/44.
+- [x] For `IND-2`, train a full EfficientNet variant specialist for each manufacturer with >1 variants (17 specialists plus router per seed).
 - [ ] For `IND-3`, train per-manufacturer family routing and per-family variant specialists where the branch has >1 child.
 - [x] Implement IND-3 node planning, fitting, bundle loading and full predicted/oracle evaluation; integration-check singleton and conditional family paths. Genuine IND-3 training is gated until after the main two-stage comparison and benchmark.
 - [x] Initialize all independent CNNs from the same published ImageNet weights; no shared trainable weights.
 - [x] Implement cold-disk, CPU-preloaded and all-resident model states and a synchronized validation residency probe; declare policy and cache boundaries.
-- [ ] Report each specialist's validation score, training exposure, seed, and artifact checksum.
+- [x] Report each specialist's validation score, training exposure, seed, and artifact checksum.
 
 **Exit criterion:** Normal inference uses predicted upstream labels, all executed full-backbone passes are counted, and no extra CNN runs for singleton branches.
 
 Operational commands and audit/publication contracts are in [PHASE4.md](PHASE4.md).
 The default training configuration runs IND-2 for all three seeds. Full test
 latency/throughput remains Phase 6; residency probes cannot substitute for it.
+
+**Validation:** 54 trained full CNNs with exact checkpoint reloads; complete
+hard/oracle validation for all three seeds. IND-2 variant macro recall is
+56.13% ± 1.17 pp (sample SD). See the
+[measured report](../results/stage4/independent-20261027T071605Z-64675e2e/REPORT.md)
+and [check/residency evidence](../results/stage4/validation-20261027T071705Z-2b712381/REPORT.md).
+The evidence preserves and explains discarded attempts rather than including
+system-sleep elapsed time in successful GPU training costs.
 
 ## Phase 5 — Shared frozen backbone with independent heads
 

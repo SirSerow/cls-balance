@@ -1,0 +1,881 @@
+{
+  "conditional_family_note": "Separate family-router diagnostic under true manufacturer; excluded from production path counts.",
+  "executed_backbone_calls": {
+    "1": 431,
+    "2": 2902
+  },
+  "executed_classifier_calls": {
+    "1": 431,
+    "2": 2902
+  },
+  "family_given_correct_predicted_manufacturer": null,
+  "family_under_true_manufacturer": null,
+  "first_wrong_stage": {
+    "correct": 1878,
+    "family": 0,
+    "manufacturer": 588,
+    "variant": 867
+  },
+  "manufacturer_router": {
+    "accuracy": 0.8235823582358236,
+    "correct": 2745,
+    "support": 3333
+  },
+  "manufacturer_router_classwise": [
+    {
+      "accuracy": 0.7910447761194029,
+      "correct": 53,
+      "manufacturer_id": 0,
+      "support": 67
+    },
+    {
+      "accuracy": 0.8637413394919169,
+      "correct": 374,
+      "manufacturer_id": 1,
+      "support": 433
+    },
+    {
+      "accuracy": 0.8484848484848485,
+      "correct": 28,
+      "manufacturer_id": 2,
+      "support": 33
+    },
+    {
+      "accuracy": 0.7611940298507462,
+      "correct": 51,
+      "manufacturer_id": 3,
+      "support": 67
+    },
+    {
+      "accuracy": 0.8321964529331515,
+      "correct": 610,
+      "manufacturer_id": 4,
+      "support": 733
+    },
+    {
+      "accuracy": 0.7352941176470589,
+      "correct": 25,
+      "manufacturer_id": 5,
+      "support": 34
+    },
+    {
+      "accuracy": 0.8880597014925373,
+      "correct": 119,
+      "manufacturer_id": 6,
+      "support": 134
+    },
+    {
+      "accuracy": 0.9022556390977443,
+      "correct": 120,
+      "manufacturer_id": 7,
+      "support": 133
+    },
+    {
+      "accuracy": 0.8421052631578947,
+      "correct": 112,
+      "manufacturer_id": 8,
+      "support": 133
+    },
+    {
+      "accuracy": 0.8484848484848485,
+      "correct": 28,
+      "manufacturer_id": 9,
+      "support": 33
+    },
+    {
+      "accuracy": 0.9848484848484849,
+      "correct": 65,
+      "manufacturer_id": 10,
+      "support": 66
+    },
+    {
+      "accuracy": 0.9393939393939394,
+      "correct": 31,
+      "manufacturer_id": 11,
+      "support": 33
+    },
+    {
+      "accuracy": 0.7089552238805971,
+      "correct": 95,
+      "manufacturer_id": 12,
+      "support": 134
+    },
+    {
+      "accuracy": 0.7435897435897436,
+      "correct": 174,
+      "manufacturer_id": 13,
+      "support": 234
+    },
+    {
+      "accuracy": 0.9393939393939394,
+      "correct": 31,
+      "manufacturer_id": 14,
+      "support": 33
+    },
+    {
+      "accuracy": 0.8787878787878788,
+      "correct": 29,
+      "manufacturer_id": 15,
+      "support": 33
+    },
+    {
+      "accuracy": 0.73,
+      "correct": 73,
+      "manufacturer_id": 16,
+      "support": 100
+    },
+    {
+      "accuracy": 0.803030303030303,
+      "correct": 53,
+      "manufacturer_id": 17,
+      "support": 66
+    },
+    {
+      "accuracy": 0.8181818181818182,
+      "correct": 27,
+      "manufacturer_id": 18,
+      "support": 33
+    },
+    {
+      "accuracy": 0.6363636363636364,
+      "correct": 42,
+      "manufacturer_id": 19,
+      "support": 66
+    },
+    {
+      "accuracy": 0.8787878787878788,
+      "correct": 29,
+      "manufacturer_id": 20,
+      "support": 33
+    },
+    {
+      "accuracy": 0.7191489361702128,
+      "correct": 169,
+      "manufacturer_id": 21,
+      "support": 235
+    },
+    {
+      "accuracy": 0.8787878787878788,
+      "correct": 29,
+      "manufacturer_id": 22,
+      "support": 33
+    },
+    {
+      "accuracy": 0.7058823529411765,
+      "correct": 24,
+      "manufacturer_id": 23,
+      "support": 34
+    },
+    {
+      "accuracy": 0.9090909090909091,
+      "correct": 30,
+      "manufacturer_id": 24,
+      "support": 33
+    },
+    {
+      "accuracy": 0.9402985074626866,
+      "correct": 63,
+      "manufacturer_id": 25,
+      "support": 67
+    },
+    {
+      "accuracy": 0.9393939393939394,
+      "correct": 31,
+      "manufacturer_id": 26,
+      "support": 33
+    },
+    {
+      "accuracy": 0.8507462686567164,
+      "correct": 57,
+      "manufacturer_id": 27,
+      "support": 67
+    },
+    {
+      "accuracy": 0.8787878787878788,
+      "correct": 29,
+      "manufacturer_id": 28,
+      "support": 33
+    },
+    {
+      "accuracy": 0.8622754491017964,
+      "correct": 144,
+      "manufacturer_id": 29,
+      "support": 167
+    }
+  ],
+  "manufacturer_router_macro_recall": 0.8352868661137188,
+  "selected_branch_support": {
+    "family": [],
+    "manufacturer": [
+      {
+        "parent_id": null,
+        "selected_global_id": 0,
+        "support": 62
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 1,
+        "support": 487
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 2,
+        "support": 32
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 3,
+        "support": 62
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 4,
+        "support": 736
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 5,
+        "support": 29
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 6,
+        "support": 133
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 7,
+        "support": 152
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 8,
+        "support": 137
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 9,
+        "support": 33
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 10,
+        "support": 71
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 11,
+        "support": 35
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 12,
+        "support": 129
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 13,
+        "support": 195
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 14,
+        "support": 35
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 15,
+        "support": 31
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 16,
+        "support": 89
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 17,
+        "support": 54
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 18,
+        "support": 30
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 19,
+        "support": 48
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 20,
+        "support": 32
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 21,
+        "support": 232
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 22,
+        "support": 36
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 23,
+        "support": 26
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 24,
+        "support": 40
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 25,
+        "support": 74
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 26,
+        "support": 36
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 27,
+        "support": 62
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 28,
+        "support": 36
+      },
+      {
+        "parent_id": null,
+        "selected_global_id": 29,
+        "support": 179
+      }
+    ],
+    "variant": [
+      {
+        "parent_id": 0,
+        "selected_global_id": 34,
+        "support": 22
+      },
+      {
+        "parent_id": 0,
+        "selected_global_id": 35,
+        "support": 40
+      },
+      {
+        "parent_id": 1,
+        "selected_global_id": 21,
+        "support": 64
+      },
+      {
+        "parent_id": 1,
+        "selected_global_id": 22,
+        "support": 30
+      },
+      {
+        "parent_id": 1,
+        "selected_global_id": 23,
+        "support": 52
+      },
+      {
+        "parent_id": 1,
+        "selected_global_id": 24,
+        "support": 30
+      },
+      {
+        "parent_id": 1,
+        "selected_global_id": 25,
+        "support": 35
+      },
+      {
+        "parent_id": 1,
+        "selected_global_id": 26,
+        "support": 33
+      },
+      {
+        "parent_id": 1,
+        "selected_global_id": 27,
+        "support": 24
+      },
+      {
+        "parent_id": 1,
+        "selected_global_id": 28,
+        "support": 37
+      },
+      {
+        "parent_id": 1,
+        "selected_global_id": 29,
+        "support": 48
+      },
+      {
+        "parent_id": 1,
+        "selected_global_id": 30,
+        "support": 42
+      },
+      {
+        "parent_id": 1,
+        "selected_global_id": 31,
+        "support": 26
+      },
+      {
+        "parent_id": 1,
+        "selected_global_id": 32,
+        "support": 35
+      },
+      {
+        "parent_id": 1,
+        "selected_global_id": 33,
+        "support": 31
+      },
+      {
+        "parent_id": 2,
+        "selected_global_id": 36,
+        "support": 32
+      },
+      {
+        "parent_id": 3,
+        "selected_global_id": 40,
+        "support": 31
+      },
+      {
+        "parent_id": 3,
+        "selected_global_id": 90,
+        "support": 31
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 0,
+        "support": 34
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 1,
+        "support": 49
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 2,
+        "support": 24
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 3,
+        "support": 29
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 4,
+        "support": 28
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 5,
+        "support": 34
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 6,
+        "support": 31
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 7,
+        "support": 34
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 8,
+        "support": 31
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 9,
+        "support": 57
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 10,
+        "support": 49
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 11,
+        "support": 44
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 12,
+        "support": 25
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 13,
+        "support": 21
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 14,
+        "support": 16
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 15,
+        "support": 40
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 16,
+        "support": 20
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 17,
+        "support": 26
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 18,
+        "support": 51
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 19,
+        "support": 23
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 20,
+        "support": 33
+      },
+      {
+        "parent_id": 4,
+        "selected_global_id": 41,
+        "support": 37
+      },
+      {
+        "parent_id": 5,
+        "selected_global_id": 79,
+        "support": 29
+      },
+      {
+        "parent_id": 6,
+        "selected_global_id": 37,
+        "support": 18
+      },
+      {
+        "parent_id": 6,
+        "selected_global_id": 38,
+        "support": 48
+      },
+      {
+        "parent_id": 6,
+        "selected_global_id": 39,
+        "support": 35
+      },
+      {
+        "parent_id": 6,
+        "selected_global_id": 82,
+        "support": 32
+      },
+      {
+        "parent_id": 7,
+        "selected_global_id": 44,
+        "support": 37
+      },
+      {
+        "parent_id": 7,
+        "selected_global_id": 45,
+        "support": 50
+      },
+      {
+        "parent_id": 7,
+        "selected_global_id": 46,
+        "support": 32
+      },
+      {
+        "parent_id": 7,
+        "selected_global_id": 51,
+        "support": 33
+      },
+      {
+        "parent_id": 8,
+        "selected_global_id": 47,
+        "support": 31
+      },
+      {
+        "parent_id": 8,
+        "selected_global_id": 48,
+        "support": 35
+      },
+      {
+        "parent_id": 8,
+        "selected_global_id": 49,
+        "support": 29
+      },
+      {
+        "parent_id": 8,
+        "selected_global_id": 50,
+        "support": 42
+      },
+      {
+        "parent_id": 9,
+        "selected_global_id": 92,
+        "support": 33
+      },
+      {
+        "parent_id": 10,
+        "selected_global_id": 74,
+        "support": 36
+      },
+      {
+        "parent_id": 10,
+        "selected_global_id": 75,
+        "support": 35
+      },
+      {
+        "parent_id": 11,
+        "selected_global_id": 63,
+        "support": 35
+      },
+      {
+        "parent_id": 12,
+        "selected_global_id": 43,
+        "support": 33
+      },
+      {
+        "parent_id": 12,
+        "selected_global_id": 53,
+        "support": 36
+      },
+      {
+        "parent_id": 12,
+        "selected_global_id": 54,
+        "support": 35
+      },
+      {
+        "parent_id": 12,
+        "selected_global_id": 55,
+        "support": 25
+      },
+      {
+        "parent_id": 13,
+        "selected_global_id": 64,
+        "support": 31
+      },
+      {
+        "parent_id": 13,
+        "selected_global_id": 65,
+        "support": 18
+      },
+      {
+        "parent_id": 13,
+        "selected_global_id": 66,
+        "support": 36
+      },
+      {
+        "parent_id": 13,
+        "selected_global_id": 67,
+        "support": 28
+      },
+      {
+        "parent_id": 13,
+        "selected_global_id": 68,
+        "support": 34
+      },
+      {
+        "parent_id": 13,
+        "selected_global_id": 69,
+        "support": 14
+      },
+      {
+        "parent_id": 13,
+        "selected_global_id": 70,
+        "support": 34
+      },
+      {
+        "parent_id": 14,
+        "selected_global_id": 71,
+        "support": 35
+      },
+      {
+        "parent_id": 15,
+        "selected_global_id": 89,
+        "support": 31
+      },
+      {
+        "parent_id": 16,
+        "selected_global_id": 76,
+        "support": 24
+      },
+      {
+        "parent_id": 16,
+        "selected_global_id": 77,
+        "support": 34
+      },
+      {
+        "parent_id": 16,
+        "selected_global_id": 78,
+        "support": 31
+      },
+      {
+        "parent_id": 17,
+        "selected_global_id": 80,
+        "support": 31
+      },
+      {
+        "parent_id": 17,
+        "selected_global_id": 81,
+        "support": 23
+      },
+      {
+        "parent_id": 18,
+        "selected_global_id": 83,
+        "support": 30
+      },
+      {
+        "parent_id": 19,
+        "selected_global_id": 42,
+        "support": 26
+      },
+      {
+        "parent_id": 19,
+        "selected_global_id": 84,
+        "support": 22
+      },
+      {
+        "parent_id": 20,
+        "selected_global_id": 72,
+        "support": 32
+      },
+      {
+        "parent_id": 21,
+        "selected_global_id": 52,
+        "support": 20
+      },
+      {
+        "parent_id": 21,
+        "selected_global_id": 56,
+        "support": 32
+      },
+      {
+        "parent_id": 21,
+        "selected_global_id": 73,
+        "support": 28
+      },
+      {
+        "parent_id": 21,
+        "selected_global_id": 85,
+        "support": 38
+      },
+      {
+        "parent_id": 21,
+        "selected_global_id": 86,
+        "support": 40
+      },
+      {
+        "parent_id": 21,
+        "selected_global_id": 87,
+        "support": 24
+      },
+      {
+        "parent_id": 21,
+        "selected_global_id": 88,
+        "support": 50
+      },
+      {
+        "parent_id": 22,
+        "selected_global_id": 96,
+        "support": 36
+      },
+      {
+        "parent_id": 23,
+        "selected_global_id": 91,
+        "support": 26
+      },
+      {
+        "parent_id": 24,
+        "selected_global_id": 62,
+        "support": 40
+      },
+      {
+        "parent_id": 25,
+        "selected_global_id": 93,
+        "support": 34
+      },
+      {
+        "parent_id": 25,
+        "selected_global_id": 94,
+        "support": 40
+      },
+      {
+        "parent_id": 26,
+        "selected_global_id": 95,
+        "support": 36
+      },
+      {
+        "parent_id": 27,
+        "selected_global_id": 97,
+        "support": 31
+      },
+      {
+        "parent_id": 27,
+        "selected_global_id": 98,
+        "support": 31
+      },
+      {
+        "parent_id": 28,
+        "selected_global_id": 99,
+        "support": 36
+      },
+      {
+        "parent_id": 29,
+        "selected_global_id": 57,
+        "support": 32
+      },
+      {
+        "parent_id": 29,
+        "selected_global_id": 58,
+        "support": 34
+      },
+      {
+        "parent_id": 29,
+        "selected_global_id": 59,
+        "support": 33
+      },
+      {
+        "parent_id": 29,
+        "selected_global_id": 60,
+        "support": 47
+      },
+      {
+        "parent_id": 29,
+        "selected_global_id": 61,
+        "support": 33
+      }
+    ]
+  },
+  "singleton_bypasses": {
+    "family": {
+      "bypassed": 0,
+      "rate": null,
+      "support": 0
+    },
+    "manufacturer": {
+      "bypassed": 0,
+      "rate": 0.0,
+      "support": 3333
+    },
+    "variant": {
+      "bypassed": 431,
+      "rate": 0.12931293129312932,
+      "support": 3333
+    }
+  }
+}

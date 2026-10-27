@@ -1,0 +1,37 @@
+"""Hold a process-lifetime Windows idle-sleep request while running training.
+
+No power plan, display setting or clock policy is changed. User-initiated sleep
+and lid actions remain under OS control. The request releases on process exit.
+"""
+import ctypes
+import multiprocessing
+import runpy
+import sys
+
+
+def smoke_identity(value: int) -> int:
+    return value
+
+
+def main() -> None:
+    kernel = ctypes.WinDLL('kernel32', use_last_error=True)
+    request = kernel.SetThreadExecutionState
+    request.argtypes = [ctypes.c_uint]
+    request.restype = ctypes.c_uint
+    if not request(0x80000001):  # ES_CONTINUOUS | ES_SYSTEM_REQUIRED
+        raise ctypes.WinError(ctypes.get_last_error())
+    print('Holding temporary Windows idle-sleep request for this training process; power plan unchanged.', flush=True)
+    try:
+        if sys.argv[1:] == ['--smoke-test']:
+            with multiprocessing.get_context('spawn').Pool(1) as pool:
+                assert pool.map(smoke_identity, [7]) == [7]
+            print('Spawn-safe power-guard smoke check passed.', flush=True)
+        else:
+            sys.argv = ['cls_balance.train_independent', *sys.argv[1:]]
+            runpy.run_module('cls_balance.train_independent', run_name='__main__')
+    finally:
+        request(0x80000000)  # ES_CONTINUOUS: clear this thread's idle-sleep requirement
+
+
+if __name__ == '__main__':
+    main()
