@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "S:\Projects\cls-balance\src\cls_balance\residency.py", line 175, in <module>
+    main()
+  File "S:\Projects\cls-balance\src\cls_balance\residency.py", line 171, in main
+    print(probe(args.run, AircraftData.load(args.data_root), args.depth, args.device, args.output_root))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "S:\Projects\cls-balance\src\cls_balance\residency.py", line 118, in probe
+    torch.cuda.reset_peak_memory_stats(dev)
+  File "S:\Projects\cls-balance\.venv-cuda\Lib\site-packages\torch\cuda\memory.py", line 376, in reset_peak_memory_stats
+    return torch._C._cuda_resetPeakMemoryStats(device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Invalid device argument 

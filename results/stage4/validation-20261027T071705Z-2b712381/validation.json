@@ -1,0 +1,45 @@
+{
+  "dataset_images_weights_embeddings_published": false,
+  "errors": 0,
+  "failures": 0,
+  "frozen_baseline_tests": 172,
+  "residency_summary": {
+    "architecture": "IND-2",
+    "artifacts_sha256": {
+      "environment.json": "c309af697f32dfda6557be97e6b2a704a8c30fd141d9cd8c03dd745603d2408c",
+      "probes.csv": "ea49797ecf9ec49c58748b7da91ea728809fd13c0202eddeaed6d8d7691e0ff9"
+    },
+    "bundle_sha256": "c88981208b687b43dd55e354fa226afcfe0d06c7a5fdd30a994c03fe5389168a",
+    "cold_disk_definition": "no model cache; OS filesystem cache and CUDA allocator cache retained",
+    "compatibility": {
+      "dataset_manifest_sha256": "27a7dd09275ac80cee1769b5fd7d5f28fe29feaeb54d955b16cb3ce227500253",
+      "preprocessing_sha256": "173fd93e7491bb9048ffe5257c364450fa69b3f0e1ac4b1a4cf965eddea78adc",
+      "taxonomy_sha256": "a79cf6f7fe8a7a028c1f2b51619b307750a241c26d863c0fc983423a6dd48177"
+    },
+    "cuda_context_startup": "one released sentinel allocation before policy timers; CUDA runtime startup excluded",
+    "device": "cuda:0",
+    "images_per_policy": 30,
+    "policies": [
+      "all-resident",
+      "preloaded-cpu",
+      "cold-disk"
+    ],
+    "precision": "fp32",
+    "prediction_and_path_equality": true,
+    "run_id": "ind-s42-20261026T125759Z-6d87251e",
+    "scope": "validation residency diagnostic; fixed tensor; no warmup; no test latency or FPS",
+    "seed": 42,
+    "status": "complete"
+  },
+  "skipped": 0,
+  "source_run_ids": [
+    "ind-s42-20261026T125759Z-6d87251e",
+    "ind-s43-20261026T141824Z-b8c12b2c",
+    "ind-s44-20261026T153237Z-2b462c75"
+  ],
+  "status": "verified",
+  "test_inference_performed": false,
+  "tests": 213,
+  "training_publication_sha256": "c3118a6ce102af2315d1267037d4d793207ec0ed91476cbecd53378c5d1b9f38",
+  "training_report": "results/stage4/independent-20261027T071605Z-64675e2e"
+}

@@ -1,0 +1,22 @@
+{
+  "compared_fields": [
+    "train_loss",
+    "train_macro_recall",
+    "train_top1",
+    "train_images",
+    "train_optimizer_steps",
+    "val_loss",
+    "val_macro_recall",
+    "val_top1",
+    "val_images",
+    "val_optimizer_steps"
+  ],
+  "completed_epochs": 1,
+  "epoch1_metrics_identical_after_restart": true,
+  "parallel_epoch_seconds": 69.37902770000801,
+  "partial_epoch_measurements": "not retained; incomplete attempt excluded from successful-run resource totals",
+  "reason": "Restarted with parallel decoding for large branches; serial image loading was costly",
+  "run_id": "ind-s42-20261026T125510Z-3fa0423c",
+  "serial_epoch_seconds": 135.49773019998975,
+  "status": "interrupted; no complete checkpoint or cascade"
+}

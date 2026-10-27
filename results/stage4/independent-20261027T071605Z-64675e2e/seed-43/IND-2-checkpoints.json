@@ -1,0 +1,227 @@
+{
+  "manufacturer": {
+    "checkpoint_sha256": "0f8a47038eddae50ac416b4aedde204858fa3244c02b596ab2fb96a3ffbb3394",
+    "local_global_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "local_run_path": "nodes/manufacturer/node-20261026T141824Z-e30d94d2"
+  },
+  "variant-manufacturer-0": {
+    "checkpoint_sha256": "2a9bd6d3e3042df6b0801c6518c39243036a691625882caa05485384a428d6d8",
+    "local_global_ids": [
+      34,
+      35
+    ],
+    "local_run_path": "nodes/variant-manufacturer-0/node-20261026T144938Z-e7b83ca1"
+  },
+  "variant-manufacturer-1": {
+    "checkpoint_sha256": "630bad79f3caba98b054d181fb8169fa0d4422945079321094b7e34313de3324",
+    "local_global_ids": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
+    ],
+    "local_run_path": "nodes/variant-manufacturer-1/node-20261026T144956Z-82185db2"
+  },
+  "variant-manufacturer-10": {
+    "checkpoint_sha256": "c39828c1da3ec29eae60536d71dcab1e06f1b88e3db753d93e06cadd394d1317",
+    "local_global_ids": [
+      74,
+      75
+    ],
+    "local_run_path": "nodes/variant-manufacturer-10/node-20261026T151233Z-d0d164f1"
+  },
+  "variant-manufacturer-12": {
+    "checkpoint_sha256": "1b0c9d6015e765e2a06a2b72fa28b35375f0a09f8d0d1aad51113ea834eb595c",
+    "local_global_ids": [
+      43,
+      53,
+      54,
+      55
+    ],
+    "local_run_path": "nodes/variant-manufacturer-12/node-20261026T151328Z-66bbdd98"
+  },
+  "variant-manufacturer-13": {
+    "checkpoint_sha256": "7bb12b6a92288a6d9cfc730698f8157d2840ad8202cfd1442b47ce4e1688f412",
+    "local_global_ids": [
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70
+    ],
+    "local_run_path": "nodes/variant-manufacturer-13/node-20261026T151451Z-07ebc2ed"
+  },
+  "variant-manufacturer-16": {
+    "checkpoint_sha256": "7cdae6a4d0dc6adeddb12b09e4b8370376e05571e0e584b6c5b6d4a59b5bcba2",
+    "local_global_ids": [
+      76,
+      77,
+      78
+    ],
+    "local_run_path": "nodes/variant-manufacturer-16/node-20261026T151842Z-8d53fbee"
+  },
+  "variant-manufacturer-17": {
+    "checkpoint_sha256": "35fb572d978996e3de4d64c2a7737ed8fa2daeebc7dda3411d49d8998bfb172c",
+    "local_global_ids": [
+      80,
+      81
+    ],
+    "local_run_path": "nodes/variant-manufacturer-17/node-20261026T151939Z-af126cdd"
+  },
+  "variant-manufacturer-19": {
+    "checkpoint_sha256": "43fdb38272b6b5f215ceec3787610dff559fcb546f7ccb9ec670b61d7ead01d3",
+    "local_global_ids": [
+      42,
+      84
+    ],
+    "local_run_path": "nodes/variant-manufacturer-19/node-20261026T152008Z-be833401"
+  },
+  "variant-manufacturer-21": {
+    "checkpoint_sha256": "fb8be40a6c2bf08d0a09bc9fc089f87fda8c347906d60191b8829683e4fdfda1",
+    "local_global_ids": [
+      52,
+      56,
+      73,
+      85,
+      86,
+      87,
+      88
+    ],
+    "local_run_path": "nodes/variant-manufacturer-21/node-20261026T152112Z-bb3abaaa"
+  },
+  "variant-manufacturer-25": {
+    "checkpoint_sha256": "efef133f7be799a2b54ca674fc8c22e324061f350d27466597e0d9727bbf11e8",
+    "local_global_ids": [
+      93,
+      94
+    ],
+    "local_run_path": "nodes/variant-manufacturer-25/node-20261026T152332Z-ac75410e"
+  },
+  "variant-manufacturer-27": {
+    "checkpoint_sha256": "74385da3df3cb6046595fe3eea0b70cb903bf04c6f6a27a6c999227c65200880",
+    "local_global_ids": [
+      97,
+      98
+    ],
+    "local_run_path": "nodes/variant-manufacturer-27/node-20261026T152426Z-f029ea3c"
+  },
+  "variant-manufacturer-29": {
+    "checkpoint_sha256": "c75f336966e0118f93071b40664d2d4fc696ec005e740f92e517b05caf7e17a5",
+    "local_global_ids": [
+      57,
+      58,
+      59,
+      60,
+      61
+    ],
+    "local_run_path": "nodes/variant-manufacturer-29/node-20261026T152532Z-90376e4a"
+  },
+  "variant-manufacturer-3": {
+    "checkpoint_sha256": "1e7c38638eca7db6d9fbc432446b159452cf70e942e864d8019ce0e2543ac8a5",
+    "local_global_ids": [
+      40,
+      90
+    ],
+    "local_run_path": "nodes/variant-manufacturer-3/node-20261026T145600Z-84c42da3"
+  },
+  "variant-manufacturer-4": {
+    "checkpoint_sha256": "efaa084208d12bb444757836641ab27c302cfb051ca1c934b0419a1e6098cf51",
+    "local_global_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      41
+    ],
+    "local_run_path": "nodes/variant-manufacturer-4/node-20261026T145649Z-5f121121"
+  },
+  "variant-manufacturer-6": {
+    "checkpoint_sha256": "c0397c8a9e976f4159efba83635587efbeaa0db2e2dd3ff3cd91567358b252fc",
+    "local_global_ids": [
+      37,
+      38,
+      39,
+      82
+    ],
+    "local_run_path": "nodes/variant-manufacturer-6/node-20261026T150800Z-f5b60f1b"
+  },
+  "variant-manufacturer-7": {
+    "checkpoint_sha256": "a3e0aab8a7b6ad4c2f2155cde6df0e5e1678d681f17358ecaec5ae7f0e2355de",
+    "local_global_ids": [
+      44,
+      45,
+      46,
+      51
+    ],
+    "local_run_path": "nodes/variant-manufacturer-7/node-20261026T150911Z-e6fe00c7"
+  },
+  "variant-manufacturer-8": {
+    "checkpoint_sha256": "86c200493b063ea9a82eaddcd46293345f5259ef3cbc5804665d4a0cddd15131",
+    "local_global_ids": [
+      47,
+      48,
+      49,
+      50
+    ],
+    "local_run_path": "nodes/variant-manufacturer-8/node-20261026T151030Z-0b77eb08"
+  }
+}

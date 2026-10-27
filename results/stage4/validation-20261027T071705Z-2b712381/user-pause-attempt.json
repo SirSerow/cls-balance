@@ -1,0 +1,19 @@
+{
+  "attempts": [
+    {
+      "attempt": "nodes/manufacturer/node-20261026T153238Z-c3ffc90c",
+      "completed_epoch_training_exposures": 23338,
+      "completed_epoch_wall_seconds": 436.53855070004647,
+      "completed_epochs": 7,
+      "partial_epoch_measurements": "not retained; excluded from successful-run resource totals",
+      "status": "incomplete; no exported selected node checkpoint"
+    }
+  ],
+  "completed_epoch_metrics_exactly_reproduced": true,
+  "exactly_matching_epochs": 7,
+  "initial_run_git_sha": "1af6c0f725bbc35991f67daf971a5e10ecb6148f",
+  "reason": "User requested a pause; completed seeds 42/43 were retained; seed-44 router restarted on explicit continue",
+  "resumed_evaluation_git_sha": "46a5b00fe30e6361db60f481038e001bca080631",
+  "run_id": "ind-s44-20261026T153237Z-2b462c75",
+  "successful_run_resources_exclude_these_attempts": true
+}

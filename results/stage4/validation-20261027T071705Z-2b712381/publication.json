@@ -1,0 +1,29 @@
+{
+  "artifacts_sha256": {
+    "REPORT.md": "ac0160dfbb6cd0947a3d545eb605ef57ac3740b7b892a8f619a6a68106deb574",
+    "awake-smoke.txt": "8b2df610f03e38d1e4cf57e30706b195d6665569774dddbac24e2f202077373b",
+    "environment.json": "514904fc8aa9f50141c2e7a5dce74fa8f0bdfaff5eb0286f0c155e7de2d0b1ca",
+    "failed-launcher-attempts.json": "67104dc2f22b74e93d5475c65b2ccfa0cde3a4ed20d09bcdb5a49df9a7eea423",
+    "failed-launcher-source.txt": "08703f7a87c86b5b2e2ebcca2ee5c5dab1680f1497814b40da76654c21467620",
+    "freeze-check.txt": "5dc6551eee1d926252ce59ccc1c0975304c6721162bf15dd71769754b7c0330f",
+    "interrupted-attempt.json": "eef4f0cb9b51cf923f8d67dbc3e7bf83a97a5f2fc447ad67f247e74acc9cfd7b",
+    "junit.xml": "f0633f303eff4fca24d181607ff4e32d7ada02d94493947cb1523f1fb12c2627",
+    "pip-check-cpu.txt": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "pip-check-cuda.txt": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "publish_validation.py": "9a6738592bfc5be1f4c3bd9347c8278a96ff2feb1acd5e7f7be9ce58e5ae1b4e",
+    "pytest.txt": "cc641027dae908882234547b4b91e00462efb37f119580b70ba3af4c3948c829",
+    "residency-initialization-failure.txt": "f559e119169f1a7620a1f79ad2cd6d42fb87f9dd0ccea646d926dc7e10dd32c6",
+    "residency.svg": "bbd21a7af2c4221e89de0fb316b406112945a625430bc779db530fa56c89e34d",
+    "residency/environment.json": "c309af697f32dfda6557be97e6b2a704a8c30fd141d9cd8c03dd745603d2408c",
+    "residency/probes.csv": "ea49797ecf9ec49c58748b7da91ea728809fd13c0202eddeaed6d8d7691e0ff9",
+    "residency/summary.json": "7918a93636aa762f6f8efac54d9e4c223ef487c17c4418edf35d8d1b634da04a",
+    "source_hashes.json": "6b0df4c5c52790c11615d176bc2c12d7ee7fa6a63475acf42c943c65e0bf85d9",
+    "system-sleep-attempt.json": "449de838c86fa79156ba0f2cdd6e1097ba5fc3d932f0234328d08e05f958db6f",
+    "train_awake.py": "40c83fb33092b9c121d12ee13dfc66d445ae8de28d2f6099c933f39f3f92840e",
+    "training-console.txt": "083fe7e6c930f33288aa8375342d3f62dfe778db3de13d07c69597574835cdd9",
+    "user-pause-attempt.json": "238ab55ec2f96e32b5dcce228e51846e4c73e3156cc110088a74feddcf8702c2",
+    "validation.json": "91efa8df6f7925305efea9ca9cd911b2fef5e87633496a947f12cf75b6ac6141"
+  },
+  "scope": "Phase 4 validation and residency evidence",
+  "status": "complete"
+}

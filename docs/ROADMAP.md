@@ -1,6 +1,6 @@
 # Implementation roadmap and acceptance checklist
 
-**Status:** Phases 0–3 implemented. See README for operational data commands, [PHASE2.md](PHASE2.md) for inference/evaluation contracts, [PHASE3.md](PHASE3.md) for FLAT training/export/reporting, and `results/` for measured evidence. Hierarchical training and benchmarking remain **proposed**. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the experiment's scientific contract.
+**Status:** Phases 0–4 implemented, with IND-3 measurement deferred by the execution-order gate. See README for operational commands, [PHASE2.md](PHASE2.md) for inference/evaluation contracts, [PHASE3.md](PHASE3.md) for FLAT training/export/reporting, [PHASE4.md](PHASE4.md) for independent cascades, and `results/` for measured evidence. Shared-head training and the full test benchmark remain **proposed**. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the experiment's scientific contract.
 
 ## Proposed repository structure
 
@@ -122,14 +122,27 @@ independent CPU encoder/source audits passed for all seeds. See the
 
 ## Phase 4 — Independent hierarchical baselines
 
-- [ ] Train manufacturer classifier with full EfficientNet.
-- [ ] For `IND-2`, train a full EfficientNet variant specialist for each manufacturer with >1 variants.
+- [x] Train manufacturer classifier with full EfficientNet for seeds 42/43/44.
+- [x] For `IND-2`, train a full EfficientNet variant specialist for each manufacturer with >1 variants (17 specialists plus router per seed).
 - [ ] For `IND-3`, train per-manufacturer family routing and per-family variant specialists where the branch has >1 child.
-- [ ] Initialize all independent CNNs from the same published ImageNet weights; no shared trainable weights.
-- [ ] Implement cold vs preloaded model states; measure and declare model residency.
-- [ ] Report each specialist's validation score, training exposure, seed, and artifact checksum.
+- [x] Implement IND-3 node planning, fitting, bundle loading and full predicted/oracle evaluation; integration-check singleton and conditional family paths. Genuine IND-3 training is gated until after the main two-stage comparison and benchmark.
+- [x] Initialize all independent CNNs from the same published ImageNet weights; no shared trainable weights.
+- [x] Implement cold-disk, CPU-preloaded and all-resident model states and a synchronized validation residency probe; declare policy and cache boundaries.
+- [x] Report each specialist's validation score, training exposure, seed, and artifact checksum.
 
 **Exit criterion:** Normal inference uses predicted upstream labels, all executed full-backbone passes are counted, and no extra CNN runs for singleton branches.
+
+Operational commands and audit/publication contracts are in [PHASE4.md](PHASE4.md).
+The default training configuration runs IND-2 for all three seeds. Full test
+latency/throughput remains Phase 6; residency probes cannot substitute for it.
+
+**Validation:** 54 trained full CNNs with exact checkpoint reloads; complete
+hard/oracle validation for all three seeds. IND-2 variant macro recall is
+56.13% ± 1.17 pp (sample SD). See the
+[measured report](../results/stage4/independent-20261027T071605Z-64675e2e/REPORT.md)
+and [check/residency evidence](../results/stage4/validation-20261027T071705Z-2b712381/REPORT.md).
+The evidence preserves and explains discarded attempts rather than including
+system-sleep elapsed time in successful GPU training costs.
 
 ## Phase 5 — Shared frozen backbone with independent heads
 
@@ -180,7 +193,7 @@ independent CPU encoder/source audits passed for all seeds. See the
 
 ## Proposed commands (interface to implement, not operational today)
 
-Data preparation is operational as `python -m cls_balance.prepare --config configs/data.yaml` (see README). Phase-two evaluation is an operational Python API; a saved run can be audited with `python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`. FLAT training is operational as `python -m cls_balance.train --config configs/flat.yaml`; reporting is `python -m cls_balance.report_flat --runs <completed-run-directories>`. Hierarchical training and benchmark commands below remain planned:
+Data preparation is operational as `python -m cls_balance.prepare --config configs/data.yaml` (see README). Phase-two evaluation is an operational Python API; a saved run can be audited with `python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`. FLAT training is operational as `python -m cls_balance.train --config configs/flat.yaml`; reporting is `python -m cls_balance.report_flat --runs <completed-run-directories>`. Independent training is `python -m cls_balance.train_independent --config configs/independent.yaml`, reporting/auditing is `python -m cls_balance.report_independent --runs <completed-run-directories>`, and residency probes are `python -m cls_balance.residency --run <completed-run-directory>`. The all-architecture and benchmark commands below remain planned:
 
 ```bash
 python -m scripts.prepare_data --config configs/benchmark.yaml

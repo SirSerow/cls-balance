@@ -1,0 +1,20 @@
+{
+  "attempts": [
+    {
+      "attempt": "nodes/variant-manufacturer-1/node-20261027T061522Z-7adc29ec",
+      "completed_epochs": 0,
+      "partial_epoch_measurements": "unmeasured; no exported selected checkpoint"
+    },
+    {
+      "attempt": "nodes/variant-manufacturer-1/node-20261027T061534Z-676e9395",
+      "completed_epochs": 0,
+      "partial_epoch_measurements": "unmeasured; no exported selected checkpoint"
+    }
+  ],
+  "corrected_source_sha256": "40c83fb33092b9c121d12ee13dfc66d445ae8de28d2f6099c933f39f3f92840e",
+  "failed_source_sha256": "08703f7a87c86b5b2e2ebcca2ee5c5dab1680f1497814b40da76654c21467620",
+  "reason": "Initial auxiliary sleep-guard launcher lacked Windows multiprocessing main guard; corrected before retry",
+  "run_id": "ind-s44-20261026T153237Z-2b462c75",
+  "smoke_check": "spawn pool returned exact requested value; exit 0; actual Torch DataLoader retried normally",
+  "successful_run_resources_exclude_these_attempts": true
+}

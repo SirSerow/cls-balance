@@ -1,0 +1,2 @@
+Holding temporary Windows idle-sleep request for this training process; power plan unchanged.
+Spawn-safe power-guard smoke check passed.
