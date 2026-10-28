@@ -1,0 +1,21 @@
+# Phase 6 primary FP32 benchmark. Freeze checkpoint matrix before test inference.
+data_root: ../data
+prepared_run: ../runs/data/data-20261024T212625Z-4cf9b394
+output_root: ../runs/benchmark
+device: cuda:0
+precision: fp32
+passes: 5
+warmup_iterations: 32
+cpu_threads: 6
+depth: 2
+# Rotate architecture order across seeds to reduce systematic order confounding.
+runs:
+  - ../runs/flat/flat-s42-20261025T031340Z-5385e556
+  - ../runs/independent/ind-s42-20261026T125759Z-6d87251e
+  - ../runs/shared/shared-ft-frozen-s42-20261027T140957Z-b392fc3a
+  - ../runs/independent/ind-s43-20261026T141824Z-b8c12b2c
+  - ../runs/shared/shared-ft-frozen-s43-20261027T142909Z-e9730962
+  - ../runs/flat/flat-s43-20261025T034152Z-d43e9130
+  - ../runs/shared/shared-ft-frozen-s44-20261027T144302Z-c8142ff8
+  - ../runs/flat/flat-s44-20261025T041556Z-40c093b2
+  - ../runs/independent/ind-s44-20261026T153237Z-2b462c75
