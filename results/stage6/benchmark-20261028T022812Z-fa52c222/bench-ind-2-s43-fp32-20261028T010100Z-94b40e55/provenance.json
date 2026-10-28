@@ -1,0 +1,110 @@
+{
+  "architecture": "IND-2",
+  "backbone_source": null,
+  "checkpoint_files": [
+    {
+      "bytes": 16581295,
+      "path": "nodes/manufacturer/node-20261026T141824Z-e30d94d2/node.pt",
+      "sha256": "0f8a47038eddae50ac416b4aedde204858fa3244c02b596ab2fb96a3ffbb3394"
+    },
+    {
+      "bytes": 16321391,
+      "path": "nodes/variant-manufacturer-0/node-20261026T144938Z-e7b83ca1/node.pt",
+      "sha256": "2a9bd6d3e3042df6b0801c6518c39243036a691625882caa05485384a428d6d8"
+    },
+    {
+      "bytes": 16395567,
+      "path": "nodes/variant-manufacturer-1/node-20261026T144956Z-82185db2/node.pt",
+      "sha256": "630bad79f3caba98b054d181fb8169fa0d4422945079321094b7e34313de3324"
+    },
+    {
+      "bytes": 16321391,
+      "path": "nodes/variant-manufacturer-10/node-20261026T151233Z-d0d164f1/node.pt",
+      "sha256": "c39828c1da3ec29eae60536d71dcab1e06f1b88e3db753d93e06cadd394d1317"
+    },
+    {
+      "bytes": 16339311,
+      "path": "nodes/variant-manufacturer-12/node-20261026T151328Z-66bbdd98/node.pt",
+      "sha256": "1b0c9d6015e765e2a06a2b72fa28b35375f0a09f8d0d1aad51113ea834eb595c"
+    },
+    {
+      "bytes": 16358063,
+      "path": "nodes/variant-manufacturer-13/node-20261026T151451Z-07ebc2ed/node.pt",
+      "sha256": "7bb12b6a92288a6d9cfc730698f8157d2840ad8202cfd1442b47ce4e1688f412"
+    },
+    {
+      "bytes": 16327791,
+      "path": "nodes/variant-manufacturer-16/node-20261026T151842Z-8d53fbee/node.pt",
+      "sha256": "7cdae6a4d0dc6adeddb12b09e4b8370376e05571e0e584b6c5b6d4a59b5bcba2"
+    },
+    {
+      "bytes": 16321391,
+      "path": "nodes/variant-manufacturer-17/node-20261026T151939Z-af126cdd/node.pt",
+      "sha256": "35fb572d978996e3de4d64c2a7737ed8fa2daeebc7dda3411d49d8998bfb172c"
+    },
+    {
+      "bytes": 16321391,
+      "path": "nodes/variant-manufacturer-19/node-20261026T152008Z-be833401/node.pt",
+      "sha256": "43fdb38272b6b5f215ceec3787610dff559fcb546f7ccb9ec670b61d7ead01d3"
+    },
+    {
+      "bytes": 16358063,
+      "path": "nodes/variant-manufacturer-21/node-20261026T152112Z-bb3abaaa/node.pt",
+      "sha256": "fb8be40a6c2bf08d0a09bc9fc089f87fda8c347906d60191b8829683e4fdfda1"
+    },
+    {
+      "bytes": 16321391,
+      "path": "nodes/variant-manufacturer-25/node-20261026T152332Z-ac75410e/node.pt",
+      "sha256": "efef133f7be799a2b54ca674fc8c22e324061f350d27466597e0d9727bbf11e8"
+    },
+    {
+      "bytes": 16321391,
+      "path": "nodes/variant-manufacturer-27/node-20261026T152426Z-f029ea3c/node.pt",
+      "sha256": "74385da3df3cb6046595fe3eea0b70cb903bf04c6f6a27a6c999227c65200880"
+    },
+    {
+      "bytes": 16345583,
+      "path": "nodes/variant-manufacturer-29/node-20261026T152532Z-90376e4a/node.pt",
+      "sha256": "c75f336966e0118f93071b40664d2d4fc696ec005e740f92e517b05caf7e17a5"
+    },
+    {
+      "bytes": 16321391,
+      "path": "nodes/variant-manufacturer-3/node-20261026T145600Z-84c42da3/node.pt",
+      "sha256": "1e7c38638eca7db6d9fbc432446b159452cf70e942e864d8019ce0e2543ac8a5"
+    },
+    {
+      "bytes": 16451951,
+      "path": "nodes/variant-manufacturer-4/node-20261026T145649Z-5f121121/node.pt",
+      "sha256": "efaa084208d12bb444757836641ab27c302cfb051ca1c934b0419a1e6098cf51"
+    },
+    {
+      "bytes": 16339311,
+      "path": "nodes/variant-manufacturer-6/node-20261026T150800Z-f5b60f1b/node.pt",
+      "sha256": "c0397c8a9e976f4159efba83635587efbeaa0db2e2dd3ff3cd91567358b252fc"
+    },
+    {
+      "bytes": 16339311,
+      "path": "nodes/variant-manufacturer-7/node-20261026T150911Z-e6fe00c7/node.pt",
+      "sha256": "a3e0aab8a7b6ad4c2f2155cde6df0e5e1678d681f17358ecaec5ae7f0e2355de"
+    },
+    {
+      "bytes": 16339311,
+      "path": "nodes/variant-manufacturer-8/node-20261026T151030Z-0b77eb08/node.pt",
+      "sha256": "86c200493b063ea9a82eaddcd46293345f5259ef3cbc5804665d4a0cddd15131"
+    }
+  ],
+  "model_sha256_fp32": "bd5f4d6432b55aa3aae0c96050ebacfeba26a68b41779e568881db1ddef3bc99",
+  "seed": 43,
+  "stored_checkpoint_bytes": 294425294,
+  "total_model_parameters": 72285741,
+  "training_resources": {
+    "deployment_bytes": 294425294,
+    "optimizer_steps": 10654,
+    "trainable_parameters": 72285741,
+    "training_gpu_hours": 1.1445640678888878,
+    "training_image_exposures": 166161,
+    "training_wall_seconds": 4120.430644399996
+  },
+  "training_run_id": "ind-s43-20261026T141824Z-b8c12b2c",
+  "training_summary_sha256": "6530846f41cfd9d9597fea8463e469b9caf8d8a9f5659181816a6b6b5888e6c4"
+}

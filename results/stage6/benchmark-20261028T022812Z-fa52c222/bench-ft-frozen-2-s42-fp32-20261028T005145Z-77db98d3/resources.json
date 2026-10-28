@@ -1,0 +1,164 @@
+{
+  "architecture": "FT-FROZEN-2",
+  "backbone_source": {
+    "backbone_training_cost": "one Phase 3 FLAT run per seed; reused across shared depths",
+    "flat_resources": {
+      "deployment_bytes": 16939695,
+      "encoder_bytes": 16426803,
+      "optimizer_steps": 5016,
+      "timing_scope": "epoch training+validation+selection; excludes initialization and final evaluation",
+      "trainable_parameters": 4135648,
+      "training_gpu_hours": 0.4147472090555564,
+      "training_image_exposures": 80016,
+      "training_wall_seconds": 1493.089952600003
+    },
+    "parent_flat_sha256": "ce0c538c20a55b7cdce712882b83467f24c70f2544f96d61ba33f07581c4f257",
+    "source_encoder_sha256": "42705c04223e489e2c888f07604ee8775b9738de777e30e1b6dbbf67cacb155e",
+    "source_run_id": "flat-s42-20261025T031340Z-5385e556"
+  },
+  "checkpoint_files": [
+    {
+      "bytes": 16308659,
+      "path": "encoder.pt",
+      "sha256": "f48c0295ba66617740d01c6832f0b513ab7eb838ea02a5ac0f68d62fe803f4d0"
+    },
+    {
+      "bytes": 1458845,
+      "path": "nodes/manufacturer/head.pt",
+      "sha256": "07d5f25cad4745d5b4763ae531a9d55f0b4cc84d14528788e4e81ae11c6e1389"
+    },
+    {
+      "bytes": 1319069,
+      "path": "nodes/variant-manufacturer-0/head.pt",
+      "sha256": "5e0228a6be63e436c928fc5fb0b0b83201d5d5e2daf5f4872bf611c25bf2c179"
+    },
+    {
+      "bytes": 1342749,
+      "path": "nodes/variant-manufacturer-1/head.pt",
+      "sha256": "1cd862a1876a741871e7102437da90cf6d01f9d44b68883ac61ea4cc97b2400d"
+    },
+    {
+      "bytes": 1319069,
+      "path": "nodes/variant-manufacturer-10/head.pt",
+      "sha256": "13958bbc59388cd873a129cb20f9155f81d5f183a3414a4edf34f7309618cc57"
+    },
+    {
+      "bytes": 1323357,
+      "path": "nodes/variant-manufacturer-12/head.pt",
+      "sha256": "923ba1acf9ff93e38929bbac0ed26e9c08a9b9271092ff0e0dee2d6df4eaa71a"
+    },
+    {
+      "bytes": 1329821,
+      "path": "nodes/variant-manufacturer-13/head.pt",
+      "sha256": "04d28cfc48fcf737039edb7f04daf3dea723a2a84d6c31a0ec0d693142a102cd"
+    },
+    {
+      "bytes": 1321117,
+      "path": "nodes/variant-manufacturer-16/head.pt",
+      "sha256": "33e98ee4ff56f37694e1ac19573cc5e33f9ecf80ff1874edf80dd0e409216fde"
+    },
+    {
+      "bytes": 1319069,
+      "path": "nodes/variant-manufacturer-17/head.pt",
+      "sha256": "a75fe18d8789a62861063ce4ce7406e2578859ebf0520589233c6cbce5ed30c0"
+    },
+    {
+      "bytes": 1319133,
+      "path": "nodes/variant-manufacturer-19/head.pt",
+      "sha256": "b4d3c964a99052478bdbb621e8a468ef3a16698b83c1722c94ff34a9b336158c"
+    },
+    {
+      "bytes": 1329821,
+      "path": "nodes/variant-manufacturer-21/head.pt",
+      "sha256": "1d877c3005da1104a3b79a1cca7d3a59eb2f5d69aa91d26a3ae84c59242ba7ba"
+    },
+    {
+      "bytes": 1319133,
+      "path": "nodes/variant-manufacturer-25/head.pt",
+      "sha256": "a5c79a456359790dd4091a6df3c7ddac6660f3082830082298e2c68d9f936d35"
+    },
+    {
+      "bytes": 1319069,
+      "path": "nodes/variant-manufacturer-27/head.pt",
+      "sha256": "93b913661092151b2e46f2278234f01bd585c5f4f3d8a8bc81be323fafb0c38f"
+    },
+    {
+      "bytes": 1325533,
+      "path": "nodes/variant-manufacturer-29/head.pt",
+      "sha256": "7cb2fd2ff571ac52c8457d5617eb265ea7ab32246bb6977137441620d0fe5d5b"
+    },
+    {
+      "bytes": 1319133,
+      "path": "nodes/variant-manufacturer-3/head.pt",
+      "sha256": "3573dfebc171adae5438ec36d05a599b5e1e773d89de58ce6a3317ffd2a36496"
+    },
+    {
+      "bytes": 1362269,
+      "path": "nodes/variant-manufacturer-4/head.pt",
+      "sha256": "8f97cb42d71f72860c8175ec961966f7b1dd8762b81138bead62b77c28f1c9dd"
+    },
+    {
+      "bytes": 1323357,
+      "path": "nodes/variant-manufacturer-6/head.pt",
+      "sha256": "c36e4910e96ec84025cf1504280e638bf63ec1231bf23b631b4e25c663ed6959"
+    },
+    {
+      "bytes": 1323357,
+      "path": "nodes/variant-manufacturer-7/head.pt",
+      "sha256": "13dbacc16d7e56bf915507e6d8f5f99a697d03819ea82cd67f268ac7cff9fa88"
+    },
+    {
+      "bytes": 1323357,
+      "path": "nodes/variant-manufacturer-8/head.pt",
+      "sha256": "ae726a6bd7e3a6f7d76337fe38853373eeedc857d99a06aba80332ae80f90d8a"
+    }
+  ],
+  "mac_convention": "Conv2d/Linear only; 1 multiply-accumulate = 1 MAC; other ops excluded",
+  "macs_by_node": {
+    "backbone": 384534752,
+    "manufacturer": 335360,
+    "variant:0": 328192,
+    "variant:1": 331008,
+    "variant:10": 328192,
+    "variant:12": 328704,
+    "variant:13": 329472,
+    "variant:16": 328448,
+    "variant:17": 328192,
+    "variant:19": 328192,
+    "variant:21": 329472,
+    "variant:25": 328192,
+    "variant:27": 328192,
+    "variant:29": 328960,
+    "variant:3": 328192,
+    "variant:4": 333312,
+    "variant:6": 328704,
+    "variant:7": 328704,
+    "variant:8": 328704
+  },
+  "model_sha256_fp32": "db81ceb392e3ddffb335ac382d0a2667704976c0898abce00d8dd541f50b26a1",
+  "model_state_unchanged": true,
+  "oom": false,
+  "peak_gpu_allocated_bytes": 85660160,
+  "peak_gpu_reserved_bytes": 96468992,
+  "peak_process_resident_bytes": null,
+  "seed": 42,
+  "stored_checkpoint_bytes": 40305917,
+  "total_model_parameters": 9940465,
+  "training_resources": {
+    "cache_enabled": false,
+    "encoder_bytes": 16308659,
+    "feature_extraction_seconds": 912.6132364000368,
+    "head_bytes": 23997258,
+    "head_epoch_seconds": 20.957247399666812,
+    "optimizer_steps": 6091,
+    "shared_training_wall_seconds": 936.0457538999908,
+    "timing_scope": "shared train/val extraction + head epochs + selection/export; excludes source FLAT and final evaluation",
+    "trainable_parameters": 5932917,
+    "training_gpu_hours": 0.2600127094166641,
+    "training_image_exposures": 95599,
+    "unique_train_feature_images": 90018,
+    "validation_feature_images": 3333
+  },
+  "training_run_id": "shared-ft-frozen-s42-20261027T140957Z-b392fc3a",
+  "training_summary_sha256": "86fd5cf3818c6e29a0eb14db4836d9205d2e9a346bf814b96a3e607071d85ad1"
+}

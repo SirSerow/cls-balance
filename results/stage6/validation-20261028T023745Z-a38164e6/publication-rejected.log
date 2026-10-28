@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "S:\Projects\cls-balance\src\cls_balance\report_benchmark.py", line 557, in <module>
+    main()
+  File "S:\Projects\cls-balance\src\cls_balance\report_benchmark.py", line 553, in main
+    print(publish([args.suite / name for name in summary["runs"]], args.output_root, args.training_roots, args.preview_root))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "S:\Projects\cls-balance\src\cls_balance\report_benchmark.py", line 376, in publish
+    audit_publication(output)
+  File "S:\Projects\cls-balance\src\cls_balance\report_benchmark.py", line 400, in audit_publication
+    raise ValueError("Trained specialist inventory mismatch")
+ValueError: Trained specialist inventory mismatch

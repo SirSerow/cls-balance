@@ -1,0 +1,15 @@
+{
+  "copied_benchmark_files_identical": 189,
+  "every_global_variant_shown": true,
+  "network_schematics_identical": 4,
+  "rebuilt_publication_sha256": "e02e3730d7549c6b7f8f610a19c53a163e39e9d0acb93eb99e98e1e9c20fadc1",
+  "rebuilt_review_id": "benchmark-20261028T022812Z-fa52c222",
+  "report_links_exist": true,
+  "scope": "artifact-only rebuild; identical measured evidence; seed annotation layout changed; no dataset/checkpoints needed",
+  "source_publication_sha256": "692c914db62660c9b22f7f2496f58e6dab68249d07b8f3bcba6846e006578eac",
+  "source_review_id": "benchmark-20261028T021950Z-e120d08b",
+  "status": "verified",
+  "timing_observations": 149985,
+  "training_and_branch_statistics_identical": true,
+  "valid_svg_documents": 23
+}

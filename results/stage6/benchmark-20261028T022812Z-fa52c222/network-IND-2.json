@@ -1,0 +1,757 @@
+{
+  "architecture": "IND-2",
+  "backbones_stored": 18,
+  "branches": [
+    {
+      "global_variant_ids": [
+        34,
+        35
+      ],
+      "manufacturer": "ATR",
+      "manufacturer_id": 0,
+      "singleton": false,
+      "variants": [
+        "ATR-42",
+        "ATR-72"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "manufacturer": "Airbus",
+      "manufacturer_id": 1,
+      "singleton": false,
+      "variants": [
+        "A300B4",
+        "A310",
+        "A318",
+        "A319",
+        "A320",
+        "A321",
+        "A330-200",
+        "A330-300",
+        "A340-200",
+        "A340-300",
+        "A340-500",
+        "A340-600",
+        "A380"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        36
+      ],
+      "manufacturer": "Antonov",
+      "manufacturer_id": 2,
+      "singleton": true,
+      "variants": [
+        "An-12"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        40,
+        90
+      ],
+      "manufacturer": "Beechcraft",
+      "manufacturer_id": 3,
+      "singleton": false,
+      "variants": [
+        "Beechcraft 1900",
+        "Model B200"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        41
+      ],
+      "manufacturer": "Boeing",
+      "manufacturer_id": 4,
+      "singleton": false,
+      "variants": [
+        "707-320",
+        "727-200",
+        "737-200",
+        "737-300",
+        "737-400",
+        "737-500",
+        "737-600",
+        "737-700",
+        "737-800",
+        "737-900",
+        "747-100",
+        "747-200",
+        "747-300",
+        "747-400",
+        "757-200",
+        "757-300",
+        "767-200",
+        "767-300",
+        "767-400",
+        "777-200",
+        "777-300",
+        "Boeing 717"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        79
+      ],
+      "manufacturer": "Bombardier Aerospace",
+      "manufacturer_id": 5,
+      "singleton": true,
+      "variants": [
+        "Global Express"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        37,
+        38,
+        39,
+        82
+      ],
+      "manufacturer": "British Aerospace",
+      "manufacturer_id": 6,
+      "singleton": false,
+      "variants": [
+        "BAE 146-200",
+        "BAE 146-300",
+        "BAE-125",
+        "Hawk T1"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        44,
+        45,
+        46,
+        51
+      ],
+      "manufacturer": "Canadair",
+      "manufacturer_id": 7,
+      "singleton": false,
+      "variants": [
+        "CRJ-200",
+        "CRJ-700",
+        "CRJ-900",
+        "Challenger 600"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "manufacturer": "Cessna",
+      "manufacturer_id": 8,
+      "singleton": false,
+      "variants": [
+        "Cessna 172",
+        "Cessna 208",
+        "Cessna 525",
+        "Cessna 560"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        92
+      ],
+      "manufacturer": "Cirrus Aircraft",
+      "manufacturer_id": 9,
+      "singleton": true,
+      "variants": [
+        "SR-20"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        74,
+        75
+      ],
+      "manufacturer": "Dassault Aviation",
+      "manufacturer_id": 10,
+      "singleton": false,
+      "variants": [
+        "Falcon 2000",
+        "Falcon 900"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        63
+      ],
+      "manufacturer": "Dornier",
+      "manufacturer_id": 11,
+      "singleton": true,
+      "variants": [
+        "Dornier 328"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        43,
+        53,
+        54,
+        55
+      ],
+      "manufacturer": "Douglas Aircraft Company",
+      "manufacturer_id": 12,
+      "singleton": false,
+      "variants": [
+        "C-47",
+        "DC-3",
+        "DC-6",
+        "DC-8"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70
+      ],
+      "manufacturer": "Embraer",
+      "manufacturer_id": 13,
+      "singleton": false,
+      "variants": [
+        "E-170",
+        "E-190",
+        "E-195",
+        "EMB-120",
+        "ERJ 135",
+        "ERJ 145",
+        "Embraer Legacy 600"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        71
+      ],
+      "manufacturer": "Eurofighter",
+      "manufacturer_id": 14,
+      "singleton": true,
+      "variants": [
+        "Eurofighter Typhoon"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        89
+      ],
+      "manufacturer": "Fairchild",
+      "manufacturer_id": 15,
+      "singleton": true,
+      "variants": [
+        "Metroliner"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        76,
+        77,
+        78
+      ],
+      "manufacturer": "Fokker",
+      "manufacturer_id": 16,
+      "singleton": false,
+      "variants": [
+        "Fokker 100",
+        "Fokker 50",
+        "Fokker 70"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        80,
+        81
+      ],
+      "manufacturer": "Gulfstream Aerospace",
+      "manufacturer_id": 17,
+      "singleton": false,
+      "variants": [
+        "Gulfstream IV",
+        "Gulfstream V"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        83
+      ],
+      "manufacturer": "Ilyushin",
+      "manufacturer_id": 18,
+      "singleton": true,
+      "variants": [
+        "Il-76"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        42,
+        84
+      ],
+      "manufacturer": "Lockheed Corporation",
+      "manufacturer_id": 19,
+      "singleton": false,
+      "variants": [
+        "C-130",
+        "L-1011"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        72
+      ],
+      "manufacturer": "Lockheed Martin",
+      "manufacturer_id": 20,
+      "singleton": true,
+      "variants": [
+        "F-16A/B"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        52,
+        56,
+        73,
+        85,
+        86,
+        87,
+        88
+      ],
+      "manufacturer": "McDonnell Douglas",
+      "manufacturer_id": 21,
+      "singleton": false,
+      "variants": [
+        "DC-10",
+        "DC-9-30",
+        "F/A-18",
+        "MD-11",
+        "MD-80",
+        "MD-87",
+        "MD-90"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        96
+      ],
+      "manufacturer": "Panavia",
+      "manufacturer_id": 22,
+      "singleton": true,
+      "variants": [
+        "Tornado"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        91
+      ],
+      "manufacturer": "Piper",
+      "manufacturer_id": 23,
+      "singleton": true,
+      "variants": [
+        "PA-28"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        62
+      ],
+      "manufacturer": "Robin",
+      "manufacturer_id": 24,
+      "singleton": true,
+      "variants": [
+        "DR-400"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        93,
+        94
+      ],
+      "manufacturer": "Saab",
+      "manufacturer_id": 25,
+      "singleton": false,
+      "variants": [
+        "Saab 2000",
+        "Saab 340"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        95
+      ],
+      "manufacturer": "Supermarine",
+      "manufacturer_id": 26,
+      "singleton": true,
+      "variants": [
+        "Spitfire"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        97,
+        98
+      ],
+      "manufacturer": "Tupolev",
+      "manufacturer_id": 27,
+      "singleton": false,
+      "variants": [
+        "Tu-134",
+        "Tu-154"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        99
+      ],
+      "manufacturer": "Yakovlev",
+      "manufacturer_id": 28,
+      "singleton": true,
+      "variants": [
+        "Yak-42"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        57,
+        58,
+        59,
+        60,
+        61
+      ],
+      "manufacturer": "de Havilland",
+      "manufacturer_id": 29,
+      "singleton": false,
+      "variants": [
+        "DH-82",
+        "DHC-1",
+        "DHC-6",
+        "DHC-8-100",
+        "DHC-8-300"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "global_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "key": "manufacturer",
+      "kind": "EfficientNet-B0",
+      "parent_id": null,
+      "parent_stage": null,
+      "stage": "manufacturer"
+    },
+    {
+      "global_ids": [
+        34,
+        35
+      ],
+      "key": "variant-manufacturer-0",
+      "kind": "EfficientNet-B0",
+      "parent_id": 0,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "key": "variant-manufacturer-1",
+      "kind": "EfficientNet-B0",
+      "parent_id": 1,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        40,
+        90
+      ],
+      "key": "variant-manufacturer-3",
+      "kind": "EfficientNet-B0",
+      "parent_id": 3,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        41
+      ],
+      "key": "variant-manufacturer-4",
+      "kind": "EfficientNet-B0",
+      "parent_id": 4,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        37,
+        38,
+        39,
+        82
+      ],
+      "key": "variant-manufacturer-6",
+      "kind": "EfficientNet-B0",
+      "parent_id": 6,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        44,
+        45,
+        46,
+        51
+      ],
+      "key": "variant-manufacturer-7",
+      "kind": "EfficientNet-B0",
+      "parent_id": 7,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "key": "variant-manufacturer-8",
+      "kind": "EfficientNet-B0",
+      "parent_id": 8,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        74,
+        75
+      ],
+      "key": "variant-manufacturer-10",
+      "kind": "EfficientNet-B0",
+      "parent_id": 10,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        43,
+        53,
+        54,
+        55
+      ],
+      "key": "variant-manufacturer-12",
+      "kind": "EfficientNet-B0",
+      "parent_id": 12,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70
+      ],
+      "key": "variant-manufacturer-13",
+      "kind": "EfficientNet-B0",
+      "parent_id": 13,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        76,
+        77,
+        78
+      ],
+      "key": "variant-manufacturer-16",
+      "kind": "EfficientNet-B0",
+      "parent_id": 16,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        80,
+        81
+      ],
+      "key": "variant-manufacturer-17",
+      "kind": "EfficientNet-B0",
+      "parent_id": 17,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        42,
+        84
+      ],
+      "key": "variant-manufacturer-19",
+      "kind": "EfficientNet-B0",
+      "parent_id": 19,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        52,
+        56,
+        73,
+        85,
+        86,
+        87,
+        88
+      ],
+      "key": "variant-manufacturer-21",
+      "kind": "EfficientNet-B0",
+      "parent_id": 21,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        93,
+        94
+      ],
+      "key": "variant-manufacturer-25",
+      "kind": "EfficientNet-B0",
+      "parent_id": 25,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        97,
+        98
+      ],
+      "key": "variant-manufacturer-27",
+      "kind": "EfficientNet-B0",
+      "parent_id": 27,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        57,
+        58,
+        59,
+        60,
+        61
+      ],
+      "key": "variant-manufacturer-29",
+      "kind": "EfficientNet-B0",
+      "parent_id": 29,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    }
+  ]
+}

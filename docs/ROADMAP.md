@@ -1,6 +1,6 @@
 # Implementation roadmap and acceptance checklist
 
-**Status:** Phases 0–5 implemented, with generic ImageNet-frozen and three-stage measurements deferred by the execution-order gate. See README for operational commands, [PHASE2.md](PHASE2.md) for inference/evaluation contracts, [PHASE3.md](PHASE3.md) for FLAT training/export/reporting, [PHASE4.md](PHASE4.md) for independent cascades, [PHASE5.md](PHASE5.md) for shared heads, and `results/` for measured evidence. The full test benchmark remains **proposed**. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the experiment's scientific contract.
+**Status:** Phases 0–6 implemented, including the complete primary three-seed official test benchmark. Generic ImageNet-frozen, three-stage, FP16 experimental and introduced-class measurements remain unmeasured follow-up work. See README for operational commands, [PHASE2.md](PHASE2.md) for evaluation, [PHASE3.md](PHASE3.md) for FLAT, [PHASE4.md](PHASE4.md) for independent cascades, [PHASE5.md](PHASE5.md) for shared heads, [PHASE6.md](PHASE6.md) for benchmarking/publication, and `results/` for measured evidence. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the scientific contract.
 
 ## Proposed repository structure
 
@@ -174,16 +174,28 @@ for CPU/CUDA checks, source hashes, training log and nested publication audits.
 
 ## Phase 6 — Benchmark harness
 
-- [ ] Measure model-path and full-pipeline latency (p50/mean/p95/p99), plus sustained FPS.
-- [ ] Include preprocessing, host/device transfer, routing, and final label conversion in the declared full-pipeline boundary.
-- [ ] Warm up models/representative routes and synchronize GPU before/after timed regions.
-- [ ] Run on every test image, batch size 1, at least 5 timed passes; retain per-image latency and branch length.
-- [ ] Capture peak GPU memory, total model storage, per-path executed backbone count, and conditional MAC estimates.
-- [ ] Record device name, clocks/power regime, framework versions, dtype (FP32 first), model residency and any OOM cases.
-- [ ] Add an optional separate FP16 pass on the same checkpoints.
-- [ ] Compare inference by actual image paths, not just mean classifier cost.
+- [x] Measure model-path and full-pipeline latency (p50/mean/p95/p99), plus sustained FPS.
+- [x] Include preprocessing, host/device transfer, routing, and final label conversion in the declared full-pipeline boundary.
+- [x] Warm up models/representative routes and synchronize GPU before/after timed regions.
+- [x] Run on every test image, batch size 1, at least 5 timed passes; retain per-image latency and branch length.
+- [x] Capture peak GPU memory, total model storage, per-path executed backbone count, and conditional MAC estimates.
+- [x] Record device name, clocks/power regime, framework versions, dtype (FP32 first), model residency and any OOM cases.
+- [x] Add an optional separate FP16 pass on the same checkpoints (operational and CUDA integration-checked; full FP16 experimental measurements remain unmeasured).
+- [x] Compare inference by actual image paths, not just mean classifier cost.
 
 **Exit criterion:** Repeated runs on a fixed set of images produce plausible distributions and all models share the same measurement boundary; no unsynchronized CUDA timing.
+
+**Measured:** Complete official test split for FLAT, IND-2 and FT-FROZEN-2,
+seeds 42/43/44, with 149,985 retained timing observations across 45 passes.
+Mean seed-p95 full-pipeline latency is 32.47 / 57.15 / 34.26 ms, respectively.
+Shared versus independent macro recall differs by +9.50 pp and p95 is 40.05%
+lower on this hardware. See the [report, learning curves and complete networks](../results/stage6/benchmark-20261028T022812Z-fa52c222/REPORT.md)
+and [operational/audit contracts](PHASE6.md). Introduced-class updates remain Phase 7;
+broader Phase 8 analysis/publication remains separate.
+
+**Checks:** 270 CPU tests passed (one CUDA-only skip); all 36 focused CUDA checks
+passed. Every original image checksum was rechecked, and an artifact-only rebuild
+preserved all 189 benchmark files byte for byte. See the [validation evidence](../results/stage6/validation-20261028T023745Z-a38164e6/REPORT.md).
 
 ## Phase 7 — Incremental specialist update
 
@@ -207,9 +219,9 @@ for CPU/CUDA checks, source hashes, training log and nested publication audits.
 
 **Exit criterion:** A collaborator can follow a single README sequence to reproduce the table/plots (subject to owning the dataset and compatible hardware), and can trace each value back to versioned artifacts.
 
-## Proposed commands (interface to implement, not operational today)
+## Operational interfaces and proposed aggregate aliases
 
-Data preparation is operational as `python -m cls_balance.prepare --config configs/data.yaml` (see README). Phase-two evaluation is an operational Python API; a saved run can be audited with `python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`. FLAT training is operational as `python -m cls_balance.train --config configs/flat.yaml`; reporting is `python -m cls_balance.report_flat --runs <completed-run-directories>`. Independent training is `python -m cls_balance.train_independent --config configs/independent.yaml`, reporting/auditing is `python -m cls_balance.report_independent --runs <completed-run-directories>`, and residency probes are `python -m cls_balance.residency --run <completed-run-directory>`. Shared training is `python -m cls_balance.train_shared --config configs/shared.yaml`; reporting/auditing is `python -m cls_balance.report_shared --runs <completed-run-directories>`. The all-architecture and benchmark commands below remain planned:
+Data preparation is operational as `python -m cls_balance.prepare --config configs/data.yaml` (see README). Phase-two evaluation is an operational Python API; a saved run can be audited with `python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`. FLAT training is operational as `python -m cls_balance.train --config configs/flat.yaml`; reporting is `python -m cls_balance.report_flat --runs <completed-run-directories>`. Independent training is `python -m cls_balance.train_independent --config configs/independent.yaml`, reporting/auditing is `python -m cls_balance.report_independent --runs <completed-run-directories>`, and residency probes are `python -m cls_balance.residency --run <completed-run-directory>`. Shared training is `python -m cls_balance.train_shared --config configs/shared.yaml`; reporting/auditing is `python -m cls_balance.report_shared --runs <completed-run-directories>`. The common test benchmark is operational as `python -m cls_balance.benchmark --config configs/benchmark.yaml`; publish or audit with `python -m cls_balance.report_benchmark --suite <completed-suite-directory> --output-root results/stage6`. The generic aggregate aliases below remain planned:
 
 ```bash
 python -m scripts.prepare_data --config configs/benchmark.yaml

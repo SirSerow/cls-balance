@@ -1,0 +1,19 @@
+{
+  "batch_size": 1,
+  "cpu_threads": 6,
+  "data_root": "S:\\Projects\\cls-balance\\data",
+  "depth": 2,
+  "device": "cuda:0",
+  "output_root": "S:\\Projects\\cls-balance\\runs\\benchmark",
+  "passes": 5,
+  "precision": "fp32",
+  "prepared_run": "S:\\Projects\\cls-balance\\runs\\data\\data-20261024T212625Z-4cf9b394",
+  "residency": "all-resident",
+  "routing": "predicted",
+  "runs": [
+    "shared-ft-frozen-s42-20261027T140957Z-b392fc3a"
+  ],
+  "seed": 42,
+  "split": "test",
+  "warmup_iterations": 32
+}

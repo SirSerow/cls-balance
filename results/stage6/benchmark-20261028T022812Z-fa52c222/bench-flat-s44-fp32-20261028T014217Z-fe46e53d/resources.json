@@ -1,0 +1,36 @@
+{
+  "architecture": "FLAT",
+  "backbone_source": null,
+  "checkpoint_files": [
+    {
+      "bytes": 16939695,
+      "path": "flat.pt",
+      "sha256": "96bd395d3100124323cb9642413c64934da03fd76509bb378b47ab6930dc8ab1"
+    }
+  ],
+  "mac_convention": "Conv2d/Linear only; 1 multiply-accumulate = 1 MAC; other ops excluded",
+  "macs_by_node": {
+    "variant": 384662752
+  },
+  "model_sha256_fp32": "0adc75b90793ff7ace2e168ea19500001fe7b25d72b0aae4929281550fb62634",
+  "model_state_unchanged": true,
+  "oom": false,
+  "peak_gpu_allocated_bytes": 62432256,
+  "peak_gpu_reserved_bytes": 75497472,
+  "peak_process_resident_bytes": null,
+  "seed": 44,
+  "stored_checkpoint_bytes": 16939695,
+  "total_model_parameters": 4135648,
+  "training_resources": {
+    "deployment_bytes": 16939695,
+    "encoder_bytes": 16426803,
+    "optimizer_steps": 6270,
+    "timing_scope": "epoch training+validation+selection; excludes initialization and final evaluation",
+    "trainable_parameters": 4135648,
+    "training_gpu_hours": 0.5161796575000002,
+    "training_image_exposures": 100020,
+    "training_wall_seconds": 1858.2467670000005
+  },
+  "training_run_id": "flat-s44-20261025T041556Z-40c093b2",
+  "training_summary_sha256": "c92549c55e1bb19c7276e505f8df09c8169683afb00f4d6ffe082ad817e174b3"
+}

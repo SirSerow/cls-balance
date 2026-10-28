@@ -1,0 +1,56 @@
+Auditing selected checkpoint: flat-s42-20261025T031340Z-5385e556
+Auditing selected checkpoint: ind-s42-20261026T125759Z-6d87251e
+Auditing selected checkpoint: shared-ft-frozen-s42-20261027T140957Z-b392fc3a
+Auditing selected checkpoint: ind-s43-20261026T141824Z-b8c12b2c
+Auditing selected checkpoint: shared-ft-frozen-s43-20261027T142909Z-e9730962
+Auditing selected checkpoint: flat-s43-20261025T034152Z-d43e9130
+Auditing selected checkpoint: shared-ft-frozen-s44-20261027T144302Z-c8142ff8
+Auditing selected checkpoint: flat-s44-20261025T041556Z-40c093b2
+Auditing selected checkpoint: ind-s44-20261026T153237Z-2b462c75
+Frozen benchmark suite: S:\Projects\cls-balance\runs\benchmark\benchmark-suite-20261028T002829Z-095436bf
+{"run": "bench-flat-s42-fp32-20261028T002835Z-ee443471", "pass": 0, "images": 3333, "elapsed_seconds": 81.96878410002682, "sustained_fps": 40.661820674718406}
+{"run": "bench-flat-s42-fp32-20261028T002835Z-ee443471", "pass": 1, "images": 3333, "elapsed_seconds": 81.98233110000729, "sustained_fps": 40.65510159663786}
+{"run": "bench-flat-s42-fp32-20261028T002835Z-ee443471", "pass": 2, "images": 3333, "elapsed_seconds": 81.45482729998184, "sustained_fps": 40.91838520171711}
+{"run": "bench-flat-s42-fp32-20261028T002835Z-ee443471", "pass": 3, "images": 3333, "elapsed_seconds": 81.55532439998933, "sustained_fps": 40.86796324484286}
+{"run": "bench-flat-s42-fp32-20261028T002835Z-ee443471", "pass": 4, "images": 3333, "elapsed_seconds": 81.65671029998339, "sustained_fps": 40.817221116984896}
+{"run": "bench-ind-2-s42-fp32-20261028T003546Z-a7abe1e8", "pass": 0, "images": 3333, "elapsed_seconds": 157.23631279999972, "sustained_fps": 21.197393532367325}
+{"run": "bench-ind-2-s42-fp32-20261028T003546Z-a7abe1e8", "pass": 1, "images": 3333, "elapsed_seconds": 156.84726450001472, "sustained_fps": 21.24997213451362}
+{"run": "bench-ind-2-s42-fp32-20261028T003546Z-a7abe1e8", "pass": 2, "images": 3333, "elapsed_seconds": 156.21636500000022, "sustained_fps": 21.33579282810732}
+{"run": "bench-ind-2-s42-fp32-20261028T003546Z-a7abe1e8", "pass": 3, "images": 3333, "elapsed_seconds": 155.60468540000147, "sustained_fps": 21.419663498127342}
+{"run": "bench-ind-2-s42-fp32-20261028T003546Z-a7abe1e8", "pass": 4, "images": 3333, "elapsed_seconds": 157.479122299992, "sustained_fps": 21.16471028871215}
+{"run": "bench-ft-frozen-2-s42-fp32-20261028T005145Z-77db98d3", "pass": 0, "images": 3333, "elapsed_seconds": 87.64698310001404, "sustained_fps": 38.02754963278897}
+{"run": "bench-ft-frozen-2-s42-fp32-20261028T005145Z-77db98d3", "pass": 1, "images": 3333, "elapsed_seconds": 86.20543950001593, "sustained_fps": 38.66345348195092}
+{"run": "bench-ft-frozen-2-s42-fp32-20261028T005145Z-77db98d3", "pass": 2, "images": 3333, "elapsed_seconds": 88.4724728000001, "sustained_fps": 37.67273474467638}
+{"run": "bench-ft-frozen-2-s42-fp32-20261028T005145Z-77db98d3", "pass": 3, "images": 3333, "elapsed_seconds": 88.16956979999668, "sustained_fps": 37.80215790505224}
+{"run": "bench-ft-frozen-2-s42-fp32-20261028T005145Z-77db98d3", "pass": 4, "images": 3333, "elapsed_seconds": 86.9803557000123, "sustained_fps": 38.31899712499714}
+{"run": "bench-ind-2-s43-fp32-20261028T010100Z-94b40e55", "pass": 0, "images": 3333, "elapsed_seconds": 156.8507293999719, "sustained_fps": 21.249502713505375}
+{"run": "bench-ind-2-s43-fp32-20261028T010100Z-94b40e55", "pass": 1, "images": 3333, "elapsed_seconds": 156.78270139999222, "sustained_fps": 21.258722870813894}
+{"run": "bench-ind-2-s43-fp32-20261028T010100Z-94b40e55", "pass": 2, "images": 3333, "elapsed_seconds": 158.5063970000192, "sustained_fps": 21.02754250353439}
+{"run": "bench-ind-2-s43-fp32-20261028T010100Z-94b40e55", "pass": 3, "images": 3333, "elapsed_seconds": 156.6002999000193, "sustained_fps": 21.28348414484479}
+{"run": "bench-ind-2-s43-fp32-20261028T010100Z-94b40e55", "pass": 4, "images": 3333, "elapsed_seconds": 156.45592139998917, "sustained_fps": 21.303124676751484}
+{"run": "bench-ft-frozen-2-s43-fp32-20261028T011700Z-0d6258ed", "pass": 0, "images": 3333, "elapsed_seconds": 85.42964009998832, "sustained_fps": 39.01456211332506}
+{"run": "bench-ft-frozen-2-s43-fp32-20261028T011700Z-0d6258ed", "pass": 1, "images": 3333, "elapsed_seconds": 87.35587369999848, "sustained_fps": 38.154274679300215}
+{"run": "bench-ft-frozen-2-s43-fp32-20261028T011700Z-0d6258ed", "pass": 2, "images": 3333, "elapsed_seconds": 88.32743350000237, "sustained_fps": 37.7345957867089}
+{"run": "bench-ft-frozen-2-s43-fp32-20261028T011700Z-0d6258ed", "pass": 3, "images": 3333, "elapsed_seconds": 88.04870449998998, "sustained_fps": 37.85404928928147}
+{"run": "bench-ft-frozen-2-s43-fp32-20261028T011700Z-0d6258ed", "pass": 4, "images": 3333, "elapsed_seconds": 87.37388530001044, "sustained_fps": 38.14640940546113}
+{"run": "bench-flat-s43-fp32-20261028T012609Z-34e191e9", "pass": 0, "images": 3333, "elapsed_seconds": 80.67520110000623, "sustained_fps": 41.313810868204236}
+{"run": "bench-flat-s43-fp32-20261028T012609Z-34e191e9", "pass": 1, "images": 3333, "elapsed_seconds": 80.02562790000229, "sustained_fps": 41.64915774437684}
+{"run": "bench-flat-s43-fp32-20261028T012609Z-34e191e9", "pass": 2, "images": 3333, "elapsed_seconds": 79.63516040000832, "sustained_fps": 41.85337209416422}
+{"run": "bench-flat-s43-fp32-20261028T012609Z-34e191e9", "pass": 3, "images": 3333, "elapsed_seconds": 80.84456309999223, "sustained_fps": 41.22726219545023}
+{"run": "bench-flat-s43-fp32-20261028T012609Z-34e191e9", "pass": 4, "images": 3333, "elapsed_seconds": 81.06201839999994, "sustained_fps": 41.11666679150938}
+{"run": "bench-ft-frozen-2-s44-fp32-20261028T013311Z-d37bc3f4", "pass": 0, "images": 3333, "elapsed_seconds": 87.03470989997732, "sustained_fps": 38.29506646061526}
+{"run": "bench-ft-frozen-2-s44-fp32-20261028T013311Z-d37bc3f4", "pass": 1, "images": 3333, "elapsed_seconds": 87.23808189999545, "sustained_fps": 38.205791867601505}
+{"run": "bench-ft-frozen-2-s44-fp32-20261028T013311Z-d37bc3f4", "pass": 2, "images": 3333, "elapsed_seconds": 87.53974949999247, "sustained_fps": 38.074132254631216}
+{"run": "bench-ft-frozen-2-s44-fp32-20261028T013311Z-d37bc3f4", "pass": 3, "images": 3333, "elapsed_seconds": 86.59944499999983, "sustained_fps": 38.48754457952943}
+{"run": "bench-ft-frozen-2-s44-fp32-20261028T013311Z-d37bc3f4", "pass": 4, "images": 3333, "elapsed_seconds": 86.75993840000592, "sustained_fps": 38.41634816098224}
+{"run": "bench-flat-s44-fp32-20261028T014217Z-fe46e53d", "pass": 0, "images": 3333, "elapsed_seconds": 80.50844159998815, "sustained_fps": 41.399385378246976}
+{"run": "bench-flat-s44-fp32-20261028T014217Z-fe46e53d", "pass": 1, "images": 3333, "elapsed_seconds": 80.50407980001182, "sustained_fps": 41.401628442680625}
+{"run": "bench-flat-s44-fp32-20261028T014217Z-fe46e53d", "pass": 2, "images": 3333, "elapsed_seconds": 80.11054680001689, "sustained_fps": 41.6050087427352}
+{"run": "bench-flat-s44-fp32-20261028T014217Z-fe46e53d", "pass": 3, "images": 3333, "elapsed_seconds": 81.06990480000968, "sustained_fps": 41.11266700290491}
+{"run": "bench-flat-s44-fp32-20261028T014217Z-fe46e53d", "pass": 4, "images": 3333, "elapsed_seconds": 81.7995404000103, "sustained_fps": 40.74595020584712}
+{"run": "bench-ind-2-s44-fp32-20261028T014922Z-845ce944", "pass": 0, "images": 3333, "elapsed_seconds": 156.77510709999478, "sustained_fps": 21.25975265878234}
+{"run": "bench-ind-2-s44-fp32-20261028T014922Z-845ce944", "pass": 1, "images": 3333, "elapsed_seconds": 157.52756019998924, "sustained_fps": 21.158202385465675}
+{"run": "bench-ind-2-s44-fp32-20261028T014922Z-845ce944", "pass": 2, "images": 3333, "elapsed_seconds": 158.03753480000887, "sustained_fps": 21.0899265431962}
+{"run": "bench-ind-2-s44-fp32-20261028T014922Z-845ce944", "pass": 3, "images": 3333, "elapsed_seconds": 156.1156258000119, "sustained_fps": 21.34956051272957}
+{"run": "bench-ind-2-s44-fp32-20261028T014922Z-845ce944", "pass": 4, "images": 3333, "elapsed_seconds": 157.31982939998852, "sustained_fps": 21.186140442129435}
+S:\Projects\cls-balance\runs\benchmark\benchmark-suite-20261028T002829Z-095436bf

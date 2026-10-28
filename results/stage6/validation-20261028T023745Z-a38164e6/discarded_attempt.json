@@ -1,0 +1,4 @@
+{
+  "reason": "Stopped before any completed timed pass; CPU regression suite was still active, so restart without competing test workload. No measurements from this attempt are used.",
+  "status": "incomplete_discarded"
+}

@@ -1,0 +1,13 @@
+{
+  "elapsed_seconds": 156.77510709999478,
+  "images": 3333,
+  "pass": 0,
+  "sustained_fps": 21.25975265878234,
+  "telemetry_after": {
+    "ambient_temperature": "not measured",
+    "clocks_policy": "OS/driver defaults; unlocked; no power/clock changes",
+    "nvidia_smi": "name, driver_version, pstate, temperature.gpu, power.draw [W], power.limit [W], clocks.current.sm [MHz], clocks.current.memory [MHz], utilization.gpu [%], memory.used [MiB]\nNVIDIA GeForce RTX 3060 Laptop GPU, 621.01, P3, 54.88, 20.51 W, [N/A], 1027 MHz, 6001 MHz, 19 %, 839 MiB",
+    "os_power_scheme": "Power Scheme GUID: 6a7a5845-d85e-4b59-8557-2891ca96bd9d  (г‚«г‚№г‚їгѓ  гѓ—гѓ©гѓі 1)",
+    "system_load": "interactive desktop; no exclusive GPU reservation"
+  }
+}

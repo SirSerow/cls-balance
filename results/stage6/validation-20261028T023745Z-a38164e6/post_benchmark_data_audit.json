@@ -1,0 +1,22 @@
+{
+  "image_checksum_inventory_sha256": "6b123e6c081b19a265a2cff95cc31c433294b4e8166a9602ba323e68b1876b8e",
+  "images_checked": 10000,
+  "manifest_records_sha256": {
+    "test": "90a7031e2d5f55e13329088e9d72179235058bf68aaa3427fa894de1ac8be32e",
+    "train": "5c09dfa132122f49b9795c442366f503173113cc71dca38f46f35db82847aa0a",
+    "val": "9799cbc8a8398f6fa50a1502ee0f9cca976855b908368d90e58b4349c56fedf4"
+  },
+  "prepared_run_id": "data-20261024T212625Z-4cf9b394",
+  "prepared_summary_sha256": "1d4536a5139385a482e4a0e7e05b932d2573669f116450de324874197e570265",
+  "preprocessing_sha256": "173fd93e7491bb9048ffe5257c364450fa69b3f0e1ac4b1a4cf965eddea78adc",
+  "scope": "post-benchmark recheck of every image against original preparation; no pixels or training IDs",
+  "split_counts": {
+    "test": 3333,
+    "train": 3334,
+    "val": 3333
+  },
+  "status": "verified",
+  "taxonomy_sha256": "a79cf6f7fe8a7a028c1f2b51619b307750a241c26d863c0fc983423a6dd48177",
+  "training_preparation_binding_verified": true,
+  "training_runs_checked": 9
+}

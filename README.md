@@ -2,7 +2,7 @@
 
 A reproducible research project comparing **independent EfficientNet cascades** against a **single frozen EfficientNet with independently trainable specialist heads** on [FGVC-Aircraft](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/).
 
-> **Status:** Phases 0–5 are implemented, with complete three-seed validation results for FLAT, IND-2 and FT-FROZEN-2. Validation macro recall: **FLAT 65.58% ± 0.10 pp**, **IND-2 56.13% ± 1.17 pp**, **FT-FROZEN-2 63.43% ± 0.25 pp** (sample standard deviations). See the [Phase 5 comparison, learning curves and explanatory diagram](results/stage5/shared-20261027T145809Z-ee48fbad/REPORT.md). Test inference and full-pipeline latency/FPS remain Phase 6; generic ImageNet-frozen and three-stage measurements remain gated.
+> **Status:** Phases 0–6 are implemented. On all 3,333 official test images, three-seed variant macro recall is **FLAT 65.59% ± 0.37 pp**, **IND-2 53.51% ± 1.02 pp**, **FT-FROZEN-2 63.02% ± 0.93 pp** (sample SD). Mean seed-p95 full-pipeline latency is **32.47 / 57.15 / 34.26 ms**, respectively, from five batch-one FP32 passes per checkpoint. The shared cascade has **40.05% lower p95** than IND-2 on this hardware. See the [measured Phase 6 report, graphs and full networks](results/stage6/benchmark-20261028T022812Z-fa52c222/REPORT.md). Generic ImageNet-frozen, three-stage, FP16 experimental and introduced-class measurements remain separate unmeasured work.
 
 Phase two has **172 passing CPU tests**, with the suite frozen after validation.
 See the [phase-two validation report](results/stage2/validation-20261025T024200Z-cc4d2a5a/REPORT.md)
@@ -66,7 +66,9 @@ Supporting outcomes: variant top-1 accuracy and macro-F1; manufacturer/family ac
 - [Phase-three training and review](docs/PHASE3.md) — operational CUDA setup, FLAT training, encoder export, diagrams and report generation.
 - [Phase-four independent cascades](docs/PHASE4.md) — full CNN node training, predicted/oracle validation, residency policies and review plots.
 - [Phase-five shared frozen heads](docs/PHASE5.md) — independent MLP fitting, encoder/cache checks, specialist replacement and validation review.
-- [Example experiment configuration](configs/benchmark.example.yaml) — proposed settings; not an executable pipeline.
+- [Phase-six benchmark and review](docs/PHASE6.md) — synchronized full-test timings, throughput, resources, publication audits and complete network schematics.
+- [Operational benchmark configuration](configs/benchmark.yaml) — fixed selected checkpoints, all test images and five FP32 passes.
+- [Example experiment configuration](configs/benchmark.example.yaml) — broader proposed schema; not an executable pipeline.
 - [AGENTS.md](AGENTS.md) — implementation guidance for coding agents.
 
 ## Dataset note
@@ -106,8 +108,8 @@ independent cascades and shared frozen models. It implements global-ID hard/orac
 routing, singleton bypasses, full-split metrics, per-image CSVs and immutable run
 metadata. Audit a saved evaluation with
 `python -m cls_balance.evaluate --run-dir <existing-eval-run-directory>`.
-FLAT training, independent hierarchical training and shared frozen-head training
-are operational. The full test benchmark remains planned.
+FLAT training, independent hierarchical training, shared frozen-head training
+and the common full-test benchmark are operational.
 
 ## Train and review FLAT
 
@@ -175,7 +177,7 @@ audited validation predictions, local specialist scores/exposures/hashes,
 learning/loss curves, routing penalties, singleton execution paths and confusion
 matrices. Residency supports all models on device, CPU-preloaded transfer on
 demand, and disk loading on demand. The residency command measures synchronized,
-un-warmed validation probes from ready tensors; it is separate from the planned
+un-warmed validation probes from ready tensors; it is separate from the
 Phase 6 full-pipeline test benchmark and does not establish p95/FPS claims.
 
 The [three-seed report](results/stage4/independent-20261027T071605Z-64675e2e/REPORT.md)
@@ -186,8 +188,8 @@ confusion matrices, class recalls and an explanatory architecture diagram.
 The [validation evidence](results/stage4/validation-20261027T071705Z-2b712381/REPORT.md)
 contains the regression checks, measured residency probes and discarded-attempt
 records, including a user pause and a system sleep that required node retries.
-Training data and weights remain local. Test inference and full-pipeline
-latency/FPS measurements remain deferred.
+Training data and weights remain local. The separate Phase 6 runs now retain
+official test predictions and full-pipeline latency/FPS measurements.
 
 ## Train and review shared frozen heads
 
@@ -238,10 +240,43 @@ contains full/subset test logs, focused CUDA checks, the actual training log,
 source hashes and independent publication audits. No training images, image-ID
 lists, embeddings or weights are included in these publications.
 
+## Benchmark and review the selected networks
+
+The [measured report and full diagrams](results/stage6/benchmark-20261028T022812Z-fa52c222/REPORT.md)
+retain 149,985 timings and all test predictions. [Validation evidence](results/stage6/validation-20261028T023745Z-a38164e6/REPORT.md)
+includes **270 passing CPU tests (one CUDA-only skip)**, **36 passing CUDA checks**,
+the unchanged original test freeze, post-benchmark checksums for all 10,000 images,
+and a verified rebuild from published results without data or checkpoints.
+
+```powershell
+.venv-cuda/Scripts/python.exe -m cls_balance.benchmark --config configs/benchmark.yaml
+.venv-cuda/Scripts/python.exe -m cls_balance.report_benchmark --suite <completed-suite-directory> --output-root results/stage6 --preview-root .tmp/phase6-previews
+.venv-cuda/Scripts/python.exe -m cls_balance.report_benchmark --audit <published-review-directory>
+# Regenerate graphs from committed results without dataset images or weights:
+.venv-cuda/Scripts/python.exe -m cls_balance.report_benchmark --rebuild <published-review-directory> --output-root .tmp/rebuilt-phase6
+```
+
+The [operational YAML](configs/benchmark.yaml) selects the existing three-seed
+FLAT, IND-2 and FT-FROZEN-2 checkpoints. Every invocation creates an immutable
+suite after auditing all selected checkpoints and official dataset checksums.
+All 3,333 test images receive five timed batch-one FP32 passes with synchronized
+file-decode/preprocessing/transfer/predicted-route/global-ID boundaries. Separate
+nested model-path latency, observed elapsed-time FPS, every executed branch,
+singleton rates, conditional Conv2d/Linear MACs, all-model storage and GPU peaks
+are retained. Oracle diagnostics run separately, outside timing. Run regression
+tests before or after timing to avoid CPU workload interference.
+
+Publications include accuracy/latency, pass distributions, routing errors,
+confusion matrices, every specialist's training/validation curves, complete
+network diagrams expanding all 17 specialists and 13 singleton branches, and
+detailed EfficientNet/MLP internals. Checkpoint tensors, training IDs, images and
+embedding caches stay local. See [PHASE6.md](docs/PHASE6.md) for audit contracts,
+the optional separate FP16 invocation, limitations and reporting definitions.
+
 ## Scope
 
-The current implementation covers Phases 0–5, with generic frozen and three-stage experimental
-measurements gated behind the primary two-stage comparison. The original validated
+The current implementation covers Phases 0–6. Generic frozen and three-stage
+experimental measurements remain separate pending ablations. The original validated
 test suite is frozen with SHA256 checks enforced in CI; Phase 3/4/5 checks run in
-their CI workflows. Checkpoints and raw datasets stay outside Git; model results follow
+their CI workflows; Phase 6 adds benchmark/publication checks. Checkpoints and raw datasets stay outside Git; model results follow
 [RESULTS_TEMPLATE.md](docs/RESULTS_TEMPLATE.md).

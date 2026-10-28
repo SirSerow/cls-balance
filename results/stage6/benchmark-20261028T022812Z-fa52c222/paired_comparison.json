@@ -1,0 +1,10 @@
+{
+  "ci95_pp": [
+    8.326663695781336,
+    10.599487522281642
+  ],
+  "difference_pp": 9.503565062388592,
+  "method": "paired image bootstrap within every variant; same resample across fixed seeds; percentile CI; not training-seed uncertainty",
+  "replicates": 2000,
+  "rng_seed": 6006
+}

@@ -1,0 +1,22 @@
+{
+  "artifacts_sha256": {
+    "REPORT.md": "dd607a363497427fd5674bf6a82222e5413279a115b160d23bd33c115a907b99",
+    "benchmark.log": "dc7d9e34f7f2b87353ae3758cd14fa3586adbcf394f4aedd1dcc3c0f21ddb3c8",
+    "cpu-tests.txt": "de0e0d80c00991a7d50c414416830ace7a8d566de336bcdb32a069657fc44c36",
+    "cpu-tests.xml": "b73514a3aa3f58e71e3c3f32a7cce689e40ae6957b3368e49f236dbfbea612bc",
+    "cuda-phase6-tests.txt": "8fb89a77996c90f9bf83cfa540dd1462224f0ccce859321285188c0f9548e3e1",
+    "discarded_attempt.json": "efc277167ba4bb424c9cd26fe80e6bed028b192e57e1b6c1fee4c473f57d0fdc",
+    "environment.json": "83ad749578b8d36046257068db505476117c7e943cf888bc6d9fead12f0d1142",
+    "frozen-suite.json": "5dc6551eee1d926252ce59ccc1c0975304c6721162bf15dd71769754b7c0330f",
+    "frozen_matrix.json": "03760b85062a13fe4ee7bede45a63b14df150cba23ed7ab118d05c2c54329637",
+    "post_benchmark_data_audit.json": "664a37ea4bbb8a533efa30fed9ab8af799b9ffea13cbb249ac5f82c73a7f898f",
+    "publication-rejected.log": "3e75426a703448ff38beb07c6c8f207a88ed6c9f8474119b010b008adae63c14",
+    "publication_audit.json": "851b5d6d03145458d7ccfe005d66205b9b1e555cad736e66db8097c963a50340",
+    "rebuild_audit.json": "69d9a818b62a17251ab8cdc49b8ed51d7a47be1eb497876d3b25a448293d419a",
+    "source_hashes.json": "1d58575001c210e6a171e7714ecf16c21db92dc5fb75df3b56d2bbe94e7871bf",
+    "suite.json": "a9c28e2f14cde6a0344944dcfc5839026bf0cf5018e8547ae8b8d2b501c60bcb"
+  },
+  "run_id": "validation-20261028T023745Z-a38164e6",
+  "scope": "actual check output and benchmark lineage; no training data or tensors",
+  "status": "complete"
+}
