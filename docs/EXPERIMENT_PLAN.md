@@ -1,7 +1,7 @@
 # Experiment specification — FGVC-Aircraft
 
 **Project:** cls-balance  
-**Status:** Phases 0–6 implemented. FLAT, IND-2 and FT-FROZEN-2 have complete validation and official test evaluations for seeds 42/43/44, plus five synchronized batch-one FP32 benchmark passes per checkpoint. Test macro recall is 65.59% / 53.51% / 63.02%; mean seed-p95 full-pipeline latency is 32.47 / 57.15 / 34.26 ms. Shared fitting, seed-matched encoder loading, training-only augmented caches, compatible head replacement, common benchmarking and immutable review publication are operational. See the [Phase 6 report and full network diagrams](../results/stage6/benchmark-20261028T022812Z-fa52c222/REPORT.md). Generic ImageNet-frozen, three-stage, FP16 experimental and introduced-class measurements remain unmeasured follow-up work.
+**Status:** Phases 0–7 implemented. FLAT, IND-2 and FT-FROZEN-2 have complete validation and official test evaluations for seeds 42/43/44, plus five synchronized batch-one FP32 benchmark passes per checkpoint. Test macro recall is 65.59% / 53.51% / 63.02%; mean seed-p95 full-pipeline latency is 32.47 / 57.15 / 34.26 ms. Shared fitting, seed-matched encoder loading, training-only augmented caches, compatible head replacement, common benchmarking and immutable review publication are operational. See the [Phase 6 report and full network diagrams](../results/stage6/benchmark-20261028T022812Z-fa52c222/REPORT.md). The [Phase 7 specialist-introduction report](../results/stage7/incremental-20261029T102022Z-dd4acc20/REPORT.md) adds three-seed measurements from fresh 99-class initial systems, with audited replacement of only the affected specialist. Generic ImageNet-frozen, three-stage and FP16 experimental measurements remain unmeasured follow-up work.
 **Main hypothesis:** A single frozen, task-adapted EfficientNet backbone plus independently trained specialist heads can approach the accuracy of independently trained EfficientNet cascades with substantially lower end-to-end latency and storage cost.  
 **Primary task:** Predict the **aircraft variant** from a single RGB image. Manufacturer and family are intermediate or derived outputs, not substitutes for correct variant prediction.
 
@@ -215,6 +215,15 @@ This is the key extensibility demonstration, with **no contamination of the init
 8. Report new-variant recall, updated specialist old-class recall, unchanged-family accuracy, overall accuracy, trainable parameter count, elapsed update time, and saved replacement artifact size.
 
 If the new variant belongs to an initially empty family, this is a *new-family routing* experiment and must be reported separately; it is not a pure specialist update. An update is modular only if the backbone and all unrelated heads are bit-for-bit unchanged and their version compatibility is preserved. As a functional test, unaffected heads should produce exactly the same logits when passed the same cached features; their *frequency of invocation* may still change if the router is modified.
+
+**Phase 7 implementation note:** The reduced active taxonomy retains original
+global IDs via a 99-label mask rather than renumbering classes. All before/after
+test evaluations retain the same 3,333 official images; initial headline accuracy
+uses the 99 known classes, with retrospective all-100/new-class-before scores
+explicitly marked as diagnostics. The training-only rule also requires the held-out
+variant's family to retain another variant. These choices were fixed before the
+successful fitting run. See [PHASE7.md](PHASE7.md) for exact source, timing and
+reproduction contracts.
 
 ## 8. Reporting and statistics
 

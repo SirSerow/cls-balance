@@ -34,6 +34,8 @@ def model_hash(model: InferenceAdapter) -> str:
     digest.update(canonical_json({"architecture": model.architecture, "taxonomy": model.taxonomy.to_dict(),
         "modules": {name: f"{type(m).__module__}.{type(m).__qualname__}" for name, m in model.named_modules()},
         "logit_ids": {name: m.global_ids for name, m in model.named_modules() if hasattr(m, "global_ids")}}))
+    if getattr(model, "active_variant_ids", None) is not None:
+        digest.update(canonical_json({"active_variant_ids": model.active_variant_ids}))
     for name, tensor in sorted(model.state_dict().items()):
         digest.update(canonical_json({"name": name, "dtype": str(tensor.dtype), "shape": list(tensor.shape)}))
         digest.update(tensor.detach().cpu().contiguous().reshape(-1).view(torch.uint8).numpy().tobytes())

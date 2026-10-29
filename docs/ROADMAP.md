@@ -1,6 +1,6 @@
 # Implementation roadmap and acceptance checklist
 
-**Status:** Phases 0–6 implemented, including the complete primary three-seed official test benchmark. Generic ImageNet-frozen, three-stage, FP16 experimental and introduced-class measurements remain unmeasured follow-up work. See README for operational commands, [PHASE2.md](PHASE2.md) for evaluation, [PHASE3.md](PHASE3.md) for FLAT, [PHASE4.md](PHASE4.md) for independent cascades, [PHASE5.md](PHASE5.md) for shared heads, [PHASE6.md](PHASE6.md) for benchmarking/publication, and `results/` for measured evidence. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the scientific contract.
+**Status:** Phases 0–7 implemented, including the complete primary three-seed official test benchmark and the leak-free introduced-variant experiment. Generic ImageNet-frozen, three-stage and FP16 experimental measurements remain unmeasured follow-up work. See README for operational commands, [PHASE2.md](PHASE2.md) for evaluation, [PHASE3.md](PHASE3.md) for FLAT, [PHASE4.md](PHASE4.md) for independent cascades, [PHASE5.md](PHASE5.md) for shared heads, [PHASE6.md](PHASE6.md) for benchmarking/publication, [PHASE7.md](PHASE7.md) for class introduction, and `results/` for measured evidence. Treat [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) as the scientific contract.
 
 ## Proposed repository structure
 
@@ -199,14 +199,35 @@ preserved all 189 benchmark files byte for byte. See the [validation evidence](.
 
 ## Phase 7 — Incremental specialist update
 
-- [ ] Preselect a new variant from an existing multi-variant manufacturer using training taxonomy only.
-- [ ] Exclude that variant's initial train/val data from **all initial models and backbone fine-tuning**.
-- [ ] Train reduced-label initial system; save untouched backbone and unrelated head checksums.
-- [ ] Introduce new class with training data; retrain **only** affected variant specialist in independent and shared systems.
-- [ ] Evaluate new-class recall, pre-existing within-branch accuracy, outside-branch accuracy, update duration, trainable parameters and replacement checkpoint size.
-- [ ] Assert no test-image leakage and that unrelated parameters are unchanged.
+- [x] Preselect a new variant from an existing multi-variant manufacturer using training taxonomy only.
+- [x] Exclude that variant's initial train/val data from **all initial models and backbone fine-tuning**.
+- [x] Train reduced-label initial system; save untouched backbone and unrelated head checksums.
+- [x] Introduce new class with training data; retrain **only** affected variant specialist in independent and shared systems.
+- [x] Evaluate new-class recall, pre-existing within-branch accuracy, outside-branch accuracy, update duration, trainable parameters and replacement checkpoint size.
+- [x] Assert no test-image leakage and that unrelated parameters are unchanged.
 
 **Exit criterion:** A single-head update can be demonstrated and audited. The effect on unaffected classes is measured, not assumed.
+
+**Measured:** Boeing 737-200 (global ID 2) was selected by training taxonomy alone,
+preserving its existing family and manufacturer. Fresh 99-class initial systems
+were trained for seeds 42/43/44, followed by six affected-specialist replacements.
+All 120 checkpoints (117 trained classifiers plus three encoder exports) passed
+provenance/state audits. The complete test set was evaluated before/after under
+predicted/oracle routing, retaining 79,992 per-image predictions.
+
+New-class predicted-route recall is **54.90% / 58.82%** for independent/shared
+systems (seed means). Mean update duration is **375.96 / 192.89 s**, including
+shared feature extraction. Existing Boeing-class macro recall drops by 0.37 / 3.48
+pp; outside-branch accuracy is unchanged in both systems. This measures modularity
+and its tradeoffs rather than assuming no forgetting. See the
+[measured report, learning curves and five full networks](../results/stage7/incremental-20261029T102022Z-dd4acc20/REPORT.md)
+and [operational/audit contracts](PHASE7.md). Phase 8 remains separate.
+
+**Checks:** 305 CPU tests passed with three explicit skips; all 73 focused CUDA
+checks passed, including a real EfficientNet introduction/reload on generated
+pixels. The original test freeze is unchanged, all 10,000 original images were
+rechecked, and all 432 public review files rebuilt byte for byte without images
+or weights. See the [validation evidence](../results/stage7/validation-20261029T103720Z-f75088da/REPORT.md).
 
 ## Phase 8 — Analysis and publication
 

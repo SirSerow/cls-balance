@@ -2,7 +2,7 @@
 
 A reproducible research project comparing **independent EfficientNet cascades** against a **single frozen EfficientNet with independently trainable specialist heads** on [FGVC-Aircraft](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/).
 
-> **Status:** Phases 0–6 are implemented. On all 3,333 official test images, three-seed variant macro recall is **FLAT 65.59% ± 0.37 pp**, **IND-2 53.51% ± 1.02 pp**, **FT-FROZEN-2 63.02% ± 0.93 pp** (sample SD). Mean seed-p95 full-pipeline latency is **32.47 / 57.15 / 34.26 ms**, respectively, from five batch-one FP32 passes per checkpoint. The shared cascade has **40.05% lower p95** than IND-2 on this hardware. See the [measured Phase 6 report, graphs and full networks](results/stage6/benchmark-20261028T022812Z-fa52c222/REPORT.md). Generic ImageNet-frozen, three-stage, FP16 experimental and introduced-class measurements remain separate unmeasured work.
+> **Status:** Phases 0–7 are implemented. On all 3,333 official test images, three-seed variant macro recall is **FLAT 65.59% ± 0.37 pp**, **IND-2 53.51% ± 1.02 pp**, **FT-FROZEN-2 63.02% ± 0.93 pp** (sample SD). Mean seed-p95 full-pipeline latency is **32.47 / 57.15 / 34.26 ms**, respectively, from five batch-one FP32 passes per checkpoint. The shared cascade has **40.05% lower p95** than IND-2 on this hardware. See the [measured Phase 6 report, graphs and full networks](results/stage6/benchmark-20261028T022812Z-fa52c222/REPORT.md). The [Phase 7 introduction experiment](results/stage7/incremental-20261029T102022Z-dd4acc20/REPORT.md) now measures isolated specialist replacement from fresh 99-class initial systems across all three seeds. Generic ImageNet-frozen, three-stage and FP16 experimental measurements remain separate unmeasured work.
 
 Phase two has **172 passing CPU tests**, with the suite frozen after validation.
 See the [phase-two validation report](results/stage2/validation-20261025T024200Z-cc4d2a5a/REPORT.md)
@@ -67,6 +67,7 @@ Supporting outcomes: variant top-1 accuracy and macro-F1; manufacturer/family ac
 - [Phase-four independent cascades](docs/PHASE4.md) — full CNN node training, predicted/oracle validation, residency policies and review plots.
 - [Phase-five shared frozen heads](docs/PHASE5.md) — independent MLP fitting, encoder/cache checks, specialist replacement and validation review.
 - [Phase-six benchmark and review](docs/PHASE6.md) — synchronized full-test timings, throughput, resources, publication audits and complete network schematics.
+- [Phase-seven class introduction](docs/PHASE7.md) — 99-class initial systems, isolated specialist replacement, test review and full before/after networks.
 - [Operational benchmark configuration](configs/benchmark.yaml) — fixed selected checkpoints, all test images and five FP32 passes.
 - [Example experiment configuration](configs/benchmark.example.yaml) — broader proposed schema; not an executable pipeline.
 - [AGENTS.md](AGENTS.md) — implementation guidance for coding agents.
@@ -273,10 +274,72 @@ detailed EfficientNet/MLP internals. Checkpoint tensors, training IDs, images an
 embedding caches stay local. See [PHASE6.md](docs/PHASE6.md) for audit contracts,
 the optional separate FP16 invocation, limitations and reporting definitions.
 
+## Introduce one variant and review the update
+
+Phase 7 trains fresh 99-class initial systems with
+[incremental.yaml](configs/incremental.yaml). Its training-only deterministic
+rule selects **Boeing 737-200 (global ID 2)** while retaining both its manufacturer
+and its existing family. All of this class's initial train **and validation**
+images are withheld from every initial model, including FLAT backbone tuning.
+The 100-class encoders from the earlier phases are ineligible for this experiment.
+
+```powershell
+.venv-cuda/Scripts/python.exe scripts/train_incremental_awake.py train --config configs/incremental.yaml
+.venv-cuda/Scripts/python.exe scripts/train_incremental_awake.py evaluate --suite <completed-training-suite>
+.venv-cuda/Scripts/python.exe -m cls_balance.report_incremental --training <completed-training-suite> --evaluation <completed-evaluation-suite> --output-root results/stage7 --preview-root .tmp/phase7-previews
+.venv-cuda/Scripts/python.exe -m cls_balance.report_incremental --audit <published-review>
+# Regenerate every report figure using only published evidence:
+.venv-cuda/Scripts/python.exe -m cls_balance.report_incremental --rebuild <published-review> --rebuild-output .tmp/rebuilt-phase7
+```
+
+Training completes all three seeds before any test inference. Introduction adds
+the new class's training examples and replays the existing branch examples; only
+the affected full CNN or shared MLP is retrained. Existing output rows are warm
+started, the new row is seeded, and validation alone selects the replacement.
+Manufacturer routers, the shared encoder and every unrelated specialist retain
+their exact parameters. Original affected specialists remain available to audit
+the before/after comparison.
+
+Every predicted/oracle before/after evaluation retains all 3,333 official test
+images. Reports distinguish 99-class initial accuracy from the retrospective
+all-100 diagnostic, and measure new-class recall, old-branch performance,
+outside-branch accuracy, update duration, trainable parameters and replacement
+size. They include complete test predictions, learning curves, all class recalls,
+and five full network schematics with every trained specialist, deterministic
+bypass and per-seed selected epoch. Exact training/inference sources are archived
+alongside their hashes; dataset images, training IDs, embeddings and weights stay
+local. [PHASE7.md](docs/PHASE7.md) explains timing boundaries, resuming and audits.
+
+The [measured Phase 7 report](results/stage7/incremental-20261029T102022Z-dd4acc20/REPORT.md)
+contains 79,992 test predictions, 11 SVG figures and five complete before/after
+network schematics. Values below are means across seeds 42/43/44; where shown,
+± denotes sample SD:
+
+| Incremental outcome | IND-2 | FT-FROZEN-2 |
+| --- | --- | --- |
+| Introduced 737-200 recall (%) | 54.90 ± 13.90 | 58.82 ± 10.60 |
+| Existing Boeing variants, before → after macro recall (%) | 36.04 → 35.67 | 46.68 → 43.20 |
+| Outside-branch macro recall, before → after (%) | 58.20 → 58.20 | 65.97 → 65.97 |
+| Specialist update duration (s) | 375.96 ± 110.42 | 192.89 ± 35.50 |
+| Replacement checkpoint (decimal MB) | 16.45 | 1.36 |
+
+The shared update is cheaper in this experiment, with a larger drop in recall on
+the updated branch's existing classes. Outside-branch accuracy is measured to be
+unchanged; incorrectly routed outside images can still change their wrong label.
+The audit verifies 120 checkpoints, exact untouched-module logits, unchanged
+encoder weights/buffers and no introduced-class leakage into initial fitting.
+Update duration includes shared feature extraction and is separate from inference
+latency. Initial encoder training costs are included separately in the report.
+The [Phase 7 validation evidence](results/stage7/validation-20261029T103720Z-f75088da/REPORT.md)
+contains **305 passing CPU tests (three explicit skips)**, **73 passing CUDA checks**,
+the unchanged original test freeze, post-experiment checksums for all 10,000 images,
+and an artifact-only rebuild preserving all 432 report files byte for byte.
+
 ## Scope
 
-The current implementation covers Phases 0–6. Generic frozen and three-stage
+The current implementation covers Phases 0–7. Generic frozen and three-stage
 experimental measurements remain separate pending ablations. The original validated
 test suite is frozen with SHA256 checks enforced in CI; Phase 3/4/5 checks run in
-their CI workflows; Phase 6 adds benchmark/publication checks. Checkpoints and raw datasets stay outside Git; model results follow
+their CI workflows; Phase 6 adds benchmark/publication checks and Phase 7 adds
+class-introduction and artifact-only review checks. Checkpoints and raw datasets stay outside Git; model results follow
 [RESULTS_TEMPLATE.md](docs/RESULTS_TEMPLATE.md).

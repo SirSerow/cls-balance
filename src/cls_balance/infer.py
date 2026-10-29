@@ -134,13 +134,26 @@ class HierarchicalAdapter(InferenceAdapter):
 
     def __init__(self, taxonomy: Taxonomy, nodes: Mapping[str, LogitNode], *,
                  depth: int = 2, backbone: nn.Module | None = None,
-                 fine_tuned: bool = False) -> None:
+                 fine_tuned: bool = False, active_variant_ids: tuple[int, ...] | None = None) -> None:
         super().__init__(taxonomy)
         if depth not in (2, 3) or (fine_tuned and backbone is None):
             raise ValueError("Depth must be 2 or 3; fine-tuned shared models require a backbone")
         self.depth = depth
         self.architecture = f'{"FT-FROZEN" if fine_tuned else "FROZEN" if backbone is not None else "IND"}-{depth}'
         self.branch_ids = taxonomy.branches()
+        # Incremental systems retain the canonical 100-class evaluation taxonomy.
+        # Only deployment choices are restricted; official test support is intact.
+        if active_variant_ids is not None:
+            if (depth != 2 or not active_variant_ids
+                    or tuple(sorted(set(active_variant_ids))) != active_variant_ids
+                    or any(type(v) is not int or not 0 <= v < len(taxonomy.variants) for v in active_variant_ids)):
+                raise ValueError("Active variant IDs require a valid two-stage subset")
+            branches = tuple(tuple(v for v in ids if v in active_variant_ids)
+                             for ids in self.branch_ids["manufacturer_to_variant"])
+            if any(not ids for ids in branches):
+                raise ValueError("Incremental holdout must preserve every manufacturer branch")
+            self.branch_ids = {**self.branch_ids, "manufacturer_to_variant": branches}
+        self.active_variant_ids = active_variant_ids
         expected = {"manufacturer": tuple(range(len(taxonomy.manufacturers)))}
         if depth == 3:
             expected.update({f"family:{m}": ids for m, ids in enumerate(self.branch_ids["manufacturer_to_family"])})

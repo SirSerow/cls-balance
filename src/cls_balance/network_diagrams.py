@@ -11,17 +11,26 @@ from .models.cascade import node_plan
 from .taxonomy import Taxonomy
 
 
-def network_inventory(taxonomy: Taxonomy, architecture: str) -> dict:
+def network_inventory(taxonomy: Taxonomy, architecture: str, *, active_variant_ids: tuple[int, ...] | None = None) -> dict:
     """Every classifier and deterministic branch, with explicit global outputs."""
     if architecture == "FLAT":
         return {"architecture": architecture, "backbones_stored": 1,
-                "nodes": [{"key": "variant", "kind": "EfficientNet-B0", "global_ids": list(range(len(taxonomy.variants)))}],
+                "nodes": [{"key": "variant", "kind": "EfficientNet-B0", "global_ids": list(active_variant_ids if active_variant_ids is not None else range(len(taxonomy.variants)))}],
                 "branches": []}
     depth = int(architecture[-1])
     shared = not architecture.startswith("IND")
     specs = node_plan(taxonomy, depth)
+    if active_variant_ids is not None:
+        from dataclasses import replace
+        if depth != 2:
+            raise ValueError("Active-label inventory requires two-stage architecture")
+        specs = tuple(replace(s, global_ids=tuple(v for v in s.global_ids if v in active_variant_ids))
+                      if s.stage == "variant" else s for s in specs
+                      if s.stage != "variant" or sum(v in active_variant_ids for v in s.global_ids) > 1)
     branches = []
     for m, variants in enumerate(taxonomy.branches()["manufacturer_to_variant"]):
+        if active_variant_ids is not None:
+            variants = tuple(v for v in variants if v in active_variant_ids)
         branches.append({"manufacturer_id": m, "manufacturer": taxonomy.manufacturers[m],
                          "global_variant_ids": list(variants), "variants": [taxonomy.variants[v] for v in variants],
                          "singleton": len(variants) == 1})
@@ -30,13 +39,20 @@ def network_inventory(taxonomy: Taxonomy, architecture: str) -> dict:
             "branches": branches}
 
 
-def draw_network(output: Path, taxonomy: Taxonomy, architecture: str, trained: list[dict]) -> None:
+def draw_network(output: Path, taxonomy: Taxonomy, architecture: str, trained: list[dict], *,
+                 active_variant_ids: tuple[int, ...] | None = None, stage: str | None = None,
+                 introduced_variant_id: int | None = None) -> None:
     """Show all stored trained specialists, singleton outputs, and all 100 labels.
 
     Arrows from a shared embedding represent available input, not eager execution
     of every head. Selection uses only the manufacturer router's predicted ID.
     """
-    inventory = network_inventory(taxonomy, architecture)
+    inventory = network_inventory(taxonomy, architecture, active_variant_ids=active_variant_ids)
+    count = len(active_variant_ids) if active_variant_ids is not None else len(taxonomy.variants)
+    if stage is not None:
+        inventory.update(stage=stage, active_variant_ids=list(active_variant_ids) if active_variant_ids is not None else list(range(len(taxonomy.variants))),
+                         introduced_variant_id=introduced_variant_id,
+                         trained_checkpoints=[n for n in trained if n["architecture"] == architecture])
     write_json(output / f"network-{architecture}.json", inventory)
     if architecture != "FLAT" and not architecture.endswith("-2"):
         raise ValueError("Full branch-layout renderer currently supports two-stage trained networks")
@@ -47,8 +63,9 @@ def draw_network(output: Path, taxonomy: Taxonomy, architecture: str, trained: l
         raise ValueError("Shared schematic requires one actual MLP width")
     width = 1600
     all_branches = inventory["branches"] if not flat else [
-        {"manufacturer_id": m, "manufacturer": name, "variants": [taxonomy.variants[v] for v in ids],
-         "global_variant_ids": list(ids), "singleton": False}
+        {"manufacturer_id": m, "manufacturer": name,
+         "variants": [taxonomy.variants[v] for v in ids if active_variant_ids is None or v in active_variant_ids],
+         "global_variant_ids": [v for v in ids if active_variant_ids is None or v in active_variant_ids], "singleton": False}
         for m, (name, ids) in enumerate(zip(taxonomy.manufacturers, taxonomy.branches()["manufacturer_to_variant"]))]
     y = 390
     layouts = []
@@ -69,21 +86,25 @@ def draw_network(output: Path, taxonomy: Taxonomy, architecture: str, trained: l
         parts.append(f'<rect x="{x}" y="{yy}" width="{w}" height="{h}" rx="10" fill="{fill}" stroke="#b8c9d9"/>')
     def line(x, yy, xx, yyy, dashed=False):
         parts.append(f'<path d="M{x} {yy} L{xx} {yyy}" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" {"stroke-dasharray=\"5 4\"" if dashed else ""}/>')
-    text(30, 48, f"{architecture} · complete deployed network", "title")
+    text(30, 48, f"{architecture} · complete deployed network" + (f" · {stage}" if stage else ""), "title")
     seeds = sorted({n["seed"] for n in trained})
     text(30, 80, f"Same graph across measured seeds {seeds}; each seed has its own independently trained weights.")
-    text(30, 105, "All output labels below are globally unique variant IDs. All 100 logits are computed; grouping below is display only." if flat else
+    text(30, 105, f"All output labels below are globally unique variant IDs. All {count} logits are computed; grouping below is display only." if flat else
          "All output labels below are globally unique variant IDs. Only the predicted branch executes per image.")
     router_epochs = [f"s{n['seed']}: epoch {n['best_epoch']}" for n in trained
                      if n["architecture"] == architecture and n["key"] == "manufacturer"]
-    if router_epochs:
+    if introduced_variant_id is not None:
+        text(30, 126, f"Introduced global ID {introduced_variant_id}: {taxonomy.variants[introduced_variant_id]} · " +
+             ("excluded from ALL initial train/validation, including backbone selection" if stage != "after" else
+              "orange branch = the ONLY replaced classifier; encoder and router unchanged"))
+    elif router_epochs:
         text(30, 126, "Manufacturer router selected checkpoints: " + " · ".join(router_epochs))
     rect(30, 135, 290, 90, "#e8eef7")
     text(48, 164, "RGB image → 224 × 224", "label")
     text(48, 191, "Remove 20 px banner; letterbox")
     text(48, 212, "Normalize; batch 1; FP32 primary")
     rect(380, 135, 570, 90, "#d7eee9" if shared else "#e0e8fa")
-    text(400, 163, "Frozen EfficientNet-B0 → pooled 1280-D" if shared else "EfficientNet-B0 → 100-way classifier" if flat else "Independent EfficientNet-B0 → 30-way manufacturer", "label")
+    text(400, 163, "Frozen EfficientNet-B0 → pooled 1280-D" if shared else f"EfficientNet-B0 → {count}-way classifier" if flat else "Independent EfficientNet-B0 → 30-way manufacturer", "label")
     text(400, 190, "Exactly ONE feature pass per image" if shared else "One full CNN per executed classifier")
     text(400, 212, "FLAT classifier removed; backbone weights + BN buffers fixed" if shared else "Fine-tuned from ImageNet V1; selected using validation only")
     line(320, 180, 380, 180)
@@ -112,18 +133,19 @@ def draw_network(output: Path, taxonomy: Taxonomy, architecture: str, trained: l
         text(45, yy + 29, f"{m}: {branch['manufacturer']}", "label")
         text(45, yy + 53, f"{len(branch['variants'])} variant(s)")
         singleton = branch["singleton"]
-        rect(350, yy, 480, hh, "#fdf0d9" if singleton else "#dcf0e9" if shared else "#e3eafb")
+        replaced = stage == "after" and introduced_variant_id in branch["global_variant_ids"]
+        rect(350, yy, 480, hh, "#ffd6ad" if replaced else "#fdf0d9" if singleton else "#dcf0e9" if shared else "#e3eafb")
         label = "FLAT output columns" if flat else "Deterministic singleton · NO classifier" if singleton else f"MLP 1280 → {hidden} → {len(branch['variants'])}" if shared else f"Full B0 → Linear(1280, {len(branch['variants'])})"
         text(365, yy + 27, label, "label")
         if not flat and not singleton:
             key = f"variant-manufacturer-{m}"
-            text(365, yy + 48, key)
+            text(365, yy + 48, key + (" · REPLACED" if replaced else ""))
             selections = [f"s{n['seed']}: epoch {n['best_epoch']}" for n in trained if n["architecture"] == architecture and n["key"] == key]
             text(365, yy + 68, " · ".join(selections))
         elif singleton:
             text(365, yy + 52, "Known global variant; zero specialist MACs")
         else:
-            text(365, yy + 52, "100-way global argmax; no manufacturer routing")
+            text(365, yy + 52, f"{count}-way global argmax; no manufacturer routing")
         rect(870, yy, 695, hh, "#ffffff")
         for i, value in enumerate(lines):
             text(885, yy + 26 + i * 20, value)
@@ -138,7 +160,7 @@ def draw_network(output: Path, taxonomy: Taxonomy, architecture: str, trained: l
         stream.write("\n".join(parts) + "\n")
 
 
-def draw_backbone(output: Path, *, shared_hidden: int = 256) -> None:
+def draw_backbone(output: Path, *, shared_hidden: int = 256, flat_classes: int = 100) -> None:
     """Save every real Torchvision module and explain its repeated MBConv stages.
 
     Construct without pretrained download; no checkpoint tensors or random
@@ -146,7 +168,7 @@ def draw_backbone(output: Path, *, shared_hidden: int = 256) -> None:
     """
     from torch import nn
     from .models.flat import build_flat
-    model = build_flat(pretrained=False)
+    model = build_flat(pretrained=False, classes=flat_classes)
     modules = []
     for name, module in model.named_modules():
         row = {"name": name, "type": type(module).__name__, "own_parameters": sum(p.numel() for p in module.parameters(recurse=False))}
@@ -218,7 +240,7 @@ def draw_backbone(output: Path, *, shared_hidden: int = 256) -> None:
     text(765, 588, "Independent CNN classifier / FLAT", "h")
     for i, line in enumerate(["Pooled 1280-D → Dropout(p=0.2) → Linear(1280, n)",
         "Dropout disabled in inference. Each CNN has separate weights.",
-        "n=100 for FLAT; n=30 for the manufacturer router;",
+        f"n={flat_classes} for FLAT; n=30 for the manufacturer router;",
         "n=number of allowed global variants for each specialist.",
         "Argmax local column → saved explicit global ID map."]):
         text(765, 628 + i * 29, line)

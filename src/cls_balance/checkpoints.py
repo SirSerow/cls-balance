@@ -69,7 +69,7 @@ def load_checkpoint(path: Path, *, taxonomy_sha256: str, preprocessing_sha256: s
         flat = build_flat(pretrained=False, classes=len(spec.global_ids))
         model = flat
     else:
-        flat = build_flat(pretrained=False)
+        flat = build_flat(pretrained=False, classes=len(metadata.get("variant_ids", range(100))))
         model = FrozenEncoder(flat) if kind.endswith("encoder") else flat
     model.load_state_dict(payload["state_dict"], strict=True)
     model.eval()
