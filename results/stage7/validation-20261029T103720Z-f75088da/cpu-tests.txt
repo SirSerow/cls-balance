@@ -1,0 +1,11 @@
+........................................................................ [ 23%]
+........................................................................ [ 46%]
+........................................................................ [ 70%]
+......................................................s................. [ 93%]
+...............s...s                                                     [100%]
+--- generated xml file: S:\Projects\cls-balance\.tmp-phase7-final-junit.xml ---
+=========================== short test summary info ===========================
+SKIPPED [1] checks\test_phase6.py:303: Optional CUDA FP16 deployment check
+SKIPPED [1] checks\test_phase7.py:304: Optional real CUDA class-introduction integration
+SKIPPED [1] checks\test_phase7_report.py:132: could not import 'matplotlib': No module named 'matplotlib'
+305 passed, 3 skipped in 302.66s (0:05:02)

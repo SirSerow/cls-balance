@@ -1,0 +1,31 @@
+{
+  "branch_variant_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    41
+  ],
+  "manufacturer": "Boeing",
+  "manufacturer_id": 4,
+  "selection_rule": "lowest training-taxonomy global variant ID in a manufacturer with >=3 variants and a family with >=2 variants",
+  "variant": "737-200",
+  "variant_id": 2
+}

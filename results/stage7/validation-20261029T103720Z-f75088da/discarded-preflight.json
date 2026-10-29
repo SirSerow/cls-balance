@@ -1,0 +1,18 @@
+{
+  "artifacts_sha256": {
+    "compatibility.json": "044a00cb20f695bf1c68e52a28efe58d0c675c18c6cefeb28e71089caf47f26a",
+    "config.resolved.json": "b1916001293ca6b5389c49329dd6a4a87e6a6f7215bda4fe14caae5537febe71",
+    "dataset_manifest_hashes.json": "27a7dd09275ac80cee1769b5fd7d5f28fe29feaeb54d955b16cb3ce227500253",
+    "environment.json": "c12a73ac2070aa7b5958a3193b36427a145100958e0af372ab0e12ad88df5d82",
+    "preparation.json": "1d4536a5139385a482e4a0e7e05b932d2573669f116450de324874197e570265",
+    "preprocessing.json": "173fd93e7491bb9048ffe5257c364450fa69b3f0e1ac4b1a4cf965eddea78adc",
+    "seed-42/flat/fit-20261029T040104Z-68db6956/contract.json": "891010defbed06d101819284889deef35d6204e6cf81f78f5d90bfdef1210430",
+    "selection.json": "d7f7eac451c40a121d581af4f6ce2cb9707b076d85baf205e01d9eb35065b0b6",
+    "source_hashes.json": "6f21aa25a9a26eae8ebd0402ccf093a89d99a5996a18c9a315dc6c56dc8b3bd0",
+    "taxonomy.json": "a79cf6f7fe8a7a028c1f2b51619b307750a241c26d863c0fc983423a6dd48177"
+  },
+  "completed_epochs": 0,
+  "reason": "Windows spawn could not pickle FlatTargets through runpy; fixed normal module import before successful run",
+  "run_id": "incremental-20261029T040102Z-578e268a",
+  "used_for_experimental_results": false
+}

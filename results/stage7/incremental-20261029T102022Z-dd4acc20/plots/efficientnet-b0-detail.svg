@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1460" height="1450" viewBox="0 0 1460 1450">
+<rect width="100%" height="100%" fill="#f5f7fb"/>
+<style>text{font-family:Segoe UI,Arial,sans-serif;fill:#17283b;font-size:17px}.h{font-size:28px;font-weight:bold}.b{font-weight:bold}</style>
+<text x="35" y="50" class="h">EfficientNet-B0 · internal architecture and export points</text>
+<text x="35" y="83" class="">Common basis for every independent full CNN and the one shared frozen encoder. Batch-one shape convention: C × H × W.</text>
+<text x="35" y="111" class="">Exact named-module inventory, convolution groups, kernels, strides and parameter counts: efficientnet-b0-modules.json</text>
+<rect x="35" y="145" width="660" height="80" rx="12" fill="#e0e8fa" stroke="#b8c9d9"/>
+<text x="55" y="175" class="b">Input 3 × 224 × 224 → stem Conv 3×3, stride 2</text>
+<text x="55" y="204" class="">32 × 112 × 112 · BatchNorm + SiLU</text>
+<rect x="35" y="248" width="660" height="82" rx="12" fill="#e0e8fa" stroke="#b8c9d9"/>
+<text x="55" y="276" class="b">Stage 1: MBConv1 · kernel 3×3 · repeat ×1</text>
+<text x="55" y="304" class="">First-block stride 1; remaining stride 1 → 16 × 112 × 112</text>
+<path d="M365 230 V248" stroke="#53677e" stroke-width="2"/>
+<rect x="35" y="348" width="660" height="82" rx="12" fill="#e0e8fa" stroke="#b8c9d9"/>
+<text x="55" y="376" class="b">Stage 2: MBConv6 · kernel 3×3 · repeat ×2</text>
+<text x="55" y="404" class="">First-block stride 2; remaining stride 1 → 24 × 56 × 56</text>
+<path d="M365 330 V348" stroke="#53677e" stroke-width="2"/>
+<rect x="35" y="448" width="660" height="82" rx="12" fill="#e0e8fa" stroke="#b8c9d9"/>
+<text x="55" y="476" class="b">Stage 3: MBConv6 · kernel 5×5 · repeat ×2</text>
+<text x="55" y="504" class="">First-block stride 2; remaining stride 1 → 40 × 28 × 28</text>
+<path d="M365 430 V448" stroke="#53677e" stroke-width="2"/>
+<rect x="35" y="548" width="660" height="82" rx="12" fill="#e0e8fa" stroke="#b8c9d9"/>
+<text x="55" y="576" class="b">Stage 4: MBConv6 · kernel 3×3 · repeat ×3</text>
+<text x="55" y="604" class="">First-block stride 2; remaining stride 1 → 80 × 14 × 14</text>
+<path d="M365 530 V548" stroke="#53677e" stroke-width="2"/>
+<rect x="35" y="648" width="660" height="82" rx="12" fill="#e0e8fa" stroke="#b8c9d9"/>
+<text x="55" y="676" class="b">Stage 5: MBConv6 · kernel 5×5 · repeat ×3</text>
+<text x="55" y="704" class="">First-block stride 1; remaining stride 1 → 112 × 14 × 14</text>
+<path d="M365 630 V648" stroke="#53677e" stroke-width="2"/>
+<rect x="35" y="748" width="660" height="82" rx="12" fill="#e0e8fa" stroke="#b8c9d9"/>
+<text x="55" y="776" class="b">Stage 6: MBConv6 · kernel 5×5 · repeat ×4</text>
+<text x="55" y="804" class="">First-block stride 2; remaining stride 1 → 192 × 7 × 7</text>
+<path d="M365 730 V748" stroke="#53677e" stroke-width="2"/>
+<rect x="35" y="848" width="660" height="82" rx="12" fill="#e0e8fa" stroke="#b8c9d9"/>
+<text x="55" y="876" class="b">Stage 7: MBConv6 · kernel 3×3 · repeat ×1</text>
+<text x="55" y="904" class="">First-block stride 1; remaining stride 1 → 320 × 7 × 7</text>
+<path d="M365 830 V848" stroke="#53677e" stroke-width="2"/>
+<rect x="35" y="950" width="660" height="80" rx="12" fill="#d7eee9" stroke="#b8c9d9"/>
+<text x="55" y="980" class="b">Pointwise Conv 1×1 → 1280 × 7 × 7</text>
+<text x="55" y="1009" class="">BatchNorm + SiLU → adaptive global average pool → flatten</text>
+<rect x="35" y="1050" width="660" height="72" rx="12" fill="#d7eee9" stroke="#b8c9d9"/>
+<text x="55" y="1080" class="b">1280-dimensional pooled feature vector</text>
+<text x="55" y="1107" class="">Shared encoder export ENDS HERE; classifier is removed</text>
+<rect x="745" y="145" width="680" height="370" rx="12" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="765" y="180" class="h">Inside each MBConv block</text>
+<text x="765" y="219" class="">1. Optional 1×1 expansion → BatchNorm + SiLU</text>
+<text x="765" y="250" class="">   MBConv6 expands channels ×6; MBConv1 omits expansion.</text>
+<text x="765" y="281" class="">2. Depthwise k×k convolution → BatchNorm + SiLU</text>
+<text x="765" y="312" class="">3. Squeeze/excitation: global pool → 1×1 → SiLU → 1×1</text>
+<text x="765" y="343" class="">   → sigmoid gate → multiply input features</text>
+<text x="765" y="374" class="">4. 1×1 projection → BatchNorm (linear bottleneck)</text>
+<text x="765" y="405" class="">5. Residual add if stride=1 and input/output channels match</text>
+<text x="765" y="436" class="">Stochastic depth is a training operation; disabled in eval.</text>
+<text x="765" y="467" class="">All shared encoder weights AND BatchNorm buffers stay frozen.</text>
+<rect x="745" y="550" width="680" height="225" rx="12" fill="#fff0d2" stroke="#b8c9d9"/>
+<text x="765" y="588" class="h">Independent CNN classifier / FLAT</text>
+<text x="765" y="628" class="">Pooled 1280-D → Dropout(p=0.2) → Linear(1280, n)</text>
+<text x="765" y="657" class="">Dropout disabled in inference. Each CNN has separate weights.</text>
+<text x="765" y="686" class="">n=99 for FLAT; n=30 for the manufacturer router;</text>
+<text x="765" y="715" class="">n=number of allowed global variants for each specialist.</text>
+<text x="765" y="744" class="">Argmax local column → saved explicit global ID map.</text>
+<rect x="745" y="810" width="680" height="225" rx="12" fill="#d7eee9" stroke="#b8c9d9"/>
+<text x="765" y="848" class="h">Shared frozen independent MLP head</text>
+<text x="765" y="888" class="">SAME pooled 1280-D → Linear(1280, 256) → ReLU</text>
+<text x="765" y="917" class="">→ Linear(256, n) → argmax → explicit global ID</text>
+<text x="765" y="946" class="">One independently trained router; one selected specialist.</text>
+<text x="765" y="975" class="">Each head has its own optimizer and selected checkpoint.</text>
+<text x="765" y="1004" class="">A singleton branch returns its only variant without a head.</text>
+<text x="35" y="1180" class="h">Deployment distinction</text>
+<text x="35" y="1220" class="">FLAT: one full B0. IND-2: 18 stored full B0 CNNs; execute router + selected non-singleton specialist.</text>
+<text x="35" y="1255" class="">FT-FROZEN-2: one frozen B0 encoder + 18 independent MLPs; execute backbone once, router, then one selected head.</text>
+<text x="35" y="1290" class="">All 30 manufacturer branches and all 100 variant labels are expanded in the companion full-network SVGs.</text>
+<text x="35" y="1340" class="">Source: actual installed Torchvision model construction; no parameter tensors or dataset pixels exported.</text>
+</svg>

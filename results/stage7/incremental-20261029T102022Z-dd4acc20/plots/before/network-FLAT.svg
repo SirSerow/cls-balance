@@ -1,0 +1,367 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="3264" viewBox="0 0 1600 3264">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#53677e"/></marker></defs>
+<rect width="100%" height="100%" fill="#f5f7fb"/>
+<style>text{font-family:Segoe UI,Arial,sans-serif;fill:#17283b}.title{font-size:30px;font-weight:700}.label{font-size:16px;font-weight:600}.small{font-size:14px}.muted{fill:#53677e}</style>
+<text x="30" y="48" class="title">FLAT · complete deployed network · initial 99-class encoder source</text>
+<text x="30" y="80" class="small">Same graph across measured seeds [42, 43, 44]; each seed has its own independently trained weights.</text>
+<text x="30" y="105" class="small">All output labels below are globally unique variant IDs. All 99 logits are computed; grouping below is display only.</text>
+<text x="30" y="126" class="small">Introduced global ID 2: 737-200 · excluded from ALL initial train/validation, including backbone selection</text>
+<rect x="30" y="135" width="290" height="90" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="48" y="164" class="label">RGB image → 224 × 224</text>
+<text x="48" y="191" class="small">Remove 20 px banner; letterbox</text>
+<text x="48" y="212" class="small">Normalize; batch 1; FP32 primary</text>
+<rect x="380" y="135" width="570" height="90" rx="10" fill="#e0e8fa" stroke="#b8c9d9"/>
+<text x="400" y="163" class="label">EfficientNet-B0 → 99-way classifier</text>
+<text x="400" y="190" class="small">One full CNN per executed classifier</text>
+<text x="400" y="212" class="small">Fine-tuned from ImageNet V1; selected using validation only</text>
+<path d="M320 180 L380 180" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="1010" y="135" width="555" height="90" rx="10" fill="#fff0d2" stroke="#b8c9d9"/>
+<text x="1030" y="163" class="label">Global variant prediction</text>
+<text x="1030" y="190" class="small">Argmax local column → explicit global ID</text>
+<text x="1030" y="212" class="small">No test labels used for routing</text>
+<path d="M950 180 L1010 180" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<text x="30" y="265" class="label">Stored backbones: 1 · trained classifiers: 1 · deterministic singleton branches: 0</text>
+<text x="30" y="293" class="small">B0 stages (channels / output size / repeats): stem 32/112/1 → 16/112/1 → 24/56/2 → 40/28/2 → 80/14/3</text>
+<text x="30" y="317" class="small">→ 112/14/3 → 192/7/4 → 320/7/1 → pointwise 1280/7 → global average pool → classifier or independent MLP heads.</text>
+<text x="30" y="341" class="small">One full CNN computes every output column. Manufacturer groups below organize labels for display; there is no routing.</text>
+<text x="30" y="369" class="label">Manufacturer branch / global ID</text>
+<text x="360" y="369" class="label">Output group (display only)</text>
+<text x="875" y="369" class="label">All globally mapped variant outputs</text>
+<path d="M1285 225 V238 H15 V3132.0" stroke="#53677e" fill="none" stroke-width="1.5"/>
+<rect x="30" y="390" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="419" class="label">0: ATR</text>
+<text x="45" y="443" class="small">2 variant(s)</text>
+<rect x="350" y="390" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="417" class="label">FLAT output columns</text>
+<text x="365" y="442" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="390" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="416" class="small">34: ATR-42 · 35: ATR-72</text>
+<path d="M300 430.0 L350 430.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 430.0 L30 430.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 430.0 L870 430.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="482" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="511" class="label">1: Airbus</text>
+<text x="45" y="535" class="small">13 variant(s)</text>
+<rect x="350" y="482" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="509" class="label">FLAT output columns</text>
+<text x="365" y="534" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="482" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="508" class="small">21: A300B4 · 22: A310 · 23: A318 · 24: A319 · 25: A320 · 26: A321 · 27: A330-200 · 28:</text>
+<text x="885" y="528" class="small">A330-300 · 29: A340-200 · 30: A340-300 · 31: A340-500 · 32: A340-600 · 33: A380</text>
+<path d="M300 522.0 L350 522.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 522.0 L30 522.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 522.0 L870 522.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="574" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="603" class="label">2: Antonov</text>
+<text x="45" y="627" class="small">1 variant(s)</text>
+<rect x="350" y="574" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="601" class="label">FLAT output columns</text>
+<text x="365" y="626" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="574" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="600" class="small">36: An-12</text>
+<path d="M300 614.0 L350 614.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 614.0 L30 614.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 614.0 L870 614.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="666" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="695" class="label">3: Beechcraft</text>
+<text x="45" y="719" class="small">2 variant(s)</text>
+<rect x="350" y="666" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="693" class="label">FLAT output columns</text>
+<text x="365" y="718" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="666" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="692" class="small">40: Beechcraft 1900 · 90: Model B200</text>
+<path d="M300 706.0 L350 706.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 706.0 L30 706.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 706.0 L870 706.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="758" width="270" height="114" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="787" class="label">4: Boeing</text>
+<text x="45" y="811" class="small">21 variant(s)</text>
+<rect x="350" y="758" width="480" height="114" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="785" class="label">FLAT output columns</text>
+<text x="365" y="810" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="758" width="695" height="114" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="784" class="small">0: 707-320 · 1: 727-200 · 3: 737-300 · 4: 737-400 · 5: 737-500 · 6: 737-600 · 7: 737-700</text>
+<text x="885" y="804" class="small">· 8: 737-800 · 9: 737-900 · 10: 747-100 · 11: 747-200 · 12: 747-300 · 13: 747-400 · 14:</text>
+<text x="885" y="824" class="small">757-200 · 15: 757-300 · 16: 767-200 · 17: 767-300 · 18: 767-400 · 19: 777-200 · 20:</text>
+<text x="885" y="844" class="small">777-300 · 41: Boeing 717</text>
+<path d="M300 815.0 L350 815.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 815.0 L30 815.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 815.0 L870 815.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="884" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="913" class="label">5: Bombardier Aerospace</text>
+<text x="45" y="937" class="small">1 variant(s)</text>
+<rect x="350" y="884" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="911" class="label">FLAT output columns</text>
+<text x="365" y="936" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="884" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="910" class="small">79: Global Express</text>
+<path d="M300 924.0 L350 924.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 924.0 L30 924.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 924.0 L870 924.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="976" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="1005" class="label">6: British Aerospace</text>
+<text x="45" y="1029" class="small">4 variant(s)</text>
+<rect x="350" y="976" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="1003" class="label">FLAT output columns</text>
+<text x="365" y="1028" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="976" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="1002" class="small">37: BAE 146-200 · 38: BAE 146-300 · 39: BAE-125 · 82: Hawk T1</text>
+<path d="M300 1016.0 L350 1016.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 1016.0 L30 1016.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 1016.0 L870 1016.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="1068" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="1097" class="label">7: Canadair</text>
+<text x="45" y="1121" class="small">4 variant(s)</text>
+<rect x="350" y="1068" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="1095" class="label">FLAT output columns</text>
+<text x="365" y="1120" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="1068" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="1094" class="small">44: CRJ-200 · 45: CRJ-700 · 46: CRJ-900 · 51: Challenger 600</text>
+<path d="M300 1108.0 L350 1108.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 1108.0 L30 1108.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 1108.0 L870 1108.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="1160" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="1189" class="label">8: Cessna</text>
+<text x="45" y="1213" class="small">4 variant(s)</text>
+<rect x="350" y="1160" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="1187" class="label">FLAT output columns</text>
+<text x="365" y="1212" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="1160" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="1186" class="small">47: Cessna 172 · 48: Cessna 208 · 49: Cessna 525 · 50: Cessna 560</text>
+<path d="M300 1200.0 L350 1200.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 1200.0 L30 1200.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 1200.0 L870 1200.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="1252" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="1281" class="label">9: Cirrus Aircraft</text>
+<text x="45" y="1305" class="small">1 variant(s)</text>
+<rect x="350" y="1252" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="1279" class="label">FLAT output columns</text>
+<text x="365" y="1304" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="1252" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="1278" class="small">92: SR-20</text>
+<path d="M300 1292.0 L350 1292.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 1292.0 L30 1292.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 1292.0 L870 1292.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="1344" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="1373" class="label">10: Dassault Aviation</text>
+<text x="45" y="1397" class="small">2 variant(s)</text>
+<rect x="350" y="1344" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="1371" class="label">FLAT output columns</text>
+<text x="365" y="1396" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="1344" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="1370" class="small">74: Falcon 2000 · 75: Falcon 900</text>
+<path d="M300 1384.0 L350 1384.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 1384.0 L30 1384.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 1384.0 L870 1384.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="1436" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="1465" class="label">11: Dornier</text>
+<text x="45" y="1489" class="small">1 variant(s)</text>
+<rect x="350" y="1436" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="1463" class="label">FLAT output columns</text>
+<text x="365" y="1488" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="1436" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="1462" class="small">63: Dornier 328</text>
+<path d="M300 1476.0 L350 1476.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 1476.0 L30 1476.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 1476.0 L870 1476.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="1528" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="1557" class="label">12: Douglas Aircraft Company</text>
+<text x="45" y="1581" class="small">4 variant(s)</text>
+<rect x="350" y="1528" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="1555" class="label">FLAT output columns</text>
+<text x="365" y="1580" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="1528" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="1554" class="small">43: C-47 · 53: DC-3 · 54: DC-6 · 55: DC-8</text>
+<path d="M300 1568.0 L350 1568.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 1568.0 L30 1568.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 1568.0 L870 1568.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="1620" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="1649" class="label">13: Embraer</text>
+<text x="45" y="1673" class="small">7 variant(s)</text>
+<rect x="350" y="1620" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="1647" class="label">FLAT output columns</text>
+<text x="365" y="1672" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="1620" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="1646" class="small">64: E-170 · 65: E-190 · 66: E-195 · 67: EMB-120 · 68: ERJ 135 · 69: ERJ 145 · 70:</text>
+<text x="885" y="1666" class="small">Embraer Legacy 600</text>
+<path d="M300 1660.0 L350 1660.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 1660.0 L30 1660.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 1660.0 L870 1660.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="1712" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="1741" class="label">14: Eurofighter</text>
+<text x="45" y="1765" class="small">1 variant(s)</text>
+<rect x="350" y="1712" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="1739" class="label">FLAT output columns</text>
+<text x="365" y="1764" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="1712" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="1738" class="small">71: Eurofighter Typhoon</text>
+<path d="M300 1752.0 L350 1752.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 1752.0 L30 1752.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 1752.0 L870 1752.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="1804" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="1833" class="label">15: Fairchild</text>
+<text x="45" y="1857" class="small">1 variant(s)</text>
+<rect x="350" y="1804" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="1831" class="label">FLAT output columns</text>
+<text x="365" y="1856" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="1804" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="1830" class="small">89: Metroliner</text>
+<path d="M300 1844.0 L350 1844.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 1844.0 L30 1844.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 1844.0 L870 1844.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="1896" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="1925" class="label">16: Fokker</text>
+<text x="45" y="1949" class="small">3 variant(s)</text>
+<rect x="350" y="1896" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="1923" class="label">FLAT output columns</text>
+<text x="365" y="1948" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="1896" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="1922" class="small">76: Fokker 100 · 77: Fokker 50 · 78: Fokker 70</text>
+<path d="M300 1936.0 L350 1936.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 1936.0 L30 1936.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 1936.0 L870 1936.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="1988" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="2017" class="label">17: Gulfstream Aerospace</text>
+<text x="45" y="2041" class="small">2 variant(s)</text>
+<rect x="350" y="1988" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="2015" class="label">FLAT output columns</text>
+<text x="365" y="2040" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="1988" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="2014" class="small">80: Gulfstream IV · 81: Gulfstream V</text>
+<path d="M300 2028.0 L350 2028.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 2028.0 L30 2028.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 2028.0 L870 2028.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="2080" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="2109" class="label">18: Ilyushin</text>
+<text x="45" y="2133" class="small">1 variant(s)</text>
+<rect x="350" y="2080" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="2107" class="label">FLAT output columns</text>
+<text x="365" y="2132" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="2080" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="2106" class="small">83: Il-76</text>
+<path d="M300 2120.0 L350 2120.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 2120.0 L30 2120.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 2120.0 L870 2120.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="2172" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="2201" class="label">19: Lockheed Corporation</text>
+<text x="45" y="2225" class="small">2 variant(s)</text>
+<rect x="350" y="2172" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="2199" class="label">FLAT output columns</text>
+<text x="365" y="2224" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="2172" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="2198" class="small">42: C-130 · 84: L-1011</text>
+<path d="M300 2212.0 L350 2212.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 2212.0 L30 2212.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 2212.0 L870 2212.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="2264" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="2293" class="label">20: Lockheed Martin</text>
+<text x="45" y="2317" class="small">1 variant(s)</text>
+<rect x="350" y="2264" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="2291" class="label">FLAT output columns</text>
+<text x="365" y="2316" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="2264" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="2290" class="small">72: F-16A/B</text>
+<path d="M300 2304.0 L350 2304.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 2304.0 L30 2304.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 2304.0 L870 2304.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="2356" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="2385" class="label">21: McDonnell Douglas</text>
+<text x="45" y="2409" class="small">7 variant(s)</text>
+<rect x="350" y="2356" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="2383" class="label">FLAT output columns</text>
+<text x="365" y="2408" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="2356" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="2382" class="small">52: DC-10 · 56: DC-9-30 · 73: F/A-18 · 85: MD-11 · 86: MD-80 · 87: MD-87 · 88: MD-90</text>
+<path d="M300 2396.0 L350 2396.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 2396.0 L30 2396.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 2396.0 L870 2396.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="2448" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="2477" class="label">22: Panavia</text>
+<text x="45" y="2501" class="small">1 variant(s)</text>
+<rect x="350" y="2448" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="2475" class="label">FLAT output columns</text>
+<text x="365" y="2500" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="2448" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="2474" class="small">96: Tornado</text>
+<path d="M300 2488.0 L350 2488.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 2488.0 L30 2488.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 2488.0 L870 2488.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="2540" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="2569" class="label">23: Piper</text>
+<text x="45" y="2593" class="small">1 variant(s)</text>
+<rect x="350" y="2540" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="2567" class="label">FLAT output columns</text>
+<text x="365" y="2592" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="2540" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="2566" class="small">91: PA-28</text>
+<path d="M300 2580.0 L350 2580.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 2580.0 L30 2580.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 2580.0 L870 2580.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="2632" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="2661" class="label">24: Robin</text>
+<text x="45" y="2685" class="small">1 variant(s)</text>
+<rect x="350" y="2632" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="2659" class="label">FLAT output columns</text>
+<text x="365" y="2684" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="2632" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="2658" class="small">62: DR-400</text>
+<path d="M300 2672.0 L350 2672.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 2672.0 L30 2672.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 2672.0 L870 2672.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="2724" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="2753" class="label">25: Saab</text>
+<text x="45" y="2777" class="small">2 variant(s)</text>
+<rect x="350" y="2724" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="2751" class="label">FLAT output columns</text>
+<text x="365" y="2776" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="2724" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="2750" class="small">93: Saab 2000 · 94: Saab 340</text>
+<path d="M300 2764.0 L350 2764.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 2764.0 L30 2764.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 2764.0 L870 2764.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="2816" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="2845" class="label">26: Supermarine</text>
+<text x="45" y="2869" class="small">1 variant(s)</text>
+<rect x="350" y="2816" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="2843" class="label">FLAT output columns</text>
+<text x="365" y="2868" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="2816" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="2842" class="small">95: Spitfire</text>
+<path d="M300 2856.0 L350 2856.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 2856.0 L30 2856.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 2856.0 L870 2856.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="2908" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="2937" class="label">27: Tupolev</text>
+<text x="45" y="2961" class="small">2 variant(s)</text>
+<rect x="350" y="2908" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="2935" class="label">FLAT output columns</text>
+<text x="365" y="2960" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="2908" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="2934" class="small">97: Tu-134 · 98: Tu-154</text>
+<path d="M300 2948.0 L350 2948.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 2948.0 L30 2948.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 2948.0 L870 2948.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="3000" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="3029" class="label">28: Yakovlev</text>
+<text x="45" y="3053" class="small">1 variant(s)</text>
+<rect x="350" y="3000" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="3027" class="label">FLAT output columns</text>
+<text x="365" y="3052" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="3000" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="3026" class="small">99: Yak-42</text>
+<path d="M300 3040.0 L350 3040.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 3040.0 L30 3040.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 3040.0 L870 3040.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<rect x="30" y="3092" width="270" height="80" rx="10" fill="#e8eef7" stroke="#b8c9d9"/>
+<text x="45" y="3121" class="label">29: de Havilland</text>
+<text x="45" y="3145" class="small">5 variant(s)</text>
+<rect x="350" y="3092" width="480" height="80" rx="10" fill="#e3eafb" stroke="#b8c9d9"/>
+<text x="365" y="3119" class="label">FLAT output columns</text>
+<text x="365" y="3144" class="small">99-way global argmax; no manufacturer routing</text>
+<rect x="870" y="3092" width="695" height="80" rx="10" fill="#ffffff" stroke="#b8c9d9"/>
+<text x="885" y="3118" class="small">57: DH-82 · 58: DHC-1 · 59: DHC-6 · 60: DHC-8-100 · 61: DHC-8-300</text>
+<path d="M300 3132.0 L350 3132.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M15 3132.0 L30 3132.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<path d="M830 3132.0 L870 3132.0" stroke="#53677e" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+<text x="30" y="3229" class="small">Source: versioned training-only taxonomy + audited deployment node plans. Selection epochs are validation measurements; timing is reported separately.</text>
+</svg>

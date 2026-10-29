@@ -1,0 +1,10 @@
+{
+  "all_files_byte_identical": true,
+  "files_compared": 432,
+  "rebuilt_summary_sha256": "00960eec1dceac58a0c3fc76367a771f165ffcf7f885024ff8207f5f5f7f9c41",
+  "scope": "rebuild without dataset pixels, supervised IDs, caches or weights",
+  "source_review_id": "incremental-20261029T102022Z-dd4acc20",
+  "source_summary_sha256": "00960eec1dceac58a0c3fc76367a771f165ffcf7f885024ff8207f5f5f7f9c41",
+  "status": "verified",
+  "svg_files_verified": 11
+}

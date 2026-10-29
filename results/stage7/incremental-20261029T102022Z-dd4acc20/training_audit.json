@@ -1,0 +1,8 @@
+{
+  "all_initial_artifacts_unchanged": true,
+  "checkpoints_verified": 120,
+  "complete_official_test_images": 3333,
+  "heldout_excluded_from_all_initial_train_and_val": true,
+  "test_leakage": false,
+  "training_run_id": "incremental-20261029T040144Z-860727e6"
+}

@@ -1,0 +1,6 @@
+{
+  "artifact_only_recomputed": true,
+  "data_and_weights_excluded": true,
+  "publication_run_id": "incremental-20261029T102022Z-dd4acc20",
+  "seed_architecture_pairs": 6
+}

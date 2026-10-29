@@ -1,0 +1,28 @@
+{
+  "brightness_jitter": 0.1,
+  "contrast_jitter": 0.1,
+  "geometry": "crop banner; aspect fit; round half up; center pad; extra pixel right/bottom",
+  "horizontal_flip_probability": 0.5,
+  "image_size": 224,
+  "interpolation": "bicubic",
+  "mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "normalization": "EfficientNet_B0_Weights.IMAGENET1K_V1",
+  "pad_rgb": [
+    0,
+    0,
+    0
+  ],
+  "remove_bottom_banner_px": 20,
+  "rng": "SHA256(seed:epoch:image_id) -> Python Random; epoch set before creating workers",
+  "schema_version": 1,
+  "std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "train_order": "letterbox, flip, brightness, contrast, tensor, normalize"
+}

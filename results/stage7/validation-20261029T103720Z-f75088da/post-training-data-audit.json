@@ -1,0 +1,28 @@
+{
+  "images_checked": 10000,
+  "manifest_records_sha256": {
+    "test": "90a7031e2d5f55e13329088e9d72179235058bf68aaa3427fa894de1ac8be32e",
+    "train": "5c09dfa132122f49b9795c442366f503173113cc71dca38f46f35db82847aa0a",
+    "val": "9799cbc8a8398f6fa50a1502ee0f9cca976855b908368d90e58b4349c56fedf4"
+  },
+  "prepared_run_id": "data-20261024T212625Z-4cf9b394",
+  "preprocessing_sha256": "173fd93e7491bb9048ffe5257c364450fa69b3f0e1ac4b1a4cf965eddea78adc",
+  "scope": "all image bytes rechecked; no pixels or supervised IDs exported",
+  "semantic_training_audit": {
+    "all_initial_artifacts_unchanged": true,
+    "checkpoints_verified": 120,
+    "complete_official_test_images": 3333,
+    "heldout_excluded_from_all_initial_train_and_val": true,
+    "test_leakage": false,
+    "training_run_id": "incremental-20261029T040144Z-860727e6"
+  },
+  "split_counts": {
+    "test": 3333,
+    "train": 3334,
+    "val": 3333
+  },
+  "status": "verified",
+  "taxonomy_sha256": "a79cf6f7fe8a7a028c1f2b51619b307750a241c26d863c0fc983423a6dd48177",
+  "training_run_id": "incremental-20261029T040144Z-860727e6",
+  "training_summary_sha256": "a0a77f16f0733abeb8750dd0e2d06e08c35e3e7359d65ceee447722c9d3c6f66"
+}

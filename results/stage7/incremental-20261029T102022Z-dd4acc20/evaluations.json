@@ -1,0 +1,338 @@
+[
+  {
+    "architecture": "IND-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "8bd58f9d65b24104baafb531085a5c47b377a66c019a37cfd09a3eb6d7d87ff5",
+      "routing": "predicted",
+      "run_id": "eval-20261029T093417Z-13542f5b",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-42/IND-2/before/predicted",
+    "routing": "predicted",
+    "seed": 42,
+    "stage": "before"
+  },
+  {
+    "architecture": "IND-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "ba1a7d4f5c7733fb2173161834e592d18191d461b5ad65a452d3aa8def8418cf",
+      "routing": "oracle",
+      "run_id": "eval-20261029T093637Z-6f3e3ee1",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-42/IND-2/before/oracle",
+    "routing": "oracle",
+    "seed": 42,
+    "stage": "before"
+  },
+  {
+    "architecture": "IND-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "721b3f9a506f3f1df5c35e638cfaf51e5fd14b0f51d800253503d092bfd39b86",
+      "routing": "predicted",
+      "run_id": "eval-20261029T093914Z-5f3af0d9",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-42/IND-2/after/predicted",
+    "routing": "predicted",
+    "seed": 42,
+    "stage": "after"
+  },
+  {
+    "architecture": "IND-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "24becc99de0f725f26d9a62d37949fa2e6da8854978c9b44c1eff89c08ba6fdc",
+      "routing": "oracle",
+      "run_id": "eval-20261029T094135Z-7bfb0f77",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-42/IND-2/after/oracle",
+    "routing": "oracle",
+    "seed": 42,
+    "stage": "after"
+  },
+  {
+    "architecture": "FT-FROZEN-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "a8ad0cbe217fa8fff8a65f2e814bace52d06e2da287b0de83b7ead5955b54722",
+      "routing": "predicted",
+      "run_id": "eval-20261029T094306Z-0dd192df",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-42/FT-FROZEN-2/before/predicted",
+    "routing": "predicted",
+    "seed": 42,
+    "stage": "before"
+  },
+  {
+    "architecture": "FT-FROZEN-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "3fc8ce8636ec690e9ac68421c3329e1a24900fd28bedb0f43e6812e17ea065d0",
+      "routing": "oracle",
+      "run_id": "eval-20261029T094435Z-0de7c801",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-42/FT-FROZEN-2/before/oracle",
+    "routing": "oracle",
+    "seed": 42,
+    "stage": "before"
+  },
+  {
+    "architecture": "FT-FROZEN-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "136c2183b6ac35645b64b478f87c431da89975cd4691121759e14e2efad3f934",
+      "routing": "predicted",
+      "run_id": "eval-20261029T094607Z-4321f1e7",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-42/FT-FROZEN-2/after/predicted",
+    "routing": "predicted",
+    "seed": 42,
+    "stage": "after"
+  },
+  {
+    "architecture": "FT-FROZEN-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "5fbe7030d0225959bc290b9c3ebcb1beccb7415fcb916340c542d6d81b490db9",
+      "routing": "oracle",
+      "run_id": "eval-20261029T094737Z-1fce8427",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-42/FT-FROZEN-2/after/oracle",
+    "routing": "oracle",
+    "seed": 42,
+    "stage": "after"
+  },
+  {
+    "architecture": "IND-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "3a48bcab4d4d910bf5705e9476a0c711c260e95165c2b24cc4ef26dac751d518",
+      "routing": "predicted",
+      "run_id": "eval-20261029T095013Z-3ae85a04",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-43/IND-2/before/predicted",
+    "routing": "predicted",
+    "seed": 43,
+    "stage": "before"
+  },
+  {
+    "architecture": "IND-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "489224a7b89a1fe385e2b2be1ab887ede177d8ec39f7b073d48c579de042cc14",
+      "routing": "oracle",
+      "run_id": "eval-20261029T095232Z-b71a83f9",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-43/IND-2/before/oracle",
+    "routing": "oracle",
+    "seed": 43,
+    "stage": "before"
+  },
+  {
+    "architecture": "IND-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "963d157f80d950616a388ea3032c4ec9966f07714bbfa8dcc46ca2400bd2453d",
+      "routing": "predicted",
+      "run_id": "eval-20261029T095511Z-044b62b3",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-43/IND-2/after/predicted",
+    "routing": "predicted",
+    "seed": 43,
+    "stage": "after"
+  },
+  {
+    "architecture": "IND-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "94175f7186a25d14e030f9304f6b9652e64e819d2161a0959988fed36eb2c835",
+      "routing": "oracle",
+      "run_id": "eval-20261029T095732Z-e7497bee",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-43/IND-2/after/oracle",
+    "routing": "oracle",
+    "seed": 43,
+    "stage": "after"
+  },
+  {
+    "architecture": "FT-FROZEN-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "fb8125d13d152df57c8f113ba1ed69a3ee2bdc1d227eb0e36cdfd0f3347ddeec",
+      "routing": "predicted",
+      "run_id": "eval-20261029T095904Z-13bd2067",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-43/FT-FROZEN-2/before/predicted",
+    "routing": "predicted",
+    "seed": 43,
+    "stage": "before"
+  },
+  {
+    "architecture": "FT-FROZEN-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "01a41c313baf0ef8548f0fa582bfe074da1f2a6f435087d0921410c830d29af8",
+      "routing": "oracle",
+      "run_id": "eval-20261029T100032Z-3066dc1e",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-43/FT-FROZEN-2/before/oracle",
+    "routing": "oracle",
+    "seed": 43,
+    "stage": "before"
+  },
+  {
+    "architecture": "FT-FROZEN-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "07e32e9f219b824f255e5c8c0be5347d81d4c7d5a4457e345b2c215eb6ada6db",
+      "routing": "predicted",
+      "run_id": "eval-20261029T100205Z-5c6eb654",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-43/FT-FROZEN-2/after/predicted",
+    "routing": "predicted",
+    "seed": 43,
+    "stage": "after"
+  },
+  {
+    "architecture": "FT-FROZEN-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "5afb5aa84e5d3126814b76e8d993c00ea8cf7d36c7c2d63eb44fc727e15611e3",
+      "routing": "oracle",
+      "run_id": "eval-20261029T100334Z-7164cbed",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-43/FT-FROZEN-2/after/oracle",
+    "routing": "oracle",
+    "seed": 43,
+    "stage": "after"
+  },
+  {
+    "architecture": "IND-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "3dc17dbb6e0b774947c4e74efb4c63302cd498b65ce8d94bba5fa6a3f33a9a88",
+      "routing": "predicted",
+      "run_id": "eval-20261029T100611Z-350e8c23",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-44/IND-2/before/predicted",
+    "routing": "predicted",
+    "seed": 44,
+    "stage": "before"
+  },
+  {
+    "architecture": "IND-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "207568a9f41da267db7a4322a4f51457b151e242b6edb0ada5b94d31dc4edc6d",
+      "routing": "oracle",
+      "run_id": "eval-20261029T100832Z-4d657d5e",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-44/IND-2/before/oracle",
+    "routing": "oracle",
+    "seed": 44,
+    "stage": "before"
+  },
+  {
+    "architecture": "IND-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "39c7087808a74b3ed9a2f6b278f3e9f3e623bc487c587c8d8973e08ee544783f",
+      "routing": "predicted",
+      "run_id": "eval-20261029T101108Z-30c7c499",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-44/IND-2/after/predicted",
+    "routing": "predicted",
+    "seed": 44,
+    "stage": "after"
+  },
+  {
+    "architecture": "IND-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "255ef7cfb1389a11204d4a49bb877f1a1b68eb8a34280ad44a555801a944052b",
+      "routing": "oracle",
+      "run_id": "eval-20261029T101329Z-76309e47",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-44/IND-2/after/oracle",
+    "routing": "oracle",
+    "seed": 44,
+    "stage": "after"
+  },
+  {
+    "architecture": "FT-FROZEN-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "86f4f9d20946ee7fd31f6f3a2e213a6c9fc286a8aeb28be5d957bf78f2f9a2a2",
+      "routing": "predicted",
+      "run_id": "eval-20261029T101501Z-d8a73dc8",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-44/FT-FROZEN-2/before/predicted",
+    "routing": "predicted",
+    "seed": 44,
+    "stage": "before"
+  },
+  {
+    "architecture": "FT-FROZEN-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "a943b122ef945f202aa6ea961291a2213c53141291a39122cadb35f5c285800c",
+      "routing": "oracle",
+      "run_id": "eval-20261029T101630Z-6ea3d733",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-44/FT-FROZEN-2/before/oracle",
+    "routing": "oracle",
+    "seed": 44,
+    "stage": "before"
+  },
+  {
+    "architecture": "FT-FROZEN-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "1cbd402707e0a54607622df34ead1e7c9116e3bff914c8426117f0caaa295e1d",
+      "routing": "predicted",
+      "run_id": "eval-20261029T101802Z-f12dfa1d",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-44/FT-FROZEN-2/after/predicted",
+    "routing": "predicted",
+    "seed": 44,
+    "stage": "after"
+  },
+  {
+    "architecture": "FT-FROZEN-2",
+    "audit": {
+      "images": 3333,
+      "metrics_sha256": "1c3603b44837132cb68cbe07317b55af9c4668c0e006932571742ce2222d47f5",
+      "routing": "oracle",
+      "run_id": "eval-20261029T101933Z-8a3f2696",
+      "status": "verified"
+    },
+    "path": "evaluations/seed-44/FT-FROZEN-2/after/oracle",
+    "routing": "oracle",
+    "seed": 44,
+    "stage": "after"
+  }
+]

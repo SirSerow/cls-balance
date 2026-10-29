@@ -1,0 +1,10 @@
+{
+  "optimizer_steps": 552,
+  "replacement_bytes": 16452079,
+  "timing_scope": "feature extraction if shared + epochs + selection + export + exact reload; initialization/loading excluded",
+  "train_images": 733,
+  "trainable_parameters": 4035730,
+  "training_image_exposures": 8796,
+  "update_wall_seconds": 265.8200901999953,
+  "validation_images": 733
+}

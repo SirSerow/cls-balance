@@ -1,0 +1,17 @@
+{
+  "artifacts_sha256": {
+    "classwise_metrics.csv": "88740a6a0ea8c43b420dc4e1535602249574e51e42c371c2c0234d8b62afc21c",
+    "environment.json": "d796feabdb752beac0a42e63a324c133d530f08b8f443c489225e91a4f8e9a0c",
+    "metadata.json": "e2db99b36a34bc2a48307cb6c0066062002ce03e62ee0faa164f6f723856f1a0",
+    "metrics.json": "86f4f9d20946ee7fd31f6f3a2e213a6c9fc286a8aeb28be5d957bf78f2f9a2a2",
+    "predictions.csv": "c11d18988eb6ed461b694f193d2e485e5dae170ce2ef1f51581bd1dc071da1e0",
+    "preprocessing.json": "173fd93e7491bb9048ffe5257c364450fa69b3f0e1ac4b1a4cf965eddea78adc",
+    "routing_diagnostics.json": "86a2363a4a53ea9020933177c9734a46065fc8c50463a060d8296348a9d76fa4",
+    "taxonomy.json": "a79cf6f7fe8a7a028c1f2b51619b307750a241c26d863c0fc983423a6dd48177"
+  },
+  "metadata_sha256": "e2db99b36a34bc2a48307cb6c0066062002ce03e62ee0faa164f6f723856f1a0",
+  "run_id": "eval-20261029T101501Z-d8a73dc8",
+  "schema_version": 1,
+  "scope": "classification evaluation; no latency/throughput measurements",
+  "status": "complete"
+}

@@ -1,0 +1,26 @@
+Holding temporary Windows idle-sleep request; power plan unchanged.
+Evaluated s42 IND-2 before predicted: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T093417Z-13542f5b
+Evaluated s42 IND-2 before oracle: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T093637Z-6f3e3ee1
+Evaluated s42 IND-2 after predicted: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T093914Z-5f3af0d9
+Evaluated s42 IND-2 after oracle: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T094135Z-7bfb0f77
+Evaluated s42 FT-FROZEN-2 before predicted: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T094306Z-0dd192df
+Evaluated s42 FT-FROZEN-2 before oracle: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T094435Z-0de7c801
+Evaluated s42 FT-FROZEN-2 after predicted: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T094607Z-4321f1e7
+Evaluated s42 FT-FROZEN-2 after oracle: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T094737Z-1fce8427
+Evaluated s43 IND-2 before predicted: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T095013Z-3ae85a04
+Evaluated s43 IND-2 before oracle: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T095232Z-b71a83f9
+Evaluated s43 IND-2 after predicted: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T095511Z-044b62b3
+Evaluated s43 IND-2 after oracle: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T095732Z-e7497bee
+Evaluated s43 FT-FROZEN-2 before predicted: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T095904Z-13bd2067
+Evaluated s43 FT-FROZEN-2 before oracle: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T100032Z-3066dc1e
+Evaluated s43 FT-FROZEN-2 after predicted: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T100205Z-5c6eb654
+Evaluated s43 FT-FROZEN-2 after oracle: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T100334Z-7164cbed
+Evaluated s44 IND-2 before predicted: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T100611Z-350e8c23
+Evaluated s44 IND-2 before oracle: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T100832Z-4d657d5e
+Evaluated s44 IND-2 after predicted: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T101108Z-30c7c499
+Evaluated s44 IND-2 after oracle: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T101329Z-76309e47
+Evaluated s44 FT-FROZEN-2 before predicted: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T101501Z-d8a73dc8
+Evaluated s44 FT-FROZEN-2 before oracle: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T101630Z-6ea3d733
+Evaluated s44 FT-FROZEN-2 after predicted: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T101802Z-f12dfa1d
+Evaluated s44 FT-FROZEN-2 after oracle: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926\eval-20261029T101933Z-8a3f2696
+Completed: S:\Projects\cls-balance\runs\incremental\incremental-evaluation-20261029T093143Z-069c1926

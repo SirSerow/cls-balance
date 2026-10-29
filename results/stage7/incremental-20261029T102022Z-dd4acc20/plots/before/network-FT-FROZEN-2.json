@@ -1,0 +1,2557 @@
+{
+  "active_variant_ids": [
+    0,
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99
+  ],
+  "architecture": "FT-FROZEN-2",
+  "backbones_stored": 1,
+  "branches": [
+    {
+      "global_variant_ids": [
+        34,
+        35
+      ],
+      "manufacturer": "ATR",
+      "manufacturer_id": 0,
+      "singleton": false,
+      "variants": [
+        "ATR-42",
+        "ATR-72"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "manufacturer": "Airbus",
+      "manufacturer_id": 1,
+      "singleton": false,
+      "variants": [
+        "A300B4",
+        "A310",
+        "A318",
+        "A319",
+        "A320",
+        "A321",
+        "A330-200",
+        "A330-300",
+        "A340-200",
+        "A340-300",
+        "A340-500",
+        "A340-600",
+        "A380"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        36
+      ],
+      "manufacturer": "Antonov",
+      "manufacturer_id": 2,
+      "singleton": true,
+      "variants": [
+        "An-12"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        40,
+        90
+      ],
+      "manufacturer": "Beechcraft",
+      "manufacturer_id": 3,
+      "singleton": false,
+      "variants": [
+        "Beechcraft 1900",
+        "Model B200"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        41
+      ],
+      "manufacturer": "Boeing",
+      "manufacturer_id": 4,
+      "singleton": false,
+      "variants": [
+        "707-320",
+        "727-200",
+        "737-300",
+        "737-400",
+        "737-500",
+        "737-600",
+        "737-700",
+        "737-800",
+        "737-900",
+        "747-100",
+        "747-200",
+        "747-300",
+        "747-400",
+        "757-200",
+        "757-300",
+        "767-200",
+        "767-300",
+        "767-400",
+        "777-200",
+        "777-300",
+        "Boeing 717"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        79
+      ],
+      "manufacturer": "Bombardier Aerospace",
+      "manufacturer_id": 5,
+      "singleton": true,
+      "variants": [
+        "Global Express"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        37,
+        38,
+        39,
+        82
+      ],
+      "manufacturer": "British Aerospace",
+      "manufacturer_id": 6,
+      "singleton": false,
+      "variants": [
+        "BAE 146-200",
+        "BAE 146-300",
+        "BAE-125",
+        "Hawk T1"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        44,
+        45,
+        46,
+        51
+      ],
+      "manufacturer": "Canadair",
+      "manufacturer_id": 7,
+      "singleton": false,
+      "variants": [
+        "CRJ-200",
+        "CRJ-700",
+        "CRJ-900",
+        "Challenger 600"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "manufacturer": "Cessna",
+      "manufacturer_id": 8,
+      "singleton": false,
+      "variants": [
+        "Cessna 172",
+        "Cessna 208",
+        "Cessna 525",
+        "Cessna 560"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        92
+      ],
+      "manufacturer": "Cirrus Aircraft",
+      "manufacturer_id": 9,
+      "singleton": true,
+      "variants": [
+        "SR-20"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        74,
+        75
+      ],
+      "manufacturer": "Dassault Aviation",
+      "manufacturer_id": 10,
+      "singleton": false,
+      "variants": [
+        "Falcon 2000",
+        "Falcon 900"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        63
+      ],
+      "manufacturer": "Dornier",
+      "manufacturer_id": 11,
+      "singleton": true,
+      "variants": [
+        "Dornier 328"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        43,
+        53,
+        54,
+        55
+      ],
+      "manufacturer": "Douglas Aircraft Company",
+      "manufacturer_id": 12,
+      "singleton": false,
+      "variants": [
+        "C-47",
+        "DC-3",
+        "DC-6",
+        "DC-8"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70
+      ],
+      "manufacturer": "Embraer",
+      "manufacturer_id": 13,
+      "singleton": false,
+      "variants": [
+        "E-170",
+        "E-190",
+        "E-195",
+        "EMB-120",
+        "ERJ 135",
+        "ERJ 145",
+        "Embraer Legacy 600"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        71
+      ],
+      "manufacturer": "Eurofighter",
+      "manufacturer_id": 14,
+      "singleton": true,
+      "variants": [
+        "Eurofighter Typhoon"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        89
+      ],
+      "manufacturer": "Fairchild",
+      "manufacturer_id": 15,
+      "singleton": true,
+      "variants": [
+        "Metroliner"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        76,
+        77,
+        78
+      ],
+      "manufacturer": "Fokker",
+      "manufacturer_id": 16,
+      "singleton": false,
+      "variants": [
+        "Fokker 100",
+        "Fokker 50",
+        "Fokker 70"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        80,
+        81
+      ],
+      "manufacturer": "Gulfstream Aerospace",
+      "manufacturer_id": 17,
+      "singleton": false,
+      "variants": [
+        "Gulfstream IV",
+        "Gulfstream V"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        83
+      ],
+      "manufacturer": "Ilyushin",
+      "manufacturer_id": 18,
+      "singleton": true,
+      "variants": [
+        "Il-76"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        42,
+        84
+      ],
+      "manufacturer": "Lockheed Corporation",
+      "manufacturer_id": 19,
+      "singleton": false,
+      "variants": [
+        "C-130",
+        "L-1011"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        72
+      ],
+      "manufacturer": "Lockheed Martin",
+      "manufacturer_id": 20,
+      "singleton": true,
+      "variants": [
+        "F-16A/B"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        52,
+        56,
+        73,
+        85,
+        86,
+        87,
+        88
+      ],
+      "manufacturer": "McDonnell Douglas",
+      "manufacturer_id": 21,
+      "singleton": false,
+      "variants": [
+        "DC-10",
+        "DC-9-30",
+        "F/A-18",
+        "MD-11",
+        "MD-80",
+        "MD-87",
+        "MD-90"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        96
+      ],
+      "manufacturer": "Panavia",
+      "manufacturer_id": 22,
+      "singleton": true,
+      "variants": [
+        "Tornado"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        91
+      ],
+      "manufacturer": "Piper",
+      "manufacturer_id": 23,
+      "singleton": true,
+      "variants": [
+        "PA-28"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        62
+      ],
+      "manufacturer": "Robin",
+      "manufacturer_id": 24,
+      "singleton": true,
+      "variants": [
+        "DR-400"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        93,
+        94
+      ],
+      "manufacturer": "Saab",
+      "manufacturer_id": 25,
+      "singleton": false,
+      "variants": [
+        "Saab 2000",
+        "Saab 340"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        95
+      ],
+      "manufacturer": "Supermarine",
+      "manufacturer_id": 26,
+      "singleton": true,
+      "variants": [
+        "Spitfire"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        97,
+        98
+      ],
+      "manufacturer": "Tupolev",
+      "manufacturer_id": 27,
+      "singleton": false,
+      "variants": [
+        "Tu-134",
+        "Tu-154"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        99
+      ],
+      "manufacturer": "Yakovlev",
+      "manufacturer_id": 28,
+      "singleton": true,
+      "variants": [
+        "Yak-42"
+      ]
+    },
+    {
+      "global_variant_ids": [
+        57,
+        58,
+        59,
+        60,
+        61
+      ],
+      "manufacturer": "de Havilland",
+      "manufacturer_id": 29,
+      "singleton": false,
+      "variants": [
+        "DH-82",
+        "DHC-1",
+        "DHC-6",
+        "DHC-8-100",
+        "DHC-8-300"
+      ]
+    }
+  ],
+  "introduced_variant_id": 2,
+  "nodes": [
+    {
+      "global_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "key": "manufacturer",
+      "kind": "MLP head",
+      "parent_id": null,
+      "parent_stage": null,
+      "stage": "manufacturer"
+    },
+    {
+      "global_ids": [
+        34,
+        35
+      ],
+      "key": "variant-manufacturer-0",
+      "kind": "MLP head",
+      "parent_id": 0,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "key": "variant-manufacturer-1",
+      "kind": "MLP head",
+      "parent_id": 1,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        40,
+        90
+      ],
+      "key": "variant-manufacturer-3",
+      "kind": "MLP head",
+      "parent_id": 3,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        41
+      ],
+      "key": "variant-manufacturer-4",
+      "kind": "MLP head",
+      "parent_id": 4,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        37,
+        38,
+        39,
+        82
+      ],
+      "key": "variant-manufacturer-6",
+      "kind": "MLP head",
+      "parent_id": 6,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        44,
+        45,
+        46,
+        51
+      ],
+      "key": "variant-manufacturer-7",
+      "kind": "MLP head",
+      "parent_id": 7,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "key": "variant-manufacturer-8",
+      "kind": "MLP head",
+      "parent_id": 8,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        74,
+        75
+      ],
+      "key": "variant-manufacturer-10",
+      "kind": "MLP head",
+      "parent_id": 10,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        43,
+        53,
+        54,
+        55
+      ],
+      "key": "variant-manufacturer-12",
+      "kind": "MLP head",
+      "parent_id": 12,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70
+      ],
+      "key": "variant-manufacturer-13",
+      "kind": "MLP head",
+      "parent_id": 13,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        76,
+        77,
+        78
+      ],
+      "key": "variant-manufacturer-16",
+      "kind": "MLP head",
+      "parent_id": 16,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        80,
+        81
+      ],
+      "key": "variant-manufacturer-17",
+      "kind": "MLP head",
+      "parent_id": 17,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        42,
+        84
+      ],
+      "key": "variant-manufacturer-19",
+      "kind": "MLP head",
+      "parent_id": 19,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        52,
+        56,
+        73,
+        85,
+        86,
+        87,
+        88
+      ],
+      "key": "variant-manufacturer-21",
+      "kind": "MLP head",
+      "parent_id": 21,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        93,
+        94
+      ],
+      "key": "variant-manufacturer-25",
+      "kind": "MLP head",
+      "parent_id": 25,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        97,
+        98
+      ],
+      "key": "variant-manufacturer-27",
+      "kind": "MLP head",
+      "parent_id": 27,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    },
+    {
+      "global_ids": [
+        57,
+        58,
+        59,
+        60,
+        61
+      ],
+      "key": "variant-manufacturer-29",
+      "kind": "MLP head",
+      "parent_id": 29,
+      "parent_stage": "manufacturer",
+      "stage": "variant"
+    }
+  ],
+  "stage": "before",
+  "trained_checkpoints": [
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 8,
+      "checkpoint_sha256": "ddfdadcec361b35e02b93242eaba647b070c0302b4fa06938a60df979e60ac3a",
+      "classes": 30,
+      "global_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-manufacturer.csv",
+      "key": "manufacturer",
+      "resources": {
+        "optimizer_steps": 3105,
+        "trainable_parameters": 335646,
+        "training_image_exposures": 49515
+      },
+      "seed": 42,
+      "selection_ids_sha256": "2c114c647162ac3ab937a502496e06e5f0328998f2bb5c7a8338cd642330339c",
+      "selection_images": 3300,
+      "stage": "before",
+      "state_sha256": "31aeab356b93bb9700c7a3396e0d39e72ca95ac11392ceea518a9cfff2adc7ac",
+      "training_ids_sha256": "a61477477e757edafabc90e6f482576ebbcfa775d922cbbe57141f167c323235",
+      "training_images": 3301,
+      "validation_macro_recall": 0.8030847192503651
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 8,
+      "checkpoint_sha256": "f52aee416c2f5d2843e659866c324812982fc7858ff6588403741b1af4602783",
+      "classes": 2,
+      "global_ids": [
+        34,
+        35
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-0.csv",
+      "key": "variant-manufacturer-0",
+      "resources": {
+        "optimizer_steps": 75,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 990
+      },
+      "seed": 42,
+      "selection_ids_sha256": "6cfe1d85abfb5bb00b903a2dbb880a8450fb37bc87c1fe5c93ffc62c3baba69a",
+      "selection_images": 67,
+      "stage": "before",
+      "state_sha256": "4f4367c8c5893a63d22e559ce30b182fc037913e92bdb5e75c51498bcee52765",
+      "training_ids_sha256": "934cf95e9c05784f2aa7b5a213ac30c66b4273e76598c462dbbf885b291e0cb5",
+      "training_images": 66,
+      "validation_macro_recall": 0.8792335115864527
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 5,
+      "checkpoint_sha256": "3122242931669a84786fadc5a86929edabfe9d2afc7895463f81ee0ba0a6c98a",
+      "classes": 13,
+      "global_ids": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-1.csv",
+      "key": "variant-manufacturer-1",
+      "resources": {
+        "optimizer_steps": 336,
+        "trainable_parameters": 331277,
+        "training_image_exposures": 5208
+      },
+      "seed": 42,
+      "selection_ids_sha256": "81ebefc6dd938abc5aa0b5cff01664e691780be8884f07bf09bc67513884ee7d",
+      "selection_images": 433,
+      "stage": "before",
+      "state_sha256": "87107c1c89461805c2693e8e8aed8f02e5d0eba991e9e6f504a11becb580f43e",
+      "training_ids_sha256": "5218182f4eeb8d3f3bb08d2a06f8aac982a20131699f0a3d426fb0c63e7480d6",
+      "training_images": 434,
+      "validation_macro_recall": 0.6812011517893871
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 1,
+      "checkpoint_sha256": "d0952096481c4c4990d07bcbb4fefd4c6d410a19993939d1099509173022c400",
+      "classes": 2,
+      "global_ids": [
+        74,
+        75
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-10.csv",
+      "key": "variant-manufacturer-10",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 536
+      },
+      "seed": 42,
+      "selection_ids_sha256": "c91a8bfda1b3639526759100e4ac310cf02f28326b52358424a6b5a4f9c4cee6",
+      "selection_images": 66,
+      "stage": "before",
+      "state_sha256": "34474bb75318926c32bc3e47856c988cd49c8f628e2fb108500e0d47793b8cb8",
+      "training_ids_sha256": "8e8760f8331dc85911c12073742099f06fe54d22810e6adf97adb7f9c1c45e81",
+      "training_images": 67,
+      "validation_macro_recall": 0.9090909090909091
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 2,
+      "checkpoint_sha256": "66c58374a01281e083584234edc4a53beb60dd5d5829325750d467aeed8a5722",
+      "classes": 4,
+      "global_ids": [
+        43,
+        53,
+        54,
+        55
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-12.csv",
+      "key": "variant-manufacturer-12",
+      "resources": {
+        "optimizer_steps": 81,
+        "trainable_parameters": 328964,
+        "training_image_exposures": 1197
+      },
+      "seed": 42,
+      "selection_ids_sha256": "0e17bce2fe24b660cea04d07293119344a48b357b97223742689f4d566248185",
+      "selection_images": 134,
+      "stage": "before",
+      "state_sha256": "9cb94fe62ed7b3f390e5d761e64e3fb5aeca847a5cc7cbb1ad8b72a40973cf46",
+      "training_ids_sha256": "92959ada056edb01668b23e71664c9676f43de91499b7cb5fe76d562038deec3",
+      "training_images": 133,
+      "validation_macro_recall": 0.6635472370766489
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 3,
+      "checkpoint_sha256": "3c980224de391c1a587e0731dd6c6b4166200c9e8360949deb83a23431956e30",
+      "classes": 7,
+      "global_ids": [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-13.csv",
+      "key": "variant-manufacturer-13",
+      "resources": {
+        "optimizer_steps": 150,
+        "trainable_parameters": 329735,
+        "training_image_exposures": 2330
+      },
+      "seed": 42,
+      "selection_ids_sha256": "e39b5545f75725f86feae2f926f220ea13b01ba12f9b81dc2fbaea9b81b67a9b",
+      "selection_images": 234,
+      "stage": "before",
+      "state_sha256": "f9a64b0a208070bc48a41aa7ade52a6509cb0987273304f310f36e9b01a6ad2c",
+      "training_ids_sha256": "95ec77b993c8b39dcef98a08e69c25bfc76539d6cb613458d0d54da01fba2f21",
+      "training_images": 233,
+      "validation_macro_recall": 0.7160682454800102
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 1,
+      "checkpoint_sha256": "955660a9510f1ecf64bb57c9b2fa4996cbf95cc9476107a0404be24c2d5c9b60",
+      "classes": 3,
+      "global_ids": [
+        76,
+        77,
+        78
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-16.csv",
+      "key": "variant-manufacturer-16",
+      "resources": {
+        "optimizer_steps": 56,
+        "trainable_parameters": 328707,
+        "training_image_exposures": 800
+      },
+      "seed": 42,
+      "selection_ids_sha256": "59477d8b26f93c767ab4894225bf67ccf204a96a6beee9d4bee6099075a69760",
+      "selection_images": 100,
+      "stage": "before",
+      "state_sha256": "3c589d52ac41f1d321de17c3c9ec0c2f5b4acff63de268f9d401fb5d1605a26c",
+      "training_ids_sha256": "b8642e48b809f9139b8b1b1a71549459950ddd1f58864136c39e0527611367d5",
+      "training_images": 100,
+      "validation_macro_recall": 0.8612596553773025
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 6,
+      "checkpoint_sha256": "6a582293bb70826cc48cdce9669e747007258a6f10c525a2bc2764fb26e52925",
+      "classes": 2,
+      "global_ids": [
+        80,
+        81
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-17.csv",
+      "key": "variant-manufacturer-17",
+      "resources": {
+        "optimizer_steps": 65,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 871
+      },
+      "seed": 42,
+      "selection_ids_sha256": "908f9f30253269ee3014ff1b7358076b0811e0e34f3936c2ed2d3e0761041152",
+      "selection_images": 66,
+      "stage": "before",
+      "state_sha256": "f4a655d8ef1d1ff2dbb9bb40ab8c9aa2d57a0a6dfa79d531753dfb816bfe1336",
+      "training_ids_sha256": "2be67311682c92ea098a5f1c2901e1ec38b4d65858f83507518bacd9adcf8770",
+      "training_images": 67,
+      "validation_macro_recall": 0.803030303030303
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 1,
+      "checkpoint_sha256": "412cfcacac65e2c2c239bdd2718ffffc48598b2aaa1ebb1df9134b67698ea4b6",
+      "classes": 2,
+      "global_ids": [
+        42,
+        84
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-19.csv",
+      "key": "variant-manufacturer-19",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 544
+      },
+      "seed": 42,
+      "selection_ids_sha256": "bbce3bc3bf202532a3c17dee5f01d444b12612ea94c04d1f1f19a86003655b2f",
+      "selection_images": 66,
+      "stage": "before",
+      "state_sha256": "0c24e223a032f3907eff7b877615b420661e0527ed1ed357e22613cc3cbaa4d8",
+      "training_ids_sha256": "e6530efcbede1a579b5c32d674c5ae37fd851d21798190a748e3c54365fe9e4d",
+      "training_images": 68,
+      "validation_macro_recall": 0.9545454545454546
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 2,
+      "checkpoint_sha256": "dc9c4b70c353ce406d57acf6b71b846358f081304f8b3fcb3c2aed47429b5e3c",
+      "classes": 7,
+      "global_ids": [
+        52,
+        56,
+        73,
+        85,
+        86,
+        87,
+        88
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-21.csv",
+      "key": "variant-manufacturer-21",
+      "resources": {
+        "optimizer_steps": 135,
+        "trainable_parameters": 329735,
+        "training_image_exposures": 2088
+      },
+      "seed": 42,
+      "selection_ids_sha256": "14a02317efc7e798f37fbfaf04dd35e2a9d682b7961adef1956c901db6bb1d49",
+      "selection_images": 235,
+      "stage": "before",
+      "state_sha256": "88ba0258b86baf4d3f1b3431c10b0027e32fc72ec7dda655d22947885e6f3b70",
+      "training_ids_sha256": "5e6fcda833f59ffb78a2ddf39aa7065fda2b5bda57e01b1f16855e7c4ade9cac",
+      "training_images": 232,
+      "validation_macro_recall": 0.5861981156098803
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 1,
+      "checkpoint_sha256": "5bf95e317e9921fff1dbb018ed5fb3ac8d0ff05cede8cb4c1349de39dd44c034",
+      "classes": 2,
+      "global_ids": [
+        93,
+        94
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-25.csv",
+      "key": "variant-manufacturer-25",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 536
+      },
+      "seed": 42,
+      "selection_ids_sha256": "058c609d6a0b122e2207d7c35f63eaf99f6e12d6e50771e3c853e83354e9607f",
+      "selection_images": 67,
+      "stage": "before",
+      "state_sha256": "e98a1221afaf17ebb3115e1112f2d784850838e8329b299edc2121c275b747de",
+      "training_ids_sha256": "df2e2835ca299d296c1a05c4d1f4f370f12fbe92ab621dec407bfbc5b9646d70",
+      "training_images": 67,
+      "validation_macro_recall": 1.0
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 1,
+      "checkpoint_sha256": "74ef09ee536bf39cb507a22090354661874dad3271010188ecdec4f576e6974c",
+      "classes": 2,
+      "global_ids": [
+        97,
+        98
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-27.csv",
+      "key": "variant-manufacturer-27",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 528
+      },
+      "seed": 42,
+      "selection_ids_sha256": "9f4420b3d7d2f43650b1b743492bc48f3603a37c81b4a090c69f8c3826acca6e",
+      "selection_images": 67,
+      "stage": "before",
+      "state_sha256": "e586ba21ab8cb13d1de2575230c2fdd8356463c6a590c0015fa439837e0c393f",
+      "training_ids_sha256": "e5281b4ad91340675a0b11e5dda1a3ea4d460e1a56c9b552ad106c3a7152bb04",
+      "training_images": 66,
+      "validation_macro_recall": 0.9696969696969697
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 8,
+      "checkpoint_sha256": "4e8e84fbd8a3550abbcc81e974c54c075c93668c61fdeac406a97d7c713dac05",
+      "classes": 5,
+      "global_ids": [
+        57,
+        58,
+        59,
+        60,
+        61
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-29.csv",
+      "key": "variant-manufacturer-29",
+      "resources": {
+        "optimizer_steps": 165,
+        "trainable_parameters": 329221,
+        "training_image_exposures": 2505
+      },
+      "seed": 42,
+      "selection_ids_sha256": "e128c24a69f7c1bc8dd16cdfa1374f51a793acb67e09563a523b417e887d42af",
+      "selection_images": 167,
+      "stage": "before",
+      "state_sha256": "ff5123710e130cc8a23c7c278e542e700a6d7b4b0b82bff7887bf169cbbd7c04",
+      "training_ids_sha256": "8e736ee96752b15ff8a30aa44649aaf5d4bdb538217ab53146a1373190336957",
+      "training_images": 167,
+      "validation_macro_recall": 0.905169340463458
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 1,
+      "checkpoint_sha256": "2db65f0d069f1074b6288efb2d5a5539205ce27d93639f209d44a373330083ad",
+      "classes": 2,
+      "global_ids": [
+        40,
+        90
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-3.csv",
+      "key": "variant-manufacturer-3",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 536
+      },
+      "seed": 42,
+      "selection_ids_sha256": "cf0d848c462b0f077d4bcafacdd8afedb1cc2da1aff25e2e0e4fdad3b3de23cd",
+      "selection_images": 67,
+      "stage": "before",
+      "state_sha256": "2528a5e6f7be4274a4e11c6df8513f79648012c656bc71bb403754b583f443ae",
+      "training_ids_sha256": "074a1ecd6e26d4ec4ab888673707a4121c994e9b30af5e2eed9d8de46c9de2d6",
+      "training_images": 67,
+      "validation_macro_recall": 0.9549910873440286
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 5,
+      "checkpoint_sha256": "36868ae4715b7f6d5f07f920c2c631171962b274cf0cff09d9a386d059fb2fb7",
+      "classes": 21,
+      "global_ids": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        41
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-4.csv",
+      "key": "variant-manufacturer-4",
+      "resources": {
+        "optimizer_steps": 528,
+        "trainable_parameters": 333333,
+        "training_image_exposures": 8400
+      },
+      "seed": 42,
+      "selection_ids_sha256": "f901b02bb9391fb11b1634ef86d82d7880e4439f4b0c63a67b6f5d906a1a9c9b",
+      "selection_images": 700,
+      "stage": "before",
+      "state_sha256": "dc6f865f397ffff446a88340f3f6051b41ad3236203ea270b84a8d88cce0cfb8",
+      "training_ids_sha256": "0d050f7704a4321cd0d415d88fa60b404d2c2df6e5ae35299be4a33c47e1a63c",
+      "training_images": 700,
+      "validation_macro_recall": 0.5503352856294034
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 4,
+      "checkpoint_sha256": "e31b1071e4e8fafbb4c4136b1155b618c9ff6b004c8f1c6d6ea9172e2eefc6a7",
+      "classes": 4,
+      "global_ids": [
+        37,
+        38,
+        39,
+        82
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-6.csv",
+      "key": "variant-manufacturer-6",
+      "resources": {
+        "optimizer_steps": 99,
+        "trainable_parameters": 328964,
+        "training_image_exposures": 1463
+      },
+      "seed": 42,
+      "selection_ids_sha256": "92f12aff5fa1315ffae6e0536c237a6e8bca5eee174a56df482d79f2c718e102",
+      "selection_images": 134,
+      "stage": "before",
+      "state_sha256": "4e8884ac9bffc880967c8ee1987ee6c9bd233929c88e799701fa703a490fed78",
+      "training_ids_sha256": "14c0f6b3c4e7edccbeb854237f10354fd34c5e160fbadc72c8233cc12b648582",
+      "training_images": 133,
+      "validation_macro_recall": 0.7912210338680926
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 5,
+      "checkpoint_sha256": "7dcc61640dfe7a332f66fd485232a5fb3a70d937c1f6c8051b9da403b5643a68",
+      "classes": 4,
+      "global_ids": [
+        44,
+        45,
+        46,
+        51
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-7.csv",
+      "key": "variant-manufacturer-7",
+      "resources": {
+        "optimizer_steps": 108,
+        "trainable_parameters": 328964,
+        "training_image_exposures": 1608
+      },
+      "seed": 42,
+      "selection_ids_sha256": "c4512e1733ad2f04468f5caa408f7715f3cbc80f9393f9a58b0d5c7cd4d62428",
+      "selection_images": 133,
+      "stage": "before",
+      "state_sha256": "cd31761eac99d422dcca0e4587a4e9f07374d402e578f1c81cbaace68c4790c3",
+      "training_ids_sha256": "213a59486e231c827395e78274cd1378273870938e3d186d49afe3dd7bbe9fa4",
+      "training_images": 134,
+      "validation_macro_recall": 0.8355614973262032
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "f87a29fa4ab5cc56a766e30d9a47f64101685997599474dc508c6038d3e531a0",
+      "best_epoch": 1,
+      "checkpoint_sha256": "aeecb4494790f8c718904378ce7d28324e1a12392fe2583d8d36287008f30b42",
+      "classes": 4,
+      "global_ids": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-42/FT-FROZEN-2-before-variant-manufacturer-8.csv",
+      "key": "variant-manufacturer-8",
+      "resources": {
+        "optimizer_steps": 72,
+        "trainable_parameters": 328964,
+        "training_image_exposures": 1064
+      },
+      "seed": 42,
+      "selection_ids_sha256": "36d287d18565135ec6b35560675ed4f0140737111d8858660d40eef9188a4845",
+      "selection_images": 133,
+      "stage": "before",
+      "state_sha256": "44e48b977e54eca583ab1b8f57c1f01dad2128741bd9f37208a33e9bffd39c14",
+      "training_ids_sha256": "bbe7b3839f77916a8b0ce5520ff4d294ba3973072e86634e342f885c32c35dae",
+      "training_images": 133,
+      "validation_macro_recall": 0.9324866310160428
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 2,
+      "checkpoint_sha256": "77262d3beb61ad7175a9f75d4d95fd97710ff9aedcdbb091c3689d76b135f4d0",
+      "classes": 30,
+      "global_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-manufacturer.csv",
+      "key": "manufacturer",
+      "resources": {
+        "optimizer_steps": 1863,
+        "trainable_parameters": 335646,
+        "training_image_exposures": 29709
+      },
+      "seed": 43,
+      "selection_ids_sha256": "2c114c647162ac3ab937a502496e06e5f0328998f2bb5c7a8338cd642330339c",
+      "selection_images": 3300,
+      "stage": "before",
+      "state_sha256": "97400a593f9b34e65227ba7ca955b71da87416d9267a4b8fe3df2f6b9d1f181e",
+      "training_ids_sha256": "a61477477e757edafabc90e6f482576ebbcfa775d922cbbe57141f167c323235",
+      "training_images": 3301,
+      "validation_macro_recall": 0.7936183342917736
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 1,
+      "checkpoint_sha256": "db372b5c02cb3a01a7ebbe0a09c04b47f5df3b87f37e879ba81fe0b295847486",
+      "classes": 2,
+      "global_ids": [
+        34,
+        35
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-0.csv",
+      "key": "variant-manufacturer-0",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 528
+      },
+      "seed": 43,
+      "selection_ids_sha256": "6cfe1d85abfb5bb00b903a2dbb880a8450fb37bc87c1fe5c93ffc62c3baba69a",
+      "selection_images": 67,
+      "stage": "before",
+      "state_sha256": "72065c327e597706d3a24e700c66682e08f0864a1bfa1e4b743388a373be9099",
+      "training_ids_sha256": "934cf95e9c05784f2aa7b5a213ac30c66b4273e76598c462dbbf885b291e0cb5",
+      "training_images": 66,
+      "validation_macro_recall": 0.9393939393939394
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 7,
+      "checkpoint_sha256": "b93b31ba475712327258261299a06dcdd25cf3dcef98e94482e7c0f1fbe39408",
+      "classes": 13,
+      "global_ids": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-1.csv",
+      "key": "variant-manufacturer-1",
+      "resources": {
+        "optimizer_steps": 392,
+        "trainable_parameters": 331277,
+        "training_image_exposures": 6076
+      },
+      "seed": 43,
+      "selection_ids_sha256": "81ebefc6dd938abc5aa0b5cff01664e691780be8884f07bf09bc67513884ee7d",
+      "selection_images": 433,
+      "stage": "before",
+      "state_sha256": "136c1a3f320143bc260ec8d2b3768a94cbb42662a3c4721bf5943403733d6125",
+      "training_ids_sha256": "5218182f4eeb8d3f3bb08d2a06f8aac982a20131699f0a3d426fb0c63e7480d6",
+      "training_images": 434,
+      "validation_macro_recall": 0.6515151515151516
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 1,
+      "checkpoint_sha256": "2f9aea680be84a5b18e5c40da34808aa8cb6d5a7116926269dfa6da3d5aefbd0",
+      "classes": 2,
+      "global_ids": [
+        74,
+        75
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-10.csv",
+      "key": "variant-manufacturer-10",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 536
+      },
+      "seed": 43,
+      "selection_ids_sha256": "c91a8bfda1b3639526759100e4ac310cf02f28326b52358424a6b5a4f9c4cee6",
+      "selection_images": 66,
+      "stage": "before",
+      "state_sha256": "96ed11839659d0833ad45e9801dc9a4efc472e21c6a95700e415a0fd367cb2ca",
+      "training_ids_sha256": "8e8760f8331dc85911c12073742099f06fe54d22810e6adf97adb7f9c1c45e81",
+      "training_images": 67,
+      "validation_macro_recall": 0.9242424242424243
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 1,
+      "checkpoint_sha256": "0eaf0110e96051fd0d78551895ad1113d684a88913be6092766bba60b9589dcc",
+      "classes": 4,
+      "global_ids": [
+        43,
+        53,
+        54,
+        55
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-12.csv",
+      "key": "variant-manufacturer-12",
+      "resources": {
+        "optimizer_steps": 72,
+        "trainable_parameters": 328964,
+        "training_image_exposures": 1064
+      },
+      "seed": 43,
+      "selection_ids_sha256": "0e17bce2fe24b660cea04d07293119344a48b357b97223742689f4d566248185",
+      "selection_images": 134,
+      "stage": "before",
+      "state_sha256": "eff262bfdbb0788d25a9589d81e6efd5b4557b12f57fb504c8f4353ba2ed91c7",
+      "training_ids_sha256": "92959ada056edb01668b23e71664c9676f43de91499b7cb5fe76d562038deec3",
+      "training_images": 133,
+      "validation_macro_recall": 0.67825311942959
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 1,
+      "checkpoint_sha256": "4dc32ebd7b3a6f3d05a310dbe7f88329d792152f6efb0027a18cb412c778d834",
+      "classes": 7,
+      "global_ids": [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-13.csv",
+      "key": "variant-manufacturer-13",
+      "resources": {
+        "optimizer_steps": 120,
+        "trainable_parameters": 329735,
+        "training_image_exposures": 1864
+      },
+      "seed": 43,
+      "selection_ids_sha256": "e39b5545f75725f86feae2f926f220ea13b01ba12f9b81dc2fbaea9b81b67a9b",
+      "selection_images": 234,
+      "stage": "before",
+      "state_sha256": "c08f4682ca7b15e8185f14aab357d48aa2a6fa8883f66244d92b067f6284bb38",
+      "training_ids_sha256": "95ec77b993c8b39dcef98a08e69c25bfc76539d6cb613458d0d54da01fba2f21",
+      "training_images": 233,
+      "validation_macro_recall": 0.6998981410746116
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 1,
+      "checkpoint_sha256": "c3c694c215a803de3451c1f13d439b45a2493c054261c6f7ea17dae2aab46589",
+      "classes": 3,
+      "global_ids": [
+        76,
+        77,
+        78
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-16.csv",
+      "key": "variant-manufacturer-16",
+      "resources": {
+        "optimizer_steps": 56,
+        "trainable_parameters": 328707,
+        "training_image_exposures": 800
+      },
+      "seed": 43,
+      "selection_ids_sha256": "59477d8b26f93c767ab4894225bf67ccf204a96a6beee9d4bee6099075a69760",
+      "selection_images": 100,
+      "stage": "before",
+      "state_sha256": "ddaff38583e7e832a3a738535ca3408633af328717e2bbc51b835187f870bb84",
+      "training_ids_sha256": "b8642e48b809f9139b8b1b1a71549459950ddd1f58864136c39e0527611367d5",
+      "training_images": 100,
+      "validation_macro_recall": 0.9102792632204397
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 4,
+      "checkpoint_sha256": "f117de359e2b83ae153f57627ec125abb5a9fc7a7f0c65e07bf72087803af28b",
+      "classes": 2,
+      "global_ids": [
+        80,
+        81
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-17.csv",
+      "key": "variant-manufacturer-17",
+      "resources": {
+        "optimizer_steps": 55,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 737
+      },
+      "seed": 43,
+      "selection_ids_sha256": "908f9f30253269ee3014ff1b7358076b0811e0e34f3936c2ed2d3e0761041152",
+      "selection_images": 66,
+      "stage": "before",
+      "state_sha256": "d1c596de00dde0de696f4ba01953ea10a82362dd51822da97f894c55abe47e3c",
+      "training_ids_sha256": "2be67311682c92ea098a5f1c2901e1ec38b4d65858f83507518bacd9adcf8770",
+      "training_images": 67,
+      "validation_macro_recall": 0.7424242424242424
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 4,
+      "checkpoint_sha256": "271466551c8ce9250cd024534c8ac4fbcdff42621b6b1b065c0b79f4e201c8e8",
+      "classes": 2,
+      "global_ids": [
+        42,
+        84
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-19.csv",
+      "key": "variant-manufacturer-19",
+      "resources": {
+        "optimizer_steps": 55,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 748
+      },
+      "seed": 43,
+      "selection_ids_sha256": "bbce3bc3bf202532a3c17dee5f01d444b12612ea94c04d1f1f19a86003655b2f",
+      "selection_images": 66,
+      "stage": "before",
+      "state_sha256": "583c3b25ae8a42340e892cee7084a9a6312b713e3270e7b72c7d6e809c5dead5",
+      "training_ids_sha256": "e6530efcbede1a579b5c32d674c5ae37fd851d21798190a748e3c54365fe9e4d",
+      "training_images": 68,
+      "validation_macro_recall": 0.9848484848484849
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 1,
+      "checkpoint_sha256": "70fd845cb9d7b7a7e06c177b536a9f2ee546d1ba91d883388d76a15d09e60b77",
+      "classes": 7,
+      "global_ids": [
+        52,
+        56,
+        73,
+        85,
+        86,
+        87,
+        88
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-21.csv",
+      "key": "variant-manufacturer-21",
+      "resources": {
+        "optimizer_steps": 120,
+        "trainable_parameters": 329735,
+        "training_image_exposures": 1856
+      },
+      "seed": 43,
+      "selection_ids_sha256": "14a02317efc7e798f37fbfaf04dd35e2a9d682b7961adef1956c901db6bb1d49",
+      "selection_images": 235,
+      "stage": "before",
+      "state_sha256": "16dd0853c23ef0783d6a117fb544483cfde5dedce20acd9ff6521979aee685c3",
+      "training_ids_sha256": "5e6fcda833f59ffb78a2ddf39aa7065fda2b5bda57e01b1f16855e7c4ade9cac",
+      "training_images": 232,
+      "validation_macro_recall": 0.6293608352431882
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 1,
+      "checkpoint_sha256": "fa7b3f76e2e856a5c2be7ab805c88e447b2c6663bd0f8f8008793860bced34b7",
+      "classes": 2,
+      "global_ids": [
+        93,
+        94
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-25.csv",
+      "key": "variant-manufacturer-25",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 536
+      },
+      "seed": 43,
+      "selection_ids_sha256": "058c609d6a0b122e2207d7c35f63eaf99f6e12d6e50771e3c853e83354e9607f",
+      "selection_images": 67,
+      "stage": "before",
+      "state_sha256": "3b626c43c5ba579f082ed91f5b7b5beaac1b175235e0ca0f4501adc1b81e2752",
+      "training_ids_sha256": "df2e2835ca299d296c1a05c4d1f4f370f12fbe92ab621dec407bfbc5b9646d70",
+      "training_images": 67,
+      "validation_macro_recall": 0.9545454545454546
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 3,
+      "checkpoint_sha256": "47120277d734b08e68e1a9b4ed6bacbbb7748ad5fadbdc646b62cf03e19d19f4",
+      "classes": 2,
+      "global_ids": [
+        97,
+        98
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-27.csv",
+      "key": "variant-manufacturer-27",
+      "resources": {
+        "optimizer_steps": 50,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 660
+      },
+      "seed": 43,
+      "selection_ids_sha256": "9f4420b3d7d2f43650b1b743492bc48f3603a37c81b4a090c69f8c3826acca6e",
+      "selection_images": 67,
+      "stage": "before",
+      "state_sha256": "a086d928b1e2e059c9b8f4f87409eab7160ff8c4a75f3f3fa2b0628e592622f1",
+      "training_ids_sha256": "e5281b4ad91340675a0b11e5dda1a3ea4d460e1a56c9b552ad106c3a7152bb04",
+      "training_images": 66,
+      "validation_macro_recall": 1.0
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 3,
+      "checkpoint_sha256": "e280e65c2e45e2b016316e43a289f11eb9b3989fa3d601ce3a6b5928fa613610",
+      "classes": 5,
+      "global_ids": [
+        57,
+        58,
+        59,
+        60,
+        61
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-29.csv",
+      "key": "variant-manufacturer-29",
+      "resources": {
+        "optimizer_steps": 110,
+        "trainable_parameters": 329221,
+        "training_image_exposures": 1670
+      },
+      "seed": 43,
+      "selection_ids_sha256": "e128c24a69f7c1bc8dd16cdfa1374f51a793acb67e09563a523b417e887d42af",
+      "selection_images": 167,
+      "stage": "before",
+      "state_sha256": "265c951009e7628401babbca33d57e9058d9c3fe6510bd62a2e9faf02c2ba9db",
+      "training_ids_sha256": "8e736ee96752b15ff8a30aa44649aaf5d4bdb538217ab53146a1373190336957",
+      "training_images": 167,
+      "validation_macro_recall": 0.8516934046345812
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 1,
+      "checkpoint_sha256": "f03e5c0de3943d221b624d62feef29d0faf475efdd5e7609651ce0578ecfd6c0",
+      "classes": 2,
+      "global_ids": [
+        40,
+        90
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-3.csv",
+      "key": "variant-manufacturer-3",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 536
+      },
+      "seed": 43,
+      "selection_ids_sha256": "cf0d848c462b0f077d4bcafacdd8afedb1cc2da1aff25e2e0e4fdad3b3de23cd",
+      "selection_images": 67,
+      "stage": "before",
+      "state_sha256": "baf85dbf1d00dad12831cb1b8a7609d54237dd5e5c2b55d175c702d99f374fb5",
+      "training_ids_sha256": "074a1ecd6e26d4ec4ab888673707a4121c994e9b30af5e2eed9d8de46c9de2d6",
+      "training_images": 67,
+      "validation_macro_recall": 0.9848484848484849
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 4,
+      "checkpoint_sha256": "aea66414a846eb14ab4d672140cbaacff098b4d158b58101759f522a8d5bf845",
+      "classes": 21,
+      "global_ids": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        41
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-4.csv",
+      "key": "variant-manufacturer-4",
+      "resources": {
+        "optimizer_steps": 484,
+        "trainable_parameters": 333333,
+        "training_image_exposures": 7700
+      },
+      "seed": 43,
+      "selection_ids_sha256": "f901b02bb9391fb11b1634ef86d82d7880e4439f4b0c63a67b6f5d906a1a9c9b",
+      "selection_images": 700,
+      "stage": "before",
+      "state_sha256": "5fd767bee62d6ba4731b97db904d1428abdfa417a6c5d5c8bc867d98c5688a23",
+      "training_ids_sha256": "0d050f7704a4321cd0d415d88fa60b404d2c2df6e5ae35299be4a33c47e1a63c",
+      "training_images": 700,
+      "validation_macro_recall": 0.5832272302860538
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 7,
+      "checkpoint_sha256": "4eda109e9516d0a3dab3a0925d617824da312f72d525724a45e1baa3bfc8b2b7",
+      "classes": 4,
+      "global_ids": [
+        37,
+        38,
+        39,
+        82
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-6.csv",
+      "key": "variant-manufacturer-6",
+      "resources": {
+        "optimizer_steps": 126,
+        "trainable_parameters": 328964,
+        "training_image_exposures": 1862
+      },
+      "seed": 43,
+      "selection_ids_sha256": "92f12aff5fa1315ffae6e0536c237a6e8bca5eee174a56df482d79f2c718e102",
+      "selection_images": 134,
+      "stage": "before",
+      "state_sha256": "65a89d470bfd861e194ef9557d4f28768d325b31fa8530aec57f35c27bc19e84",
+      "training_ids_sha256": "14c0f6b3c4e7edccbeb854237f10354fd34c5e160fbadc72c8233cc12b648582",
+      "training_images": 133,
+      "validation_macro_recall": 0.8302139037433155
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 1,
+      "checkpoint_sha256": "da7a621e4a5f508f10fa0529f1bb5dd115d95a8b1b84ce59a8f946469618c6c4",
+      "classes": 4,
+      "global_ids": [
+        44,
+        45,
+        46,
+        51
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-7.csv",
+      "key": "variant-manufacturer-7",
+      "resources": {
+        "optimizer_steps": 72,
+        "trainable_parameters": 328964,
+        "training_image_exposures": 1072
+      },
+      "seed": 43,
+      "selection_ids_sha256": "c4512e1733ad2f04468f5caa408f7715f3cbc80f9393f9a58b0d5c7cd4d62428",
+      "selection_images": 133,
+      "stage": "before",
+      "state_sha256": "0cdf30f9e74941a526d4e835d7cbd0d6f425db77b4857686e2c7092119dc9fe5",
+      "training_ids_sha256": "213a59486e231c827395e78274cd1378273870938e3d186d49afe3dd7bbe9fa4",
+      "training_images": 134,
+      "validation_macro_recall": 0.8197415329768271
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "61295571ca3e7bfd9a62c3106997fafcc7a0899004ac24678ed88668af74f00a",
+      "best_epoch": 12,
+      "checkpoint_sha256": "dd70f25c94dbbe9bc3e8b914402352b36575156b5ab31f882f9b6de8ce35cd0b",
+      "classes": 4,
+      "global_ids": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-43/FT-FROZEN-2-before-variant-manufacturer-8.csv",
+      "key": "variant-manufacturer-8",
+      "resources": {
+        "optimizer_steps": 171,
+        "trainable_parameters": 328964,
+        "training_image_exposures": 2527
+      },
+      "seed": 43,
+      "selection_ids_sha256": "36d287d18565135ec6b35560675ed4f0140737111d8858660d40eef9188a4845",
+      "selection_images": 133,
+      "stage": "before",
+      "state_sha256": "824077c24ceeecf783b1a664785f94b92c8629423d37a6a12cfd6c055069a012",
+      "training_ids_sha256": "bbe7b3839f77916a8b0ce5520ff4d294ba3973072e86634e342f885c32c35dae",
+      "training_images": 133,
+      "validation_macro_recall": 0.894830659536542
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 9,
+      "checkpoint_sha256": "b0496c266e00237f6ad2fefc2f020557eb392c08f7eadadc520c47378d65aac7",
+      "classes": 30,
+      "global_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-manufacturer.csv",
+      "key": "manufacturer",
+      "resources": {
+        "optimizer_steps": 3312,
+        "trainable_parameters": 335646,
+        "training_image_exposures": 52816
+      },
+      "seed": 44,
+      "selection_ids_sha256": "2c114c647162ac3ab937a502496e06e5f0328998f2bb5c7a8338cd642330339c",
+      "selection_images": 3300,
+      "stage": "before",
+      "state_sha256": "c7fe7e30ead21e85c76274f8859f6d37a4b95b9d19ee0d46e93ff84ec3a09367",
+      "training_ids_sha256": "a61477477e757edafabc90e6f482576ebbcfa775d922cbbe57141f167c323235",
+      "training_images": 3301,
+      "validation_macro_recall": 0.7860649073397178
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 1,
+      "checkpoint_sha256": "85db2cbdaa46bd7413f156443f591e13a5ece45abeec25105edb5cc7a1b5f7d3",
+      "classes": 2,
+      "global_ids": [
+        34,
+        35
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-0.csv",
+      "key": "variant-manufacturer-0",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 528
+      },
+      "seed": 44,
+      "selection_ids_sha256": "6cfe1d85abfb5bb00b903a2dbb880a8450fb37bc87c1fe5c93ffc62c3baba69a",
+      "selection_images": 67,
+      "stage": "before",
+      "state_sha256": "29eefe62793e7c2e25bf9097e2250c28a2cc1d3b1cb8994fee88540085193bc2",
+      "training_ids_sha256": "934cf95e9c05784f2aa7b5a213ac30c66b4273e76598c462dbbf885b291e0cb5",
+      "training_images": 66,
+      "validation_macro_recall": 0.8801247771836007
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 8,
+      "checkpoint_sha256": "e453809d878812e1a1512c27fd73e358a4d9a894150ea74ff8d4a21657825fbc",
+      "classes": 13,
+      "global_ids": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-1.csv",
+      "key": "variant-manufacturer-1",
+      "resources": {
+        "optimizer_steps": 420,
+        "trainable_parameters": 331277,
+        "training_image_exposures": 6510
+      },
+      "seed": 44,
+      "selection_ids_sha256": "81ebefc6dd938abc5aa0b5cff01664e691780be8884f07bf09bc67513884ee7d",
+      "selection_images": 433,
+      "stage": "before",
+      "state_sha256": "1791023fdd49e2d4edc64ac1847c18e1e58bf0666225e4f784799a554be95396",
+      "training_ids_sha256": "5218182f4eeb8d3f3bb08d2a06f8aac982a20131699f0a3d426fb0c63e7480d6",
+      "training_images": 434,
+      "validation_macro_recall": 0.6437679967091732
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 2,
+      "checkpoint_sha256": "2c357ab438f96d3650ddadbd98b07504903a3b14c09cdaf5943aee20cb96b5a2",
+      "classes": 2,
+      "global_ids": [
+        74,
+        75
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-10.csv",
+      "key": "variant-manufacturer-10",
+      "resources": {
+        "optimizer_steps": 45,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 603
+      },
+      "seed": 44,
+      "selection_ids_sha256": "c91a8bfda1b3639526759100e4ac310cf02f28326b52358424a6b5a4f9c4cee6",
+      "selection_images": 66,
+      "stage": "before",
+      "state_sha256": "166d31ef1ffd7c5966588d090feb3efcb5754a34f8cf2d4397d669cdc56f5dd9",
+      "training_ids_sha256": "8e8760f8331dc85911c12073742099f06fe54d22810e6adf97adb7f9c1c45e81",
+      "training_images": 67,
+      "validation_macro_recall": 0.9393939393939394
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 1,
+      "checkpoint_sha256": "49101651ba51254b06f100e9ad2efa35af54ce5b2e2fae6fc3ef7c5b3addeb41",
+      "classes": 4,
+      "global_ids": [
+        43,
+        53,
+        54,
+        55
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-12.csv",
+      "key": "variant-manufacturer-12",
+      "resources": {
+        "optimizer_steps": 72,
+        "trainable_parameters": 328964,
+        "training_image_exposures": 1064
+      },
+      "seed": 44,
+      "selection_ids_sha256": "0e17bce2fe24b660cea04d07293119344a48b357b97223742689f4d566248185",
+      "selection_images": 134,
+      "stage": "before",
+      "state_sha256": "d4d9bc68aa925abd94aabcfdb332e09ad10dba2204b8467135c05858e79c3c4f",
+      "training_ids_sha256": "92959ada056edb01668b23e71664c9676f43de91499b7cb5fe76d562038deec3",
+      "training_images": 133,
+      "validation_macro_recall": 0.7377450980392157
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 1,
+      "checkpoint_sha256": "0d95d27c6d1463f83d75378654256b57bad8d53931c290a174f73e7fe35167ff",
+      "classes": 7,
+      "global_ids": [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-13.csv",
+      "key": "variant-manufacturer-13",
+      "resources": {
+        "optimizer_steps": 120,
+        "trainable_parameters": 329735,
+        "training_image_exposures": 1864
+      },
+      "seed": 44,
+      "selection_ids_sha256": "e39b5545f75725f86feae2f926f220ea13b01ba12f9b81dc2fbaea9b81b67a9b",
+      "selection_images": 234,
+      "stage": "before",
+      "state_sha256": "ff408562575d5d8e84e1263be4155897b3d6d28f8504e0b380472e2e3e74bbb0",
+      "training_ids_sha256": "95ec77b993c8b39dcef98a08e69c25bfc76539d6cb613458d0d54da01fba2f21",
+      "training_images": 233,
+      "validation_macro_recall": 0.7815126050420168
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 1,
+      "checkpoint_sha256": "ca9259eb4eb2dd62d8c99f7dcd1544d16c375f805f3fa0b12b95b80784690ec3",
+      "classes": 3,
+      "global_ids": [
+        76,
+        77,
+        78
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-16.csv",
+      "key": "variant-manufacturer-16",
+      "resources": {
+        "optimizer_steps": 56,
+        "trainable_parameters": 328707,
+        "training_image_exposures": 800
+      },
+      "seed": 44,
+      "selection_ids_sha256": "59477d8b26f93c767ab4894225bf67ccf204a96a6beee9d4bee6099075a69760",
+      "selection_images": 100,
+      "stage": "before",
+      "state_sha256": "89f2bbe86027c327b4e5cbf9abe9cf6a11ba6f5c77b929f97f5f19c8148ec7dc",
+      "training_ids_sha256": "b8642e48b809f9139b8b1b1a71549459950ddd1f58864136c39e0527611367d5",
+      "training_images": 100,
+      "validation_macro_recall": 0.9007724301841948
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 1,
+      "checkpoint_sha256": "4347e3620725df289dcd0c712da89b1438f0ec45ee73a7cb43aa6431bcab149b",
+      "classes": 2,
+      "global_ids": [
+        80,
+        81
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-17.csv",
+      "key": "variant-manufacturer-17",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 536
+      },
+      "seed": 44,
+      "selection_ids_sha256": "908f9f30253269ee3014ff1b7358076b0811e0e34f3936c2ed2d3e0761041152",
+      "selection_images": 66,
+      "stage": "before",
+      "state_sha256": "5f9dec704e7abe84c6be79b844358bf8ca158bc6a701e71de3b1ec8cac9f6d9a",
+      "training_ids_sha256": "2be67311682c92ea098a5f1c2901e1ec38b4d65858f83507518bacd9adcf8770",
+      "training_images": 67,
+      "validation_macro_recall": 0.803030303030303
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 3,
+      "checkpoint_sha256": "eb285566d93106170b379645e81be19ebe0a4b727a3819adde9460b98fa0ea08",
+      "classes": 2,
+      "global_ids": [
+        42,
+        84
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-19.csv",
+      "key": "variant-manufacturer-19",
+      "resources": {
+        "optimizer_steps": 50,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 680
+      },
+      "seed": 44,
+      "selection_ids_sha256": "bbce3bc3bf202532a3c17dee5f01d444b12612ea94c04d1f1f19a86003655b2f",
+      "selection_images": 66,
+      "stage": "before",
+      "state_sha256": "c06e18853134d3d47b875ba423afdedab60b72fc664a373eb1a30763c8830dae",
+      "training_ids_sha256": "e6530efcbede1a579b5c32d674c5ae37fd851d21798190a748e3c54365fe9e4d",
+      "training_images": 68,
+      "validation_macro_recall": 1.0
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 1,
+      "checkpoint_sha256": "a45ad20aa9c17f94646e1007b73345de149ef7ed179960d57eb53160e22b1990",
+      "classes": 7,
+      "global_ids": [
+        52,
+        56,
+        73,
+        85,
+        86,
+        87,
+        88
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-21.csv",
+      "key": "variant-manufacturer-21",
+      "resources": {
+        "optimizer_steps": 120,
+        "trainable_parameters": 329735,
+        "training_image_exposures": 1856
+      },
+      "seed": 44,
+      "selection_ids_sha256": "14a02317efc7e798f37fbfaf04dd35e2a9d682b7961adef1956c901db6bb1d49",
+      "selection_images": 235,
+      "stage": "before",
+      "state_sha256": "e0520ab4c277619499781a119b1e28c7ba7570989a19c5c609810467efe1bc41",
+      "training_ids_sha256": "5e6fcda833f59ffb78a2ddf39aa7065fda2b5bda57e01b1f16855e7c4ade9cac",
+      "training_images": 232,
+      "validation_macro_recall": 0.6205755029284441
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 1,
+      "checkpoint_sha256": "d0b2953b4200e930903c03c561c4608e8494e4745c5a7ed9c3361eb58974084f",
+      "classes": 2,
+      "global_ids": [
+        93,
+        94
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-25.csv",
+      "key": "variant-manufacturer-25",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 536
+      },
+      "seed": 44,
+      "selection_ids_sha256": "058c609d6a0b122e2207d7c35f63eaf99f6e12d6e50771e3c853e83354e9607f",
+      "selection_images": 67,
+      "stage": "before",
+      "state_sha256": "351465939c7878274bc7bbd785627db46c1922002a38dffeaf25e201fd88b08f",
+      "training_ids_sha256": "df2e2835ca299d296c1a05c4d1f4f370f12fbe92ab621dec407bfbc5b9646d70",
+      "training_images": 67,
+      "validation_macro_recall": 0.9848484848484849
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 1,
+      "checkpoint_sha256": "6bbcb5366f635cea143411d96d3c075cfdc84a5672677d5f31f18db1c07f1242",
+      "classes": 2,
+      "global_ids": [
+        97,
+        98
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-27.csv",
+      "key": "variant-manufacturer-27",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 528
+      },
+      "seed": 44,
+      "selection_ids_sha256": "9f4420b3d7d2f43650b1b743492bc48f3603a37c81b4a090c69f8c3826acca6e",
+      "selection_images": 67,
+      "stage": "before",
+      "state_sha256": "42efbd2a2328c156aaf4a5148ebef6431935a5da671c7086722f280e72af2a92",
+      "training_ids_sha256": "e5281b4ad91340675a0b11e5dda1a3ea4d460e1a56c9b552ad106c3a7152bb04",
+      "training_images": 66,
+      "validation_macro_recall": 0.9701426024955437
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 3,
+      "checkpoint_sha256": "e48f8c17518a91950d324858d10253976d33afad0aa42a4d8ff8b49f103e45db",
+      "classes": 5,
+      "global_ids": [
+        57,
+        58,
+        59,
+        60,
+        61
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-29.csv",
+      "key": "variant-manufacturer-29",
+      "resources": {
+        "optimizer_steps": 110,
+        "trainable_parameters": 329221,
+        "training_image_exposures": 1670
+      },
+      "seed": 44,
+      "selection_ids_sha256": "e128c24a69f7c1bc8dd16cdfa1374f51a793acb67e09563a523b417e887d42af",
+      "selection_images": 167,
+      "stage": "before",
+      "state_sha256": "c856a2222951c03312cfe6dfc5c2cf57dd2200fa4b3afed4c2f0e93ecf11299c",
+      "training_ids_sha256": "8e736ee96752b15ff8a30aa44649aaf5d4bdb538217ab53146a1373190336957",
+      "training_images": 167,
+      "validation_macro_recall": 0.905169340463458
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 1,
+      "checkpoint_sha256": "783889547461ba8c73ae78a94fb4bed91d9df91773dc0acb42ba35f79cf71f45",
+      "classes": 2,
+      "global_ids": [
+        40,
+        90
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-3.csv",
+      "key": "variant-manufacturer-3",
+      "resources": {
+        "optimizer_steps": 40,
+        "trainable_parameters": 328450,
+        "training_image_exposures": 536
+      },
+      "seed": 44,
+      "selection_ids_sha256": "cf0d848c462b0f077d4bcafacdd8afedb1cc2da1aff25e2e0e4fdad3b3de23cd",
+      "selection_images": 67,
+      "stage": "before",
+      "state_sha256": "7da11cd6e3a72935cf2726c17c72ddb16908c301246bac5a8acf5cab0fb6ebd9",
+      "training_ids_sha256": "074a1ecd6e26d4ec4ab888673707a4121c994e9b30af5e2eed9d8de46c9de2d6",
+      "training_images": 67,
+      "validation_macro_recall": 0.9701426024955437
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 7,
+      "checkpoint_sha256": "a73df5e0f396b344b443024219add1487fb97c565e03ed2c312c4d8cc02837ee",
+      "classes": 21,
+      "global_ids": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        41
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-4.csv",
+      "key": "variant-manufacturer-4",
+      "resources": {
+        "optimizer_steps": 616,
+        "trainable_parameters": 333333,
+        "training_image_exposures": 9800
+      },
+      "seed": 44,
+      "selection_ids_sha256": "f901b02bb9391fb11b1634ef86d82d7880e4439f4b0c63a67b6f5d906a1a9c9b",
+      "selection_images": 700,
+      "stage": "before",
+      "state_sha256": "40d5069c749fa537c5902da0fd5c951ea91a4c1ebe61b95b23227a654c622844",
+      "training_ids_sha256": "0d050f7704a4321cd0d415d88fa60b404d2c2df6e5ae35299be4a33c47e1a63c",
+      "training_images": 700,
+      "validation_macro_recall": 0.5588235294117647
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 1,
+      "checkpoint_sha256": "94070862681fd72021b3536950691046d61a752c7fccfcc844d2f5c631a2e681",
+      "classes": 4,
+      "global_ids": [
+        37,
+        38,
+        39,
+        82
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-6.csv",
+      "key": "variant-manufacturer-6",
+      "resources": {
+        "optimizer_steps": 72,
+        "trainable_parameters": 328964,
+        "training_image_exposures": 1064
+      },
+      "seed": 44,
+      "selection_ids_sha256": "92f12aff5fa1315ffae6e0536c237a6e8bca5eee174a56df482d79f2c718e102",
+      "selection_images": 134,
+      "stage": "before",
+      "state_sha256": "28aec960de7aefb891e062301ceef5296b394d5eaf87861313131de75f92b4a2",
+      "training_ids_sha256": "14c0f6b3c4e7edccbeb854237f10354fd34c5e160fbadc72c8233cc12b648582",
+      "training_images": 133,
+      "validation_macro_recall": 0.8284313725490196
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 9,
+      "checkpoint_sha256": "71f3474f663047e25697cfcfff9836d06b53baf1c086f3bc4de5fa26d5e3d553",
+      "classes": 4,
+      "global_ids": [
+        44,
+        45,
+        46,
+        51
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-7.csv",
+      "key": "variant-manufacturer-7",
+      "resources": {
+        "optimizer_steps": 144,
+        "trainable_parameters": 328964,
+        "training_image_exposures": 2144
+      },
+      "seed": 44,
+      "selection_ids_sha256": "c4512e1733ad2f04468f5caa408f7715f3cbc80f9393f9a58b0d5c7cd4d62428",
+      "selection_images": 133,
+      "stage": "before",
+      "state_sha256": "4ce919b224853a08db4be5ec79d159f55d5a682944085a2a965a22161a785bcc",
+      "training_ids_sha256": "213a59486e231c827395e78274cd1378273870938e3d186d49afe3dd7bbe9fa4",
+      "training_images": 134,
+      "validation_macro_recall": 0.8727718360071302
+    },
+    {
+      "architecture": "FT-FROZEN-2",
+      "backbone_sha256": "d34fcc57a7bbfe4d6311399b2b0b3eac2f839a2268979fe71f2388bb8298cd17",
+      "best_epoch": 1,
+      "checkpoint_sha256": "ef0141a87f784bc8f8129d6dab49d3a9745549dd0b574cea3978d89a63c34fb0",
+      "classes": 4,
+      "global_ids": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "hidden_dimension": 256,
+      "history": "seed-44/FT-FROZEN-2-before-variant-manufacturer-8.csv",
+      "key": "variant-manufacturer-8",
+      "resources": {
+        "optimizer_steps": 72,
+        "trainable_parameters": 328964,
+        "training_image_exposures": 1064
+      },
+      "seed": 44,
+      "selection_ids_sha256": "36d287d18565135ec6b35560675ed4f0140737111d8858660d40eef9188a4845",
+      "selection_images": 133,
+      "stage": "before",
+      "state_sha256": "986b925eabdc8dd2402adf60b995b9f0f97712dc62cb8795dff16df109811401",
+      "training_ids_sha256": "bbe7b3839f77916a8b0ce5520ff4d294ba3973072e86634e342f885c32c35dae",
+      "training_images": 133,
+      "validation_macro_recall": 0.9400623885918004
+    }
+  ]
+}
