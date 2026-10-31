@@ -1,0 +1,13 @@
+{
+  "benchmark": "results/stage6/benchmark-20261028T022812Z-fa52c222",
+  "benchmark_manifest_sha256": "e02e3730d7549c6b7f8f610a19c53a163e39e9d0acb93eb99e98e1e9c20fadc1",
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 8008,
+  "incremental": "results/stage7/incremental-20261029T102022Z-dd4acc20",
+  "incremental_manifest_sha256": "00960eec1dceac58a0c3fc76367a771f165ffcf7f885024ff8207f5f5f7f9c41",
+  "seeds": [
+    42,
+    43,
+    44
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "artifacts_sha256": {
+    "REPORT.md": "01b9eec413d58f6cc4f29099649c32c06e48183b10e9e583e1d7f86861bae112",
+    "accuracy-latency-bootstrap.svg": "d7a4b6823e5bb41b1206964a4fdf9df9d4ccbfe3324055ed661f3bf0b6b51529",
+    "analysis.json": "5cbd88b540888b3a0970d1a24b3a09a81e5f8fe7d655fcd0b0125631a47bdb84",
+    "branch_latency.csv": "89f1f530df932f902e43201a57a0f14bffe5708d59b4aa443c0b76bfd2b69e07",
+    "config.resolved.json": "b8f6df48f3aabad078137600a33e17cadf0c8a513c538e408e60a4b384046465",
+    "confusion-matrices.svg": "259351da2f2646db6774bc233c8bb03a2369bbeb7b459e45362c83e52a2f16ed",
+    "depth_latency.csv": "e365d9c279d1c41f34ab5968c7119e748d44380702a03d1a612772dd805c2d07",
+    "family-errors.svg": "38a618e415ce0cb63b0082f77291d519a97baa7ef4bd1292dad9faeacc274a44",
+    "family_error_breakdown.csv": "3906f9b81d5bbaf80aef0058742adc67ebac70f4ec2b925c5ec2b445b629b60e",
+    "latency-by-depth.svg": "887e60a6a72eec65d3f5a027530c5c8fe9c7dfcc1facff65646620b82ab6598f",
+    "pass_latency.csv": "2eb083d568e211a9d371cbda1303833e50f258b57ffdafa656f87401545a7dc5",
+    "per_seed.csv": "8f1a5bfa71733a2cbcbb308482bd6c6c91617b62bfcd72188eebc6d938d4dff5",
+    "provenance.json": "8d908a29b19669742ae1e9466a964d2415d021d76278ff0ccc1bbc9c21cdca5e",
+    "routing-and-repeatability.svg": "6e780798e97bd8ef2c0748a2d97bffe23b5d5ea4a50bef1868bfb54d19bb1272"
+  },
+  "kind": "phase8-analysis",
+  "status": "complete"
+}

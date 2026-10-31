@@ -99,9 +99,10 @@ def public_inputs(tmp_path, full_metadata, monkeypatch):
 
 def test_artifact_only_recomputes_all_test_images(public_inputs):
     root, _, _ = public_inputs
-    audit = report.audit_publication(root)
+    audit, audited_values = report.audit_publication(root, _return_records=True)
     assert audit["artifact_only_recomputed"] and audit["data_and_weights_excluded"]
     values = report.calculate(root)
+    assert audited_values == values
     assert len(values) == 2
     assert values[0]["predicted"]["groups"]["all"]["after"]["images"] == 3333
     assert values[0]["predicted"]["groups"]["new"]["before"]["macro_recall"] == 0

@@ -493,7 +493,7 @@ def publish(training: Path, evaluation: Path, output_root: Path, *, preview_root
     return output
 
 
-def audit_publication(output: Path) -> dict:
+def audit_publication(output: Path, *, _return_records: bool = False) -> dict | tuple[dict, list[dict]]:
     """No local data/weights needed; reject tampering and recompute all scores."""
     audit_inventory(output)
     taxonomy = Taxonomy.from_dict(read_json(output / "taxonomy.json"))
@@ -519,8 +519,9 @@ def audit_publication(output: Path) -> dict:
             raw = path.read_text(encoding="utf-8")
             if '"training_image_ids"' in raw or '"selection_image_ids"' in raw:
                 raise ValueError("Publication contains supervised image-ID lists")
-    return {"publication_run_id": output.name, "seed_architecture_pairs": len(actual),
+    audit = {"publication_run_id": output.name, "seed_architecture_pairs": len(actual),
             "artifact_only_recomputed": True, "data_and_weights_excluded": True}
+    return (audit, actual) if _return_records else audit
 
 
 def rebuild(source: Path, output: Path, *, preview_root: Path | None = None) -> None:

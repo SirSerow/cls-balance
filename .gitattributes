@@ -6,3 +6,4 @@ results/stage4/**/*.svg -whitespace
 results/stage5/**/*.svg -whitespace
 results/stage6/**/*.svg -whitespace
 results/stage7/**/*.svg -whitespace
+results/stage8/**/*.svg -whitespace

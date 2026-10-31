@@ -419,7 +419,8 @@ def publish(runs: list[Path], output_root: Path, training_roots: list[Path], pre
     return output
 
 
-def audit_publication(path: Path, *, _manifest: dict | None = None) -> dict:
+def audit_publication(path: Path, *, _manifest: dict | None = None,
+                      _return_records: bool = False) -> dict | tuple[dict, list[dict], Taxonomy]:
     """Verify copied evidence and that graph/training inventories match deployments."""
     from .models.cascade import node_plan
     from .network_diagrams import network_inventory
@@ -449,8 +450,10 @@ def audit_publication(path: Path, *, _manifest: dict | None = None) -> dict:
             raise ValueError("Network graph inventory mismatch")
     if read_csv(path / "branch_accuracy.csv") != [{k: str(v) for k, v in r.items()} for r in branch_review(records, taxonomy)]:
         raise ValueError("Branch accuracy CSV disagrees with test predictions")
-    return {"status": "verified", "benchmark_runs": len(records), "trained_classifiers": len(nodes),
+    audit = {"status": "verified", "benchmark_runs": len(records), "trained_classifiers": len(nodes),
             "artifacts": len(inventory), "publication_sha256": file_hash(path / "publication.json") if _manifest is None else object_hash(publication)}
+    # Analysis can consume the already rescored evidence without a second audit.
+    return (audit, records, taxonomy) if _return_records else audit
 
 
 def write_report(output: Path, records: list[dict], paired: dict | None) -> None:

@@ -1,0 +1,14 @@
+{
+  "artifacts_sha256": {
+    "REPORT.md": "a57ee7783226090a65114fd12c7975bc3fced05d99fd4609646cdfe4d69eb569",
+    "cpu-tests.txt": "05cf55d4d0ba6e6c039702947149402834919d7b35196347d5092cac5678088b",
+    "environment.json": "c221cfe5b8025230db48a5133dfef70c6f8a76b393069d38dabb8636bee50343",
+    "final-statistics-tests.txt": "3b7ec9f3e4391b3fd82f2e6fac224a85ec3778e0bcade267a5f23caf0fa2c93e",
+    "focused-tests.txt": "712af4289ed846d8f0d506fa0cf2787a448ce57826b965fe997ae9aad5cbc60b",
+    "frozen-suite.txt": "5dc6551eee1d926252ce59ccc1c0975304c6721162bf15dd71769754b7c0330f",
+    "rebuild-audit.json": "619ca553734b5e0a9f95e0c65e125641707a1cef577774bd896aae8b1654c7c5",
+    "source_hashes.json": "dcfba54967408d4c1179c28f704d9dd1002891b666e4f96b5c485107ef5c64fa"
+  },
+  "kind": "phase8-validation",
+  "status": "complete"
+}

@@ -2,7 +2,7 @@
 
 A reproducible research project comparing **independent EfficientNet cascades** against a **single frozen EfficientNet with independently trainable specialist heads** on [FGVC-Aircraft](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/).
 
-> **Status:** Phases 0–7 are implemented. On all 3,333 official test images, three-seed variant macro recall is **FLAT 65.59% ± 0.37 pp**, **IND-2 53.51% ± 1.02 pp**, **FT-FROZEN-2 63.02% ± 0.93 pp** (sample SD). Mean seed-p95 full-pipeline latency is **32.47 / 57.15 / 34.26 ms**, respectively, from five batch-one FP32 passes per checkpoint. The shared cascade has **40.05% lower p95** than IND-2 on this hardware. See the [measured Phase 6 report, graphs and full networks](results/stage6/benchmark-20261028T022812Z-fa52c222/REPORT.md). The [Phase 7 introduction experiment](results/stage7/incremental-20261029T102022Z-dd4acc20/REPORT.md) now measures isolated specialist replacement from fresh 99-class initial systems across all three seeds. Generic ImageNet-frozen, three-stage and FP16 experimental measurements remain separate unmeasured work.
+> **Status:** Phases 0–8 are implemented. On all 3,333 official test images, three-seed variant macro recall is **FLAT 65.59% ± 0.37 pp**, **IND-2 53.51% ± 1.02 pp**, **FT-FROZEN-2 63.02% ± 0.93 pp** (sample SD). Mean seed-p95 full-pipeline latency is **32.47 / 57.15 / 34.26 ms**, respectively, from five batch-one FP32 passes per checkpoint. The shared cascade has **40.05% lower p95** than IND-2 on this hardware. See the [consolidated results with per-seed bootstrap intervals and update tradeoffs](docs/RESULTS.md) and the [measured Phase 6 report, graphs and full networks](results/stage6/benchmark-20261028T022812Z-fa52c222/REPORT.md). The [Phase 7 introduction experiment](results/stage7/incremental-20261029T102022Z-dd4acc20/REPORT.md) now measures isolated specialist replacement from fresh 99-class initial systems across all three seeds. Generic ImageNet-frozen, three-stage and FP16 experimental measurements remain separate unmeasured work.
 
 Phase two has **172 passing CPU tests**, with the suite frozen after validation.
 See the [phase-two validation report](results/stage2/validation-20261025T024200Z-cc4d2a5a/REPORT.md)
@@ -62,6 +62,8 @@ Supporting outcomes: variant top-1 accuracy and macro-F1; manufacturer/family ac
 - [Full experiment specification](docs/EXPERIMENT_PLAN.md) — dataset, hypotheses, methods, metrics, controls, statistics and risks.
 - [Implementation roadmap](docs/ROADMAP.md) — proposed modules, phases, work packages, acceptance tests.
 - [Results template](docs/RESULTS_TEMPLATE.md) — reporting layout for reproducible results.
+- [Consolidated measured results](docs/RESULTS.md) — paired per-seed intervals, all primary endpoints, routing/path analysis and update tradeoffs.
+- [Phase-eight analysis and publication](docs/PHASE8.md) — frozen evidence, statistical methods, figure regeneration and audit contracts.
 - [Phase-two API and test freeze](docs/PHASE2.md) — operational adapters, evaluation, saved-run audit and frozen test policy.
 - [Phase-three training and review](docs/PHASE3.md) — operational CUDA setup, FLAT training, encoder export, diagrams and report generation.
 - [Phase-four independent cascades](docs/PHASE4.md) — full CNN node training, predicted/oracle validation, residency policies and review plots.
@@ -337,9 +339,77 @@ and an artifact-only rebuild preserving all 432 report files byte for byte.
 
 ## Scope
 
-The current implementation covers Phases 0–7. Generic frozen and three-stage
+The current implementation covers Phases 0–8. Generic frozen and three-stage
 experimental measurements remain separate pending ablations. The original validated
 test suite is frozen with SHA256 checks enforced in CI; Phase 3/4/5 checks run in
 their CI workflows; Phase 6 adds benchmark/publication checks and Phase 7 adds
-class-introduction and artifact-only review checks. Checkpoints and raw datasets stay outside Git; model results follow
+class-introduction and artifact-only review checks. Phase 8 adds paired per-seed
+statistics, consolidated results and reproducible publication checks.
+Checkpoints and raw datasets stay outside Git; model results follow
 [RESULTS_TEMPLATE.md](docs/RESULTS_TEMPLATE.md).
+
+## Reproduce the complete study
+
+The consolidated findings are in [docs/RESULTS.md](docs/RESULTS.md); the statistical
+and artifact contracts are in [PHASE8.md](docs/PHASE8.md). To regenerate the final
+tables and new figures from committed test evidence, no dataset or weights are
+needed:
+
+```powershell
+python -m venv .venv-review
+.venv-review/Scripts/python.exe -m pip install -r requirements/cpu-py312.lock
+.venv-review/Scripts/python.exe -m pip install -e '.[test]' -r requirements/phase3-plots.txt
+.venv-review/Scripts/python.exe -m cls_balance.report_analysis --config configs/analysis.yaml --preview-root .tmp/phase8-previews
+# Also regenerate all linked learning curves, full networks and update plots:
+.venv-review/Scripts/python.exe -m cls_balance.report_benchmark --rebuild results/stage6/benchmark-20261028T022812Z-fa52c222 --output-root .tmp/rebuilt-phase6
+.venv-review/Scripts/python.exe -m cls_balance.report_incremental --rebuild results/stage7/incremental-20261029T102022Z-dd4acc20 --rebuild-output .tmp/rebuilt-phase7
+```
+
+This prints a new immutable review directory. Audit it with `--audit <directory>`;
+rebuild all its bytes with `--rebuild <directory> --output .tmp/rebuilt-phase8`.
+Add `--results-doc docs/RESULTS.md` when explicitly updating the consolidated
+documentation from a new publication; this rebases all report/figure links.
+The report links the existing Phase 6/7 figures; their `--rebuild` commands above
+regenerate the complete learning curves, network diagrams and update plots.
+
+To reproduce the **training and test measurements** from scratch, use Python 3.12
+and compatible NVIDIA hardware, obtain the dataset under its non-commercial
+research terms, and run the following sequence from the repository root. These
+are operational commands. Paths in each YAML resolve relative to that YAML.
+After each stage, use the new immutable IDs it prints in the downstream YAML;
+the checked-in paths identify the original measured runs and cannot refer to a
+fresh checkout's uncommitted data or weights. Keep all non-path settings frozen.
+
+```powershell
+python -m venv .venv-cuda
+.venv-cuda/Scripts/python.exe -m pip install -r requirements/cuda-py312.lock
+.venv-cuda/Scripts/python.exe -m pip install -e '.[test]' -r requirements/phase3-plots.txt
+.venv-cuda/Scripts/python.exe -m pip check
+# Downloads and checks the official archive; --no-download uses existing data.
+.venv-cuda/Scripts/python.exe -m cls_balance.prepare --config configs/data.yaml
+# Set prepared_run in flat/independent/shared/benchmark/incremental YAMLs.
+.venv-cuda/Scripts/python.exe -m cls_balance.train --config configs/flat.yaml
+.venv-cuda/Scripts/python.exe -m cls_balance.train_independent --config configs/independent.yaml
+# Set shared.yaml flat_runs to the new seed-matched FLAT directories.
+.venv-cuda/Scripts/python.exe scripts/train_shared_awake.py --config configs/shared.yaml
+# Set benchmark.yaml runs to the nine new runs, retaining the rotated order.
+.venv-cuda/Scripts/python.exe -m cls_balance.benchmark --config configs/benchmark.yaml
+.venv-cuda/Scripts/python.exe -m cls_balance.report_benchmark --suite <new-benchmark-suite> --output-root results/stage6
+# Fresh reduced-label systems; earlier 100-class encoders are ineligible.
+.venv-cuda/Scripts/python.exe scripts/train_incremental_awake.py train --config configs/incremental.yaml
+.venv-cuda/Scripts/python.exe scripts/train_incremental_awake.py evaluate --suite <new-incremental-training-suite>
+.venv-cuda/Scripts/python.exe -m cls_balance.report_incremental --training <new-incremental-training-suite> --evaluation <new-incremental-evaluation-suite> --output-root results/stage7
+# Copy analysis.yaml; bind the NEW publications and their manifest SHA256s.
+.venv-cuda/Scripts/python.exe -m cls_balance.report_analysis --config <new-analysis.yaml>
+.venv-cuda/Scripts/python.exe scripts/freeze_tests.py --check
+.venv-cuda/Scripts/python.exe -m pytest -q tests checks
+```
+
+The benchmark evaluates all test images only after checkpoint selection is
+frozen. Its suite contains per-image predictions/timings, oracle diagnostics and
+resources. Phase 7 evaluates test data only after all initial and replacement
+fits complete. Source publications preserve seeds, configurations, environment,
+source/checkpoint hashes, training budgets and failures. The final analysis
+checks full source inventories and recomputes every numeric result before
+publishing. Other hardware can reproduce the protocol; its measured latency
+need not equal this laptop's results.

@@ -1,0 +1,16 @@
+{
+  "artifacts": 14,
+  "benchmark_runs": 9,
+  "byte_identical": true,
+  "fixed_seeds": [
+    42,
+    43,
+    44
+  ],
+  "per_image_recomputed": true,
+  "source_publications_verified": true,
+  "source_review_id": "analysis-20261031T112159Z-ee01689c",
+  "source_summary_sha256": "58a30270fc820f955289cb79d854711aec4398802cf6fdcce09d20babf9f110d",
+  "status": "verified",
+  "test_images_per_run": 3333
+}
